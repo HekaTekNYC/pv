@@ -1,0 +1,37 @@
+:root {
+  /* Primary Colors */
+  --primary: #282b30; /* Dark */
+  --secondary: #244256; /* Charcoal */
+
+  /* Neutral Shades */
+  --neutral: #ae9f91; /* Khaki */
+  --neutral-light: #d2c7b9; /* Dun */
+  --neutral-lighter: #dbd3c8; /* Bone */
+  --neutral-lightest: #f5f7f1; /* Baby Powder */
+
+  /* Text */
+  --text: #5a5a5c; /* Paragraph text */
+
+  /* Grey Shades */
+  --grey-50: #505762;
+  --grey-40: #a0a1a3;
+  --grey-20: #cfd0d1;
+  --grey-10: #ededed;
+  --grey-5: #f7f7f7;
+
+  /* Status Colors */
+  /* Danger */
+  --danger: #ff4747;
+  --danger-light: #ffdada;
+  --danger-lighter: #ffeded;
+
+  /* Warning */
+  --warning: #f7700f;
+  --warning-light: #fde2cf;
+  --warning-lighter: #fef1e7;
+
+  /* Success */
+  --success: #08a965;
+  --success-light: #ceeee0;
+  --success-lighter: #e6f6f0;
+}
