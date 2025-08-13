@@ -1,0 +1,65 @@
+:root {
+  /* Font Families */
+  --ff-heading: "Baskerville", serif;
+  --ff-body: "Sora", sans-serif;
+  --ff-roboto: "Roboto", sans-serif;
+
+  /* Font Sizes */
+  --fs-h1: 3.0625rem; /* 49px */
+  --fs-h2: 2.4375rem; /* 39px */
+  --fs-h3-lg: 1.5625rem; /* 25px */
+  --fs-h3-sm: 1.25rem; /* 20px */
+
+  --fs-body-l: 1.25rem; /* 20px */
+  --fs-body-r: 1rem; /* 16px */
+  --fs-body-s: 0.875rem; /* 14px */
+
+  /* Font Weights */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+}
+
+/* Media Queries */
+
+@media (min-width: 1024px) {
+  :root {
+    --fs-h1: 3.8125rem; /* 61px */
+    --fs-h2: 3.0625rem; /* 49px */
+  }
+}
+
+h1 {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+}
+
+h2 {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+}
+
+h3.big-heading {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h3-lg);
+  font-weight: var(--fw-bold);
+}
+
+h3.small-heading {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h3-sm);
+  font-weight: var(--fw-bold);
+}
+
+p {
+  font-family: var(--ff-body);
+  font-size: var(--fs-body-r);
+}
+
+.roboto-text {
+  font-family: var(--ff-roboto);
+  font-size: var(--fs-body-s);
+}
