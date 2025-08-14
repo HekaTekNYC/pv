@@ -9,6 +9,9 @@
   --neutral-lighter: #dbd3c8; /* Bone */
   --neutral-lightest: #f5f7f1; /* Baby Powder */
 
+  /* Base White */
+  --white: #ffffff;
+
   /* Text */
   --text: #5a5a5c; /* Paragraph text */
 
