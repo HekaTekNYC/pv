@@ -1,3 +1,74 @@
 @import "./_reset.css";
 @import "./_typography.css";
 @import "./_colors.css";
+
+:root {
+  /* Breakpoints */
+  --bp-sm: 576px;
+  --bp-md: 768px;
+  --bp-lg: 992px;
+  --bp-xl: 1200px;
+  --bp-xxl: 1400px;
+}
+
+body {
+  font-family: var(--ff-body);
+  font-size: var(--fs-body-r);
+  font-weight: var(--fw-regular);
+  font-style: normal;
+  color: var(--text);
+  background-color: var(--white);
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+h1 {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-semibold);
+  color: var(--white);
+}
+
+h2 {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  color: var(--primary);
+}
+
+h3.big-heading {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h3-lg);
+  font-weight: var(--fw-bold);
+  color: var(--primary);
+}
+
+h3.small-heading {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-h3-sm);
+  font-weight: var(--fw-bold);
+  color: var(--primary);
+}
+
+p {
+  font-family: var(--ff-body);
+  font-size: var(--fs-body-r);
+  line-height: 1.5;
+}
+
+.roboto-text {
+  font-family: var(--ff-roboto);
+  font-size: var(--fs-body-s);
+}
