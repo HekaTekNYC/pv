@@ -72,9 +72,16 @@ p {
 }
 
 a {
+  color: var(--text);
 }
 
 .roboto-text {
   font-family: var(--ff-roboto);
   font-size: var(--fs-body-s);
+}
+
+.divider {
+  border: none;
+  height: 2px;
+  background-color: var(--grey-40);
 }

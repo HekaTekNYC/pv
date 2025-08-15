@@ -1,0 +1,209 @@
+---
+import Button from "../ui/Button.astro";
+---
+
+<nav class="nav-bar" aria-label="Primary navigation">
+  <div class="nav-bar-container">
+    <a href="/" class="logo" aria-label="Home">
+      <picture>
+        <source srcset="/images/epic-drk.webp" type="image/webp" />
+        <source srcset="/images/epic-drk.png" type="image/png" />
+        <img
+          src="/images/epic-drk.png"
+          alt="Epic Tails logo"
+          height="50"
+          width="100"
+        />
+      </picture>
+    </a>
+
+    <button aria-label="Toggle navigation" class="hamburger">
+      <img
+        src="icons/hamburger-menu.svg"
+        alt="hamburger icon"
+        height="35"
+        width="35"
+      />
+    </button>
+
+    <!-- Navigation menu -->
+    <div class="nav-links">
+      <ul>
+        <li><a href="#hero-section">Home</a></li>
+        <li><a href="#about-section">About</a></li>
+        <li><a href="#gallery-section">Gallery</a></li>
+        <li><a href="#services-section">Services</a></li>
+        <li><a href="#pricing-section">Pricing</a></li>
+      </ul>
+      <div class="nav-book-now">
+        <Button href="/contact" color="primary" bordered variant="nav"
+          >Get a Free Quote</Button
+        >
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    position: sticky;
+    top: 0;
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 30px;
+    height: 80px;
+    width: 100%;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    z-index: 1000;
+  }
+
+  .nav-bar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-width: 1300px;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .hamburger {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: 85vh;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+    background-color: var(--white);
+  }
+
+  .nav-links a {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+
+  .nav-links a:hover {
+    font-weight: 700;
+  }
+  .nav-links > ul > li > a:hover {
+    color: var(--primary-darkest);
+  }
+
+  .nav-links ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 60%;
+    margin-bottom: 10px;
+  }
+
+  .nav-book-now {
+    padding-top: 50px;
+  }
+
+  @media (min-width: 768px) {
+    nav {
+      padding: 0px 40px;
+    }
+  }
+
+  @media (min-width: 820px) {
+    nav {
+      padding: 0px 60px;
+    }
+
+    .hamburger {
+      display: none;
+    }
+
+    .nav-book-now {
+      padding-top: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      position: static;
+      height: auto;
+      padding: 0;
+      background: var(--white);
+    }
+
+    .nav-links ul {
+      flex-direction: row;
+      justify-content: flex-end;
+      margin: 0 10px 0 0;
+    }
+
+    .nav-links li {
+      margin: 0 10px;
+    }
+    .nav-links a {
+      font-size: 1.2rem;
+    }
+
+    .nav-btn {
+      font-size: 1.1rem !important;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    nav {
+      padding: 0px 100px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.querySelector(".hamburger");
+    const dropdownNav = document.querySelector(".nav-links");
+    const mediaQuery = window.matchMedia("(min-width: 992px)");
+
+    if (hamburger && dropdownNav) {
+      // Event listener for the hamburger menu click
+      hamburger.addEventListener("click", () => {
+        dropdownNav.classList.toggle("active");
+      });
+
+      mediaQuery.addEventListener("change", (e) => {
+        if (e.matches) {
+          // Remove active class if the viewport is 992px or wider
+          dropdownNav.classList.remove("active");
+        }
+      });
+
+      // Initial check for viewport width
+      if (mediaQuery.matches) {
+        dropdownNav.classList.remove("active");
+      }
+    }
+  });
+</script>
