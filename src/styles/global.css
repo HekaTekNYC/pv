@@ -38,6 +38,8 @@ h1 {
   font-family: var(--ff-heading);
   font-size: var(--fs-h1);
   font-weight: var(--fw-semibold);
+  line-height: 1.2;
+  letter-spacing: -0.32px;
   color: var(--white);
 }
 
