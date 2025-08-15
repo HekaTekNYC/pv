@@ -44,3 +44,43 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+```
+pv
+├─ README.md
+├─ astro.config.mjs
+├─ package-lock.json
+├─ package.json
+├─ public
+│  ├─ favicon.svg
+│  └─ fonts
+│     ├─ Baskervville
+│     │  ├─ Baskervville-Bold.woff
+│     │  ├─ Baskervville-Bold.woff2
+│     │  ├─ Baskervville-Medium.woff
+│     │  ├─ Baskervville-Regular.woff
+│     │  ├─ Baskervville-Regular.woff2
+│     │  ├─ Baskervville-SemiBold.woff
+│     │  └─ Baskervville-SemiBold.woff2
+│     ├─ Roboto
+│     │  ├─ Roboto-Regular.woff
+│     │  └─ Roboto-Regular.woff2
+│     └─ Sora
+│        ├─ Sora-Regular.woff
+│        └─ Sora-Regular.woff2
+├─ src
+│  ├─ assets
+│  ├─ components
+│  │  └─ Welcome.astro
+│  ├─ layouts
+│  │  └─ Layout.astro
+│  ├─ pages
+│  │  └─ index.astro
+│  └─ styles
+│     ├─ _colors.css
+│     ├─ _reset.css
+│     ├─ _typography.css
+│     └─ global.css
+└─ tsconfig.json
+
+```
