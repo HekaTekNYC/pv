@@ -1,0 +1,94 @@
+---
+interface Props {
+  color?: "primary" | "secondary" | "accent";
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  bordered?: boolean;
+  variant?: "default" | "nav";
+}
+
+const {
+  color = "primary",
+  href = "",
+  type = "button",
+  bordered = false,
+  variant = "default",
+} = Astro.props;
+
+const colorClass = {
+  primary: "btn-primary",
+  secondary: "btn-secondary",
+  accent: "btn-accent",
+}[color];
+
+const borderClass = bordered ? "btn-bordered" : "";
+const variantClass = variant === "nav" ? "btn-nav" : "btn-default";
+---
+
+{
+  href ? (
+    <a href={href} class={`btn ${colorClass} ${borderClass} ${variantClass}`}>
+      <slot />
+    </a>
+  ) : (
+    <button
+      type={type}
+      class={`btn ${colorClass} ${borderClass} ${variantClass}`}
+    >
+      <slot />
+    </button>
+  )
+}
+
+<style>
+  .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--ff-body);
+    font-weight: var(--fw-bold);
+    line-height: 100%;
+    letter-spacing: 0%;
+    gap: 4px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    opacity: 1;
+    flex-shrink: 0;
+    min-height: 46px;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  /* Padding variants */
+  .btn-default {
+    padding: 16px 40px;
+  }
+
+  .btn-nav {
+    padding: 16px 28px;
+  }
+
+  /* Colors */
+  .btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+
+  .btn-secondary {
+    background-color: var(--secondary);
+    color: var(--white);
+  }
+
+  .btn-neutral {
+    background-color: var(--neutral-lighter);
+    color: var(--primary);
+  }
+
+  .btn-bordered {
+    border: 1px solid var(--grey-50);
+  }
+</style>
