@@ -68,6 +68,10 @@ p {
   font-family: var(--ff-body);
   font-size: var(--fs-body-r);
   line-height: 1.5;
+  padding: 0;
+}
+
+a {
 }
 
 .roboto-text {
