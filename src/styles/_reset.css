@@ -46,6 +46,10 @@ li {
   text-wrap: pretty;
 }
 
+a {
+  text-decoration: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   :has(:target) {
     scroll-behavior: smooth;
