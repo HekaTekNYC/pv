@@ -17,7 +17,7 @@ import Button from "../ui/Button.astro";
       <ul>
         <li><a href="/" class="nav-bar__link">Home</a></li>
         <li class="nav-bar__dropdown">
-          <a href="/products" class="nav-bar__link nav-bar__link--products">
+          <a href="/products" class="nav-bar__link">
             Products
             <img
               src="/icons/caret-lt-down.svg"
@@ -83,12 +83,12 @@ import Button from "../ui/Button.astro";
         <li><a href="/about" class="nav-bar__link">About</a></li>
         <li><a href="/projects" class="nav-bar__link">Projects</a></li>
         <li><a href="/contact" class="nav-bar__link">Contact</a></li>
+        <li class="nav-bar__book-now">
+          <Button href="/contact" color="primary" bordered variant="nav"
+            >Get a Free Quote</Button
+          >
+        </li>
       </ul>
-      <div class="nav-bar__book-now">
-        <Button href="/contact" color="primary" bordered variant="nav"
-          >Get a Free Quote</Button
-        >
-      </div>
     </div>
   </div>
 </nav>
@@ -138,15 +138,17 @@ import Button from "../ui/Button.astro";
 
   .nav-bar__links.active {
     display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
     position: absolute;
     top: 72px;
     left: 0;
     width: 100%;
-    height: 85vh;
-    flex-direction: column;
-    align-items: center;
+    height: calc(100vh - 72px);
     padding: 40px 0;
     background-color: var(--primary);
+    overflow-y: auto;
   }
 
   .nav-bar__links a {
@@ -156,9 +158,6 @@ import Button from "../ui/Button.astro";
   }
 
   .nav-bar__links a:hover {
-    font-weight: 700;
-  }
-  .nav-bar__links > ul > li > a:hover {
     color: var(--neutral);
   }
 
@@ -166,17 +165,19 @@ import Button from "../ui/Button.astro";
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 60%;
+    justify-content: flex-start;
+    gap: 20px;
+    flex: 1;
     margin-bottom: 10px;
   }
 
-  .nav-bar__link--products {
+  .nav-bar__dropdown > .nav-bar__link {
     display: flex;
     align-items: center;
-    white-space: nowrap;
     gap: 8px;
+    white-space: nowrap;
   }
+
   .nav-bar__caret {
     width: 10.54px;
     height: 6.25px;
@@ -187,32 +188,45 @@ import Button from "../ui/Button.astro";
     position: relative;
   }
 
+  /* Desktop dropdown */
   .nav-bar__dropdown .nav-bar__dropdown-menu {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    background: var(--white);
+    background: var(--primary);
     padding: 0;
     margin: 0;
   }
 
-  .nav-bar__dropdown:hover .nav-bar__dropdown-menu {
-    display: block;
+  /* Mobile open dropdown */
+  .nav-bar__dropdown.open .nav-bar__dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: static;
+    width: 100%;
+  }
+
+  .nav-bar__dropdown.open .nav-bar__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 15px;
   }
 
   .nav-bar__dropdown-menu li a {
     display: block;
-    padding: 10px 20px;
+    font-size: 1rem;
   }
 
   .nav-bar__dropdown-menu li a:hover {
-    background-color: var(--primary);
-    color: var(--white);
+    color: var(--neutral);
   }
 
   .nav-bar__book-now {
-    padding-top: 50px;
+    padding-top: 20px;
   }
 
   @media (min-width: 768px) {
@@ -231,6 +245,7 @@ import Button from "../ui/Button.astro";
     }
 
     .nav-bar__book-now {
+      margin-top: 0;
       padding-top: 0;
     }
 
@@ -249,13 +264,21 @@ import Button from "../ui/Button.astro";
       flex-direction: row;
       justify-content: flex-end;
       margin: 0 10px 0 0;
+      gap: 0;
+      flex: unset;
     }
 
     .nav-bar__links li {
       margin: 0 10px;
     }
+
     .nav-bar__links a {
       font-size: 1.2rem;
+    }
+
+    /* Desktop hover dropdown */
+    .nav-bar__dropdown:hover .nav-bar__dropdown-menu {
+      display: block;
     }
   }
 
@@ -272,23 +295,36 @@ import Button from "../ui/Button.astro";
     const dropdownNav = document.querySelector(".nav-bar__links");
     const mediaQuery = window.matchMedia("(min-width: 992px)");
 
+    // Toggle hamburger menu
     if (hamburger && dropdownNav) {
-      // Event listener for the hamburger menu click
       hamburger.addEventListener("click", () => {
         dropdownNav.classList.toggle("active");
       });
 
       mediaQuery.addEventListener("change", (e) => {
-        if (e.matches) {
-          // Remove active class if the viewport is 992px or wider
-          dropdownNav.classList.remove("active");
-        }
+        if (e.matches) dropdownNav.classList.remove("active");
       });
 
-      // Initial check for viewport width
-      if (mediaQuery.matches) {
-        dropdownNav.classList.remove("active");
-      }
+      if (mediaQuery.matches) dropdownNav.classList.remove("active");
     }
+
+    // Handle dropdown taps generically
+    const dropdownLinks = document.querySelectorAll(".nav-bar__dropdown > a");
+
+    dropdownLinks.forEach((link) => {
+      let tappedOnce = false;
+
+      link.addEventListener("click", (e) => {
+        if (window.innerWidth < 992) {
+          // mobile only
+          if (!tappedOnce) {
+            e.preventDefault();
+            link.parentElement.classList.toggle("open");
+            tappedOnce = true;
+            setTimeout(() => (tappedOnce = false), 500);
+          }
+        }
+      });
+    });
   });
 </script>
