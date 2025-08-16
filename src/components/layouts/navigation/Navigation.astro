@@ -1,7 +1,5 @@
 ---
-import Dropdown from "./Dropdown";
 import Button from "../../ui/Button.astro";
-import { productItems } from "../../../data/navLinks";
 ---
 
 <nav class="nav-bar">
@@ -18,7 +16,69 @@ import { productItems } from "../../../data/navLinks";
     <div class="nav-bar__links">
       <ul>
         <li><a href="/" class="nav-bar__link">Home</a></li>
-        <Dropdown item={productItems} client:load />
+        <li class="nav-bar__dropdown">
+          <a href="/products" class="nav-bar__link nav-bar__dropdown-toggle">
+            Products
+            <img
+              src="/icons/caret-lt-down.svg"
+              alt=""
+              class="nav-bar__caret"
+              width="20px"
+              height=" 20px"
+            />
+          </a>
+          <ul class="nav-bar__dropdown-menu">
+            <li>
+              <a
+                href="/products/solar-roller-shades"
+                class="nav-bar__dropdown-link">Solar / Roller Shades</a
+              >
+            </li>
+            <li>
+              <a
+                href="/products/cellular-pleated-shades"
+                class="nav-bar__dropdown-link">Cellular / Pleated Shades</a
+              >
+            </li>
+            <li>
+              <a
+                href="/products/sheer-layered-shades"
+                class="nav-bar__dropdown-link">Sheer / Layered Shades</a
+              >
+            </li>
+            <li>
+              <a
+                href="/products/wood-faux-blinds"
+                class="nav-bar__dropdown-link">Wood / Faux Blinds</a
+              >
+            </li>
+            <li>
+              <a href="/products/shutters" class="nav-bar__dropdown-link"
+                >Shutters</a
+              >
+            </li>
+            <li>
+              <a href="/products/natural-shades" class="nav-bar__dropdown-link"
+                >Natural Shades</a
+              >
+            </li>
+            <li>
+              <a href="/products/roman-shades" class="nav-bar__dropdown-link"
+                >Roman Shades</a
+              >
+            </li>
+            <li>
+              <a href="/products/draperies" class="nav-bar__dropdown-link"
+                >Draperies</a
+              >
+            </li>
+            <li>
+              <a href="/products/exterior-shades" class="nav-bar__dropdown-link"
+                >Exterior Shades</a
+              >
+            </li>
+          </ul>
+        </li>
         <li><a href="/services" class="nav-bar__link">Services</a></li>
         <li><a href="/about" class="nav-bar__link">About</a></li>
         <li><a href="/projects" class="nav-bar__link">Projects</a></li>
@@ -115,7 +175,7 @@ import { productItems } from "../../../data/navLinks";
     text-align: center;
   }
 
-  .nav-bar__links a {
+  .nav-bar__links a.nav-bar__link {
     font-size: 1.3rem;
     font-weight: 500;
     color: var(--white);
@@ -126,7 +186,7 @@ import { productItems } from "../../../data/navLinks";
     padding: 10px 0;
   }
 
-  .nav-bar__links a:hover {
+  .nav-bar__links a.nav-bar__link:hover {
     color: var(--neutral);
   }
 
@@ -135,10 +195,21 @@ import { productItems } from "../../../data/navLinks";
     padding: 20px 0;
   }
 
+  /* Dropdown Menu */
   .nav-bar__caret {
     width: 10.54px;
     height: 6.25px;
     transition: transform 0.2s ease;
+  }
+
+  .nav-bar__dropdown .nav-bar__dropdown-menu {
+    display: none;
+    /* padding: 0;
+    margin: 0; */
+  }
+
+  .nav-bar__dropdown.open .nav-bar__dropdown-menu {
+    display: block;
   }
 
   @media (min-width: 576px) {
@@ -213,6 +284,45 @@ import { productItems } from "../../../data/navLinks";
       ) {
         navLinks.classList.remove("active");
       }
+    });
+
+    // Dropdown menu (mobile only)
+    const dropdownToggles = document.querySelectorAll<HTMLElement>(
+      ".nav-bar__dropdown-toggle",
+    );
+
+    console.log("Found dropdown toggles:", dropdownToggles.length);
+
+    dropdownToggles.forEach((toggle, i) => {
+      console.log("Attaching listener to toggle:", i, toggle);
+
+      toggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log("Toggle clicked:", toggle);
+
+        const parentDropdown =
+          toggle.closest<HTMLElement>(".nav-bar__dropdown");
+        console.log("Parent dropdown:", parentDropdown);
+
+        if (!parentDropdown) return;
+
+        const isOpen = parentDropdown.classList.contains("open");
+        console.log("Was it already open?", isOpen);
+
+        // Close all dropdowns
+        document
+          .querySelectorAll(".nav-bar__dropdown.open")
+          .forEach((dropdown) => {
+            console.log("Closing dropdown:", dropdown);
+            dropdown.classList.remove("open");
+          });
+
+        // Re-open this one if it wasn’t already open
+        if (!isOpen) {
+          parentDropdown.classList.add("open");
+          console.log("Opening dropdown:", parentDropdown);
+        }
+      });
     });
   });
 </script>
