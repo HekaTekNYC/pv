@@ -167,6 +167,7 @@ import Button from "../../ui/Button.astro";
     justify-content: flex-start;
     gap: 20px;
     width: 100%;
+
     margin-bottom: 10px;
   }
 
@@ -208,6 +209,7 @@ import Button from "../../ui/Button.astro";
 
   .nav-bar__dropdown.open .nav-bar__dropdown-menu {
     display: block;
+    margin-top: 10px;
     background-color: var(--grey-5);
     width: 100%;
   }
@@ -219,17 +221,16 @@ import Button from "../../ui/Button.astro";
     padding: 10px 0;
     width: 100%;
   }
-
-  .nav-bar__dropdown-link:nth-child(1) {
-    padding-top: 15px;
+  .nav-bar__dropdown li:first-child .nav-bar__dropdown-link {
+    padding-top: 20px;
   }
-  .nav-bar__dropdown-link:nth-last-child() {
-    padding-bottom: 15px;
+  .nav-bar__dropdown li:last-child .nav-bar__dropdown-link {
+    padding-bottom: 20px;
   }
 
   .nav-bar__dropdown-link:hover {
     background-color: var(--grey-10);
-    color: var(--neutral);
+    color: var(--primary);
   }
 
   @media (min-width: 576px) {
