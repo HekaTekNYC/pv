@@ -94,6 +94,7 @@ import Button from "../../ui/Button.astro";
 </nav>
 
 <style>
+  /* --- Base nav (shared) --- */
   nav {
     position: sticky;
     top: 0;
@@ -132,7 +133,7 @@ import Button from "../../ui/Button.astro";
     padding: 0;
   }
 
-  /* Mobile nav */
+  /* --- Mobile nav (default) --- */
   .nav-bar__links {
     position: absolute;
     top: 72px;
@@ -145,7 +146,6 @@ import Button from "../../ui/Button.astro";
     padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
     transition:
       max-height 0.4s ease,
@@ -164,10 +164,8 @@ import Button from "../../ui/Button.astro";
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     gap: 20px;
     width: 100%;
-
     margin-bottom: 10px;
   }
 
@@ -196,7 +194,7 @@ import Button from "../../ui/Button.astro";
     padding: 20px 0;
   }
 
-  /* Dropdown Menu */
+  /* --- Dropdown --- */
   .nav-bar__caret {
     width: 10.54px;
     height: 6.25px;
@@ -233,13 +231,13 @@ import Button from "../../ui/Button.astro";
     color: var(--primary);
   }
 
+  /* --- Breakpoints --- */
   @media (min-width: 576px) {
-    .nav {
+    nav {
       padding: 0 40px;
     }
   }
 
-  /* Desktop */
   @media (min-width: 992px) {
     nav {
       padding: 0 80px;
@@ -257,22 +255,70 @@ import Button from "../../ui/Button.astro";
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
-      width: auto;
+      width: 100%;
       padding: 0;
       overflow: visible;
     }
 
-    .nav-bar__links a {
+    .nav-bar__links ul {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 20px;
+      width: auto;
+      margin: 0;
+    }
+
+    .nav-bar__links li {
+      width: auto;
+      text-align: left;
+    }
+
+    .nav-bar__links a.nav-bar__link {
       font-size: 1rem;
     }
 
-    .nav-bar__links ul {
-      flex-direction: row;
-      margin-bottom: 0;
+    /* Dropdown */
+    .nav-bar__dropdown {
+      position: relative;
+    }
+
+    .nav-bar__dropdown .nav-bar__dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: none;
+      min-width: 220px;
+      height: auto;
+      background: var(--grey-5); /* <-- Add this */
+      list-style: none; /* <-- Reset */
+      margin: 0; /* <-- Reset */
+      padding: 0; /* <-- Reset */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 9999 !important;
+    }
+
+    .nav-bar__dropdown:hover .nav-bar__dropdown-menu {
+      display: block;
+    }
+    .nav-bar__dropdown.open .nav-bar__dropdown-menu {
+      display: block;
+      width: auto;
+      margin-top: 0;
+    }
+
+    .nav-bar__dropdown-link {
+      padding: 10px 16px;
+      white-space: nowrap;
+    }
+
+    .nav-bar__dropdown-link:hover {
+      background-color: var(--grey-10);
     }
 
     .nav-bar__book-now {
       margin-top: 0;
+      padding: 0;
     }
   }
 
@@ -308,42 +354,35 @@ import Button from "../../ui/Button.astro";
     });
 
     // Dropdown menu (mobile only)
-    const dropdownToggles = document.querySelectorAll<HTMLElement>(
-      ".nav-bar__dropdown-toggle",
-    );
+    if (window.innerWidth < 992) {
+      const dropdownToggles = document.querySelectorAll<HTMLElement>(
+        ".nav-bar__dropdown-toggle",
+      );
 
-    console.log("Found dropdown toggles:", dropdownToggles.length);
+      dropdownToggles.forEach((toggle, i) => {
+        toggle.addEventListener("click", (e) => {
+          e.preventDefault();
 
-    dropdownToggles.forEach((toggle, i) => {
-      console.log("Attaching listener to toggle:", i, toggle);
+          const parentDropdown =
+            toggle.closest<HTMLElement>(".nav-bar__dropdown");
 
-      toggle.addEventListener("click", (e) => {
-        e.preventDefault();
-        console.log("Toggle clicked:", toggle);
+          if (!parentDropdown) return;
 
-        const parentDropdown =
-          toggle.closest<HTMLElement>(".nav-bar__dropdown");
-        console.log("Parent dropdown:", parentDropdown);
+          const isOpen = parentDropdown.classList.contains("open");
 
-        if (!parentDropdown) return;
+          // Close all dropdowns
+          document
+            .querySelectorAll(".nav-bar__dropdown.open")
+            .forEach((dropdown) => {
+              dropdown.classList.remove("open");
+            });
 
-        const isOpen = parentDropdown.classList.contains("open");
-        console.log("Was it already open?", isOpen);
-
-        // Close all dropdowns
-        document
-          .querySelectorAll(".nav-bar__dropdown.open")
-          .forEach((dropdown) => {
-            console.log("Closing dropdown:", dropdown);
-            dropdown.classList.remove("open");
-          });
-
-        // Re-open this one if it wasn’t already open
-        if (!isOpen) {
-          parentDropdown.classList.add("open");
-          console.log("Opening dropdown:", parentDropdown);
-        }
+          // Re-open this one if it wasn’t already open
+          if (!isOpen) {
+            parentDropdown.classList.add("open");
+          }
+        });
       });
-    });
+    }
   });
 </script>
