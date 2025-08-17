@@ -287,24 +287,30 @@ import Button from "../../ui/Button.astro";
       position: absolute;
       top: 100%;
       left: 0;
-      display: none;
+      display: block; /* keep it block, visibility handled via opacity */
       min-width: 220px;
       height: auto;
-      background: var(--grey-5); /* <-- Add this */
-      list-style: none; /* <-- Reset */
-      margin: 0; /* <-- Reset */
-      padding: 0; /* <-- Reset */
+      background: var(--grey-5);
+      list-style: none;
+      margin: 0;
+      padding: 0;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      z-index: 9999 !important;
+      z-index: 9999;
+
+      /* --- Transition effects --- */
+      opacity: 0;
+      transform: translateY(-10px);
+      transition:
+        opacity 0.2s ease,
+        transform 0.3s ease;
+      pointer-events: none;
     }
 
-    .nav-bar__dropdown:hover .nav-bar__dropdown-menu {
-      display: block;
-    }
+    .nav-bar__dropdown:hover .nav-bar__dropdown-menu,
     .nav-bar__dropdown.open .nav-bar__dropdown-menu {
-      display: block;
-      width: auto;
-      margin-top: 0;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
     }
 
     .nav-bar__dropdown-link {
