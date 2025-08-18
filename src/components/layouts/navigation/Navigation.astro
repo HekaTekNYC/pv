@@ -160,6 +160,11 @@ import Button from "../../ui/Button.astro";
     overflow-y: auto;
   }
 
+  /* Active page */
+  .nav-bar__link.active {
+    color: var(--neutral);
+  }
+
   .nav-bar__links ul {
     display: flex;
     flex-direction: column;
@@ -339,6 +344,7 @@ import Button from "../../ui/Button.astro";
   document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.querySelector(".nav-bar__hamburger");
     const navLinks = document.querySelector(".nav-bar__links");
+    const links = document.querySelectorAll(".nav-bar__link");
 
     if (!hamburger || !navLinks) return;
 
@@ -358,6 +364,14 @@ import Button from "../../ui/Button.astro";
         navLinks.classList.remove("active");
       }
     });
+
+    // Highlight active page link
+    // const currentPath = window.location.pathname;
+    // links.forEach((link) => {
+    //   if (link.getAttribute("href") === currentPath) {
+    //     link.classList.add("active");
+    //   }
+    // });
 
     // Dropdown menu (mobile only)
     if (window.innerWidth < 992) {
