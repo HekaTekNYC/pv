@@ -94,7 +94,6 @@ import Button from "../ui/Button.astro";
 </nav>
 
 <style>
-  /* --- Base nav (shared) --- */
   nav {
     position: sticky;
     top: 0;
@@ -182,7 +181,7 @@ import Button from "../ui/Button.astro";
   .nav-bar__links a.nav-bar__link {
     font-size: 1.3rem;
     font-weight: 500;
-    color: var(--white);
+    color: var(--grey-10);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -236,7 +235,7 @@ import Button from "../ui/Button.astro";
     color: var(--primary);
   }
 
-  /* --- Breakpoints --- */
+  /* --- Media Queries --- */
   @media (min-width: 576px) {
     nav {
       padding: 0 40px;
@@ -292,7 +291,7 @@ import Button from "../ui/Button.astro";
       position: absolute;
       top: 100%;
       left: 0;
-      display: block; /* keep it block, visibility handled via opacity */
+      display: block;
       min-width: 220px;
       height: auto;
       background: var(--grey-5);
@@ -301,8 +300,6 @@ import Button from "../ui/Button.astro";
       padding: 0;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       z-index: 9999;
-
-      /* --- Transition effects --- */
       opacity: 0;
       transform: translateY(-10px);
       transition:
