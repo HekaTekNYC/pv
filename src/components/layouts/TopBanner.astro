@@ -2,8 +2,8 @@
 <div class="top-banner">
   <div class="top-banner-container">
     <!-- contact info -->
-    <div class="contact-nav">
-      <a href="tel:8016001973" class="contact-phone">
+    <div class="top-banner__contact">
+      <a href="tel:8016001973" class="top-banner__contact-phone">
         <img
           src="/icons/call.svg"
           alt="Phone Icon in White"
@@ -12,7 +12,10 @@
         />
         <p>(801) 600-1973</p>
       </a>
-      <a href="mailto:perfectviewutah@outlook.com" class="contact-email">
+      <a
+        href="mailto:perfectviewutah@outlook.com"
+        class="top-banner__contact-email"
+      >
         <img
           src="/icons/message.svg"
           alt="Envelope Icon in White"
@@ -23,8 +26,8 @@
       </a>
     </div>
     <!-- social icons -->
-    <ul class="social-nav">
-      <li class="banner-fb">
+    <ul class="top-banner__social">
+      <li class="top-banner__social-fb">
         <a
           href="https://www.facebook.com/profile.php?id=61577185517312"
           aria-label="Facebook Link"
@@ -40,7 +43,7 @@
           />
         </a>
       </li>
-      <li class="banner-insta">
+      <li class="top-banner__social-insta">
         <a
           href="https://www.instagram.com/perfectviewutah/"
           aria-label="Instagram Link"
@@ -79,7 +82,7 @@
     max-width: 1300px;
   }
 
-  .contact-nav {
+  .top-banner__contact {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -87,19 +90,19 @@
     width: 100%;
   }
 
-  .contact-nav .contact-email {
+  .top-banner__contact .top-banner__contact-email {
     display: none;
   }
 
-  .contact-email,
-  .contact-phone {
+  .top-banner__contact-email,
+  .top-banner__contact-phone {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
   }
-  .contact-phone p,
-  .contact-email p {
+  .top-banner__contact-email p,
+  .top-banner__contact-phone p {
     display: flex;
     align-items: center;
     margin: 0;
@@ -107,21 +110,21 @@
     white-space: nowrap;
   }
 
-  .top-banner .social-nav {
+  .top-banner .top-banner__social {
     display: flex;
     justify-content: end;
     align-items: center;
     gap: 10px;
   }
 
-  .social-nav a {
+  .top-banner__social a {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .banner-fb img,
-  .banner-insta img {
+  .top-banner__social-fb img,
+  .top-banner__social-insta img {
     cursor: pointer;
   }
 
@@ -136,16 +139,16 @@
       height: 44px;
     }
 
-    .contact-nav {
+    .top-banner__contact {
       justify-content: start;
       width: 95%;
     }
 
-    .contact-email,
-    .contact-phone {
+    .top-banner__contact-email,
+    .top-banner__contact-phone {
       padding-right: 25px;
     }
-    .contact-nav .contact-email {
+    .top-banner__contact .top-banner__contact-email {
       display: flex;
     }
   }
@@ -156,7 +159,7 @@
       padding: 0 80px;
     }
 
-    .top-banner .social-nav {
+    .top-banner .top-banner__social {
       width: 40%;
     }
   }
@@ -168,7 +171,7 @@
       height: 48px;
     }
 
-    .top-banner .social-nav {
+    .top-banner .top-banner__social {
       width: 25%;
     }
   }
