@@ -19,7 +19,7 @@
         <div class="footer__social">
           <a
             href="https://www.facebook.com/profile.php?id=61577185517312"
-            class="footer__social-link footer__social-link--facebook"
+            class="footer__social-link"
             aria-label="
             Facebook
             Link"
@@ -28,28 +28,27 @@
             rel="noopener noreferrer"
           >
             <img
-              src="/icons/facebook.svg"
+              src="/icons/fb-20.svg"
               alt="White Facebook Icon for PerfectView"
               class="footer__social-icon"
-              height="20"
-              width="20"
+              height="16"
+              width="16"
             />
           </a>
           <a
             href="https://www.instagram.com/perfectviewutah/"
             aria-label="Instagram Link"
-            class="footer__social-link footer__social-link--instagram"
+            class="footer__social-link"
             title="Visit our Instagram page"
             target="_blank"
             rel="noopener noreferrer"
-            class="footer__social-link footer__social-link--instagram"
           >
             <img
-              src="/icons/instagram.svg"
+              src="/icons/insta-20.svg"
               alt="White Instagram Icon for PerfectView"
               class="footer__social-icon"
-              height="20"
-              width="20"
+              height="16"
+              width="16"
             />
           </a>
         </div>
@@ -57,41 +56,57 @@
 
       <!-- Column 2 -->
       <div class="footer__column">
-        <h4 class="footer__heading">Quick Links</h4>
+        <h3 class="footer__heading big-heading">Quick Links</h3>
         <ul class="footer__links">
-          <li><a href="/about" class="footer__link">About</a></li>
+          <li><a href="/products" class="footer__link">Proucts</a></li>
           <li><a href="/services" class="footer__link">Services</a></li>
+          <li><a href="/about" class="footer__link">About</a></li>
           <li><a href="/projects" class="footer__link">Projects</a></li>
-          <li><a href="/faq" class="footer__link">FAQ</a></li>
-          <li><a href="/career" class="footer__link">Career</a></li>
+          <li><a href="/contact" class="footer__link">Contact</a></li>
         </ul>
       </div>
 
       <!-- Column 3 -->
       <div class="footer__column">
-        <h4 class="footer__heading">Top Services</h4>
+        <h3 class="footer__heading big-heading">Top Services</h3>
         <ul class="footer__links">
-          <li><a href="#" class="footer__link">Blinds</a></li>
-          <li><a href="#" class="footer__link">Shades</a></li>
-          <li><a href="#" class="footer__link">Drapery</a></li>
-          <li><a href="#" class="footer__link">Drapery</a></li>
-          <li><a href="#" class="footer__link">Drapery</a></li>
+          <li>
+            <a href="/services" class="footer__link"
+              >Professional Installation</a
+            >
+          </li>
+          <li><a href="/services" class="footer__link">Design Guidance</a></li>
+          <li>
+            <a href="/contact" class="footer__link">Free Consultation / Quote</a
+            >
+          </li>
+          <li>
+            <a href="/services" class="footer__link">Motorized Solutions</a>
+          </li>
         </ul>
       </div>
 
       <!-- Column 4 -->
       <div class="footer__column">
-        <h4 class="footer__heading">Contact</h4>
+        <h3 class="footer__heading big-heading">Contact</h3>
         <ul class="footer__links">
           <li class="footer__contact-item">
-            <img src="/icons/call.svg" alt="Phone Icon" class="footer__icon" />
+            <img
+              src="/icons/phone-10.svg"
+              alt="Phone Icon"
+              class="footer__icon"
+              width="20px"
+              height="20px"
+            />
             <a href="tel:+18016001973" class="footer__link">(801) 600-1973</a>
           </li>
           <li class="footer__contact-item">
             <img
-              src="/icons/message.svg"
+              src="/icons/message-10.svg"
               alt="Envelope Icon"
               class="footer__icon"
+              width="20px"
+              height="20px"
             />
             <a href="mailto:perfectviewutah@outlook.com" class="footer__link"
               >perfectviewutah@outlook.com</a
@@ -99,9 +114,11 @@
           </li>
           <li class="footer__contact-item">
             <img
-              src="/icons/location-pin.svg"
+              src="/icons/pin-10.svg"
               alt="Location Pin Icon"
               class="footer__icon"
+              width="20px"
+              height="20px"
             />
             <span class="footer__link footer__link--text">
               Proudly serving Northern Utah and surrounding areas
@@ -127,11 +144,56 @@
 
 <style>
   .footer {
+    padding: 60px 35px;
+    height: auto;
+    width: 100%;
     background-color: var(--primary);
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .footer__column {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: start; */
+    padding-bottom: 24px;
   }
 
   .footer__description {
     color: var(--grey-10);
+    padding: 20px 0;
+  }
+
+  .footer__social {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 8px;
+    padding-bottom: 40px;
+  }
+
+  .footer__social-link {
+    border: 1px solid var(--grey-20);
+    border-radius: 50%;
+    padding: 8px;
+  }
+
+  .footer__social-icon {
+  }
+
+  .footer__heading.big-heading {
+    color: var(--white) !important;
+    padding-bottom: 24px;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 12px;
   }
 
   .footer__link {
