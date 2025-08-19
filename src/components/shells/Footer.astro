@@ -130,11 +130,20 @@
   </div>
 
   <!-- Divider Line -->
-  <div class="footer__divider"></div>
+  <div class="footer__divider divider-lt"></div>
 
   <!-- Bottom Row -->
   <div class="footer__bottom">
-    <p class="footer__copy">&copy; 2025 PerfectView. All rights reserved.</p>
+    <p class="footer__copy">
+      &copy; 2025 PerfectView. All rights reserved.
+      <a
+        href="https://hekateknyc.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Website developed by Hekatek
+      </a>.
+    </p>
     <div class="footer__legal">
       <a href="#" class="footer__legal-link">Terms of Service</a>
       <a href="#" class="footer__legal-link">Privacy Policy</a>
@@ -156,10 +165,7 @@
   }
 
   .footer__column {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: start; */
-    padding-bottom: 24px;
+    padding-bottom: 32px;
   }
 
   .footer__description {
@@ -172,16 +178,13 @@
     align-items: center;
     justify-content: start;
     gap: 8px;
-    padding-bottom: 24px;
+    padding-bottom: 12px;
   }
 
   .footer__social-link {
     border: 1px solid var(--grey-20);
     border-radius: 50%;
     padding: 8px;
-  }
-
-  .footer__social-icon {
   }
 
   .footer__heading.big-heading {
@@ -198,5 +201,44 @@
 
   .footer__link {
     color: var(--grey-10);
+  }
+
+  .footer__contact-item {
+    display: flex;
+    align-items: start;
+    gap: 12px;
+    padding-bottom: 2px;
+  }
+
+  .footer__link--text {
+    line-height: 1.5;
+  }
+
+  /* Footer Bottom - Legal */
+  .footer__bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--grey-10);
+    gap: 14px;
+    padding: 24px 0;
+  }
+
+  .footer__bottom a {
+    color: var(--grey-10);
+    line-height: 1.5;
+  }
+
+  .footer__copy {
+    order: 2;
+    text-align: center;
+  }
+
+  .footer__legal {
+    order: 1;
+    display: flex;
+    justify-content: space-around;
+
+    width: 100%;
   }
 </style>

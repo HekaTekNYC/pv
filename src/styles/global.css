@@ -88,3 +88,8 @@ a {
   height: 0.094rem;
   background-color: var(--grey-50);
 }
+.divider-lt {
+  border: none;
+  height: 0.094rem;
+  background-color: rgb(255, 255, 255, 10%);
+}
