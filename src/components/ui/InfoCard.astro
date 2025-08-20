@@ -1,0 +1,25 @@
+---
+interface InfoCardProps {
+  headerClass?: string;
+  icon?: string;
+  alt: string;
+  title: string;
+  text: string;
+}
+
+const { headerClass = "", icon = "", alt, title, text } = Astro.props;
+---
+
+<div class="info-card">
+  <div class="info-card__header">
+    <div class="info-card__icon">
+      <img src={icon} alt={alt} />
+    </div>
+    <h3 class={`info-card__title ${headerClass}`}>
+      {title}
+    </h3>
+  </div>
+  <p class="info-card__text">
+    {text}
+  </p>
+</div>

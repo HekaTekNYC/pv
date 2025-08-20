@@ -1,4 +1,6 @@
 ---
+import InfoCard from "../ui/InfoCard.astro";
+import { infoCardsAbout } from "../../data/info-cards.ts";
 import Button from "../ui/Button.astro";
 ---
 
@@ -23,9 +25,28 @@ import Button from "../ui/Button.astro";
         stunning window treatments. From design to installation, we ensure
         comfort, beauty, and lasting value in every space we touch.
       </p>
+
+      <div class="lp-about__cards">
+        {
+          infoCardsAbout.map((card) => (
+            <InfoCard
+              icon={card.icon}
+              title={card.title}
+              text={card.text}
+              headerClass={card.headerClass}
+            />
+          ))
+        }
+      </div>
       <Button href="/about" color="secondary" bordered variant="default"
         >Get to Know Our Story</Button
       >
     </div>
   </div>
 </section>
+
+<style>
+  .lp-about {
+    padding: 60px 16px;
+  }
+</style>
