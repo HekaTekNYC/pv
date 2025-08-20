@@ -1,8 +1,8 @@
 <footer class="footer">
   <div class="footer__top">
-    <div class="footer__columns">
+    <div class="footer__column-top">
       <!-- Column 1 -->
-      <div class="footer__column footer__column--brand">
+      <div class="footer__column">
         <!-- Temp image -->
         <img
           src="/images/PVLogo.png"
@@ -65,7 +65,8 @@
           <li><a href="/contact" class="footer__link">Contact</a></li>
         </ul>
       </div>
-
+    </div>
+    <div class="footer__column-bottom">
       <!-- Column 3 -->
       <div class="footer__column">
         <h3 class="footer__heading big-heading">Top Services</h3>
@@ -159,13 +160,15 @@
     background-color: var(--primary);
   }
 
-  .footer-top {
+  .footer__column-top,
+  .footer__column-bottom {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .footer__column {
     padding-bottom: 32px;
+    width: 100%;
   }
 
   .footer__description {
@@ -240,5 +243,18 @@
     justify-content: space-around;
 
     width: 100%;
+  }
+
+  /* --- Media Queries --- */
+  @media (min-width: 768px) {
+    .footer__column-top {
+      display: grid;
+      grid-template-columns: minmax(60%, 1fr) 1fr;
+      gap: 70px;
+    }
+    .footer__column-bottom {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 </style>
