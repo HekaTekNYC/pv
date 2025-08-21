@@ -8,7 +8,7 @@ import Button from "../ui/Button.astro";
   <div class="lp-about__container container">
     <div class="lp-about__image-container">
       <img
-        src="/images/about-lp-mbl.png"
+        src="/images/about-lp-dsk.png"
         alt="About Image"
         class="lp-about__image"
       />
@@ -72,5 +72,34 @@ import Button from "../ui/Button.astro";
     flex-direction: column;
     gap: 16px;
     padding-bottom: 32px;
+  }
+
+  /* --- Media Queries --- */
+
+  @media (min-width: 690px) {
+    .lp-about__title {
+      width: 100%;
+    }
+    .lp-about__cards {
+      display: flex;
+      flex-direction: row;
+      justify-content: left;
+      align-items: stretch;
+      gap: 16px;
+      padding-bottom: 32px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .lp-about__container {
+      flex-direction: row;
+      align-items: center;
+      gap: 64px;
+    }
+    .lp-about__image-container {
+      width: 50%;
+    }
+    .lp-about__content {
+      width: 630px;
+    }
   }
 </style>
