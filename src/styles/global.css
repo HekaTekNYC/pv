@@ -66,13 +66,18 @@ h3.small-heading {
   font-size: var(--fs-h3-sm);
   font-weight: var(--fw-bold);
   color: var(--primary);
+  letter-spacing: -0.02em;
   line-height: 1.2;
+  vertical-align: middle;
 }
 
 p {
   font-family: var(--ff-body);
   font-size: var(--fs-body-r);
+  color: var(--text);
   line-height: 1.5;
+  letter-spacing: normal;
+  vertical-align: middle;
   padding: 0;
 }
 
@@ -81,8 +86,10 @@ a {
 }
 
 .roboto-text {
-  font-family: var(--ff-roboto);
+  font-family: var(--ff-roboto) !important;
   font-size: var(--fs-body-s);
+  font-weight: var(--fw-regular);
+  color: var(--text);
 }
 
 .divider {
