@@ -17,14 +17,17 @@ import Button from "../ui/Button.astro";
       <h2 class="lp-about__title">
         Family-Owned Craftsmanship, 15 Years Strong and Proud
       </h2>
-      <p class="lp-about__text">
-        We’re a local, family-run business delivering beautiful, custom window
-        coverings with personalized service and professional precision.
-        <br />
-        <br />At PerfectView, our passion lies in transforming interiors with
-        stunning window treatments. From design to installation, we ensure
-        comfort, beauty, and lasting value in every space we touch.
-      </p>
+      <div class="lp-about__paragraph">
+        <p>
+          We’re a local, family-run business delivering beautiful, custom window
+          coverings with personalized service and professional precision.
+        </p>
+        <p>
+          At PerfectView, our passion lies in transforming interiors with
+          stunning window treatments. From design to installation, we ensure
+          comfort, beauty, and lasting value in every space we touch.
+        </p>
+      </div>
 
       <div class="lp-about__cards">
         {
@@ -48,5 +51,26 @@ import Button from "../ui/Button.astro";
 <style>
   .lp-about {
     padding: 60px 16px;
+  }
+
+  .lp-about__container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .lp-about__paragraph {
+    padding: 24px 0;
+  }
+
+  .lp-about__paragraph p:first-child {
+    padding-bottom: 12px;
+  }
+
+  .lp-about__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 32px;
   }
 </style>
