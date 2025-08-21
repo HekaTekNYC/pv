@@ -3,7 +3,7 @@ import Button from "../ui/Button.astro";
 ---
 
 <nav class="nav-bar">
-  <div class="nav-bar__container">
+  <div class="nav-bar__container container">
     <a href="/" class="nav-bar__logo" aria-label="Home">
       <img src="/images/PVLogo.png" alt="" height="48px" width="117px" />
       <!-- <picture> <source srcset="/images/epic-drk.webp" type="image/webp" /> <source srcset="/images/epic-drk.png" type="image/png" /> <img src="/images/epic-drk.png" alt="Epic Tails logo" height="50" width="100" /> </picture> -->
@@ -101,7 +101,7 @@ import Button from "../ui/Button.astro";
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 35px;
+
     height: 72px;
     width: 100%;
     z-index: 1000;
@@ -236,15 +236,9 @@ import Button from "../ui/Button.astro";
   }
 
   /* --- Media Queries --- */
-  @media (min-width: 576px) {
-    nav {
-      padding: 0 40px;
-    }
-  }
 
   @media (min-width: 992px) {
     nav {
-      padding: 0 80px;
       height: 104px;
     }
 
@@ -327,12 +321,6 @@ import Button from "../ui/Button.astro";
     .nav-bar__book-now {
       margin-top: 0;
       padding: 0;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    nav {
-      padding: 0 100px;
     }
   }
 </style>
