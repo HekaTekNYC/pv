@@ -39,7 +39,7 @@ h1 {
   font-size: var(--fs-h1);
   font-weight: var(--fw-semibold);
   line-height: 1.2;
-  letter-spacing: -0.32px;
+  letter-spacing: -0.02em;
   color: var(--white);
 }
 
@@ -49,6 +49,8 @@ h2 {
   font-weight: var(--fw-bold);
   color: var(--primary);
   line-height: 1.2;
+  letter-spacing: -0.02em;
+  vertical-align: middle;
 }
 
 h3.big-heading {

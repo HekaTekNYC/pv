@@ -13,7 +13,7 @@ const { headerClass = "", icon = "", alt, title, text } = Astro.props;
 <div class="info-card">
   <div class="info-card__header">
     <div class="info-card__icon">
-      <img src={icon} alt={alt} />
+      <img src={icon} alt={alt} height="20px" width="20px" />
     </div>
     <h3 class={`info-card__title ${headerClass}`}>
       {title}
@@ -23,3 +23,24 @@ const { headerClass = "", icon = "", alt, title, text } = Astro.props;
     {text}
   </p>
 </div>
+
+<style>
+  .info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 24px;
+    gap: 12px;
+    background-color: var(--grey-10);
+  }
+
+  .info-card__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .info-card__icon {
+  }
+</style>
