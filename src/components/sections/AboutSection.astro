@@ -7,25 +7,52 @@ import Button from "../ui/Button.astro";
 <section class="lp-about">
   <div class="lp-about__container container">
     <div class="lp-about__image-container">
-      <img
-        src="/images/about-lp-dsk.png"
-        alt="About Image"
-        class="lp-about__image"
-      />
+      <picture>
+        <!-- Mobile WebP -->
+        <source
+          srcset="/images/about-lp-mbl.webp"
+          type="image/webp"
+          media="(max-width: 1023px)"
+        />
+        <!-- Mobile PNG fallback -->
+        <source
+          srcset="/images/about-lp-mbl.png"
+          type="image/png"
+          media="(max-width: 1023px)"
+        />
+        <!-- Desktop WebP -->
+        <source
+          srcset="/images/about-lp-dsk.webp"
+          type="image/webp"
+          media="(min-width: 1024px)"
+        />
+        <!-- Desktop PNG fallback -->
+        <source
+          srcset="/images/about-lp-dsk.png"
+          type="image/png"
+          media="(min-width: 1024px)"
+        />
+        <img
+          src="/images/about-lp-dsk.png"
+          alt="Image of layered shades in office"
+          class="lp-about__image"
+          width="797"
+          height="1057"
+        />
+      </picture>
     </div>
     <div class="lp-about__content">
-      <h2 class="lp-about__title">
-        Family-Owned Craftsmanship, 15 Years Strong and Proud
-      </h2>
+      <h2 class="lp-about__title">Family-Owned, Trusted for 15 Years</h2>
       <div class="lp-about__paragraph">
         <p>
-          We’re a local, family-run business delivering beautiful, custom window
-          coverings with personalized service and professional precision.
+          We’re a family-run business delivering professional window treatment
+          installation with personalized design guidance and careful attention
+          to detail.
         </p>
         <p>
-          At PerfectView, our passion lies in transforming interiors with
-          stunning window treatments. From design to installation, we ensure
-          comfort, beauty, and lasting value in every space we touch.
+          From consultation to final installation, PerfectView brings precision
+          and care to every interior, creating window treatments that enhance
+          both style and function.
         </p>
       </div>
 
@@ -56,7 +83,7 @@ import Button from "../ui/Button.astro";
   .lp-about__container {
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 35px;
   }
 
   .lp-about__paragraph {
@@ -74,8 +101,18 @@ import Button from "../ui/Button.astro";
     padding-bottom: 32px;
   }
 
-  /* --- Media Queries --- */
+  .lp-about__image-container {
+    display: block;
+    max-width: 100%;
+  }
 
+  .lp-about__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  /* --- Media Queries --- */
   @media (min-width: 690px) {
     .lp-about__title {
       width: 100%;
@@ -89,14 +126,27 @@ import Button from "../ui/Button.astro";
       padding-bottom: 32px;
     }
   }
+
+  @media (min-width: 768px) {
+    .lp-about__image {
+      height: 420px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center 65%;
+    }
+  }
   @media (min-width: 1024px) {
     .lp-about__container {
       flex-direction: row;
       align-items: center;
-      gap: 64px;
+      gap: 40px;
     }
     .lp-about__image-container {
       width: 50%;
+    }
+    .lp-about__image {
+      width: 100%;
+      height: auto;
     }
     .lp-about__content {
       width: 630px;
