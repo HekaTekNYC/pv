@@ -1,6 +1,6 @@
 :root {
   /* Font Families */
-  --ff-heading: "Baskerville", serif;
+  --ff-heading: "Baskervville", serif;
   --ff-body: "Sora", sans-serif;
   --ff-roboto: "Roboto", sans-serif;
 
@@ -22,31 +22,11 @@
 }
 
 /* Baskervvile */
-@font-face {
-  font-family: "Baskervville";
-  src:
-    url("/fonts/Baskervville/Baskervville-Regular.woff2") format("woff2"),
-    url("/fonts/Baskervville/Baskervville-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
 @font-face {
   font-family: "Baskervville";
-  src:
-    url("/fonts/Baskervville/Baskervville-Medium.woff2") format("woff2"),
-    url("/fonts/Baskervville/Baskervville-Medium.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Baskervville";
-  src:
-    url("/fonts/Baskervville/Baskervville-SemiBold.woff2") format("woff2"),
-    url("/fonts/Baskervville/Baskervville-SemiBold.woff") format("woff");
+  src: url("/fonts/Baskervville/Baskervville-SemiBold.woff2") format("woff2");
+  /* url("/fonts/Baskervville/Baskervville-SemiBold.woff") format("woff"); */
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -54,9 +34,8 @@
 
 @font-face {
   font-family: "Baskervville";
-  src:
-    url("/fonts/Baskervville/Baskervville-Bold.woff2") format("woff2"),
-    url("/fonts/Baskervville/Baskervville-Bold.woff") format("woff");
+  src: url("/fonts/Baskervville/Baskervville-Bold.woff2") format("woff2");
+  /* url("/fonts/Baskervville/Baskervville-Bold.woff") format("woff"); */
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -86,6 +65,11 @@
 
 /* Media Queries */
 
+@media (min-width: 768px) {
+  :root {
+    --fs-h2: 2.75rem; /* 44px */
+  }
+}
 @media (min-width: 1024px) {
   :root {
     --fs-h1: 3.8125rem; /* 61px */

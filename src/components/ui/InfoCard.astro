@@ -30,9 +30,11 @@ const { headerClass = "", icon = "", alt, title, text } = Astro.props;
     flex-direction: column;
     justify-content: start;
     align-items: start;
+    flex: 1 1 230px;
     padding: 24px;
     gap: 12px;
     background-color: var(--grey-10);
+
     max-width: 300px;
   }
 
@@ -40,5 +42,16 @@ const { headerClass = "", icon = "", alt, title, text } = Astro.props;
     display: flex;
     align-items: center;
     gap: 8px;
+  }
+
+  @media (min-width: 1024px) {
+    .info-card {
+      padding: 20px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .info-card {
+      padding: 24px;
+    }
   }
 </style>

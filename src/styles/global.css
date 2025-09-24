@@ -110,3 +110,12 @@ a {
   padding-right: clamp(16px, 5vw, 64px);
   width: 100%;
 }
+
+/* --- Media Queries --- */
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+  h2 {
+  }
+}
