@@ -34,7 +34,7 @@ import Button from "../ui/Button.astro";
         />
         <img
           src="/images/about-lp-dsk.png"
-          alt="Image of layered shades in office"
+          alt="Layered shades on office windows"
           class="lp-about__image"
           width="797"
           height="1057"
@@ -62,6 +62,7 @@ import Button from "../ui/Button.astro";
             <InfoCard
               icon={card.icon}
               title={card.title}
+              alt={card.alt}
               text={card.text}
               headerClass={card.headerClass}
             />
@@ -96,7 +97,7 @@ import Button from "../ui/Button.astro";
 
   .lp-about__cards {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 16px;
     padding-bottom: 32px;
   }
@@ -118,8 +119,6 @@ import Button from "../ui/Button.astro";
       width: 100%;
     }
     .lp-about__cards {
-      display: flex;
-      flex-direction: row;
       justify-content: left;
       align-items: stretch;
       gap: 16px;

@@ -65,6 +65,11 @@
 
 /* Media Queries */
 
+@media (min-width: 768px) {
+  :root {
+    --fs-h2: 2.75rem; /* 44px */
+  }
+}
 @media (min-width: 1024px) {
   :root {
     --fs-h1: 3.8125rem; /* 61px */
