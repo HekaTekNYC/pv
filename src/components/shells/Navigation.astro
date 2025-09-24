@@ -20,11 +20,11 @@ import Button from "../ui/Button.astro";
           <a href="/products" class="nav-bar__link nav-bar__dropdown-toggle">
             Products
             <img
-              src="/icons/caret-lt-down.svg"
-              alt=""
+              src="/icons/caret-drk-down.svg"
+              alt="downward facing caret icon"
               class="nav-bar__caret"
-              width="20px"
-              height=" 20px"
+              width="24px"
+              height=" 24px"
             />
           </a>
           <ul class="nav-bar__dropdown-menu">
@@ -81,11 +81,11 @@ import Button from "../ui/Button.astro";
         </li>
         <li><a href="/services" class="nav-bar__link">Services</a></li>
         <li><a href="/about" class="nav-bar__link">About</a></li>
-        <li><a href="/projects" class="nav-bar__link">Projects</a></li>
+        <li><a href="/projects" class="nav-bar__link">Gallery</a></li>
         <li><a href="/contact" class="nav-bar__link">Contact</a></li>
         <li class="nav-bar__book-now">
           <Button href="/contact" color="primary" bordered variant="nav"
-            >Get a Free Quote</Button
+            >Schedule a Free Consultation</Button
           >
         </li>
       </ul>
@@ -101,7 +101,6 @@ import Button from "../ui/Button.astro";
     display: flex;
     justify-content: center;
     align-items: center;
-
     height: 72px;
     width: 100%;
     z-index: 1000;
@@ -141,7 +140,7 @@ import Button from "../ui/Button.astro";
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    background-color: var(--primary);
+    background-color: var(--white);
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -155,8 +154,8 @@ import Button from "../ui/Button.astro";
   .nav-bar__links.active {
     max-height: calc(100vh - 72px);
     opacity: 1;
-    padding: 40px 0;
     overflow-y: auto;
+    /* border-bottom */
   }
 
   /* Active page */
@@ -167,25 +166,28 @@ import Button from "../ui/Button.astro";
   .nav-bar__links ul {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    justify-content: start;
     width: 100%;
     margin-bottom: 10px;
   }
 
   .nav-bar__links li {
     width: 100%;
-    text-align: center;
+    padding: 20px 16px;
+    border-bottom: 1px solid var(--grey-10);
   }
+
+  /* .nav-bar__links li:last-child {
+    border-bottom: none;
+  } */
 
   .nav-bar__links a.nav-bar__link {
     font-size: 1.3rem;
     font-weight: 500;
-    color: var(--grey-10);
+    color: var(--text);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     padding: 10px 0;
   }
 
@@ -193,9 +195,9 @@ import Button from "../ui/Button.astro";
     color: var(--neutral);
   }
 
-  .nav-bar__book-now {
+  .nav-bar__links .nav-bar__book-now {
     margin-top: auto;
-    padding: 20px 0;
+    padding: 30px 16px;
   }
 
   /* --- Dropdown --- */
