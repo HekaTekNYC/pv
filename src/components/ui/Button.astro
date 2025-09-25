@@ -1,6 +1,6 @@
 ---
 interface Props {
-  color?: "primary" | "secondary" | "accent";
+  color?: "primary" | "secondary" | "accent" | "white";
   href?: string;
   type?: "button" | "submit" | "reset";
   bordered?: boolean;
@@ -19,6 +19,7 @@ const colorClass = {
   primary: "btn-primary",
   secondary: "btn-secondary",
   accent: "btn-accent",
+  white: "btn-white",
 }[color];
 
 const borderClass = bordered ? "btn-bordered" : "";
@@ -86,6 +87,14 @@ const variantClass = variant === "nav" ? "btn-nav" : "btn-default";
   .btn-neutral {
     background-color: var(--neutral-lighter);
     color: var(--primary);
+  }
+  .btn-white {
+    background-color: var(--white);
+    color: var(--primary);
+  }
+
+  .btn-white:hover {
+    background-color: var(--neutral-lightest);
   }
 
   .btn-bordered {

@@ -2,20 +2,29 @@
 import Button from "../ui/Button.astro";
 ---
 
-<nav class="nav-bar">
+<nav class="nav-bar" role="navigation" aria-label="Main">
   <div class="nav-bar__container container">
     <a href="/" class="nav-bar__logo" aria-label="Home">
-      <img src="/images/PVLogo.png" alt="" height="48px" width="117px" />
-      <!-- <picture> <source srcset="/images/epic-drk.webp" type="image/webp" /> <source srcset="/images/epic-drk.png" type="image/png" /> <img src="/images/epic-drk.png" alt="Epic Tails logo" height="50" width="100" /> </picture> -->
+      <img
+        src="/images/PVLogo.png"
+        alt="Company logo"
+        height="48"
+        width="117"
+      />
     </a>
 
-    <button class="nav-bar__hamburger" aria-label="Toggle navigation">
-      <img src="/icons/hamburger.svg" alt="hamburger icon" />
+    <button
+      class="nav-bar__hamburger"
+      aria-label="Toggle navigation"
+      aria-controls="primary-menu"
+      aria-expanded="false"
+    >
+      <img src="/icons/hamburger.svg" alt="" aria-hidden="true" />
     </button>
 
-    <div class="nav-bar__links">
+    <div class="nav-bar__links" id="primary-menu">
       <ul>
-        <li><a href="/" class="nav-bar__link">Home</a></li>
+        <li><a href="/" class="nav-bar__link"> Home </a></li>
         <li class="nav-bar__dropdown">
           <a href="/products" class="nav-bar__link nav-bar__dropdown-toggle">
             Products
@@ -84,7 +93,7 @@ import Button from "../ui/Button.astro";
         <li><a href="/projects" class="nav-bar__link">Gallery</a></li>
         <li><a href="/contact" class="nav-bar__link">Contact</a></li>
         <li class="nav-bar__book-now">
-          <Button href="/contact" color="primary" bordered variant="nav"
+          <Button href="/contact" color="white" bordered variant="nav"
             >Schedule a Free Consultation</Button
           >
         </li>
@@ -155,7 +164,6 @@ import Button from "../ui/Button.astro";
     max-height: calc(100vh - 72px);
     opacity: 1;
     overflow-y: auto;
-    /* border-bottom */
   }
 
   /* Active page */
@@ -168,7 +176,6 @@ import Button from "../ui/Button.astro";
     flex-direction: column;
     justify-content: start;
     width: 100%;
-    margin-bottom: 10px;
   }
 
   .nav-bar__links li {
@@ -177,22 +184,18 @@ import Button from "../ui/Button.astro";
     border-bottom: 1px solid var(--grey-10);
   }
 
-  /* .nav-bar__links li:last-child {
-    border-bottom: none;
-  } */
-
   .nav-bar__links a.nav-bar__link {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px 0;
     font-size: 1.3rem;
     font-weight: 500;
     color: var(--text);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0;
   }
 
   .nav-bar__links a.nav-bar__link:hover {
-    color: var(--neutral);
+    color: var(--primary);
   }
 
   .nav-bar__links .nav-bar__book-now {
@@ -201,6 +204,13 @@ import Button from "../ui/Button.astro";
   }
 
   /* --- Dropdown --- */
+
+  .nav-bar__dropdown > .nav-bar__dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
   .nav-bar__caret {
     width: 10.54px;
     height: 6.25px;
@@ -214,27 +224,16 @@ import Button from "../ui/Button.astro";
   .nav-bar__dropdown.open .nav-bar__dropdown-menu {
     display: block;
     margin-top: 10px;
-    background-color: var(--grey-5);
+    background-color: var(--neutral-lightest);
     width: 100%;
   }
 
   .nav-bar__dropdown-link {
     display: block;
-    color: var(--primary);
-    font-size: 0.95rem;
+    color: var(--text);
+    font-size: var(--fs-body-r);
     padding: 10px 0;
     width: 100%;
-  }
-  .nav-bar__dropdown li:first-child .nav-bar__dropdown-link {
-    padding-top: 20px;
-  }
-  .nav-bar__dropdown li:last-child .nav-bar__dropdown-link {
-    padding-bottom: 20px;
-  }
-
-  .nav-bar__dropdown-link:hover {
-    background-color: var(--grey-10);
-    color: var(--primary);
   }
 
   /* --- Media Queries --- */
