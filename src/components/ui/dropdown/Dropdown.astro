@@ -14,7 +14,6 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
 ---
 
 <li class="nav-bar__dropdown">
-  <!-- Trigger - No onclick, we'll use event listeners -->
   <a
     href={triggerHref}
     class="nav-bar__link nav-bar__dropdown-toggle"
@@ -31,7 +30,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     />
   </a>
 
-  <!-- Menu -->
+  <!-- Dropdown Menu -->
   <ul class="nav-bar__dropdown-menu" role="menu">
     {
       links.map((link) => (
@@ -44,7 +43,6 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     }
   </ul>
 </li>
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const dropdownToggle = document.querySelector(".nav-bar__dropdown-toggle");
@@ -52,12 +50,15 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
 
     if (!dropdownToggle || !dropdown) return;
 
+    let clickCount = 0;
+    let clickTimer: NodeJS.Timeout;
+
     function toggleDropdown() {
       if (!dropdown || !dropdownToggle) return;
 
       const isOpen = dropdown.classList.contains("open");
 
-      // Close all other dropdowns first
+      // Close all other dropdowns
       document.querySelectorAll(".nav-bar__dropdown.open").forEach((d) => {
         if (d !== dropdown) {
           d.classList.remove("open");
@@ -73,6 +74,25 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
       }
     }
 
+    function handleDropdownClick(e: Event) {
+      if (!dropdownToggle) return;
+      e.preventDefault();
+
+      clickCount++;
+
+      if (clickCount === 1) {
+        toggleDropdown();
+
+        clickTimer = setTimeout(() => {
+          clickCount = 0;
+        }, 300);
+      } else if (clickCount === 2) {
+        clearTimeout(clickTimer);
+        clickCount = 0;
+        window.location.href = dropdownToggle.getAttribute("href") || "#";
+      }
+    }
+
     function openDropdown() {
       if (!dropdown || !dropdownToggle) return;
       dropdown.classList.add("open");
@@ -85,26 +105,22 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
       dropdownToggle.setAttribute("aria-expanded", "false");
     }
 
-    // Mobile behavior (touch devices)
+    // Mobile (touch devices)
     if (window.innerWidth < 992) {
-      dropdownToggle.addEventListener("click", (e) => {
-        e.preventDefault();
-        toggleDropdown();
-      });
+      dropdownToggle.addEventListener("click", handleDropdownClick);
 
-      // Click outside to close
+      // Close dropdown when clicking outside (mobile)
       document.addEventListener("click", (e) => {
         if (!dropdown || !dropdown.contains(e.target as Node)) {
           closeDropdown();
+          clickCount = 0;
         }
       });
     }
-    // Desktop
+    // Desktop behavior (mouse devices)
     else {
-      dropdownToggle.addEventListener("click", (e) => {
-        e.preventDefault();
-        toggleDropdown();
-      });
+      // Click to toggle
+      dropdownToggle.addEventListener("click", handleDropdownClick);
 
       // Hover to open
       dropdown.addEventListener("mouseenter", () => {
@@ -115,6 +131,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
       document.addEventListener("click", (e) => {
         if (!dropdown || !dropdown.contains(e.target as Node)) {
           closeDropdown();
+          clickCount = 0;
         }
       });
     }
@@ -130,7 +147,11 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
   .nav-bar__caret {
     width: 10.54px;
     height: 6.25px;
+    transform: rotate(-90deg);
     transition: transform 0.2s ease;
+  }
+  .nav-bar__dropdown.open .nav-bar__caret {
+    transform: rotate(0deg);
   }
 
   .nav-bar__dropdown .nav-bar__dropdown-menu {
