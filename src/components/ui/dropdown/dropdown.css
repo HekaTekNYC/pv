@@ -1,0 +1,30 @@
+.nav-bar__dropdown > .nav-bar__dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.nav-bar__caret {
+  width: 10.54px;
+  height: 6.25px;
+  transition: transform 0.2s ease;
+}
+
+.nav-bar__dropdown .nav-bar__dropdown-menu {
+  display: none;
+}
+
+.nav-bar__dropdown.open .nav-bar__dropdown-menu {
+  display: block;
+  margin-top: 10px;
+  background-color: var(--neutral-lightest);
+  width: 100%;
+}
+
+.nav-bar__dropdown-link {
+  display: block;
+  color: var(--text);
+  font-size: var(--fs-body-r);
+  padding: 10px 0;
+  width: 100%;
+}

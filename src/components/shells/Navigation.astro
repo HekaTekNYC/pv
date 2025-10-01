@@ -1,5 +1,8 @@
 ---
+import Dropdown from "../ui/dropdown/Dropdown.tsx";
 import Button from "../ui/Button.astro";
+
+import { productLinks } from "../../data/dropdown-data";
 ---
 
 <nav class="nav-bar" role="navigation" aria-label="Main">
@@ -25,69 +28,13 @@ import Button from "../ui/Button.astro";
     <div class="nav-bar__links" id="primary-menu">
       <ul>
         <li><a href="/" class="nav-bar__link"> Home </a></li>
-        <li class="nav-bar__dropdown">
-          <a href="/products" class="nav-bar__link nav-bar__dropdown-toggle">
-            Products
-            <img
-              src="/icons/caret-drk-down.svg"
-              alt="downward facing caret icon"
-              class="nav-bar__caret"
-              width="24px"
-              height=" 24px"
-            />
-          </a>
-          <ul class="nav-bar__dropdown-menu">
-            <li>
-              <a
-                href="/products/solar-roller-shades"
-                class="nav-bar__dropdown-link">Solar / Roller Shades</a
-              >
-            </li>
-            <li>
-              <a
-                href="/products/cellular-pleated-shades"
-                class="nav-bar__dropdown-link">Cellular / Pleated Shades</a
-              >
-            </li>
-            <li>
-              <a
-                href="/products/sheer-layered-shades"
-                class="nav-bar__dropdown-link">Sheer / Layered Shades</a
-              >
-            </li>
-            <li>
-              <a
-                href="/products/wood-faux-blinds"
-                class="nav-bar__dropdown-link">Wood / Faux Blinds</a
-              >
-            </li>
-            <li>
-              <a href="/products/shutters" class="nav-bar__dropdown-link"
-                >Shutters</a
-              >
-            </li>
-            <li>
-              <a href="/products/natural-shades" class="nav-bar__dropdown-link"
-                >Natural Shades</a
-              >
-            </li>
-            <li>
-              <a href="/products/roman-shades" class="nav-bar__dropdown-link"
-                >Roman Shades</a
-              >
-            </li>
-            <li>
-              <a href="/products/draperies" class="nav-bar__dropdown-link"
-                >Draperies</a
-              >
-            </li>
-            <li>
-              <a href="/products/exterior-shades" class="nav-bar__dropdown-link"
-                >Exterior Shades</a
-              >
-            </li>
-          </ul>
-        </li>
+        <Dropdown
+          client:idle
+          triggerText="Products"
+          triggerHref="/products"
+          triggerClassName="nav-bar__link"
+          links={productLinks}
+        />
         <li><a href="/services" class="nav-bar__link">Services</a></li>
         <li><a href="/about" class="nav-bar__link">About</a></li>
         <li><a href="/projects" class="nav-bar__link">Gallery</a></li>
@@ -201,39 +148,6 @@ import Button from "../ui/Button.astro";
   .nav-bar__links .nav-bar__book-now {
     margin-top: auto;
     padding: 30px 16px;
-  }
-
-  /* --- Dropdown --- */
-
-  .nav-bar__dropdown > .nav-bar__dropdown-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
-  .nav-bar__caret {
-    width: 10.54px;
-    height: 6.25px;
-    transition: transform 0.2s ease;
-  }
-
-  .nav-bar__dropdown .nav-bar__dropdown-menu {
-    display: none;
-  }
-
-  .nav-bar__dropdown.open .nav-bar__dropdown-menu {
-    display: block;
-    margin-top: 10px;
-    background-color: var(--neutral-lightest);
-    width: 100%;
-  }
-
-  .nav-bar__dropdown-link {
-    display: block;
-    color: var(--text);
-    font-size: var(--fs-body-r);
-    padding: 10px 0;
-    width: 100%;
   }
 
   /* --- Media Queries --- */

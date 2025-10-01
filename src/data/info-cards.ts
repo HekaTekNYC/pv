@@ -4,7 +4,7 @@ export const infoCardsAbout = [
     icon: "/icons/aim-khki.svg",
     alt: "Khaki colored target icon",
     title: "Mission",
-    text: "Deliver custom window coverings with exceptional service and timeless design.",
+    text: "Delivering custom window coverings with exceptional service and timeless design.",
   },
   {
     headerClass: "small-heading",
