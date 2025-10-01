@@ -1,0 +1,198 @@
+---
+interface Link {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  triggerText: string;
+  links: Link[];
+  triggerHref?: string;
+}
+
+const { triggerText, links, triggerHref = "#" } = Astro.props;
+---
+
+<li class="nav-bar__dropdown">
+  <!-- Trigger - No onclick, we'll use event listeners -->
+  <a
+    href={triggerHref}
+    class="nav-bar__link nav-bar__dropdown-toggle"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    {triggerText}
+    <img
+      src="/icons/caret-drk-down.svg"
+      alt="dropdown menu"
+      class="nav-bar__caret"
+      width="24"
+      height="24"
+    />
+  </a>
+
+  <!-- Menu -->
+  <ul class="nav-bar__dropdown-menu" role="menu">
+    {
+      links.map((link) => (
+        <li role="none">
+          <a href={link.href} class="nav-bar__dropdown-link" role="menuitem">
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</li>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const dropdownToggle = document.querySelector(".nav-bar__dropdown-toggle");
+    const dropdown = document.querySelector(".nav-bar__dropdown");
+
+    if (!dropdownToggle || !dropdown) return;
+
+    function toggleDropdown() {
+      if (!dropdown || !dropdownToggle) return;
+
+      const isOpen = dropdown.classList.contains("open");
+
+      // Close all other dropdowns first
+      document.querySelectorAll(".nav-bar__dropdown.open").forEach((d) => {
+        if (d !== dropdown) {
+          d.classList.remove("open");
+          const toggle = d.querySelector(".nav-bar__dropdown-toggle");
+          if (toggle) toggle.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      if (!isOpen) {
+        openDropdown();
+      } else {
+        closeDropdown();
+      }
+    }
+
+    function openDropdown() {
+      if (!dropdown || !dropdownToggle) return;
+      dropdown.classList.add("open");
+      dropdownToggle.setAttribute("aria-expanded", "true");
+    }
+
+    function closeDropdown() {
+      if (!dropdown || !dropdownToggle) return;
+      dropdown.classList.remove("open");
+      dropdownToggle.setAttribute("aria-expanded", "false");
+    }
+
+    // Mobile behavior (touch devices)
+    if (window.innerWidth < 992) {
+      dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggleDropdown();
+      });
+
+      // Click outside to close
+      document.addEventListener("click", (e) => {
+        if (!dropdown || !dropdown.contains(e.target as Node)) {
+          closeDropdown();
+        }
+      });
+    }
+    // Desktop
+    else {
+      dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggleDropdown();
+      });
+
+      // Hover to open
+      dropdown.addEventListener("mouseenter", () => {
+        openDropdown();
+      });
+
+      // Click outside to close
+      document.addEventListener("click", (e) => {
+        if (!dropdown || !dropdown.contains(e.target as Node)) {
+          closeDropdown();
+        }
+      });
+    }
+  });
+</script>
+<style>
+  .nav-bar__dropdown > .nav-bar__dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .nav-bar__caret {
+    width: 10.54px;
+    height: 6.25px;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-bar__dropdown .nav-bar__dropdown-menu {
+    display: none;
+  }
+
+  .nav-bar__dropdown.open .nav-bar__dropdown-menu {
+    display: block;
+    margin-top: 10px;
+    background-color: var(--neutral-lightest);
+    width: 100%;
+  }
+
+  .nav-bar__dropdown-link {
+    display: block;
+    color: var(--text);
+    font-size: var(--fs-body-r);
+    padding: 10px 0;
+    width: 100%;
+  }
+
+  @media (min-width: 992px) {
+    /* Dropdown */
+    .nav-bar__dropdown {
+      position: relative;
+    }
+
+    .nav-bar__dropdown .nav-bar__dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: block;
+      min-width: 220px;
+      height: auto;
+      background: var(--grey-5);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 9999;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition:
+        opacity 0.2s ease,
+        transform 0.3s ease;
+      pointer-events: none;
+    }
+
+    .nav-bar__dropdown:hover .nav-bar__dropdown-menu,
+    .nav-bar__dropdown.open .nav-bar__dropdown-menu {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .nav-bar__dropdown-link {
+      padding: 10px 16px;
+      white-space: nowrap;
+    }
+
+    .nav-bar__dropdown-link:hover {
+      background-color: var(--grey-10);
+    }
+  }
+</style>

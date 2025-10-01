@@ -1,5 +1,5 @@
 ---
-import Dropdown from "../ui/dropdown/Dropdown.tsx";
+import Dropdown from "../ui/dropdown/Dropdown.astro";
 import Button from "../ui/Button.astro";
 
 import { productLinks } from "../../data/dropdown-data";
@@ -29,10 +29,8 @@ import { productLinks } from "../../data/dropdown-data";
       <ul>
         <li><a href="/" class="nav-bar__link"> Home </a></li>
         <Dropdown
-          client:idle
           triggerText="Products"
           triggerHref="/products"
-          triggerClassName="nav-bar__link"
           links={productLinks}
         />
         <li><a href="/services" class="nav-bar__link">Services</a></li>
@@ -89,18 +87,18 @@ import { productLinks } from "../../data/dropdown-data";
 
   /* --- Mobile nav (default) --- */
   .nav-bar__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
     top: 72px;
     left: 0;
     width: 100%;
+    background-color: var(--white);
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    background-color: var(--white);
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     transition:
       max-height 0.4s ease,
       opacity 0.4s ease,
@@ -113,11 +111,6 @@ import { productLinks } from "../../data/dropdown-data";
     overflow-y: auto;
   }
 
-  /* Active page */
-  .nav-bar__link.active {
-    color: var(--neutral);
-  }
-
   .nav-bar__links ul {
     display: flex;
     flex-direction: column;
@@ -125,13 +118,13 @@ import { productLinks } from "../../data/dropdown-data";
     width: 100%;
   }
 
-  .nav-bar__links li {
+  :global(.nav-bar__links li) {
     width: 100%;
     padding: 20px 16px;
     border-bottom: 1px solid var(--grey-10);
   }
 
-  .nav-bar__links a.nav-bar__link {
+  :global(.nav-bar__links .nav-bar__link) {
     display: flex;
     align-items: center;
     justify-content: start;
@@ -141,10 +134,13 @@ import { productLinks } from "../../data/dropdown-data";
     color: var(--text);
   }
 
-  .nav-bar__links a.nav-bar__link:hover {
+  :global(.nav-bar__links .nav-bar__link:hover) {
     color: var(--primary);
   }
 
+  :global(.nav-bar__link.active) {
+    color: var(--neutral);
+  }
   .nav-bar__links .nav-bar__book-now {
     margin-top: auto;
     padding: 30px 16px;
@@ -187,50 +183,8 @@ import { productLinks } from "../../data/dropdown-data";
       text-align: left;
     }
 
-    .nav-bar__links a.nav-bar__link {
+    .nav-bar__links .nav-bar__link {
       font-size: 1rem;
-    }
-
-    /* Dropdown */
-    .nav-bar__dropdown {
-      position: relative;
-    }
-
-    .nav-bar__dropdown .nav-bar__dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      display: block;
-      min-width: 220px;
-      height: auto;
-      background: var(--grey-5);
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      z-index: 9999;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition:
-        opacity 0.2s ease,
-        transform 0.3s ease;
-      pointer-events: none;
-    }
-
-    .nav-bar__dropdown:hover .nav-bar__dropdown-menu,
-    .nav-bar__dropdown.open .nav-bar__dropdown-menu {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .nav-bar__dropdown-link {
-      padding: 10px 16px;
-      white-space: nowrap;
-    }
-
-    .nav-bar__dropdown-link:hover {
-      background-color: var(--grey-10);
     }
 
     .nav-bar__book-now {
@@ -264,45 +218,5 @@ import { productLinks } from "../../data/dropdown-data";
         navLinks.classList.remove("active");
       }
     });
-
-    // Highlight active page link
-    // const currentPath = window.location.pathname;
-    // links.forEach((link) => {
-    //   if (link.getAttribute("href") === currentPath) {
-    //     link.classList.add("active");
-    //   }
-    // });
-
-    // Dropdown menu (mobile only)
-    if (window.innerWidth < 992) {
-      const dropdownToggles = document.querySelectorAll<HTMLElement>(
-        ".nav-bar__dropdown-toggle",
-      );
-
-      dropdownToggles.forEach((toggle, i) => {
-        toggle.addEventListener("click", (e) => {
-          e.preventDefault();
-
-          const parentDropdown =
-            toggle.closest<HTMLElement>(".nav-bar__dropdown");
-
-          if (!parentDropdown) return;
-
-          const isOpen = parentDropdown.classList.contains("open");
-
-          // Close all dropdowns
-          document
-            .querySelectorAll(".nav-bar__dropdown.open")
-            .forEach((dropdown) => {
-              dropdown.classList.remove("open");
-            });
-
-          // Re-open this one if it wasn’t already open
-          if (!isOpen) {
-            parentDropdown.classList.add("open");
-          }
-        });
-      });
-    }
   });
 </script>
