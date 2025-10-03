@@ -59,6 +59,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     let clickCount = 0;
     let clickTimer: NodeJS.Timeout;
     let preventAutoClose = false;
+    let listenersAttached = false;
 
     function toggleDropdown() {
       if (!dropdown || !dropdownToggle) return;
@@ -135,7 +136,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     }
 
     function setupEventListeners() {
-      if (!dropdown || !dropdownToggle) return;
+      if (!dropdown || !dropdownToggle || listenersAttached) return;
       removeAllListeners();
 
       const isMobile = window.innerWidth < 992;
@@ -155,6 +156,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
         document.addEventListener("click", handleDocumentClick);
         dropdown.addEventListener("click", handleDropdownLinkClick);
       }
+      listenersAttached = true;
     }
 
     // Initial setup
@@ -273,7 +275,6 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
 
     .nav-bar__dropdown-link:hover {
       background-color: var(--neutral-lighter);
-      color: var(--neutral);
     }
 
     .nav-bar__caret {

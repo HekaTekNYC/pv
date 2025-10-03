@@ -224,5 +224,15 @@ import { productLinks } from "../../data/dropdown-data";
         navLinks.classList.remove("active");
       }
     });
+
+    // Close mobile menu when resizing to desktop
+    function handleResize() {
+      if (navLinks && window.innerWidth >= 992) {
+        navLinks.classList.remove("active");
+      }
+    }
+
+    // Handle resize
+    window.addEventListener("resize", handleResize);
   });
 </script>
