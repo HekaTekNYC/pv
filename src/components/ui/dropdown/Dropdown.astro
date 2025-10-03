@@ -21,13 +21,19 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     aria-expanded="false"
   >
     {triggerText}
-    <img
-      src="/icons/caret-drk-down.svg"
-      alt="dropdown menu"
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
       class="nav-bar__caret"
       width="24"
       height="24"
-    />
+      fill="none"
+      aria-hidden="true"
+      viewBox="6.75 8.88 10.54 6.25"
+      ><path
+        d="M17.0002 9.17C16.8128 8.98375 16.5594 8.87921 16.2952 8.87921C16.031 8.87921 15.7776 8.98375 15.5902 9.17L12.0002 12.71L8.46019 9.17C8.27283 8.98375 8.01938 8.87921 7.75519 8.87921C7.49101 8.87921 7.23756 8.98375 7.05019 9.17C6.95646 9.26297 6.88207 9.37357 6.8313 9.49543C6.78053 9.61729 6.75439 9.74799 6.75439 9.88C6.75439 10.012 6.78053 10.1427 6.8313 10.2646C6.88207 10.3864 6.95646 10.497 7.05019 10.59L11.2902 14.83C11.3832 14.9237 11.4938 14.9981 11.6156 15.0489C11.7375 15.0997 11.8682 15.1258 12.0002 15.1258C12.1322 15.1258 12.2629 15.0997 12.3848 15.0489C12.5066 14.9981 12.6172 14.9237 12.7102 14.83L17.0002 10.59C17.0939 10.497 17.1683 10.3864 17.2191 10.2646C17.2699 10.1427 17.296 10.012 17.296 9.88C17.296 9.74799 17.2699 9.61729 17.2191 9.49543C17.1683 9.37357 17.0939 9.26297 17.0002 9.17Z"
+        fill="currentColor"></path></svg
+    >
   </a>
 
   <!-- Dropdown Menu -->
@@ -106,18 +112,6 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     }
 
     // Event handlers
-    function handleMouseEnter() {
-      if (!preventAutoClose) {
-        openDropdown();
-      }
-    }
-
-    function handleMouseLeave() {
-      if (!preventAutoClose) {
-        closeDropdown();
-      }
-    }
-
     function handleDocumentClick(e: Event) {
       if (!e.target || !dropdown || !dropdown.contains(e.target as Node)) {
         closeDropdown();
@@ -136,8 +130,6 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     function removeAllListeners() {
       if (!dropdown || !dropdownToggle) return;
       dropdownToggle.removeEventListener("click", handleDropdownClick);
-      dropdown.removeEventListener("mouseenter", handleMouseEnter);
-      dropdown.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("click", handleDocumentClick);
       dropdown.removeEventListener("click", handleDropdownLinkClick);
     }
@@ -160,8 +152,6 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
           handleDropdownClick(e);
         });
 
-        dropdown.addEventListener("mouseenter", handleMouseEnter);
-        dropdown.addEventListener("mouseleave", handleMouseLeave);
         document.addEventListener("click", handleDocumentClick);
         dropdown.addEventListener("click", handleDropdownLinkClick);
       }
@@ -188,9 +178,25 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     transform: rotate(-90deg);
     transition: transform 0.2s ease;
     margin-left: auto;
+    color: var(--text);
   }
   .nav-bar__dropdown.open .nav-bar__caret {
     transform: rotate(0deg);
+  }
+  .nav-bar__dropdown:hover .nav-bar__dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-bar__dropdown:hover .nav-bar__caret {
+    transform: rotate(0deg);
+  }
+
+  .nav-bar__dropdown.open .nav-bar__dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
   .nav-bar__dropdown .nav-bar__dropdown-menu {
@@ -221,10 +227,19 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     .nav-bar__dropdown {
       position: relative;
     }
+    .nav-bar__dropdown::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: transparent;
+    }
 
     .nav-bar__dropdown .nav-bar__dropdown-menu {
       position: absolute;
-      top: 100%;
+      top: calc(100% + 8px);
       left: 7px;
       display: block;
       min-width: 220px;
@@ -258,6 +273,20 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
 
     .nav-bar__dropdown-link:hover {
       background-color: var(--neutral-lighter);
+      color: var(--neutral);
+    }
+
+    .nav-bar__caret {
+      width: 10.54px;
+      height: 6.25px;
+      transform: rotate(0deg);
+      margin-left: 6px;
+      color: var(--white);
+    }
+
+    .nav-bar__dropdown:hover .nav-bar__caret {
+      transform: none;
+      color: var(--neutral);
     }
   }
 </style>
