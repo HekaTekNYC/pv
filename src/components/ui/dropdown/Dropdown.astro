@@ -52,6 +52,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
 
     let clickCount = 0;
     let clickTimer: NodeJS.Timeout;
+    let preventAutoClose = false;
 
     function toggleDropdown() {
       if (!dropdown || !dropdownToggle) return;
@@ -82,7 +83,6 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
 
       if (clickCount === 1) {
         toggleDropdown();
-
         clickTimer = setTimeout(() => {
           clickCount = 0;
         }, 300);
@@ -105,43 +105,81 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
       dropdownToggle.setAttribute("aria-expanded", "false");
     }
 
-    // Mobile (touch devices)
-    if (window.innerWidth < 992) {
-      dropdownToggle.addEventListener("click", handleDropdownClick);
-
-      // Close dropdown when clicking outside (mobile)
-      document.addEventListener("click", (e) => {
-        if (!dropdown || !dropdown.contains(e.target as Node)) {
-          closeDropdown();
-          clickCount = 0;
-        }
-      });
-    }
-    // Desktop behavior (mouse devices)
-    else {
-      // Click to toggle
-      dropdownToggle.addEventListener("click", handleDropdownClick);
-
-      // Hover to open
-      dropdown.addEventListener("mouseenter", () => {
+    // Event handlers
+    function handleMouseEnter() {
+      if (!preventAutoClose) {
         openDropdown();
-      });
-
-      // Click outside to close
-      document.addEventListener("click", (e) => {
-        if (!dropdown || !dropdown.contains(e.target as Node)) {
-          closeDropdown();
-          clickCount = 0;
-        }
-      });
+      }
     }
+
+    function handleMouseLeave() {
+      if (!preventAutoClose) {
+        closeDropdown();
+      }
+    }
+
+    function handleDocumentClick(e: Event) {
+      if (!e.target || !dropdown || !dropdown.contains(e.target as Node)) {
+        closeDropdown();
+        preventAutoClose = false;
+        clickCount = 0;
+      }
+    }
+
+    function handleDropdownLinkClick(e: Event) {
+      if (!e.target) return;
+      if ((e.target as Element).closest(".nav-bar__dropdown-link")) {
+        closeDropdown();
+      }
+    }
+
+    function removeAllListeners() {
+      if (!dropdown || !dropdownToggle) return;
+      dropdownToggle.removeEventListener("click", handleDropdownClick);
+      dropdown.removeEventListener("mouseenter", handleMouseEnter);
+      dropdown.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("click", handleDocumentClick);
+      dropdown.removeEventListener("click", handleDropdownLinkClick);
+    }
+
+    function setupEventListeners() {
+      if (!dropdown || !dropdownToggle) return;
+      removeAllListeners();
+
+      const isMobile = window.innerWidth < 992;
+
+      if (isMobile) {
+        // Mobile: Click to toggle, click outside to close
+        dropdownToggle.addEventListener("click", handleDropdownClick);
+        document.addEventListener("click", handleDocumentClick);
+      } else {
+        // Desktop: Hybrid hover + click behavior
+        dropdownToggle.addEventListener("click", (e) => {
+          e.preventDefault();
+          preventAutoClose = true;
+          handleDropdownClick(e);
+        });
+
+        dropdown.addEventListener("mouseenter", handleMouseEnter);
+        dropdown.addEventListener("mouseleave", handleMouseLeave);
+        document.addEventListener("click", handleDocumentClick);
+        dropdown.addEventListener("click", handleDropdownLinkClick);
+      }
+    }
+
+    // Initial setup
+    setupEventListeners();
+
+    // Update on resize
+    window.addEventListener("resize", setupEventListeners);
   });
 </script>
+
 <style>
   .nav-bar__dropdown > .nav-bar__dropdown-toggle {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
   }
   .nav-bar__caret {
@@ -149,6 +187,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     height: 6.25px;
     transform: rotate(-90deg);
     transition: transform 0.2s ease;
+    margin-left: auto;
   }
   .nav-bar__dropdown.open .nav-bar__caret {
     transform: rotate(0deg);
@@ -156,25 +195,29 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
 
   .nav-bar__dropdown .nav-bar__dropdown-menu {
     display: none;
+    margin-top: 10px;
+    background-color: var(--neutral-lightest);
+    width: 100%;
+    border-radius: 3px;
   }
 
   .nav-bar__dropdown.open .nav-bar__dropdown-menu {
     display: block;
-    margin-top: 10px;
-    background-color: var(--neutral-lightest);
-    width: 100%;
   }
 
   .nav-bar__dropdown-link {
     display: block;
     color: var(--text);
     font-size: var(--fs-body-r);
-    padding: 10px 0;
+    padding: 14px 12px;
     width: 100%;
+    border-bottom: 1px solid var(--grey-10);
+  }
+  .nav-bar__dropdown-menu li:last-child .nav-bar__dropdown-link {
+    border-bottom: none;
   }
 
   @media (min-width: 992px) {
-    /* Dropdown */
     .nav-bar__dropdown {
       position: relative;
     }
@@ -182,11 +225,12 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     .nav-bar__dropdown .nav-bar__dropdown-menu {
       position: absolute;
       top: 100%;
-      left: 0;
+      left: 7px;
       display: block;
       min-width: 220px;
+      width: auto;
       height: auto;
-      background: var(--grey-5);
+      background: var(--white);
       list-style: none;
       margin: 0;
       padding: 0;
@@ -208,12 +252,12 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     }
 
     .nav-bar__dropdown-link {
-      padding: 10px 16px;
+      padding: 14px 16px;
       white-space: nowrap;
     }
 
     .nav-bar__dropdown-link:hover {
-      background-color: var(--grey-10);
+      background-color: var(--neutral-lighter);
     }
   }
 </style>

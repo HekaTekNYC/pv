@@ -1,6 +1,6 @@
 ---
 interface Props {
-  color?: "primary" | "secondary" | "accent" | "white";
+  color?: "primary" | "secondary" | "accent" | "white" | "nav";
   href?: string;
   type?: "button" | "submit" | "reset";
   bordered?: boolean;
@@ -12,7 +12,6 @@ const {
   href = "",
   type = "button",
   bordered = false,
-  variant = "default",
 } = Astro.props;
 
 const colorClass = {
@@ -20,22 +19,19 @@ const colorClass = {
   secondary: "btn-secondary",
   accent: "btn-accent",
   white: "btn-white",
+  nav: "btn-nav",
 }[color];
 
 const borderClass = bordered ? "btn-bordered" : "";
-const variantClass = variant === "nav" ? "btn-nav" : "btn-default";
 ---
 
 {
   href ? (
-    <a href={href} class={`btn ${colorClass} ${borderClass} ${variantClass}`}>
+    <a href={href} class={`btn ${colorClass} ${borderClass}`}>
       <slot />
     </a>
   ) : (
-    <button
-      type={type}
-      class={`btn ${colorClass} ${borderClass} ${variantClass}`}
-    >
+    <button type={type} class={`btn ${colorClass} ${borderClass}`}>
       <slot />
     </button>
   )
@@ -46,6 +42,7 @@ const variantClass = variant === "nav" ? "btn-nav" : "btn-default";
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    padding: 16px 40px;
     font-family: var(--ff-body);
     font-weight: var(--fw-bold);
     line-height: 100%;
@@ -53,6 +50,7 @@ const variantClass = variant === "nav" ? "btn-nav" : "btn-default";
     gap: 4px;
     cursor: pointer;
     border: none;
+    border-radius: 4px;
     text-decoration: none;
     box-sizing: border-box;
     opacity: 1;
@@ -64,16 +62,10 @@ const variantClass = variant === "nav" ? "btn-nav" : "btn-default";
     white-space: nowrap;
   }
 
-  /* Padding variants */
-  .btn-default {
-    padding: 16px 40px;
-  }
-
   .btn-nav {
-    padding: 16px 28px;
+    padding: 16px 28px !important;
   }
 
-  /* Colors */
   .btn-primary {
     background-color: var(--primary);
     color: var(--white);
@@ -88,16 +80,27 @@ const variantClass = variant === "nav" ? "btn-nav" : "btn-default";
     background-color: var(--neutral-lighter);
     color: var(--primary);
   }
-  .btn-white {
+  .btn-nav {
     background-color: var(--white);
     color: var(--primary);
   }
 
-  .btn-white:hover {
+  .btn-nav:hover {
     background-color: var(--neutral-lightest);
   }
 
   .btn-bordered {
     border: 1px solid var(--grey-50);
+  }
+
+  @media (min-width: 992px) {
+    .btn-nav {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    .btn-nav:hover {
+      background-color: var(--secondary);
+    }
   }
 </style>

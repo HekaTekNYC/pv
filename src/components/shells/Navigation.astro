@@ -38,9 +38,7 @@ import { productLinks } from "../../data/dropdown-data";
         <li><a href="/projects" class="nav-bar__link">Gallery</a></li>
         <li><a href="/contact" class="nav-bar__link">Contact</a></li>
         <li class="nav-bar__book-now">
-          <Button href="/contact" color="white" bordered variant="nav"
-            >Schedule a Free Consultation</Button
-          >
+          <Button href="/contact" color="nav" bordered>Get a Free Quote</Button>
         </li>
       </ul>
     </div>
@@ -89,7 +87,6 @@ import { productLinks } from "../../data/dropdown-data";
   .nav-bar__links {
     display: flex;
     flex-direction: column;
-    align-items: center;
     position: absolute;
     top: 72px;
     left: 0;
@@ -103,6 +100,8 @@ import { productLinks } from "../../data/dropdown-data";
       max-height 0.4s ease,
       opacity 0.4s ease,
       padding 0.3s ease;
+
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
 
   .nav-bar__links.active {
@@ -111,17 +110,13 @@ import { productLinks } from "../../data/dropdown-data";
     overflow-y: auto;
   }
 
-  .nav-bar__links ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    width: 100%;
-  }
-
-  :global(.nav-bar__links li) {
+  :global(.nav-bar__links > ul > li) {
     width: 100%;
     padding: 20px 16px;
     border-bottom: 1px solid var(--grey-10);
+  }
+  :global(.nav-bar__dropdown-menu li:last-child) {
+    border-bottom: none;
   }
 
   :global(.nav-bar__links .nav-bar__link) {
@@ -143,6 +138,7 @@ import { productLinks } from "../../data/dropdown-data";
   }
   .nav-bar__links .nav-bar__book-now {
     margin-top: auto;
+    margin-left: 20px;
     padding: 30px 16px;
   }
 
@@ -156,38 +152,48 @@ import { productLinks } from "../../data/dropdown-data";
     .nav-bar__hamburger {
       display: none;
     }
-
     .nav-bar__links {
       position: static;
       max-height: none;
       opacity: 1;
-      flex-direction: row;
-      justify-content: flex-end;
-      align-items: center;
-      width: 100%;
-      padding: 0;
       overflow: visible;
+      flex-direction: row;
+      background-color: transparent;
+      box-shadow: none;
+      width: auto;
+      padding: 0;
     }
 
     .nav-bar__links ul {
+      display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: flex-end;
-      gap: 20px;
+      gap: 2px;
       width: auto;
-      margin: 0;
     }
 
-    .nav-bar__links li {
+    :global(.nav-bar__links > ul > li) {
       width: auto;
-      text-align: left;
+      padding: 0;
+      border-bottom: none;
     }
 
-    .nav-bar__links .nav-bar__link {
+    :global(.nav-bar__links .nav-bar__link) {
       font-size: 1rem;
+      justify-content: center;
+      padding: 8px 12px;
+      color: var(--white);
     }
 
-    .nav-bar__book-now {
+    :global(.nav-bar__links .nav-bar__link:hover) {
+      color: var(--neutral-light);
+    }
+
+    .nav-bar__link.active {
+      color: var(--neutral);
+    }
+
+    .nav-bar__links .nav-bar__book-now {
       margin-top: 0;
       padding: 0;
     }
