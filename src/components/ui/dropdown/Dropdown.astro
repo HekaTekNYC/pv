@@ -185,15 +185,6 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
   .nav-bar__dropdown.open .nav-bar__caret {
     transform: rotate(0deg);
   }
-  .nav-bar__dropdown:hover .nav-bar__dropdown-menu {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .nav-bar__dropdown:hover .nav-bar__caret {
-    transform: rotate(0deg);
-  }
 
   .nav-bar__dropdown.open .nav-bar__dropdown-menu {
     opacity: 1;
@@ -211,6 +202,10 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
 
   .nav-bar__dropdown.open .nav-bar__dropdown-menu {
     display: block;
+  }
+
+  .nav-bar__dropdown.open .nav-bar__dropdown-toggle {
+    color: var(--neutral-lighter);
   }
 
   .nav-bar__dropdown-link {
@@ -268,6 +263,11 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
       pointer-events: auto;
     }
 
+    .nav-bar__dropdown:hover .nav-bar__dropdown-toggle {
+      transform: none;
+      color: var(--neutral-lighter);
+    }
+
     .nav-bar__dropdown-link {
       padding: 14px 16px;
       white-space: nowrap;
@@ -287,7 +287,11 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
 
     .nav-bar__dropdown:hover .nav-bar__caret {
       transform: none;
-      color: var(--neutral);
+      color: var(--neutral-lighter);
+    }
+    /* Also style the caret when open */
+    .nav-bar__dropdown.open .nav-bar__caret {
+      color: var(--neutral-lighter) !important;
     }
   }
 </style>
