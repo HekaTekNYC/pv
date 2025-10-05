@@ -5,6 +5,7 @@ import Button from "../ui/Button.astro";
 import { productLinks } from "../../data/dropdown-data";
 ---
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
 <nav class="nav-bar" role="navigation" aria-label="Main">
   <div class="nav-bar__container container">
     <a href="/" class="nav-bar__logo" aria-label="Home">
@@ -25,9 +26,11 @@ import { productLinks } from "../../data/dropdown-data";
       <img src="/icons/hamburger.svg" alt="" aria-hidden="true" />
     </button>
 
-    <div class="nav-bar__links" id="primary-menu">
+    <div class="nav-bar__links" id="primary-menu" aria-hidden="true">
       <ul>
-        <li><a href="/" class="nav-bar__link"> Home </a></li>
+        <li>
+          <a href="/" class="nav-bar__link" aria-current="page"> Home </a>
+        </li>
         <Dropdown
           triggerText="Products"
           triggerHref="/products"
@@ -46,6 +49,22 @@ import { productLinks } from "../../data/dropdown-data";
 </nav>
 
 <style>
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--primary);
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    z-index: 10000;
+    border-radius: 4px;
+  }
+
+  .skip-link:focus {
+    top: 6px;
+    outline: 2px solid var(--neutral);
+  }
   nav {
     position: sticky;
     top: 0;
@@ -136,6 +155,11 @@ import { productLinks } from "../../data/dropdown-data";
   .nav-bar__link.active {
     color: var(--neutral);
   }
+
+  .nav-bar__link:focus {
+    outline: 2px solid var(--neutral);
+    outline-offset: 2px;
+  }
   .nav-bar__links .nav-bar__book-now {
     margin-top: auto;
     margin-left: 20px;
@@ -202,7 +226,6 @@ import { productLinks } from "../../data/dropdown-data";
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Hamburger menu functionality
     const hamburger = document.querySelector(".nav-bar__hamburger");
     const navLinks = document.querySelector(".nav-bar__links");
 
@@ -233,19 +256,31 @@ import { productLinks } from "../../data/dropdown-data";
       window.addEventListener("resize", handleResize);
     }
 
-    // Active page highlighting (separate concern)
     const links = document.querySelectorAll(".nav-bar__link");
 
     function highlightActivePage() {
       const currentPath = window.location.pathname;
+
       links.forEach((link) => {
         const href = link.getAttribute("href");
 
-        // Exact match or home page
-        if (href === currentPath || (currentPath === "/" && href === "/")) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active");
+        if (!href) return;
+
+        // Handle relative URLs
+        const fullUrl = href.startsWith("http")
+          ? href
+          : `${window.location.origin}${href.startsWith("/") ? href : `/${href}`}`;
+
+        try {
+          const linkUrl = new URL(fullUrl);
+
+          if (linkUrl.pathname === currentPath) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
+        } catch (error) {
+          console.warn("Invalid URL:", href);
         }
       });
     }
