@@ -31,7 +31,7 @@ const carouselId = `crs-${Math.random().toString(36).slice(2, 8)}`;
       tabindex="0"
     >
       <!-- Prev button -->
-      <button class="nav nav--prev" aria-label="Previous" data-dir="-1">
+      <button class="car-nav car-nav--prev" aria-label="Previous" data-dir="-1">
         <svg
           viewBox="0 0 24 24"
           width="20"
@@ -60,7 +60,7 @@ const carouselId = `crs-${Math.random().toString(36).slice(2, 8)}`;
       </ul>
 
       <!-- Next button -->
-      <button class="nav nav--next" aria-label="Next" data-dir="1">
+      <button class="car-nav car-nav--next" aria-label="Next" data-dir="1">
         <svg
           viewBox="0 0 24 24"
           width="20"
@@ -89,10 +89,10 @@ const carouselId = `crs-${Math.random().toString(36).slice(2, 8)}`;
     justify-content: center;
   }
 
-  .carousel-section.theme-dark {
+  /* .carousel-section.theme-dark {
     background: #0f0f0f;
     color: #eaeaea;
-  }
+  } */
 
   /* ===== Carousel layout ===== */
   .carousel {
@@ -126,15 +126,14 @@ const carouselId = `crs-${Math.random().toString(36).slice(2, 8)}`;
     display: block;
     width: 100%;
     height: auto;
-    border-radius: 6px;
+    border-radius: 4px;
     object-fit: cover;
     background: #1c1c1c;
-    border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   }
 
   /* ===== Arrows ===== */
-  .nav {
+  .car-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -155,21 +154,21 @@ const carouselId = `crs-${Math.random().toString(36).slice(2, 8)}`;
     backdrop-filter: saturate(120%) blur(0.5px);
   }
 
-  .nav:hover {
+  .car-nav:hover {
     transform: translateY(-50%) scale(1.05);
     background: rgba(255, 255, 255, 0.831);
     border-color: rgba(255, 255, 255, 0.2);
   }
 
-  .nav:active {
+  .car-nav:active {
     transform: translateY(-50%) scale(0.98);
   }
 
-  .nav--prev {
+  .car-nav--prev {
     left: calc(var(--gap) * 0.5);
   }
 
-  .nav--next {
+  .car-nav--next {
     right: calc(var(--gap) * 0.5);
   }
 
