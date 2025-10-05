@@ -163,7 +163,9 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     setupEventListeners();
 
     // Update on resize
-    window.addEventListener("resize", setupEventListeners);
+    window.addEventListener("resize", () => {
+      setTimeout(setupEventListeners, 10);
+    });
   });
 </script>
 
@@ -205,7 +207,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
   }
 
   .nav-bar__dropdown.open .nav-bar__dropdown-toggle {
-    color: var(--neutral-lighter);
+    color: var(--primary);
   }
 
   .nav-bar__dropdown-link {
@@ -266,6 +268,9 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     .nav-bar__dropdown:hover .nav-bar__dropdown-toggle {
       transform: none;
       color: var(--neutral-lighter);
+    }
+    .nav-bar__dropdown.open .nav-bar__dropdown-toggle {
+      color: var(--neutral-lighter) !important;
     }
 
     .nav-bar__dropdown-link {
