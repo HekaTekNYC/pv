@@ -38,6 +38,11 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
     color: #dbd3c8;
   }
 
+  /* .ham:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  } */
+
   .ham-rotate.active {
     transform: rotate(45deg);
   }
@@ -67,6 +72,25 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
   .ham-rotate.active .ham-line-bottom {
     stroke-dashoffset: -138px;
   }
+
+  .ham:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+
+  .ham-rotate.active:hover {
+    transform: rotate(45deg) scale(1.05);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ham {
+      transition: none;
+    }
+
+    .ham-line {
+      transition: none;
+    }
+  }
 </style>
 
 <script>
@@ -76,6 +100,15 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
     const targetMenu = targetId ? document.getElementById(targetId) : null;
 
     if (!hamburger || !targetMenu) return;
+
+    if (!targetMenu) {
+      console.warn(`Hamburger menu: Target element #${targetId} not found`);
+      return;
+    }
+
+    const isInitiallyExpanded = hamburger.classList.contains("active");
+    hamburger.setAttribute("aria-expanded", isInitiallyExpanded.toString());
+    targetMenu.setAttribute("aria-hidden", (!isInitiallyExpanded).toString());
 
     hamburger.addEventListener("click", () => {
       const isExpanded = hamburger.classList.toggle("active");
