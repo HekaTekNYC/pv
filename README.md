@@ -20,6 +20,7 @@ pv
 │  │     └─ Sora-Regular.woff2
 │  ├─ icons
 │  │  ├─ aim-khki.svg
+│  │  ├─ caret-drk-down.svg
 │  │  ├─ caret-lt-down.svg
 │  │  ├─ fb-20.svg
 │  │  ├─ fb-wht.svg
@@ -35,8 +36,16 @@ pv
 │  └─ images
 │     ├─ PVLogo.png
 │     ├─ about-lp-dsk.png
-│     └─ about-lp-mbl.png
+│     ├─ about-lp-dsk.webp
+│     ├─ about-lp-mbl.png
+│     └─ about-lp-mbl.webp
 ├─ src
+│  ├─ assets
+│  │  └─ images
+│  │     ├─ about-lp-dsk.png
+│  │     ├─ about-lp-dsk.webp
+│  │     ├─ about-lp-mbl.png
+│  │     └─ about-lp-mbl.webp
 │  ├─ components
 │  │  ├─ sections
 │  │  │  ├─ AboutSection.astro
@@ -47,8 +56,12 @@ pv
 │  │  │  └─ TopBanner.astro
 │  │  └─ ui
 │  │     ├─ Button.astro
-│  │     └─ InfoCard.astro
+│  │     ├─ InfoCard.astro
+│  │     └─ dropdown
+│  │        ├─ Dropdown.tsx
+│  │        └─ dropdown.css
 │  ├─ data
+│  │  ├─ dropdown-data.ts
 │  │  └─ info-cards.ts
 │  ├─ layouts
 │  │  └─ Main.astro
