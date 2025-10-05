@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 import Button from "../ui/Button.astro";
 ---
 
@@ -87,6 +88,45 @@ import Button from "../ui/Button.astro";
           <Button href="/contact" color="primary" bordered variant="nav"
             >Get a Free Quote</Button
           >
+=======
+import Dropdown from "../ui/NavDropdown.astro";
+import Button from "../ui/Button.astro";
+import Hamburger from "../ui/Hamburger.astro";
+
+import { productLinks } from "../../data/dropdown-data";
+---
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<nav class="nav-bar" role="navigation" aria-label="Main">
+  <div class="nav-bar__container container">
+    <a href="/" class="nav-bar__logo" aria-label="Home">
+      <img
+        src="/images/PVLogo.png"
+        alt="Company logo"
+        height="48"
+        width="117"
+      />
+    </a>
+
+    <Hamburger targetId="primary-menu" />
+
+    <div class="nav-bar__links" id="primary-menu" aria-hidden="true">
+      <ul>
+        <li>
+          <a href="/" class="nav-bar__link" aria-current="page"> Home </a>
+        </li>
+        <Dropdown
+          triggerText="Products"
+          triggerHref="/products"
+          links={productLinks}
+        />
+        <li><a href="/services" class="nav-bar__link">Services</a></li>
+        <li><a href="/about" class="nav-bar__link">About</a></li>
+        <li><a href="/projects" class="nav-bar__link">Gallery</a></li>
+        <li><a href="/contact" class="nav-bar__link">Contact</a></li>
+        <li class="nav-bar__book-now">
+          <Button href="/contact" color="nav" bordered>Get a Free Quote</Button>
+>>>>>>> origin
         </li>
       </ul>
     </div>
@@ -94,6 +134,25 @@ import Button from "../ui/Button.astro";
 </nav>
 
 <style>
+<<<<<<< HEAD
+=======
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--primary);
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    z-index: 10000;
+    border-radius: 4px;
+  }
+
+  .skip-link:focus {
+    top: 6px;
+    outline: 2px solid var(--neutral);
+  }
+>>>>>>> origin
   nav {
     position: sticky;
     top: 0;
@@ -101,7 +160,10 @@ import Button from "../ui/Button.astro";
     display: flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
     padding: 0 35px;
+=======
+>>>>>>> origin
     height: 72px;
     width: 100%;
     z-index: 1000;
@@ -123,6 +185,7 @@ import Button from "../ui/Button.astro";
     height: 100%;
   }
 
+<<<<<<< HEAD
   .nav-bar__hamburger {
     height: 35px;
     width: 35px;
@@ -134,10 +197,17 @@ import Button from "../ui/Button.astro";
 
   /* --- Mobile nav (default) --- */
   .nav-bar__links {
+=======
+  /* --- Mobile nav (default) --- */
+  .nav-bar__links {
+    display: flex;
+    flex-direction: column;
+>>>>>>> origin
     position: absolute;
     top: 72px;
     left: 0;
     width: 100%;
+<<<<<<< HEAD
     max-height: 0;
     opacity: 0;
     overflow: hidden;
@@ -146,24 +216,66 @@ import Button from "../ui/Button.astro";
     display: flex;
     flex-direction: column;
     align-items: center;
+=======
+    background-color: var(--white);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+>>>>>>> origin
     transition:
       max-height 0.4s ease,
       opacity 0.4s ease,
       padding 0.3s ease;
+<<<<<<< HEAD
+=======
+
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+>>>>>>> origin
   }
 
   .nav-bar__links.active {
     max-height: calc(100vh - 72px);
     opacity: 1;
+<<<<<<< HEAD
     padding: 40px 0;
     overflow-y: auto;
   }
 
   /* Active page */
+=======
+    overflow-y: auto;
+  }
+
+  :global(.nav-bar__links > ul > li) {
+    width: 100%;
+    padding: 20px 16px;
+    border-bottom: 1px solid var(--grey-10);
+  }
+  :global(.nav-bar__dropdown-menu li:last-child) {
+    border-bottom: none;
+  }
+
+  :global(.nav-bar__links .nav-bar__link) {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px 0;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  :global(.nav-bar__links .nav-bar__link:hover) {
+    color: var(--primary);
+  }
+
+>>>>>>> origin
   .nav-bar__link.active {
     color: var(--neutral);
   }
 
+<<<<<<< HEAD
   .nav-bar__links ul {
     display: flex;
     flex-direction: column;
@@ -252,10 +364,30 @@ import Button from "../ui/Button.astro";
       display: none;
     }
 
+=======
+  .nav-bar__link:focus {
+    outline: 2px solid var(--neutral);
+    outline-offset: 2px;
+  }
+  .nav-bar__links .nav-bar__book-now {
+    margin-top: auto;
+    margin-left: 20px;
+    padding: 30px 16px;
+  }
+
+  /* --- Media Queries --- */
+
+  @media (min-width: 992px) {
+    nav {
+      height: 104px;
+    }
+
+>>>>>>> origin
     .nav-bar__links {
       position: static;
       max-height: none;
       opacity: 1;
+<<<<<<< HEAD
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
@@ -325,20 +457,64 @@ import Button from "../ui/Button.astro";
     }
 
     .nav-bar__book-now {
+=======
+      overflow: visible;
+      flex-direction: row;
+      background-color: transparent;
+      box-shadow: none;
+      width: auto;
+      padding: 0;
+    }
+
+    .nav-bar__links ul {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2px;
+      width: auto;
+    }
+
+    :global(.nav-bar__links > ul > li) {
+      width: auto;
+      padding: 0;
+      border-bottom: none;
+    }
+
+    :global(.nav-bar__links .nav-bar__link) {
+      font-size: 1rem;
+      justify-content: center;
+      padding: 8px 12px;
+      color: var(--white);
+    }
+
+    :global(.nav-bar__links .nav-bar__link:hover) {
+      color: var(--neutral-light);
+    }
+
+    .nav-bar__link.active {
+      color: var(--neutral) !important;
+    }
+
+    .nav-bar__links .nav-bar__book-now {
+>>>>>>> origin
       margin-top: 0;
       padding: 0;
     }
   }
+<<<<<<< HEAD
 
   @media (min-width: 1200px) {
     nav {
       padding: 0 100px;
     }
   }
+=======
+>>>>>>> origin
 </style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+<<<<<<< HEAD
     const hamburger = document.querySelector(".nav-bar__hamburger");
     const navLinks = document.querySelector(".nav-bar__links");
     const links = document.querySelectorAll(".nav-bar__link");
@@ -401,5 +577,41 @@ import Button from "../ui/Button.astro";
         });
       });
     }
+=======
+    // Active page highlighting only
+    const links = document.querySelectorAll(".nav-bar__link");
+
+    function highlightActivePage() {
+      const currentPath = window.location.pathname;
+
+      links.forEach((link) => {
+        const href = link.getAttribute("href");
+
+        if (!href) return;
+
+        // Handle relative URLs
+        const fullUrl = href.startsWith("http")
+          ? href
+          : `${window.location.origin}${href.startsWith("/") ? href : `/${href}`}`;
+
+        try {
+          const linkUrl = new URL(fullUrl);
+
+          if (linkUrl.pathname === currentPath) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
+        } catch (error) {
+          console.warn("Invalid URL:", href);
+        }
+      });
+    }
+
+    // Only run if we have links
+    if (links.length > 0) {
+      highlightActivePage();
+    }
+>>>>>>> origin
   });
 </script>
