@@ -98,15 +98,28 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
       return;
     }
 
-    const isInitiallyExpanded = hamburger.classList.contains("active");
-    hamburger.setAttribute("aria-expanded", isInitiallyExpanded.toString());
-    targetMenu.setAttribute("aria-hidden", (!isInitiallyExpanded).toString());
+    // Function to reset menu state on desktop
+    const resetMenuForDesktop = () => {
+      if (window.innerWidth >= 768) {
+        hamburger.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
+        targetMenu.classList.remove("active");
+        targetMenu.setAttribute("aria-hidden", "true");
+      }
+    };
 
+    // Initial reset
+    resetMenuForDesktop();
+
+    // Hamburger click handler
     hamburger.addEventListener("click", () => {
       const isExpanded = hamburger.classList.toggle("active");
       hamburger.setAttribute("aria-expanded", isExpanded.toString());
       targetMenu.classList.toggle("active");
       targetMenu.setAttribute("aria-hidden", (!isExpanded).toString());
     });
+
+    // Reset on window resize
+    window.addEventListener("resize", resetMenuForDesktop);
   });
 </script>
