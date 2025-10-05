@@ -1,0 +1,279 @@
+---
+import Button from "../ui/Button.astro"; // adjust path if needed
+
+export interface CategoryCard {
+  title: string;
+  image: string;
+  alt: string;
+  href: string;
+  blurb?: string;
+}
+
+type Props = {
+  heading?: string;
+  subheading?: string;
+  items: CategoryCard[];
+  /** which card starts with the overlay text visible (0-based) */
+  activeIndex?: number; // -1 = none open
+};
+
+const {
+  heading = "Custom Window Coverings for Every Space",
+  subheading = "",
+  items,
+  activeIndex = -1,
+} = Astro.props as Props;
+---
+
+<section class="cats" aria-labelledby="cats-title">
+  <div class="container">
+    <header class="cats__header">
+      <h2 id="cats-title" class="cats__title">{heading}</h2>
+      {subheading && <p class="cats__sub">{subheading}</p>}
+    </header>
+
+    <ul class="cats__grid" role="list">
+      {
+        items.map((it, i) => (
+          <li class="cats__item">
+            <a
+              class={`card${i === activeIndex ? " is-active" : ""}`}
+              href={it.href}
+              aria-label={`${it.title}${it.blurb ? ": " + it.blurb : ""}`}
+            >
+              <figure class="card__media">
+                <img
+                  src={it.image}
+                  alt={it.alt}
+                  width="900"
+                  height="600"
+                  loading={i === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+              </figure>
+
+              <div class="card__overlay">
+                <h3 class="card__title">{it.title}</h3>
+                {it.blurb && <p class="card__blurb">{it.blurb}</p>}
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="cats__cta">
+      <Button color="primary" href="/products">Explore All Products</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --gap: 1.25rem;
+    --radius: 4px;
+  }
+
+  /* Section uses global container gutters; only vertical padding here */
+  .cats {
+    padding-block: clamp(24px, 5vw, 64px);
+    background: var(--white); /* matches site bg */
+  }
+
+  /* Header: 2 cols desktop, stacked mobile */
+  .cats__header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+    align-items: start;
+    margin-bottom: 50px;
+  }
+
+  /* rely on global h2 token styles; just zero margins */
+  .cats__title {
+    margin: 0;
+  }
+
+  .cats__sub {
+    margin: 6px 0 0;
+    color: var(--text);
+    font-family: var(--ff-body);
+    font-size: var(--fs-body-l);
+    line-height: 1.6;
+    max-width: 56ch;
+  }
+
+  /* Grid */
+  .cats__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .cats__item {
+    /* hook for future if needed */
+  }
+
+  .card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--grey-50); /* brand neutral as image fallback */
+  }
+
+  .card__media {
+    aspect-ratio: 4 / 3;
+  }
+  .card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Overlay */
+  .card__overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    align-content: end;
+    padding: 14px;
+    color: var(--white);
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+    transition:
+      background 0.2s ease,
+      opacity 0.22s ease,
+      transform 0.22s ease;
+  }
+
+  /* Title + blurb sizes use global type tokens */
+  .card__title {
+    margin: 0;
+    font-family: var(--ff-heading);
+    font-size: var(--fs-h3-sm); /* 20px per tokens */
+    font-weight: var(--fw-bold);
+    color: var(--white);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    line-height: 1.2;
+  }
+
+  .card__blurb {
+    margin: 6px 0 0;
+    font-family: var(--ff-body);
+    font-size: var(--fs-body-s); /* 14px per tokens */
+    line-height: 1.4;
+    max-width: 38ch;
+    color: var(--white); /* same as title (per your request) */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(6px);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      max-height 0.25s ease;
+  }
+
+  /* Desktop/tablet: blurb appears on hover/focus or active */
+  .card.is-active .card__blurb,
+  .card:hover .card__blurb,
+  .card:focus-visible .card__blurb {
+    opacity: 1;
+    max-height: 220px;
+    transform: translateY(0);
+  }
+
+  /* Stronger gradient on hover/active if desired */
+  .card:hover .card__overlay,
+  .card:focus-visible .card__overlay,
+  .card.is-active .card__overlay {
+    background:
+      linear-gradient(
+        360deg,
+        rgba(26, 26, 26, 0.76) 13.1%,
+        rgba(26, 26, 26, 0) 64.22%
+      ),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.55) 100%);
+  }
+
+  .cats__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  /* ===== Mobile styles (keep your current behavior) ===== */
+  @media (max-width: 560px) {
+    .cats__header {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .cats__sub {
+      font-size: var(--fs-body-s);
+      line-height: 1.55;
+      max-width: none;
+    }
+
+    .cats__grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .card__media {
+      aspect-ratio: 16 / 10;
+    }
+
+    /* If your current mobile design keeps overlay visible, keep it: */
+    .card__overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 35%,
+        rgba(0, 0, 0, 0.65) 100%
+      );
+      opacity: 1;
+      transform: none;
+      padding: 12px;
+    }
+    .card__title {
+      font-size: var(--fs-h3-sm);
+    }
+    .card__blurb {
+      opacity: 1;
+      max-height: none;
+      transform: none;
+      font-size: var(--fs-body-s);
+      line-height: 1.45;
+      margin-top: 4px;
+    }
+  }
+
+  /* Tablet breakpoint: 2 columns grid */
+  @media (min-width: 561px) and (max-width: 900px) {
+    .cats__header {
+      grid-template-columns: 1fr;
+    }
+    .cats__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 900px) {
+    .cats__header {
+      margin-bottom: 40px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card__blurb,
+    .card__overlay {
+      transition: none;
+    }
+  }
+</style>
