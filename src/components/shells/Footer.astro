@@ -129,12 +129,10 @@
       </div>
     </div>
   </div>
-
   <!-- Divider Line -->
-  <div class="footer__divider divider-lt"></div>
-
+  <div class="footer__divider container"><div class="divider-lt"></div></div>
   <!-- Bottom Row -->
-  <div class="footer__bottom">
+  <div class="footer__bottom container">
     <p class="footer__copy">
       &copy; 2025 PerfectView. All rights reserved.
       <a
@@ -143,7 +141,7 @@
         rel="noopener noreferrer"
       >
         Website developed by Hekatek
-      </a>.
+      </a>
     </p>
     <div class="footer__legal">
       <a href="#" class="footer__legal-link">Terms of Service</a>
@@ -218,13 +216,14 @@
   }
 
   /* Footer Bottom - Legal */
+
   .footer__bottom {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    gap: 10px;
     color: var(--grey-10);
-    gap: 14px;
-    padding: 24px 0;
+    width: 100%;
   }
 
   .footer__bottom a {
@@ -235,14 +234,20 @@
   .footer__copy {
     order: 2;
     text-align: center;
+    color: var(--grey-10) !important;
+    width: 100%;
+  }
+
+  .footer__copy a {
+    color: var(--neutral);
   }
 
   .footer__legal {
     order: 1;
     display: flex;
     justify-content: space-around;
-
     width: 100%;
+    padding-top: 24px;
   }
 
   /* --- Media Queries --- */
@@ -255,6 +260,49 @@
     .footer__column-bottom {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer__copy {
+      padding-top: 5px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .footer__top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 2fr;
+      gap: 40px;
+      padding-bottom: 24px;
+    }
+
+    .footer__column-top,
+    .footer__column-bottom {
+      display: contents;
+    }
+
+    .footer__column {
+      padding-bottom: 0;
+    }
+
+    .footer__bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+    }
+
+    .footer__copy {
+      order: 1;
+      text-align: left;
+      width: auto;
+      padding-top: 0;
+    }
+
+    .footer__legal {
+      order: 2;
+      width: auto;
+      gap: 24px;
+      padding-top: 0;
     }
   }
 </style>
