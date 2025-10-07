@@ -1,7 +1,8 @@
 ---
 import Main from "../layouts/Main.astro";
-import Hero from "../components/sections/Hero.astro";
-import CategoryGrid from "../components/sections/Categorygrid.astro";
+import Hero from "../components/sections/landing/Hero.astro";
+import AboutMission from "../components/sections/shared/AboutMission.astro";
+import LandingProducts from "../components/sections/landing/LandingProducts.astro";
 import Carousel from "../components/Carousel.astro";
 
 const categories = [
@@ -66,12 +67,14 @@ const images = [
 
 <Main title="PerfectView">
   <Hero />
-  <CategoryGrid
+  <AboutMission />
+  <LandingProducts
     heading="Custom Window Coverings for Every Space"
     subheading="Explore our full range of beautiful window treatments designed for comfort, privacy, and style—expertly measured, designed, and installed to fit your home or commercial space perfectly."
     items={categories}
     activeIndex={-1}
   />
+
   <!-- <CategoryGrid items={categories} activeIndex={-1} /> -->
   <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" />
 </Main>

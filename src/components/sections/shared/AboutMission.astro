@@ -1,7 +1,7 @@
 ---
-import InfoCard from "../ui/InfoCard.astro";
-import { infoCardsAbout } from "../../data/info-cards.ts";
-import Button from "../ui/Button.astro";
+import AboutMissionCard from "../../ui/AboutMissionCard.astro";
+import { missionCardsData } from "../../../data/about-mission";
+import Button from "../../ui/Button.astro";
 ---
 
 <section class="lp-about">
@@ -57,8 +57,8 @@ import Button from "../ui/Button.astro";
 
       <div class="lp-about__cards">
         {
-          infoCardsAbout.map((card) => (
-            <InfoCard
+          missionCardsData.map((card) => (
+            <AboutMissionCard
               icon={card.icon}
               title={card.title}
               alt={card.alt}

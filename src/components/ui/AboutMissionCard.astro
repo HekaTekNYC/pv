@@ -1,5 +1,5 @@
 ---
-interface InfoCardProps {
+interface AboutMissionCardProps {
   headerClass?: string;
   icon?: string;
   alt: string;
@@ -10,22 +10,22 @@ interface InfoCardProps {
 const { headerClass = "", icon = "", alt, title, text } = Astro.props;
 ---
 
-<div class="info-card">
-  <div class="info-card__header">
-    <div class="info-card__icon">
+<div class="about-mission-card">
+  <div class="about-mission-card__header">
+    <div class="about-mission-card__icon">
       <img src={icon} alt={alt} height="20px" width="20px" />
     </div>
-    <h3 class={`info-card__title ${headerClass}`}>
+    <h3 class={`about-mission-card__title ${headerClass}`}>
       {title}
     </h3>
   </div>
-  <p class="roboto-text">
+  <p class="about-mission-card__text roboto-text">
     {text}
   </p>
 </div>
 
 <style>
-  .info-card {
+  .about-mission-card {
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -38,19 +38,19 @@ const { headerClass = "", icon = "", alt, title, text } = Astro.props;
     max-width: 300px;
   }
 
-  .info-card__header {
+  .about-mission-card__header {
     display: flex;
     align-items: center;
     gap: 8px;
   }
 
   @media (min-width: 1024px) {
-    .info-card {
+    .about-mission-card {
       padding: 20px;
     }
   }
   @media (min-width: 1200px) {
-    .info-card {
+    .about-mission-card {
       padding: 24px;
     }
   }
