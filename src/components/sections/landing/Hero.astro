@@ -1,0 +1,144 @@
+---
+import Button from "../../ui/Button.astro";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  extraText?: string;
+}
+
+const {
+  title = "Beautiful Window Coverings Beautifully Crafted for You",
+  subtitle = "Enhance your home or business with stylish, custom-fit window solutions tailored to your taste and space.",
+  ctaText = "Schedule Free Consultation",
+  ctaHref = "#",
+  extraText,
+} = Astro.props as Props;
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <img
+    class="hero__bg"
+    src="/images/Hero.png"
+    alt=""
+    loading="eager"
+    decoding="async"
+  />
+
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero__content">
+      <h1 id="hero-title" class="hero__title">{title}</h1>
+      {subtitle && <p class="hero__subtitle">{subtitle}</p>}
+      {extraText && <p class="hero__text">{extraText}</p>}
+
+      {
+        ctaText && (
+          <div class="hero__actions">
+            <Button color="primary" bordered href={ctaHref}>
+              {ctaText}
+            </Button>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* SECTION: uses global tokens and container gutters */
+  .hero {
+    position: relative;
+    display: grid; /* vertical centering without absolute */
+    align-items: center;
+    min-height: clamp(520px, 72svh, 900px);
+    isolation: isolate;
+    color: var(--white);
+    font-family: var(--ff-body);
+    overflow: visible; /* allow growth when text wraps */
+  }
+
+  /* BACKGROUND */
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    transform: translateZ(0);
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.62) 0%,
+      rgba(0, 0, 0, 0.45) 38%,
+      rgba(0, 0, 0, 0.18) 58%,
+      rgba(0, 0, 0, 0) 78%
+    );
+  }
+
+  /* CONTENT: relies on .container for horizontal padding */
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 46rem;
+    padding-block: clamp(16px, 6vw, 64px); /* vertical spacing only */
+  }
+
+  /* TYPOGRAPHY: pull from globals; tweak line-height locally */
+  .hero__title {
+    font-family: var(--ff-heading);
+    font-size: var(--fs-h1);
+    font-weight: var(--fw-semibold);
+    line-height: 1.08; /* tighter than global h1 for hero aesthetic */
+    letter-spacing: -0.02em;
+    color: var(--white);
+  }
+
+  .hero__subtitle {
+    font-family: var(--ff-body);
+    font-size: var(--fs-body-l);
+    line-height: 1.5;
+    font-weight: var(--fw-medium);
+    max-width: 42rem;
+    color: color-mix(in srgb, var(--white) 88%, transparent);
+  }
+
+  .hero__text {
+    font-family: var(--ff-body);
+    font-size: var(--fs-body-r);
+    line-height: 1.6;
+    font-weight: var(--fw-regular);
+    max-width: 42rem;
+    color: color-mix(in srgb, var(--white) 85%, transparent);
+  }
+
+  .hero__actions {
+    margin-top: 0.25rem;
+  }
+
+  /* MOBILE: your gradient flips to vertical; keep tokens */
+  @media (max-width: 768px) {
+    .hero__overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.62) 0%,
+        rgba(0, 0, 0, 0.45) 35%,
+        rgba(0, 0, 0, 0) 75%
+      );
+    }
+    .hero__content {
+      max-width: 70%;
+      padding-block: 24px 32px;
+    }
+  }
+</style>
