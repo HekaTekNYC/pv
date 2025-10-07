@@ -1,0 +1,257 @@
+---
+import Button from "../ui/Button.astro"; // adjust path as needed
+
+export interface Feature {
+  title: string;
+  text: string;
+  icon?: string; // optional icon path (24x24). Decorative.
+  alt?: string; // optional alt if icon is meaningful; otherwise decorative.
+}
+
+interface Props {
+  heading?: string;
+  subheading?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  leftFeatures?: Feature[];
+  rightFeatures?: Feature[];
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const {
+  heading = "Why Homeowners and Designers Choose Us",
+  subheading = "We combine expert knowledge, design-focused thinking, and family-level care to deliver window treatments that perform beautifully, last long, and perfectly suit your space and lifestyle.",
+  imageSrc = "/images/why/room.jpg",
+  imageAlt = "Living room with custom window treatments",
+  leftFeatures = [
+    {
+      title: "Expert Design Advice",
+      text: "We help you choose the right styles, colors, and functionality for your space.",
+    },
+    {
+      title: "Friendly Assistance",
+      text: "Expert installers guarantee a flawless fit and finish, ensuring satisfaction with every setup.",
+    },
+    {
+      title: "Family-Owned Values",
+      text: "You’ll work directly with us—no middlemen, just personal attention and integrity.",
+    },
+  ],
+  rightFeatures = [
+    {
+      title: "15+ Years Experience",
+      text: "Our deep knowledge ensures a seamless experience from measurement to final install.",
+    },
+    {
+      title: "Clean & Safe Work",
+      text: "We ensure your home is left tidy, damage-free, and treated with utmost respect.",
+    },
+    {
+      title: "Stylish & Functional",
+      text: "Innovative products that improve light control, privacy, and energy efficiency with a stylish touch.",
+    },
+  ],
+  ctaText = "See What Sets Us Apart",
+  ctaHref = "/about",
+} = Astro.props as Props;
+---
+
+<section class="why" aria-labelledby="why-title">
+  <div class="container">
+    <header class="why__header">
+      <h2 id="why-title" class="why__title">{heading}</h2>
+      <p class="why__lead">{subheading}</p>
+    </header>
+
+    <div class="why__grid">
+      <!-- Left feature stack -->
+      <ul class="why__list">
+        {
+          leftFeatures.map((f) => (
+            <li class="feat">
+              {f.icon ? (
+                <img
+                  class="feat__icon"
+                  src={f.icon}
+                  alt={f.alt ?? ""}
+                  aria-hidden={f.alt ? "false" : "true"}
+                  width="24"
+                  height="24"
+                />
+              ) : (
+                <span class="feat__icon" aria-hidden="true">
+                  💠
+                </span>
+              )}
+              <div class="feat__body">
+                <h3 class="feat__title">{f.title}</h3>
+                <p class="feat__text">{f.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Center image -->
+      <figure class="why__media">
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          width="960"
+          height="640"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+
+      <!-- Right feature stack -->
+      <ul class="why__list">
+        {
+          rightFeatures.map((f) => (
+            <li class="feat">
+              {f.icon ? (
+                <img
+                  class="feat__icon"
+                  src={f.icon}
+                  alt={f.alt ?? ""}
+                  aria-hidden={f.alt ? "false" : "true"}
+                  width="24"
+                  height="24"
+                />
+              ) : (
+                <span class="feat__icon" aria-hidden="true">
+                  💠
+                </span>
+              )}
+              <div class="feat__body">
+                <h3 class="feat__title">{f.title}</h3>
+                <p class="feat__text">{f.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="why__cta">
+      <Button color="primary" href={ctaHref}>{ctaText}</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Section shell – uses global tokens + container gutters */
+  .why {
+    background: var(--white);
+    padding-block: clamp(32px, 6vw, 88px);
+  }
+
+  .why__header {
+    text-align: center;
+    margin-bottom: clamp(20px, 4vw, 36px);
+  }
+
+  /* h2 inherits global styles (font, size, weight, color). Just zero margins. */
+  .why__title {
+    margin: 0 0 8px 0;
+  }
+
+  .why__lead {
+    font-family: var(--ff-body);
+    font-size: var(--fs-body-r);
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0 auto;
+    max-width: 68ch;
+  }
+
+  /* 3-column layout: features | image | features */
+  .why__grid {
+    display: grid;
+    grid-template-columns: 1fr minmax(300px, 640px) 1fr;
+    gap: clamp(16px, 3vw, 24px);
+    align-items: start;
+    margin-top: clamp(16px, 3vw, 24px);
+  }
+
+  .why__media {
+    margin: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
+  }
+  .why__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+  }
+
+  .why__list {
+    display: grid;
+    gap: clamp(10px, 2vw, 16px);
+  }
+
+  .feat {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 12px;
+    align-items: start;
+    background: var(--neutral-lightest);
+    border: 1px solid var(--neutral-lighter);
+    border-radius: 4px;
+    padding: 14px 16px;
+  }
+
+  .feat__icon {
+    width: 24px;
+    height: 24px;
+    display: inline-grid;
+    place-items: center;
+    color: var(--primary);
+  }
+
+  .feat__title {
+    margin: 0 0 4px 0;
+    font-family: var(--ff-heading);
+    font-size: var(--fs-h3-sm); /* 20px per tokens */
+    font-weight: var(--fw-bold);
+    color: var(--primary);
+    line-height: 1.2;
+  }
+
+  .feat__text {
+    margin: 0;
+    font-family: var(--ff-body);
+    font-size: var(--fs-body-s); /* 14px per tokens */
+    line-height: 1.5;
+    color: var(--text);
+    max-width: 52ch;
+  }
+
+  .why__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(20px, 4vw, 32px);
+  }
+
+  /* Tablet: stack features under the image in two columns */
+  @media (max-width: 992px) {
+    .why__grid {
+      grid-template-columns: 1fr;
+    }
+    .why__list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Phone: single column features */
+  @media (max-width: 576px) {
+    .why__list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
