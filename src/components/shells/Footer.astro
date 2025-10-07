@@ -145,14 +145,16 @@
   <!-- Bottom Row -->
   <div class="footer__bottom container">
     <p class="footer__copy">
-      &copy; 2025 PerfectView. All rights reserved.
-      <a
-        href="https://hekateknyc.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Website developed by Hekatek
-      </a>
+      &copy; 2025 PerfectView. All rights reserved. <span class="development"
+        >Website developed by
+        <a
+          href="https://hekateknyc.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Hekatek
+        </a>
+      </span>
     </p>
     <div class="footer__legal">
       <a href="#" class="footer__legal-link">Terms of Service</a>
@@ -238,6 +240,18 @@
     color: var(--grey-10);
   }
 
+  .footer__link:hover,
+  .footer__legal a:hover {
+    color: var(--neutral);
+  }
+
+  /* Focus states (keyboard/screen reader users) */
+  .footer__link:focus,
+  .footer__legal a:focus {
+    outline: 2px solid var(--primary-color, #2b6cb0);
+    outline-offset: 2px;
+  }
+
   .footer__contact-item {
     display: flex;
     align-items: start;
@@ -283,6 +297,14 @@
     justify-content: space-around;
     width: 100%;
     padding-top: 24px;
+  }
+
+  .development {
+    color: var(--neutral);
+  }
+
+  .development a:hover {
+    color: var(--neutral-light);
   }
 
   /* --- Media Queries --- */
