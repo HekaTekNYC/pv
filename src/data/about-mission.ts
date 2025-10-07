@@ -1,4 +1,4 @@
-export const infoCardsAbout = [
+export const missionCardsData = [
   {
     headerClass: "small-heading",
     icon: "/icons/aim-khki.svg",

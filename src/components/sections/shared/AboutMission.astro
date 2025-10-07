@@ -1,12 +1,12 @@
 ---
-import InfoCard from "../ui/InfoCard.astro";
-import { infoCardsAbout } from "../../data/info-cards.ts";
-import Button from "../ui/Button.astro";
+import MissionCard from "../../ui/MissionCard.astro";
+import { missionCardsData } from "../../../data/about-mission";
+import Button from "../../ui/Button.astro";
 ---
 
-<section class="lp-about">
-  <div class="lp-about__container container">
-    <div class="lp-about__image-container">
+<section class="about-mission">
+  <div class="about-mission__container container">
+    <div class="about-mission__image-container">
       <picture>
         <!-- Mobile WebP -->
         <source
@@ -35,15 +35,15 @@ import Button from "../ui/Button.astro";
         <img
           src="/images/about-lp-dsk.png"
           alt="Layered shades on office windows"
-          class="lp-about__image"
+          class="about-mission__image"
           width="797"
           height="1057"
         />
       </picture>
     </div>
-    <div class="lp-about__content">
-      <h2 class="lp-about__title">Family-Owned, Trusted for 15 Years</h2>
-      <div class="lp-about__paragraph">
+    <div class="about-mission__content">
+      <h2 class="about-mission__title">Family-Owned, Trusted for 15 Years</h2>
+      <div class="about-mission__paragraph">
         <p>
           We’re a local, family-run business delivering beautiful, custom window
           coverings with personalized service and professional precision.
@@ -55,10 +55,10 @@ import Button from "../ui/Button.astro";
         </p>
       </div>
 
-      <div class="lp-about__cards">
+      <div class="about-mission__cards">
         {
-          infoCardsAbout.map((card) => (
-            <InfoCard
+          missionCardsData.map((card) => (
+            <MissionCard
               icon={card.icon}
               title={card.title}
               alt={card.alt}
@@ -76,37 +76,37 @@ import Button from "../ui/Button.astro";
 </section>
 
 <style>
-  .lp-about {
+  .about-mission {
     padding: 60px 0;
   }
 
-  .lp-about__container {
+  .about-mission__container {
     display: flex;
     flex-direction: column;
     gap: 35px;
   }
 
-  .lp-about__paragraph {
+  .about-mission__paragraph {
     padding: 24px 0;
   }
 
-  .lp-about__paragraph p:first-child {
+  .about-mission__paragraph p:first-child {
     padding-bottom: 12px;
   }
 
-  .lp-about__cards {
+  .about-mission__cards {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
     padding-bottom: 32px;
   }
 
-  .lp-about__image-container {
+  .about-mission__image-container {
     display: block;
     max-width: 100%;
   }
 
-  .lp-about__image {
+  .about-mission__image {
     display: block;
     width: 100%;
     height: auto;
@@ -114,10 +114,10 @@ import Button from "../ui/Button.astro";
   }
   /* --- Media Queries --- */
   @media (min-width: 690px) {
-    .lp-about__title {
+    .about-mission__title {
       width: 100%;
     }
-    .lp-about__cards {
+    .about-mission__cards {
       justify-content: left;
       align-items: stretch;
       gap: 16px;
@@ -126,7 +126,7 @@ import Button from "../ui/Button.astro";
   }
 
   @media (min-width: 768px) {
-    .lp-about__image {
+    .about-mission__image {
       height: 420px;
       width: 100%;
       object-fit: cover;
@@ -134,19 +134,19 @@ import Button from "../ui/Button.astro";
     }
   }
   @media (min-width: 1024px) {
-    .lp-about__container {
+    .about-mission__container {
       flex-direction: row;
       align-items: center;
       gap: 40px;
     }
-    .lp-about__image-container {
+    .about-mission__image-container {
       width: 50%;
     }
-    .lp-about__image {
+    .about-mission__image {
       width: 100%;
       height: auto;
     }
-    .lp-about__content {
+    .about-mission__content {
       width: 630px;
     }
   }
