@@ -3,6 +3,7 @@ import Main from "../layouts/Main.astro";
 import Hero from "../components/sections/Hero.astro";
 import CategoryGrid from "../components/sections/Categorygrid.astro";
 import Carousel from "../components/Carousel.astro";
+import WhyUs from "../components/sections/WhyUs.astro";
 
 const categories = [
   {
@@ -72,6 +73,6 @@ const images = [
     items={categories}
     activeIndex={-1}
   />
-  <!-- <CategoryGrid items={categories} activeIndex={-1} /> -->
+  <WhyUs />
   <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" />
 </Main>
