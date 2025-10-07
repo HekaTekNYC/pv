@@ -1,4 +1,6 @@
-<footer class="footer">
+<a href="#footer-nav" class="skip-link">Skip to footer navigation</a>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<footer class="footer" role="contentinfo" role="contentinfo" id="footer-nav">
   <div class="footer__top container">
     <div class="footer__column-top">
       <!-- Column 1 -->
@@ -20,9 +22,7 @@
           <a
             href="https://www.facebook.com/profile.php?id=61577185517312"
             class="footer__social-link"
-            aria-label="
-            Facebook
-            Link"
+            aria-label="Visit our Facebook page"
             title="Visit our Facebook page"
             target="_blank"
             rel="noopener noreferrer"
@@ -56,39 +56,50 @@
 
       <!-- Column 2 -->
       <div class="footer__column">
-        <h3 class="footer__heading big-heading">Quick Links</h3>
-        <ul class="footer__links">
-          <li><a href="/products" class="footer__link">Proucts</a></li>
-          <li><a href="/services" class="footer__link">Services</a></li>
-          <li><a href="/about" class="footer__link">About</a></li>
-          <li><a href="/projects" class="footer__link">Projects</a></li>
-          <li><a href="/contact" class="footer__link">Contact</a></li>
-        </ul>
+        <nav aria-label="Quick links">
+          <h3 class="footer__heading big-heading">Quick Links</h3>
+          <ul class="footer__links">
+            <li><a href="/products" class="footer__link">Products</a></li>
+            <li><a href="/services" class="footer__link">Services</a></li>
+            <li><a href="/about" class="footer__link">About</a></li>
+            <li><a href="/projects" class="footer__link">Projects</a></li>
+            <li><a href="/contact" class="footer__link">Contact</a></li>
+          </ul>
+        </nav>
       </div>
     </div>
     <div class="footer__column-bottom">
       <!-- Column 3 -->
       <div class="footer__column">
-        <h3 class="footer__heading big-heading">Top Services</h3>
-        <ul class="footer__links">
-          <li>
-            <a href="/services" class="footer__link"
-              >Professional Installation</a
-            >
-          </li>
-          <li><a href="/services" class="footer__link">Design Guidance</a></li>
-          <li>
-            <a href="/contact" class="footer__link">Free Consultation / Quote</a
-            >
-          </li>
-          <li>
-            <a href="/services" class="footer__link">Motorized Solutions</a>
-          </li>
-        </ul>
+        <nav aria-label="Top services">
+          <h3 class="footer__heading big-heading">Top Services</h3>
+          <ul class="footer__links">
+            <li>
+              <a href="/services" class="footer__link"
+                >Professional Installation</a
+              >
+            </li>
+            <li>
+              <a href="/services" class="footer__link">Design Guidance</a>
+            </li>
+            <li>
+              <a href="/contact" class="footer__link"
+                >Free Consultation / Quote</a
+              >
+            </li>
+            <li>
+              <a href="/services" class="footer__link">Motorized Solutions</a>
+            </li>
+          </ul>
+        </nav>
       </div>
 
       <!-- Column 4 -->
-      <div class="footer__column">
+      <div
+        class="footer__column"
+        role="contentinfo"
+        aria-label="Contact information"
+      >
         <h3 class="footer__heading big-heading">Contact</h3>
         <ul class="footer__links">
           <li class="footer__contact-item">
@@ -121,7 +132,7 @@
               width="20px"
               height="20px"
             />
-            <span class="footer__link footer__link--text">
+            <span class="footer__text">
               Proudly serving Northern Utah and surrounding areas
             </span>
           </li>
@@ -151,6 +162,29 @@
 </footer>
 
 <style>
+  /* Ensure focus states are visible */
+  .footer__link:focus,
+  .footer__social-link:focus,
+  .footer__legal-link:focus {
+    outline: 2px solid var(--neutral-lightest);
+    outline-offset: 2px;
+  }
+
+  /* Skip link styles */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1000;
+  }
+
+  .skip-link:focus {
+    top: 6px;
+  }
   .footer {
     padding: 60px 0;
     height: auto;
@@ -211,8 +245,9 @@
     padding-bottom: 2px;
   }
 
-  .footer__link--text {
+  .footer__text {
     line-height: 1.5;
+    color: var(--grey-10);
   }
 
   /* Footer Bottom - Legal */
