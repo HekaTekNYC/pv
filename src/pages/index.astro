@@ -3,7 +3,8 @@ import Main from "../layouts/Main.astro";
 import Hero from "../components/sections/landing/Hero.astro";
 import AboutMission from "../components/sections/shared/AboutMission.astro";
 import LandingProducts from "../components/sections/landing/LandingProducts.astro";
-import Carousel from "../components/Carousel.astro";
+import LandingServices from "../components/sections/landing/LandingServices.astro";
+// import Carousel from "../components/Carousel.astro";
 
 const categories = [
   {
@@ -74,7 +75,7 @@ const images = [
     items={categories}
     activeIndex={-1}
   />
+  <LandingServices />
 
-  <!-- <CategoryGrid items={categories} activeIndex={-1} /> -->
-  <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" />
+  <!-- <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" /> -->
 </Main>
