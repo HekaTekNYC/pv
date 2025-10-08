@@ -111,6 +111,14 @@ a {
   width: 100%;
 }
 
+.container--wide {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: clamp(16px, 5vw, 64px);
+  padding-right: clamp(16px, 5vw, 64px);
+  width: 100%;
+}
+
 /* --- Media Queries --- */
 @media (min-width: 768px) {
 }
