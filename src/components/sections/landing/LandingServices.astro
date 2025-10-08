@@ -15,18 +15,17 @@ import { lpServicesData } from "../../../data/lp-services-data";
     <div class="lp-services__cards">
       {
         lpServicesData.map((card) => (
-          <div class="lp-services__card">
-            <a href={card.href}>
-              <img
-                src={card.imgSrc}
-                alt={card.imgAlt}
-                class="lp-services__card-img"
-                width="339"
-                height="421"
-              />
-            </a>
+          <a href={card.href} class="lp-services__card">
+            <img
+              src={card.imgSrc}
+              alt={card.imgAlt}
+              class="lp-services__card-img"
+              width="339"
+              height="421"
+            />
+
             <div class="lp-services__card-content">
-              <a href={card.href} class="lp-services__card-header">
+              <div class="lp-services__card-header">
                 <h3 class="lp-services__card-title big-heading">
                   {card.title}
                 </h3>
@@ -43,10 +42,10 @@ import { lpServicesData } from "../../../data/lp-services-data";
                     />
                   </svg>
                 </div>
-              </a>
+              </div>
               <p class="lp-services__card-desc">{card.desc}</p>
             </div>
-          </div>
+          </a>
         ))
       }
     </div>
@@ -54,6 +53,13 @@ import { lpServicesData } from "../../../data/lp-services-data";
 </section>
 
 <style>
+  @media (prefers-reduced-motion: reduce) {
+    .lp-services__card-title,
+    .lp-services__arrow,
+    .lp-services__arrow svg {
+      transition: none;
+    }
+  }
   .lp-services {
     padding: 60px 0;
     background-color: var(--grey-10);
@@ -80,6 +86,11 @@ import { lpServicesData } from "../../../data/lp-services-data";
     overflow: hidden;
   }
 
+  .lp-services__card:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+  }
+
   .lp-services__card-img {
     object-fit: cover;
     width: 100%;
@@ -102,7 +113,8 @@ import { lpServicesData } from "../../../data/lp-services-data";
   .lp-services__card-title {
     transition: font-size 0.3s ease;
   }
-  .lp-services__card-title:hover {
+
+  .lp-services__card:hover .lp-services__card-title {
     font-size: 26px;
   }
 
@@ -118,14 +130,15 @@ import { lpServicesData } from "../../../data/lp-services-data";
     color: var(--primary);
   }
 
-  .lp-services__card-header:hover .lp-services__arrow {
+  .lp-services__card:hover .lp-services__arrow {
     transform: translateX(3px);
   }
 
-  .lp-services__card-header:hover .lp-services__arrow svg {
+  .lp-services__card:hover .lp-services__arrow svg {
     color: var(--secondary);
     transform: rotate(45deg);
   }
+
   .lp-services__card-desc {
     padding-top: 10px;
   }
