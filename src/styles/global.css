@@ -106,16 +106,14 @@ a {
 .container {
   max-width: 1300px;
   margin: 0 auto;
-  padding-left: clamp(16px, 5vw, 64px);
-  padding-right: clamp(16px, 5vw, 64px);
+  padding: clamp(60px, 8vw, 100px) clamp(16px, 5vw, 64px);
   width: 100%;
 }
 
 .container--wide {
   max-width: 1440px;
   margin: 0 auto;
-  padding-left: clamp(16px, 5vw, 64px);
-  padding-right: clamp(16px, 5vw, 64px);
+  padding: clamp(60px, 8vw, 100px) clamp(16px, 5vw, 64px);
   width: 100%;
 }
 

@@ -61,7 +61,6 @@ import { lpServicesData } from "../../../data/lp-services-data";
     }
   }
   .lp-services {
-    padding: 60px 0;
     background-color: var(--grey-10);
   }
   .lp-services__header {
@@ -74,7 +73,7 @@ import { lpServicesData } from "../../../data/lp-services-data";
   .lp-services__cards {
     display: grid;
     grid-template-columns: 1fr;
-    align-items: center;
+    align-items: start;
     gap: 34px;
   }
 
@@ -108,14 +107,6 @@ import { lpServicesData } from "../../../data/lp-services-data";
     justify-content: space-between;
     align-items: start;
     width: 100%;
-  }
-
-  .lp-services__card-title {
-    transition: font-size 0.3s ease;
-  }
-
-  .lp-services__card:hover .lp-services__card-title {
-    font-size: 26px;
   }
 
   .lp-services__arrow {
@@ -159,6 +150,7 @@ import { lpServicesData } from "../../../data/lp-services-data";
       display: flex;
       align-items: end;
       width: 100%;
+      padding-bottom: 60px;
       gap: 20px;
     }
     .lp-services__header h2 {
@@ -179,8 +171,12 @@ import { lpServicesData } from "../../../data/lp-services-data";
   }
 
   @media (min-width: 1200px) {
+    .lp-services__header {
+      display: flex;
+      justify-content: space-between;
+    }
     .lp-services__header h2 {
-      width: 60%;
+      width: 50%;
     }
     .lp-services__header p {
       width: 40%;
