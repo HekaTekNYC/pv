@@ -1,7 +1,7 @@
 ---
 import Button from "../../ui/Button.astro";
 
-export interface CategoryCard {
+export interface Categorylp__products__Card {
   title: string;
   image: string;
   alt: string;
@@ -12,8 +12,8 @@ export interface CategoryCard {
 type Props = {
   heading?: string;
   subheading?: string;
-  items: CategoryCard[];
-  /** which card starts with the overlay text visible (0-based) */
+  items: Categorylp__products__Card[];
+  /** which lp__products__card starts with the overlay text visible (0-based) */
   activeIndex?: number; // -1 = none open
 };
 
@@ -25,23 +25,25 @@ const {
 } = Astro.props as Props;
 ---
 
-<section class="cats" aria-labelledby="cats-title">
+<section class="lp__products__cats" aria-labelledby="lp__products__cats-title">
   <div class="container">
-    <header class="cats__header">
-      <h2 id="cats-title" class="cats__title">{heading}</h2>
-      {subheading && <p class="cats__sub">{subheading}</p>}
+    <header class="lp__products__cats__header">
+      <h2 id="lp__products__cats-title" class="lp__products__cats__title">
+        {heading}
+      </h2>
+      {subheading && <p class="lp__products__cats__sub">{subheading}</p>}
     </header>
 
-    <ul class="cats__grid" role="list">
+    <ul class="lp__products__cats__grid" role="list">
       {
         items.map((it, i) => (
-          <li class="cats__item">
+          <li class="lp__products__cats__item">
             <a
-              class={`card${i === activeIndex ? " is-active" : ""}`}
+              class={`lp__products__card${i === activeIndex ? " is-active" : ""}`}
               href={it.href}
               aria-label={`${it.title}${it.blurb ? ": " + it.blurb : ""}`}
             >
-              <figure class="card__media">
+              <figure class="lp__products__card__media">
                 <img
                   src={it.image}
                   alt={it.alt}
@@ -52,9 +54,11 @@ const {
                 />
               </figure>
 
-              <div class="card__overlay">
-                <h3 class="card__title">{it.title}</h3>
-                {it.blurb && <p class="card__blurb">{it.blurb}</p>}
+              <div class="lp__products__card__overlay">
+                <h3 class="lp__products__card__title">{it.title}</h3>
+                {it.blurb && (
+                  <p class="lp__products__card__blurb">{it.blurb}</p>
+                )}
               </div>
             </a>
           </li>
@@ -62,39 +66,40 @@ const {
       }
     </ul>
 
-    <div class="cats__cta">
+    <div class="lp__products__cats__cta">
       <Button color="primary" href="/products">Explore All Products</Button>
     </div>
   </div>
 </section>
 
 <style>
-  :root {
-    --gap: 1.25rem;
-    --radius: 4px;
-  }
-
-  /* Section uses global container gutters; only vertical padding here */
-  .cats {
+  /* Section uses global container; only vertical spacing here */
+  .lp__products__cats {
     padding-block: clamp(24px, 5vw, 64px);
-    background: var(--white); /* matches site bg */
+    background: var(--white);
   }
 
-  /* Header: 2 cols desktop, stacked mobile */
-  .cats__header {
+  /* Header: stacked by default; split at larger screens */
+  .lp__products__cats__header {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--gap);
+    grid-template-columns: 1fr;
+    gap: 16px;
     align-items: start;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+  }
+  @media (min-width: 900px) {
+    .lp__products__cats__header {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 50px;
+    }
   }
 
-  /* rely on global h2 token styles; just zero margins */
-  .cats__title {
+  .lp__products__cats__title {
     margin: 0;
   }
 
-  .cats__sub {
+  .lp__products__cats__sub {
     margin: 6px 0 0;
     color: var(--text);
     font-family: var(--ff-body);
@@ -103,32 +108,43 @@ const {
     max-width: 56ch;
   }
 
-  /* Grid */
-  .cats__grid {
+  /* Grid — mobile-first */
+  .lp__products__cats__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--gap);
+    grid-template-columns: 1fr; /* mobile: one column */
+    gap: 16px; /* mobile spacing requirement */
     list-style: none;
     padding: 0;
     margin: 0;
   }
-
-  .cats__item {
-    /* hook for future if needed */
+  @media (min-width: 561px) {
+    .lp__products__cats__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 900px) {
+    .lp__products__cats__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (min-width: 1200px) {
+    .lp__products__cats__grid {
+      gap: 28px;
+    } /* desktop spacing requirement */
   }
 
-  .card {
+  .lp__products__card {
     position: relative;
     display: block;
     overflow: hidden;
-    border-radius: var(--radius);
-    background: var(--grey-50); /* brand neutral as image fallback */
+    border-radius: 4px;
+    background: var(--grey-50); /* fallback while image loads */
   }
 
-  .card__media {
+  .lp__products__card__media {
     aspect-ratio: 4 / 3;
   }
-  .card__media img {
+  .lp__products__card__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -136,7 +152,7 @@ const {
   }
 
   /* Overlay */
-  .card__overlay {
+  .lp__products__card__overlay {
     position: absolute;
     inset: 0;
     display: grid;
@@ -154,24 +170,23 @@ const {
       transform 0.22s ease;
   }
 
-  /* Title + blurb sizes use global type tokens */
-  .card__title {
+  .lp__products__card__title {
     margin: 0;
     font-family: var(--ff-heading);
-    font-size: var(--fs-h3-sm); /* 20px per tokens */
+    font-size: var(--fs-h3-sm);
     font-weight: var(--fw-bold);
     color: var(--white);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     line-height: 1.2;
   }
 
-  .card__blurb {
+  .lp__products__card__blurb {
     margin: 6px 0 0;
     font-family: var(--ff-body);
-    font-size: var(--fs-body-s); /* 14px per tokens */
+    font-size: var(--fs-body-s);
     line-height: 1.4;
     max-width: 38ch;
-    color: var(--white); /* same as title (per your request) */
+    color: var(--white); /* same color/opacity as title */
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 
     opacity: 0;
@@ -183,19 +198,17 @@ const {
       max-height 0.25s ease;
   }
 
-  /* Desktop/tablet: blurb appears on hover/focus or active */
-  .card.is-active .card__blurb,
-  .card:hover .card__blurb,
-  .card:focus-visible .card__blurb {
+  .lp__products__card.is-active .lp__products__card__blurb,
+  .lp__products__card:hover .lp__products__card__blurb,
+  .lp__products__card:focus-visible .lp__products__card__blurb {
     opacity: 1;
     max-height: 220px;
     transform: translateY(0);
   }
 
-  /* Stronger gradient on hover/active if desired */
-  .card:hover .card__overlay,
-  .card:focus-visible .card__overlay,
-  .card.is-active .card__overlay {
+  .lp__products__card:hover .lp__products__card__overlay,
+  .lp__products__card:focus-visible .lp__products__card__overlay,
+  .lp__products__card.is-active .lp__products__card__overlay {
     background:
       linear-gradient(
         360deg,
@@ -205,74 +218,37 @@ const {
       linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.55) 100%);
   }
 
-  .cats__cta {
+  .lp__products__cats__cta {
     display: flex;
     justify-content: center;
     margin-top: 40px;
   }
 
-  /* ===== Mobile styles (keep your current behavior) ===== */
+  /* Mobile-specific tweaks */
   @media (max-width: 560px) {
-    .cats__header {
-      grid-template-columns: 1fr;
-      gap: 8px;
-    }
-    .cats__sub {
+    .lp__products__cats__sub {
       font-size: var(--fs-body-s);
       line-height: 1.55;
       max-width: none;
     }
-
-    .cats__grid {
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
-    .card__media {
+    /* Optional: taller media look on phones */
+    .lp__products__card__media {
       aspect-ratio: 16 / 10;
     }
 
-    /* If your current mobile design keeps overlay visible, keep it: */
-    .card__overlay {
+    /* If you want overlay copy always visible on touch devices, keep this: */
+    .lp__products__card__overlay {
       background: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0) 35%,
         rgba(0, 0, 0, 0.65) 100%
       );
-      opacity: 1;
-      transform: none;
-      padding: 12px;
-    }
-    .card__title {
-      font-size: var(--fs-h3-sm);
-    }
-    .card__blurb {
-      opacity: 1;
-      max-height: none;
-      transform: none;
-      font-size: var(--fs-body-s);
-      line-height: 1.45;
-      margin-top: 4px;
     }
   }
 
-  /* Tablet breakpoint: 2 columns grid */
-  @media (min-width: 561px) and (max-width: 900px) {
-    .cats__header {
-      grid-template-columns: 1fr;
-    }
-    .cats__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (min-width: 900px) {
-    .cats__header {
-      margin-bottom: 40px;
-    }
-  }
   @media (prefers-reduced-motion: reduce) {
-    .card__blurb,
-    .card__overlay {
+    .lp__products__card__blurb,
+    .lp__products__card__overlay {
       transition: none;
     }
   }
