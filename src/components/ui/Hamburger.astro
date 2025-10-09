@@ -14,7 +14,7 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
   aria-expanded={isOpen}
   type="button"
 >
-  <svg viewBox="0 0 90 100" width="65" height="65">
+  <svg viewBox="0 0 90 100" width="55" height="55">
     <path
       class="ham-line ham-line-top"
       d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40"
@@ -45,8 +45,8 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
   .ham-line {
     fill: none;
     transition:
-      stroke-dasharray 1000ms,
-      stroke-dashoffset 1000ms;
+      stroke-dasharray 400ms,
+      stroke-dashoffset 400ms;
     stroke: currentColor;
     stroke-width: 5.5;
     stroke-linecap: round;
