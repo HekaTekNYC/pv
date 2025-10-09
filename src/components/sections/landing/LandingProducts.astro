@@ -1,7 +1,7 @@
 ---
 import Button from "../../ui/Button.astro";
 
-export interface CategoryCard {
+export interface Categorylp__products__Card {
   title: string;
   image: string;
   alt: string;
@@ -12,8 +12,8 @@ export interface CategoryCard {
 type Props = {
   heading?: string;
   subheading?: string;
-  items: CategoryCard[];
-  /** which card starts with the overlay text visible (0-based) */
+  items: Categorylp__products__Card[];
+  /** which lp__products__card starts with the overlay text visible (0-based) */
   activeIndex?: number; // -1 = none open
 };
 
@@ -39,11 +39,11 @@ const {
         items.map((it, i) => (
           <li class="lp__products__cats__item">
             <a
-              class={`card${i === activeIndex ? " is-active" : ""}`}
+              class={`lp__products__card${i === activeIndex ? " is-active" : ""}`}
               href={it.href}
               aria-label={`${it.title}${it.blurb ? ": " + it.blurb : ""}`}
             >
-              <figure class="card__media">
+              <figure class="lp__products__card__media">
                 <img
                   src={it.image}
                   alt={it.alt}
@@ -54,9 +54,11 @@ const {
                 />
               </figure>
 
-              <div class="card__overlay">
-                <h3 class="card__title">{it.title}</h3>
-                {it.blurb && <p class="card__blurb">{it.blurb}</p>}
+              <div class="lp__products__card__overlay">
+                <h3 class="lp__products__card__title">{it.title}</h3>
+                {it.blurb && (
+                  <p class="lp__products__card__blurb">{it.blurb}</p>
+                )}
               </div>
             </a>
           </li>
@@ -131,7 +133,7 @@ const {
     } /* desktop spacing requirement */
   }
 
-  .card {
+  .lp__products__card {
     position: relative;
     display: block;
     overflow: hidden;
@@ -139,10 +141,10 @@ const {
     background: var(--grey-50); /* fallback while image loads */
   }
 
-  .card__media {
+  .lp__products__card__media {
     aspect-ratio: 4 / 3;
   }
-  .card__media img {
+  .lp__products__card__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -150,7 +152,7 @@ const {
   }
 
   /* Overlay */
-  .card__overlay {
+  .lp__products__card__overlay {
     position: absolute;
     inset: 0;
     display: grid;
@@ -168,7 +170,7 @@ const {
       transform 0.22s ease;
   }
 
-  .card__title {
+  .lp__products__card__title {
     margin: 0;
     font-family: var(--ff-heading);
     font-size: var(--fs-h3-sm);
@@ -178,7 +180,7 @@ const {
     line-height: 1.2;
   }
 
-  .card__blurb {
+  .lp__products__card__blurb {
     margin: 6px 0 0;
     font-family: var(--ff-body);
     font-size: var(--fs-body-s);
@@ -196,17 +198,17 @@ const {
       max-height 0.25s ease;
   }
 
-  .card.is-active .card__blurb,
-  .card:hover .card__blurb,
-  .card:focus-visible .card__blurb {
+  .lp__products__card.is-active .lp__products__card__blurb,
+  .lp__products__card:hover .lp__products__card__blurb,
+  .lp__products__card:focus-visible .lp__products__card__blurb {
     opacity: 1;
     max-height: 220px;
     transform: translateY(0);
   }
 
-  .card:hover .card__overlay,
-  .card:focus-visible .card__overlay,
-  .card.is-active .card__overlay {
+  .lp__products__card:hover .lp__products__card__overlay,
+  .lp__products__card:focus-visible .lp__products__card__overlay,
+  .lp__products__card.is-active .lp__products__card__overlay {
     background:
       linear-gradient(
         360deg,
@@ -230,12 +232,12 @@ const {
       max-width: none;
     }
     /* Optional: taller media look on phones */
-    .card__media {
+    .lp__products__card__media {
       aspect-ratio: 16 / 10;
     }
 
     /* If you want overlay copy always visible on touch devices, keep this: */
-    .card__overlay {
+    .lp__products__card__overlay {
       background: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0) 35%,
@@ -245,8 +247,8 @@ const {
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .card__blurb,
-    .card__overlay {
+    .lp__products__card__blurb,
+    .lp__products__card__overlay {
       transition: none;
     }
   }
