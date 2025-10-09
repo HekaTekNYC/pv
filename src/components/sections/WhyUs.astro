@@ -1,17 +1,17 @@
 ---
-import Button from "../ui/Button.astro"; // adjust path as needed
+import Button from "../ui/Button.astro";
 
 export interface Feature {
   title: string;
   text: string;
-  icon?: string; // optional icon path (24x24). Decorative.
-  alt?: string; // optional alt if icon is meaningful; otherwise decorative.
+  icon?: string; 
+  alt?: string;
 }
 
 interface Props {
   heading?: string;
   subheading?: string;
-  imageSrc?: string;
+  imageSrc?: string; 
   imageAlt?: string;
   leftFeatures?: Feature[];
   rightFeatures?: Feature[];
@@ -22,7 +22,7 @@ interface Props {
 const {
   heading = "Why Homeowners and Designers Choose Us",
   subheading = "We combine expert knowledge, design-focused thinking, and family-level care to deliver window treatments that perform beautifully, last long, and perfectly suit your space and lifestyle.",
-  imageSrc = "../images/WhyUs.jpg",
+  imageSrc = "/images/WhyUs.jpg",
   imageAlt = "Living room with custom window treatments",
   leftFeatures = [
     {
@@ -66,40 +66,45 @@ const {
 <section class="why" aria-labelledby="why-title">
   <div class="container">
     <header class="why__header">
-      <h2 id="why-title" class="why__title">{heading}</h2>
+      <h2 class="why__h2" id="title">{heading}</h2>
       <p class="why__lead">{subheading}</p>
     </header>
 
     <div class="why__grid">
-      <!-- Left feature stack -->
-      <ul class="why__list">
+      <!-- Left stack (3 cards) -->
+      <ul class="why__list" role="list">
         {
           leftFeatures.map((f) => (
-            <li class="feat">
+            <li class="why__feat">
               {f.icon ? (
                 <img
-                  class="feat__icon"
+                  class="why__feat__icon"
                   src={f.icon}
                   alt={f.alt ?? ""}
                   aria-hidden={f.alt ? "false" : "true"}
                   width="24"
                   height="24"
+                  loading="lazy"
+                  decoding="async"
                 />
               ) : (
-                <span class="feat__icon" aria-hidden="true">
+                <span
+                  class="why__feat__icon why__feat__icon--fallback"
+                  aria-hidden="true"
+                >
                   💠
                 </span>
               )}
-              <div class="feat__body">
-                <h3 class="feat__title">{f.title}</h3>
-                <p class="feat__text">{f.text}</p>
+              <div class="why__feat__body">
+                <h3 class="small-heading why__feat__title">{f.title}</h3>
+                <p class="why__feat__text">{f.text}</p>
               </div>
             </li>
           ))
         }
       </ul>
 
-      <!-- Center image -->
+      <!-- Center image (mobile: appears after first 3 cards) -->
       <figure class="why__media">
         <img
           src={imageSrc}
@@ -111,28 +116,33 @@ const {
         />
       </figure>
 
-      <!-- Right feature stack -->
-      <ul class="why__list">
+      <!-- Right stack (remaining 3 cards) -->
+      <ul class="why__list" role="list">
         {
           rightFeatures.map((f) => (
-            <li class="feat">
+            <li class="why__feat">
               {f.icon ? (
                 <img
-                  class="feat__icon"
+                  class="why__feat__icon"
                   src={f.icon}
                   alt={f.alt ?? ""}
                   aria-hidden={f.alt ? "false" : "true"}
                   width="24"
                   height="24"
+                  loading="lazy"
+                  decoding="async"
                 />
               ) : (
-                <span class="feat__icon" aria-hidden="true">
+                <span
+                  class="why__feat__icon why__feat__icon--fallback"
+                  aria-hidden="true"
+                >
                   💠
                 </span>
               )}
-              <div class="feat__body">
-                <h3 class="feat__title">{f.title}</h3>
-                <p class="feat__text">{f.text}</p>
+              <div class="why__feat__body">
+                <h3 class="small-heading why__feat__title">{f.title}</h3>
+                <p class="why__feat__text">{f.text}</p>
               </div>
             </li>
           ))
@@ -147,20 +157,29 @@ const {
 </section>
 
 <style>
-  /* Section shell – uses global tokens + container gutters */
+  /* Section-scoped knobs */
+  .why {
+    /* Desktop geometry from Figma */
+    --col-left: 360px;
+    --col-img: 640px;
+    --col-right: 360px;
+    --grid-gap: 24px;
+
+    /* Cards */
+    --feat-h: 140px;
+    --list-gap: 16px;
+  }
+
   .why {
     background: var(--white);
-    padding-block: clamp(32px, 6vw, 88px);
   }
 
   .why__header {
     text-align: center;
-    margin-bottom: clamp(20px, 4vw, 36px);
+    margin-bottom: clamp(24px, 4vw, 40px);
   }
-
-  /* h2 inherits global styles (font, size, weight, color). Just zero margins. */
-  .why__title {
-    margin: 0 0 8px 0;
+  .why__h2 {
+    padding-bottom: 14px;
   }
 
   .why__lead {
@@ -169,14 +188,14 @@ const {
     line-height: 1.6;
     color: var(--text);
     margin: 0 auto;
-    max-width: 68ch;
+    max-width: 72ch;
   }
 
-  /* 3-column layout: features | image | features */
+  /* ============== Base (<768px): 3 cards → image → 3 cards ============== */
   .why__grid {
     display: grid;
-    grid-template-columns: 1fr minmax(300px, 640px) 1fr;
-    gap: clamp(16px, 3vw, 24px);
+    grid-template-columns: 1fr; /* true mobile-first */
+    gap: var(--list-gap);
     align-items: start;
     margin-top: clamp(16px, 3vw, 24px);
   }
@@ -188,19 +207,20 @@ const {
     box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
   }
   .why__media img {
-    display: block;
     width: 100%;
     height: auto;
     object-fit: cover;
     aspect-ratio: 4 / 3;
+    display: block;
   }
 
   .why__list {
     display: grid;
-    gap: clamp(10px, 2vw, 16px);
+    gap: var(--list-gap);
+    width: 100%;
   }
 
-  .feat {
+  .why__feat {
     display: grid;
     grid-template-columns: 24px 1fr;
     gap: 12px;
@@ -209,54 +229,127 @@ const {
     border: 1px solid var(--neutral-lighter);
     border-radius: 4px;
     padding: 14px 16px;
+    height: var(--feat-h);
+    box-sizing: border-box;
   }
 
-  .feat__icon {
+  .why__feat__icon {
     width: 24px;
     height: 24px;
+    display: block;
+    object-fit: contain;
+  }
+  .why__feat__icon--fallback {
     display: inline-grid;
     place-items: center;
+    font-size: 18px;
     color: var(--primary);
   }
 
-  .feat__title {
+  /* Overflow resilience for fixed-height cards */
+  .why__feat__title {
     margin: 0 0 4px 0;
-    font-family: var(--ff-heading);
-    font-size: var(--fs-h3-sm); /* 20px per tokens */
-    font-weight: var(--fw-bold);
     color: var(--primary);
-    line-height: 1.2;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-
-  .feat__text {
+  .why__feat__text {
     margin: 0;
     font-family: var(--ff-body);
-    font-size: var(--fs-body-s); /* 14px per tokens */
+    font-size: var(--fs-body-s);
     line-height: 1.5;
     color: var(--text);
     max-width: 52ch;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .why__cta {
     display: flex;
     justify-content: center;
-    margin-top: clamp(20px, 4vw, 32px);
+    margin-top: 32px; mobile & tablet
   }
 
-  /* Tablet: stack features under the image in two columns */
-  @media (max-width: 992px) {
+  /* ============== Tablet (768–1199px): image full-width, two stacks ============== */
+  @media (min-width: 768px) and (max-width: 1199px) {
     .why__grid {
+      grid-template-columns: 1fr 1fr; /* two equal columns for the lists */
+      gap: 20px;
+      justify-content: stretch;
+      align-items: start;
+    }
+
+    .why__media {
+      grid-column: 1 / -1; /* image on its own row */
+      grid-row: 1;
+      height: auto;
+    }
+    .why__media img {
+      height: auto;
+    }
+
+    .why__list:first-of-type {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .why__list:last-of-type {
+      grid-column: 2;
+      grid-row: auto;
+    }
+
+    .why__list {
       grid-template-columns: 1fr;
     }
-    .why__list {
-      grid-template-columns: 1fr 1fr;
+
+    .why__feat {
+      height: var(--feat-h);
+      min-height: var(--feat-h);
     }
   }
 
-  /* Phone: single column features */
-  @media (max-width: 576px) {
-    .why__list {
-      grid-template-columns: 1fr;
+  /* ============== Desktop (≥1200px): fixed 360 | 640 | 360, aligned bottoms ============== */
+  @media (min-width: 1200px) {
+    .why__grid {
+      grid-template-columns: var(--col-left) var(--col-img) var(--col-right);
+      gap: var(--grid-gap);
+      max-width: calc(
+        var(--col-left) + var(--col-img) + var(--col-right) +
+          (2 * var(--grid-gap))
+      );
+      margin-inline: auto; /* center inside .container */
+      align-items: start;
+    }
+
+    /* Explicit placement (reset any implicit ordering) */
+    .why__list:first-of-type {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    .why__media {
+      grid-column: 2;
+      grid-row: auto;
+    }
+    .why__list:last-of-type {
+      grid-column: 3;
+      grid-row: auto;
+    }
+
+    /* Image height = 3 cards + 2 gaps so bottoms align with stacks */
+    .why__media {
+      height: calc((3 * var(--feat-h)) + (2 * var(--list-gap)));
+    }
+    .why__media img {
+      height: 100%;
+      object-fit: cover;
+    }
+    .why__cta {
+      margin-top: 48px;
     }
   }
 </style>
