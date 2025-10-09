@@ -4,14 +4,14 @@ import Button from "../ui/Button.astro";
 export interface Feature {
   title: string;
   text: string;
-  icon?: string; 
+  icon?: string;
   alt?: string;
 }
 
 interface Props {
   heading?: string;
   subheading?: string;
-  imageSrc?: string; 
+  imageSrc?: string;
   imageAlt?: string;
   leftFeatures?: Feature[];
   rightFeatures?: Feature[];
@@ -64,9 +64,9 @@ const {
 ---
 
 <section class="why" aria-labelledby="why-title">
-  <div class="container">
+  <div class="container container--wide">
     <header class="why__header">
-      <h2 class="why__h2" id="title">{heading}</h2>
+      <h2 class="why__h2" id="why-title">{heading}</h2>
       <p class="why__lead">{subheading}</p>
     </header>
 
@@ -104,7 +104,7 @@ const {
         }
       </ul>
 
-      <!-- Center image (mobile: appears after first 3 cards) -->
+      <!-- Center image -->
       <figure class="why__media">
         <img
           src={imageSrc}
@@ -116,7 +116,7 @@ const {
         />
       </figure>
 
-      <!-- Right stack (remaining 3 cards) -->
+      <!-- Right stack (3 cards) -->
       <ul class="why__list" role="list">
         {
           rightFeatures.map((f) => (
@@ -157,20 +157,16 @@ const {
 </section>
 
 <style>
-  /* Section-scoped knobs */
+  /* Section-scoped knobs (no :root — you’ve got globals) */
   .why {
-    /* Desktop geometry from Figma */
     --col-left: 360px;
     --col-img: 640px;
     --col-right: 360px;
     --grid-gap: 24px;
 
-    /* Cards */
-    --feat-h: 140px;
-    --list-gap: 16px;
-  }
+    --feat-h: 140px; /* fixed card height */
+    --list-gap: 16px; /* space between cards */
 
-  .why {
     background: var(--white);
   }
 
@@ -191,13 +187,17 @@ const {
     max-width: 72ch;
   }
 
-  /* ============== Base (<768px): 3 cards → image → 3 cards ============== */
+  /* ===== Mobile-first: 3 cards → image → 3 cards ===== */
   .why__grid {
     display: grid;
-    grid-template-columns: 1fr; /* true mobile-first */
+    grid-template-columns: 1fr;
     gap: var(--list-gap);
     align-items: start;
     margin-top: clamp(16px, 3vw, 24px);
+    /* Always center the grid content within the container */
+    justify-content: center;
+    margin-inline: auto;
+    width: 100%;
   }
 
   .why__media {
@@ -246,13 +246,12 @@ const {
     color: var(--primary);
   }
 
-  /* Overflow resilience for fixed-height cards */
   .why__feat__title {
     margin: 0 0 4px 0;
     color: var(--primary);
     overflow-wrap: anywhere;
     display: -webkit-box;
-    -webkit-line-clamp: 2; 
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -265,7 +264,7 @@ const {
     max-width: 52ch;
     overflow-wrap: anywhere;
     display: -webkit-box;
-    -webkit-line-clamp: 3; 
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -273,34 +272,30 @@ const {
   .why__cta {
     display: flex;
     justify-content: center;
-    margin-top: 32px; mobile & tablet
+    margin-top: 32px; /* mobile spacing below image */
   }
 
-  /* ============== Tablet (768–1199px): image full-width, two stacks ============== */
+  /* ===== Tablet (768–1199px): image full-width, two stacks below ===== */
   @media (min-width: 768px) and (max-width: 1199px) {
     .why__grid {
-      grid-template-columns: 1fr 1fr; /* two equal columns for the lists */
+      grid-template-columns: 1fr 1fr;
       gap: 20px;
-      justify-content: stretch;
-      align-items: start;
+      justify-content: center;
+      width: 100%;
+      margin-inline: auto;
     }
 
     .why__media {
-      grid-column: 1 / -1; /* image on its own row */
+      grid-column: 1 / -1;
       grid-row: 1;
-      height: auto;
-    }
-    .why__media img {
       height: auto;
     }
 
     .why__list:first-of-type {
       grid-column: 1;
-      grid-row: auto;
     }
     .why__list:last-of-type {
       grid-column: 2;
-      grid-row: auto;
     }
 
     .why__list {
@@ -313,34 +308,36 @@ const {
     }
   }
 
-  /* ============== Desktop (≥1200px): fixed 360 | 640 | 360, aligned bottoms ============== */
+  /* ===== Desktop (≥1200px): 360 | 640 | 360, always centered ===== */
   @media (min-width: 1200px) {
     .why__grid {
-      grid-template-columns: var(--col-left) var(--col-img) var(--col-right);
+      /* fluid clamps so it can shrink if needed, but targets Figma sizes */
+      grid-template-columns:
+        clamp(300px, 26vw, var(--col-left))
+        clamp(520px, 48vw, var(--col-img))
+        clamp(300px, 26vw, var(--col-right));
       gap: var(--grid-gap);
-      max-width: calc(
-        var(--col-left) + var(--col-img) + var(--col-right) +
-          (2 * var(--grid-gap))
-      );
-      margin-inline: auto; /* center inside .container */
+
+      /* center within container--wide and keep a tidy max width */
+      max-width: 1408px; /* 360 + 640 + 360 + (2 * 24) */
+      width: 100%;
+      margin-inline: auto;
+      justify-content: center;
       align-items: start;
     }
 
-    /* Explicit placement (reset any implicit ordering) */
+    /* Explicit placement to keep order consistent */
     .why__list:first-of-type {
       grid-column: 1;
-      grid-row: auto;
     }
     .why__media {
       grid-column: 2;
-      grid-row: auto;
     }
     .why__list:last-of-type {
       grid-column: 3;
-      grid-row: auto;
     }
 
-    /* Image height = 3 cards + 2 gaps so bottoms align with stacks */
+    /* Image matches total height of the three cards + gaps */
     .why__media {
       height: calc((3 * var(--feat-h)) + (2 * var(--list-gap)));
     }
@@ -348,8 +345,9 @@ const {
       height: 100%;
       object-fit: cover;
     }
+
     .why__cta {
       margin-top: 48px;
-    }
+    } /* desktop spacing below image */
   }
 </style>
