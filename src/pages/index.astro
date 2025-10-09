@@ -3,60 +3,13 @@ import Main from "../layouts/Main.astro";
 import Hero from "../components/sections/landing/Hero.astro";
 import AboutMission from "../components/sections/shared/AboutMission.astro";
 import LandingProducts from "../components/sections/landing/LandingProducts.astro";
+import { landingProductsData } from "../data/landing-products-data";
 import LandingServices from "../components/sections/landing/LandingServices.astro";
+import ContactForm from "../components/ContactForm.astro";
 import CTABannerSplit from "../components/sections/shared/CTABannerSplit.astro";
 // import Carousel from "../components/Carousel.astro";
-
-const categories = [
-  {
-    title: "Blinds",
-    // image: "/images/Hero.png",
-    image: "/images/Card1.png",
-    alt: "Stack of windows with blinds and cellular shades",
-    href: "/products/blinds",
-    blurb:
-      "Soft, versatile, and energy-efficient—woven woods bring warmth and texture to any room.",
-  },
-  {
-    title: "Natural Shades",
-    image: "/images/Card3.png",
-    alt: "Woven wood shades in a hallway",
-    href: "/products/natural-shades",
-    blurb:
-      "Soft, versatile, and energy-efficient—woven woods bring warmth and texture to any room.",
-  },
-  {
-    title: "Drapery",
-    image: "/images/Card3.png",
-    alt: "Neutral drapery in dining room",
-    href: "/products/drapery",
-    blurb:
-      "Soft, versatile, and energy-efficient—woven woods bring warmth and texture to any room.",
-  },
-  {
-    title: "Shutters",
-    image: "/images/Card4.png",
-    alt: "Plantation shutters in bathroom",
-    href: "/products/shutters",
-    blurb:
-      "Soft, versatile, and energy-efficient—woven woods bring warmth and texture to any room.",
-  },
-  {
-    title: "Motorization",
-    image: "/images/Card5.png",
-    alt: "Motorized cellular shade close-up",
-    href: "/products/motorization",
-    blurb: "App control, voice, and scenes—safer, smarter light control.",
-  },
-  {
-    title: "Exterior Shades",
-    image: "/images/Card6.png",
-    alt: "Exterior shades on patio doors",
-    href: "/products/exterior-shades",
-    blurb:
-      "Soft, versatile, and energy-efficient—woven woods bring warmth and texture to any room.",
-  },
-];
+import Carousel from "../components/ui/Carousel.astro";
+import WhyUs from "../components/sections/WhyUs.astro";
 
 const images = [
   { src: "/images/Hero.png", alt: "Pic 1" },
@@ -73,11 +26,14 @@ const images = [
   <LandingProducts
     heading="Custom Window Coverings for Every Space"
     subheading="Explore our full range of beautiful window treatments designed for comfort, privacy, and style—expertly measured, designed, and installed to fit your home or commercial space perfectly."
-    items={categories}
+    items={landingProductsData}
     activeIndex={-1}
   />
   <LandingServices />
   <CTABannerSplit />
 
   <!-- <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" /> -->
+  <WhyUs />
+  <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" />
+  <ContactForm />
 </Main>

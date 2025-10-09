@@ -1,38 +1,27 @@
 ---
 interface Props {
-  color?: "primary" | "secondary" | "accent" | "white" | "neutral" | "nav";
+  color?: "secondary" | "neutral" | "nav";
   href?: string;
   type?: "button" | "submit" | "reset";
-  bordered?: boolean;
   variant?: "default" | "nav";
 }
 
-const {
-  color = "primary",
-  href = "",
-  type = "button",
-  bordered = false,
-} = Astro.props;
+const { color = "secondary", href = "", type = "button" } = Astro.props;
 
 const colorClass = {
-  primary: "btn-primary",
   secondary: "btn-secondary",
-  accent: "btn-accent",
-  white: "btn-white",
-  nav: "btn-nav",
   neutral: "btn-neutral",
+  nav: "btn-nav",
 }[color];
-
-const borderClass = bordered ? "btn-bordered" : "";
 ---
 
 {
   href ? (
-    <a href={href} class={`btn ${colorClass} ${borderClass}`}>
+    <a href={href} class={`btn ${colorClass}`}>
       <slot />
     </a>
   ) : (
-    <button type={type} class={`btn ${colorClass} ${borderClass}`}>
+    <button type={type} class={`btn ${colorClass}`}>
       <slot />
     </button>
   )
@@ -43,7 +32,7 @@ const borderClass = bordered ? "btn-bordered" : "";
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: 16px 40px;
+    padding: 20px 40px;
     font-family: var(--ff-body);
     font-weight: var(--fw-bold);
     line-height: 100%;
@@ -57,19 +46,18 @@ const borderClass = bordered ? "btn-bordered" : "";
     opacity: 1;
     flex-shrink: 0;
     min-height: 46px;
-    transition:
-      background-color 0.2s ease,
-      color 0.2s ease;
+    transition: all 0.2s ease;
     white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .btn:hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   }
 
   .btn-nav {
     padding: 16px 28px !important;
-  }
-
-  .btn-primary {
-    background-color: var(--primary);
-    color: var(--white);
   }
 
   .btn-secondary {
@@ -77,28 +65,33 @@ const borderClass = bordered ? "btn-bordered" : "";
     color: var(--white);
   }
 
+  .btn-secondary:hover {
+    background-color: var(--secondary-lt);
+  }
+
   .btn-neutral {
     background-color: var(--neutral-lighter);
     color: var(--primary);
     border: none !important;
   }
-  .btn-nav {
-    background-color: var(--white);
+  .btn-neutral:hover {
+    background-color: #e2dacc;
     color: var(--primary);
+  }
+  .btn-nav {
+    background-color: var(--secondary);
+    color: var(--white);
   }
 
   .btn-nav:hover {
-    background-color: var(--neutral-lightest);
-  }
-
-  .btn-bordered {
-    border: 1px solid var(--grey-50);
+    background-color: var(--secondary-lt);
   }
 
   @media (min-width: 992px) {
     .btn-nav {
       background-color: var(--primary);
       color: var(--white);
+      border: 1px solid var(--grey-50);
     }
 
     .btn-nav:hover {

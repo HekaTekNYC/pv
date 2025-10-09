@@ -34,6 +34,21 @@ html::-webkit-scrollbar {
   scrollbar-width: none;
 }
 
+:focus-visible {
+  outline: 2px solid var(--focus, var(--neutral));
+  outline-offset: 2px;
+}
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+[tabindex]:focus {
+  outline: 2px solid var(--focus, var(--neutral));
+  outline-offset: 2px;
+}
+
 h1 {
   font-family: var(--ff-heading);
   font-size: var(--fs-h1);

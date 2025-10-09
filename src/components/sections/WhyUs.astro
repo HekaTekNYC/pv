@@ -1,0 +1,352 @@
+---
+import Button from "../ui/Button.astro";
+
+export interface Feature {
+  title: string;
+  text: string;
+  icon?: string;
+  alt?: string;
+}
+
+interface Props {
+  heading?: string;
+  subheading?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  leftFeatures?: Feature[];
+  rightFeatures?: Feature[];
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+const {
+  heading = "Why Homeowners and Designers Choose Us",
+  subheading = "We combine expert knowledge, design-focused thinking, and family-level care to deliver window treatments that perform beautifully, last long, and perfectly suit your space and lifestyle.",
+  imageSrc = "/images/WhyUs.jpg",
+  imageAlt = "Living room with custom window treatments",
+  leftFeatures = [
+    {
+      title: "Expert Design Advice",
+      text: "We help you choose the right styles, colors, and functionality for your space.",
+      icon: "/icons/handshake_icon.png",
+    },
+    {
+      title: "Friendly Assistance",
+      text: "Expert installers guarantee a flawless fit and finish, ensuring satisfaction with every setup.",
+      icon: "/icons/ppl_comms_icon.png",
+    },
+    {
+      title: "Family-Owned Values",
+      text: "You’ll work directly with us—no middlemen, just personal attention and integrity.",
+      icon: "/icons/hands_heart_icon.png",
+    },
+  ],
+  rightFeatures = [
+    {
+      title: "15+ Years Experience",
+      text: "Our deep knowledge ensures a seamless experience from measurement to final install.",
+      icon: "/icons/briefcase_icon.png",
+    },
+    {
+      title: "Clean & Safe Work",
+      text: "We ensure your home is left tidy, damage-free, and treated with utmost respect.",
+      icon: "/icons/shield_check_icon.png",
+    },
+    {
+      title: "Stylish & Functional",
+      text: "Innovative products that improve light control, privacy, and energy efficiency with a stylish touch.",
+      icon: "/icons/comp_gear_icon.png",
+    },
+  ],
+  ctaText = "See What Sets Us Apart",
+  ctaHref = "/about",
+} = Astro.props as Props;
+---
+
+<section class="why" aria-labelledby="why-title">
+  <div class="container container--wide">
+    <header class="why__header">
+      <h2 class="why__h2" id="why-title">{heading}</h2>
+      <p class="why__lead">{subheading}</p>
+    </header>
+
+    <div class="why__grid">
+      <!-- Left stack (3 cards) -->
+      <ul class="why__list" role="list">
+        {
+          leftFeatures.map((f) => (
+            <li class="why__feat">
+              {f.icon ? (
+                <img
+                  class="why__feat__icon"
+                  src={f.icon}
+                  alt={f.alt ?? ""}
+                  aria-hidden={f.alt ? "false" : "true"}
+                  width="24"
+                  height="24"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <span
+                  class="why__feat__icon why__feat__icon--fallback"
+                  aria-hidden="true"
+                >
+                  💠
+                </span>
+              )}
+              <div class="why__feat__body">
+                <h3 class="small-heading why__feat__title">{f.title}</h3>
+                <p class="why__feat__text">{f.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Center image -->
+      <figure class="why__media">
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          width="960"
+          height="640"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+
+      <!-- Right stack (3 cards) -->
+      <ul class="why__list" role="list">
+        {
+          rightFeatures.map((f) => (
+            <li class="why__feat">
+              {f.icon ? (
+                <img
+                  class="why__feat__icon"
+                  src={f.icon}
+                  alt={f.alt ?? ""}
+                  aria-hidden={f.alt ? "false" : "true"}
+                  width="24"
+                  height="24"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <span
+                  class="why__feat__icon why__feat__icon--fallback"
+                  aria-hidden="true"
+                >
+                  💠
+                </span>
+              )}
+              <div class="why__feat__body">
+                <h3 class="small-heading why__feat__title">{f.title}</h3>
+                <p class="why__feat__text">{f.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="why__cta">
+      <Button href={ctaHref} color="neutral">{ctaText}</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why {
+    --col-left: 360px;
+    --col-img: 640px;
+    --col-right: 360px;
+    --grid-gap: 24px;
+
+    --feat-h: 140px; /* fixed card height */
+    --list-gap: 16px; /* space between cards */
+
+    background: var(--white);
+  }
+
+  .why__header {
+    text-align: center;
+    margin-bottom: clamp(24px, 4vw, 40px);
+  }
+  .why__h2 {
+    padding-bottom: 14px;
+  }
+
+  .why__lead {
+    font-family: var(--ff-body);
+    font-size: var(--fs-body-r);
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0 auto;
+    max-width: 72ch;
+  }
+
+  /* ===== Mobile-first: 3 cards → image → 3 cards ===== */
+  .why__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--list-gap);
+    align-items: start;
+    margin-top: clamp(16px, 3vw, 24px);
+    /* Always center the grid content within the container */
+    justify-content: center;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .why__media {
+    margin: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
+  }
+  .why__media img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    display: block;
+  }
+
+  .why__list {
+    display: grid;
+    gap: var(--list-gap);
+    width: 100%;
+  }
+
+  .why__feat {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 12px;
+    align-items: start;
+    background: var(--neutral-lightest);
+    border: 1px solid var(--neutral-lighter);
+    border-radius: 4px;
+    padding: 14px 16px;
+    height: var(--feat-h);
+    box-sizing: border-box;
+  }
+
+  .why__feat__icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    object-fit: contain;
+  }
+  .why__feat__icon--fallback {
+    display: inline-grid;
+    place-items: center;
+    font-size: 18px;
+    color: var(--primary);
+  }
+
+  .why__feat__title {
+    margin: 0 0 4px 0;
+    color: var(--primary);
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .why__feat__text {
+    margin: 0;
+    font-family: var(--ff-body);
+    font-size: var(--fs-body-s);
+    line-height: 1.5;
+    color: var(--text);
+    max-width: 52ch;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .why__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px; /* mobile spacing below image */
+  }
+
+  /* ===== Tablet (768–1199px): image full-width, two stacks below ===== */
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .why__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      justify-content: center;
+      width: 100%;
+      margin-inline: auto;
+    }
+
+    .why__media {
+      grid-column: 1 / -1;
+      grid-row: 1;
+      height: auto;
+    }
+
+    .why__list:first-of-type {
+      grid-column: 1;
+    }
+    .why__list:last-of-type {
+      grid-column: 2;
+    }
+
+    .why__list {
+      grid-template-columns: 1fr;
+    }
+
+    .why__feat {
+      height: var(--feat-h);
+      min-height: var(--feat-h);
+    }
+  }
+
+  /* ===== Desktop (≥1200px): 360 | 640 | 360, always centered ===== */
+  @media (min-width: 1200px) {
+    .why__grid {
+      /* fluid clamps so it can shrink if needed, but targets Figma sizes */
+      grid-template-columns:
+        clamp(300px, 26vw, var(--col-left))
+        clamp(520px, 48vw, var(--col-img))
+        clamp(300px, 26vw, var(--col-right));
+      gap: var(--grid-gap);
+
+      /* center within container--wide and keep a tidy max width */
+      max-width: 1408px; /* 360 + 640 + 360 + (2 * 24) */
+      width: 100%;
+      margin-inline: auto;
+      justify-content: center;
+      align-items: start;
+    }
+
+    /* Explicit placement to keep order consistent */
+    .why__list:first-of-type {
+      grid-column: 1;
+    }
+    .why__media {
+      grid-column: 2;
+    }
+    .why__list:last-of-type {
+      grid-column: 3;
+    }
+
+    /* Image matches total height of the three cards + gaps */
+    .why__media {
+      height: calc((3 * var(--feat-h)) + (2 * var(--list-gap)));
+    }
+    .why__media img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .why__cta {
+      margin-top: 48px;
+    } /* desktop spacing below image */
+  }
+</style>
