@@ -1,0 +1,190 @@
+---
+import { lpServicesData } from "../../../data/lp-services-data";
+---
+
+<section class="lp-services">
+  <div class="container--wide">
+    <div class="lp-services__header">
+      <h2>Full-Service Window Treatment Solutions</h2>
+      <p>
+        From your first consultation to the final installation, our team
+        provides full-service care with expert guidance, quality materials, and
+        seamless results tailored to your residential or commercial space.
+      </p>
+    </div>
+    <div class="lp-services__cards">
+      {
+        lpServicesData.map((card) => (
+          <a href={card.href} class="lp-services__card">
+            <img
+              src={card.imgSrc}
+              alt={card.imgAlt}
+              class="lp-services__card-img"
+              width="339"
+              height="421"
+            />
+
+            <div class="lp-services__card-content">
+              <div class="lp-services__card-header">
+                <h3 class="lp-services__card-title big-heading">
+                  {card.title}
+                </h3>
+                <div class="lp-services__arrow">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="-0.01 0 12.01 12.01"
+                    class="lp-services__arrow-icon"
+                  >
+                    <path
+                      d="M11.9199 0.62C11.8185 0.375651 11.6243 0.181475 11.3799 0.0799999C11.2597 0.028759 11.1306 0.00157999 10.9999 0H0.999939C0.734722 0 0.480369 0.105357 0.292832 0.292893C0.105296 0.48043 -6.10352e-05 0.734784 -6.10352e-05 1C-6.10352e-05 1.26522 0.105296 1.51957 0.292832 1.70711C0.480369 1.89464 0.734722 2 0.999939 2H8.58994L0.289939 10.29C0.196211 10.383 0.121816 10.4936 0.0710478 10.6154C0.0202791 10.7373 -0.00585938 10.868 -0.00585938 11C-0.00585938 11.132 0.0202791 11.2627 0.0710478 11.3846C0.121816 11.5064 0.196211 11.617 0.289939 11.71C0.382902 11.8037 0.493503 11.8781 0.615362 11.9289C0.737221 11.9797 0.867927 12.0058 0.999939 12.0058C1.13195 12.0058 1.26266 11.9797 1.38452 11.9289C1.50638 11.8781 1.61698 11.8037 1.70994 11.71L9.99994 3.41V11C9.99994 11.2652 10.1053 11.5196 10.2928 11.7071C10.4804 11.8946 10.7347 12 10.9999 12C11.2652 12 11.5195 11.8946 11.707 11.7071C11.8946 11.5196 11.9999 11.2652 11.9999 11V1C11.9984 0.869323 11.9712 0.740222 11.9199 0.62Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <p class="lp-services__card-desc">{card.desc}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    .lp-services__card-title,
+    .lp-services__arrow,
+    .lp-services__arrow svg {
+      transition: none;
+    }
+  }
+  .lp-services {
+    background-color: var(--grey-10);
+  }
+  .lp-services__header {
+    padding-bottom: 40px;
+  }
+  .lp-services__header h2 {
+    padding-bottom: 14px;
+  }
+
+  .lp-services__cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 34px;
+  }
+
+  .lp-services__card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+  }
+
+  .lp-services__card:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+  }
+
+  .lp-services__card-img {
+    object-fit: cover;
+    width: 100%;
+    height: 360px;
+    display: block;
+  }
+  .lp-services__card-content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
+  }
+
+  .lp-services__card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+  }
+
+  .lp-services__arrow {
+    padding: 10px 5px 5px 5px;
+    transition: transform 0.3s ease;
+  }
+
+  .lp-services__arrow svg {
+    width: 14px;
+    height: 14px;
+    transition: all 0.3s ease;
+    color: var(--primary);
+  }
+
+  .lp-services__card:hover .lp-services__arrow {
+    transform: translateX(3px);
+  }
+
+  .lp-services__card:hover .lp-services__arrow svg {
+    color: var(--secondary);
+    transform: rotate(45deg);
+  }
+
+  .lp-services__card-desc {
+    padding-top: 10px;
+  }
+
+  /* --- Media Queries --- */
+  @media (min-width: 768px) {
+    .lp-services__cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lp-services__card-img {
+      height: 390px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lp-services__header {
+      display: flex;
+      align-items: end;
+      width: 100%;
+      padding-bottom: 60px;
+      gap: 20px;
+    }
+    .lp-services__header h2 {
+      width: 50%;
+      padding-bottom: 0;
+    }
+    .lp-services__header p {
+      width: 50%;
+    }
+    .lp-services__cards {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+    .lp-services__card-img {
+      height: auto;
+      aspect-ratio: 339 / 421;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .lp-services__header {
+      display: flex;
+      justify-content: space-between;
+    }
+    .lp-services__header h2 {
+      width: 50%;
+    }
+    .lp-services__header p {
+      width: 40%;
+    }
+    .lp-services__cards {
+      grid-template-columns: repeat(4, 1fr);
+      align-items: start;
+      gap: 28px;
+    }
+  }
+</style>
