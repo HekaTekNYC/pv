@@ -5,8 +5,9 @@ import AboutMission from "../components/sections/shared/AboutMission.astro";
 import LandingProducts from "../components/sections/landing/LandingProducts.astro";
 import { landingProductsData } from "../data/landing-products-data";
 import LandingServices from "../components/sections/landing/LandingServices.astro";
+import ContactForm from "../components/ContactForm.astro";
 // import Carousel from "../components/Carousel.astro";
-import Carousel from "../components/Carousel.astro";
+import Carousel from "../components/ui/Carousel.astro";
 import WhyUs from "../components/sections/WhyUs.astro";
 
 const images = [
@@ -32,4 +33,5 @@ const images = [
   <!-- <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" /> -->
   <WhyUs />
   <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" />
+  <ContactForm />
 </Main>
