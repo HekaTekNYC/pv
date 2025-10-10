@@ -71,28 +71,24 @@ const {
 </section>
 
 <style>
-  /* Section padding to spec (uses your global variables for colors/fonts) */
+  /* Base */
   .lp-products {
     padding: 16px;
     background: var(--white);
   }
-  @media (min-width: 900px) {
-    .lp-products {
-      padding: 32px;
-    }
-  }
 
-  /* Header: 2 cols desktop, stacked on mobile */
   .lp-products__header {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr; /* stacked by default */
     gap: 20px;
     align-items: start;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
   }
+
   .lp-products__title {
     margin: 0;
   }
+
   .lp-products__sub {
     margin: 6px 0 0;
     color: var(--text);
@@ -102,40 +98,35 @@ const {
     max-width: 56ch;
   }
 
-  /* Grid (keep your 3/2/1 layout) + exact 10px gap */
+  /* Grid (refined in MQs) */
   .lp-products__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: 28px; /* your spec */
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  /* Items */
   .lp-products__item {
     list-style: none;
   }
 
-  /* Card base (anchor) */
   .card {
     position: relative;
     display: block;
     overflow: hidden;
     border-radius: 4px;
     background: var(--grey-50);
-    margin-inline: auto; /* centers fixed-width card inside 1fr grid cells */
+    width: 100%;
+    margin-inline: auto;
   }
 
-  /* === IMAGE BOX SIZES TO SPEC ===
-     Desktop: 408×480 → ratio 17:20
-     Mobile:  343×360 → ratio 343:360
-  */
+  /* Default ratio (desktop/tablet); mobile overrides below */
   .lp-products-card__media {
     aspect-ratio: 17 / 20;
-  } /* default/tablet/desktop ratio */
+  } /* 408 × 480 */
 
-  /* Make sure the image fills the box cleanly */
   .lp-products-card__media img {
     width: 100%;
     height: 100%;
@@ -162,7 +153,6 @@ const {
       transform 0.22s ease;
   }
 
-  /* Title + blurb use your global tokens */
   .lp-products-card__title {
     margin: 0;
     font-family: var(--ff-heading);
@@ -172,6 +162,7 @@ const {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     line-height: 1.2;
   }
+
   .lp-products-card__blurb {
     margin: 6px 0 0;
     font-family: var(--ff-body);
@@ -180,7 +171,6 @@ const {
     max-width: 38ch;
     color: var(--white);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-
     opacity: 0;
     max-height: 0;
     transform: translateY(6px);
@@ -190,7 +180,6 @@ const {
       max-height 0.25s ease;
   }
 
-  /* Hover/focus/active reveal (unchanged) */
   .card.is-active .lp-products-card__blurb,
   .card:hover .lp-products-card__blurb,
   .card:focus-visible .lp-products-card__blurb {
@@ -198,6 +187,7 @@ const {
     max-height: 220px;
     transform: translateY(0);
   }
+
   .card:hover .lp-products-card__overlay,
   .card:focus-visible .lp-products-card__overlay,
   .card.is-active .lp-products-card__overlay {
@@ -216,12 +206,12 @@ const {
     margin-top: 40px;
   }
 
-  /* ===== Responsive tweaks ===== */
+  /* =========================
+     MEDIA QUERIES (BOTTOM)
+     ========================= */
+
+  /* Phones: exact 343 × 360 visual box */
   @media (max-width: 560px) {
-    .lp-products__header {
-      grid-template-columns: 1fr;
-      gap: 8px;
-    }
     .lp-products__sub {
       font-size: var(--fs-body-s);
       line-height: 1.55;
@@ -232,61 +222,52 @@ const {
       grid-template-columns: 1fr;
     }
 
-    /* Mobile: lock card width and ratio to spec */
     .card {
-      width: 343px;
-    }
+      max-width: 343px;
+    } /* visual width */
     .lp-products-card__media {
       aspect-ratio: 343 / 360;
-    }
-
-    /* If you keep overlay more visible on touch, keep this */
-    .lp-products-card__overlay {
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0) 35%,
-        rgba(0, 0, 0, 0.65) 100%
-      );
-      opacity: 1;
-      transform: none;
-      padding: 12px;
-    }
-    .lp-products-card__blurb {
-      opacity: 1;
-      max-height: none;
-      transform: none;
-      font-size: var(--fs-body-s);
-      line-height: 1.45;
-      margin-top: 4px;
-    }
+    } /* 343 × 360 */
   }
 
-  /* Tablet: keep 2 columns */
+  /* Tablets: 2 columns */
   @media (min-width: 561px) and (max-width: 899.98px) {
     .lp-products__header {
       grid-template-columns: 1fr;
     }
     .lp-products__grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .card {
-      width: auto;
-    } /* let cards flex within the 2-column grid */
-  }
-
-  /* Desktop: 3 columns, exact 408px card width + 17:20 ratio */
-  @media (min-width: 900px) {
-    .lp-products__header {
-      margin-bottom: 40px;
-    }
-    .card {
-      width: 408px;
+      max-width: 100%;
     }
     .lp-products-card__media {
       aspect-ratio: 17 / 20;
     }
   }
 
+  /* Desktop: FORCE 3 columns, let cards shrink to fit (no overflow) */
+  @media (min-width: 900px) {
+    .lp-products {
+      padding: 32px;
+    }
+    .lp-products__header {
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 40px;
+    }
+    .lp-products__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr)); /* always 3 columns */
+      gap: 28px;
+    }
+    .card {
+      max-width: 100%;
+    } /* no fixed 408px width */
+    .lp-products-card__media {
+      aspect-ratio: 17 / 20;
+    }
+  }
+
+  /* Motion-safe */
   @media (prefers-reduced-motion: reduce) {
     .lp-products-card__blurb,
     .lp-products-card__overlay {
