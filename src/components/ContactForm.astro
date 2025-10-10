@@ -1,12 +1,16 @@
 ---
 import Button from "./ui/Button.astro";
 
+type Variant = "section" | "card";
+
 interface Props {
   title?: string;
   lead?: string;
   ctaText?: string;
   action?: string;
   method?: "post" | "get";
+  /** Use "card" when the form is embedded on the contact split section */
+  variant?: Variant;
 }
 
 const {
@@ -15,10 +19,16 @@ const {
   ctaText = "Submit",
   action = "#",
   method = "post",
+  variant = "section",
 } = Astro.props as Props;
+
+const isCard = variant === "card";
 ---
 
-<section class="contact" aria-labelledby="contact-title">
+<section
+  class={`contact${isCard ? " contact--card" : ""}`}
+  aria-labelledby="contact-title"
+>
   <div class="container">
     <header class="contact__header">
       <h2 id="contact-title">{title}</h2>
@@ -34,7 +44,7 @@ const {
             id="contact-name"
             name="name"
             type="text"
-            placeholder="Email"
+            placeholder="Full name"
             class="contact__input"
             autocomplete="name"
             required
@@ -105,17 +115,16 @@ const {
 </section>
 
 <style>
-  /* Section shell */
+  /* ===== Base (uses your global tokens) ===== */
   .contact {
     background: var(--neutral-lightest);
   }
 
   .contact__header {
     text-align: left;
-    margin-bottom: clamp(20px, 4vw, 28px);
+    margin-bottom: clamp(16px, 3.2vw, 24px);
   }
 
-  /* h2 uses global styles; just control spacing via container */
   .contact__lead {
     margin-top: 8px;
     max-width: 68ch;
@@ -125,18 +134,16 @@ const {
     color: var(--text);
   }
 
-  /* Form grid */
   .contact__form {
-    margin-top: clamp(12px, 2vw, 16px);
+    margin-top: clamp(10px, 2vw, 16px);
   }
 
   .contact__grid {
     display: grid;
     grid-template-columns: 1fr; /* mobile */
-    gap: 16px; /* mobile spacing */
+    gap: 16px;
   }
 
-  /* Fields */
   .contact__field {
     display: grid;
     gap: 6px;
@@ -144,10 +151,11 @@ const {
 
   .contact__label {
     font-family: var(--ff-body);
-    font-size: var(--fs-body-r);
+    font-size: var(--fs-body-s);
     color: var(--primary);
   }
 
+  /* Control sizing tuned to the Figma card */
   .contact__input,
   .contact__textarea {
     width: 100%;
@@ -157,8 +165,16 @@ const {
     font-family: var(--ff-body);
     font-size: var(--fs-body-r);
     line-height: 1.4;
-    padding: 14px 16px;
-    border-radius: 4px;
+    border-radius: 2px;
+  }
+  .contact__input {
+    height: 44px;
+    padding: 12px 14px;
+  }
+  .contact__textarea {
+    min-height: 180px;
+    padding: 12px 14px;
+    resize: vertical;
   }
 
   .contact__input::placeholder,
@@ -173,29 +189,38 @@ const {
     border-color: var(--secondary);
   }
 
-  .contact__textarea {
-    resize: vertical;
-    min-height: 180px;
-  }
-
-  /* Actions */
   .contact__actions {
     display: flex;
-    justify-content: center; /* centered on mobile */
+    justify-content: center;
     padding-top: 4px;
   }
 
-  /* Desktop layout */
+  /* Desktop two-column layout */
   @media (min-width: 900px) {
     .contact__grid {
-      grid-template-columns: 1fr 1fr; /* two columns */
-      gap: 24px; /* desktop spacing */
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
     .contact__field--span2 {
-      grid-column: 1 / -1; /* span both columns */
+      grid-column: 1 / -1;
     }
     .contact__actions {
-      justify-content: flex-start; /* left-aligned on desktop */
+      justify-content: flex-start;
     }
+  }
+
+  /* ===== Card variant (embedded in the split contact section) ===== */
+  .contact--card {
+    background: transparent;
+  }
+  .contact--card .container {
+    padding: 0; /* remove global container padding */
+    max-width: none; /* inherit width from outer panel */
+  }
+  .contact--card .contact__header {
+    margin-bottom: 16px; /* tighter header in the card */
+  }
+  .contact--card .contact__lead {
+    max-width: 60ch;
   }
 </style>

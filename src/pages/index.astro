@@ -5,15 +5,15 @@ import AboutMission from "../components/sections/shared/AboutMission.astro";
 import LandingProducts from "../components/sections/landing/LandingProducts.astro";
 import { landingProductsData } from "../data/landing-products-data";
 import LandingServices from "../components/sections/landing/LandingServices.astro";
-import ContactForm from "../components/ContactForm.astro";
+import Contact from "../components/sections/landing/Contact.astro";
 // import Carousel from "../components/Carousel.astro";
 import Carousel from "../components/ui/Carousel.astro";
 import WhyUs from "../components/sections/WhyUs.astro";
 
 const images = [
   { src: "/images/Hero.png", alt: "Pic 1" },
-  { src: "/images/Hero.png", alt: "Pic 2" },
-  { src: "/images/Hero.png", alt: "Pic 3" },
+  { src: "/images/jerry-install.jpg", alt: "Pic 2" },
+  { src: "/images/WhyUs.jpg", alt: "Pic 3" },
   { src: "/images/Hero.png", alt: "Pic 4" },
   { src: "/images/Hero.png", alt: "Pic 5" },
 ];
@@ -33,5 +33,5 @@ const images = [
   <!-- <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" /> -->
   <WhyUs />
   <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" />
-  <ContactForm />
+  <Contact />
 </Main>
