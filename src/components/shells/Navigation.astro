@@ -23,7 +23,7 @@ import { productLinks } from "../../data/dropdown-data";
     <div class="nav-bar__links" id="primary-menu" aria-hidden="true">
       <ul>
         <li>
-          <a href="/" class="nav-bar__link" aria-current="page"> Home </a>
+          <a href="/" class="nav-bar__link" aria-current="page">Home</a>
         </li>
         <Dropdown
           triggerText="Products"
@@ -35,7 +35,7 @@ import { productLinks } from "../../data/dropdown-data";
         <li><a href="/projects" class="nav-bar__link">Gallery</a></li>
         <li><a href="/contact" class="nav-bar__link">Contact</a></li>
         <li class="nav-bar__book-now">
-          <Button href="/contact" color="nav" bordered>Get a Free Quote</Button>
+          <Button href="/contact" color="nav">Get a Free Quote</Button>
         </li>
       </ul>
     </div>
@@ -141,10 +141,6 @@ import { productLinks } from "../../data/dropdown-data";
     color: var(--neutral);
   }
 
-  .nav-bar__link:focus {
-    outline: 2px solid var(--neutral);
-    outline-offset: 2px;
-  }
   .nav-bar__links .nav-bar__book-now {
     margin-top: auto;
     margin-left: 20px;

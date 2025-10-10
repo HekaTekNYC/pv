@@ -65,12 +65,13 @@ const {
     </ul>
 
     <div class="lp__products__cats__cta">
-      <Button color="primary" href="/products">Explore All Products</Button>
+      <Button color="secondary" href="/products">Explore All Products</Button>
     </div>
   </div>
 </section>
 
 <style>
+  /* Section uses global container; only vertical spacing here */
 
   /* Header: stacked by default; split at larger screens */
   .lp__products__cats__header {
@@ -191,17 +192,15 @@ const {
       max-height 0.25s ease;
   }
 
-  .card.is-active .card__blurb,
-  .card:hover .card__blurb,
-  .card:focus-visible .card__blurb {
+  .lp__products__card.is-active .lp__products__card__blurb,
+  .lp__products__card:hover .lp__products__card__blurb {
     opacity: 1;
     max-height: 220px;
     transform: translateY(0);
   }
 
-  .card:hover .card__overlay,
-  .card:focus-visible .card__overlay,
-  .card.is-active .card__overlay {
+  .lp__products__card:hover .lp__products__card__overlay,
+  .lp__products__card.is-active .lp__products__card__overlay {
     background:
       linear-gradient(
         360deg,

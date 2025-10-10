@@ -2,6 +2,7 @@
   /* Primary Colors */
   --primary: #282b30; /* Dark */
   --secondary: #244256; /* Charcoal */
+  --secondary-lt: #2a4d65; /* Charcoal */
 
   /* Neutral Shades */
   --neutral: #ae9f91; /* Khaki */
@@ -21,6 +22,8 @@
   --grey-20: #cfd0d1;
   --grey-10: #ededed;
   --grey-5: #f7f7f7;
+
+  --focus: #6368ff;
 
   /* Status Colors */
   /* Danger */
