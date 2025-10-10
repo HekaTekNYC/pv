@@ -14,7 +14,6 @@ const {
   subtitle = "Enhance your home or business with stylish, custom-fit window solutions tailored to your taste and space.",
   ctaText = "Schedule Free Consultation",
   ctaHref = "#",
-  extraText,
 } = Astro.props as Props;
 ---
 
@@ -33,7 +32,6 @@ const {
     <div class="hero__content">
       <h1 id="hero-title" class="hero__title">{title}</h1>
       {subtitle && <p class="hero__subtitle">{subtitle}</p>}
-      {extraText && <p class="hero__text">{extraText}</p>}
 
       {
         ctaText && (
@@ -54,7 +52,7 @@ const {
     position: relative;
     display: grid; /* vertical centering without absolute */
     align-items: center;
-    min-height: clamp(520px, 72svh, 900px);
+    min-height: clamp(520px, 100svh, 900px);
     isolation: isolate;
     color: var(--white);
     font-family: var(--ff-body);

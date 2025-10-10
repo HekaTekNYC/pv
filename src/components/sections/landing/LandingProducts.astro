@@ -1,7 +1,7 @@
 ---
 import Button from "../../ui/Button.astro";
 
-export interface Categorylp__products__Card {
+export interface CategoryCard {
   title: string;
   image: string;
   alt: string;
@@ -12,8 +12,8 @@ export interface Categorylp__products__Card {
 type Props = {
   heading?: string;
   subheading?: string;
-  items: Categorylp__products__Card[];
-  /** which lp__products__card starts with the overlay text visible (0-based) */
+  items: CategoryCard[];
+  /** which card starts with the overlay text visible (0-based) */
   activeIndex?: number; // -1 = none open
 };
 
@@ -39,11 +39,11 @@ const {
         items.map((it, i) => (
           <li class="lp__products__cats__item">
             <a
-              class={`lp__products__card${i === activeIndex ? " is-active" : ""}`}
+              class={`card${i === activeIndex ? " is-active" : ""}`}
               href={it.href}
               aria-label={`${it.title}${it.blurb ? ": " + it.blurb : ""}`}
             >
-              <figure class="lp__products__card__media">
+              <figure class="card__media">
                 <img
                   src={it.image}
                   alt={it.alt}
@@ -54,11 +54,9 @@ const {
                 />
               </figure>
 
-              <div class="lp__products__card__overlay">
-                <h3 class="lp__products__card__title">{it.title}</h3>
-                {it.blurb && (
-                  <p class="lp__products__card__blurb">{it.blurb}</p>
-                )}
+              <div class="card__overlay">
+                <h3 class="card__title">{it.title}</h3>
+                {it.blurb && <p class="card__blurb">{it.blurb}</p>}
               </div>
             </a>
           </li>
@@ -129,18 +127,18 @@ const {
     } /* desktop spacing requirement */
   }
 
-  .lp__products__card {
+  .card {
     position: relative;
     display: block;
     overflow: hidden;
-    border-radius: 4px;
+    border-radius: 2px;
     background: var(--grey-50); /* fallback while image loads */
   }
 
-  .lp__products__card__media {
+  .card__media {
     aspect-ratio: 4 / 3;
   }
-  .lp__products__card__media img {
+  .card__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -148,7 +146,7 @@ const {
   }
 
   /* Overlay */
-  .lp__products__card__overlay {
+  .card__overlay {
     position: absolute;
     inset: 0;
     display: grid;
@@ -166,7 +164,7 @@ const {
       transform 0.22s ease;
   }
 
-  .lp__products__card__title {
+  .card__title {
     margin: 0;
     font-family: var(--ff-heading);
     font-size: var(--fs-h3-sm);
@@ -176,7 +174,7 @@ const {
     line-height: 1.2;
   }
 
-  .lp__products__card__blurb {
+  .card__blurb {
     margin: 6px 0 0;
     font-family: var(--ff-body);
     font-size: var(--fs-body-s);
@@ -226,12 +224,12 @@ const {
       max-width: none;
     }
     /* Optional: taller media look on phones */
-    .lp__products__card__media {
+    .card__media {
       aspect-ratio: 16 / 10;
     }
 
     /* If you want overlay copy always visible on touch devices, keep this: */
-    .lp__products__card__overlay {
+    .card__overlay {
       background: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0) 35%,
@@ -241,8 +239,8 @@ const {
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .lp__products__card__blurb,
-    .lp__products__card__overlay {
+    .card__blurb,
+    .card__overlay {
       transition: none;
     }
   }
