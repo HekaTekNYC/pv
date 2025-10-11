@@ -1,7 +1,7 @@
 ---
 import Button from "../../ui/Button.astro";
 
-export interface Categorylp__products__Card {
+export interface CategoryCard {
   title: string;
   image: string;
   alt: string;
@@ -12,8 +12,8 @@ export interface Categorylp__products__Card {
 type Props = {
   heading?: string;
   subheading?: string;
-  items: Categorylp__products__Card[];
-  /** which lp__products__card starts with the overlay text visible (0-based) */
+  items: CategoryCard[];
+  /** which card starts with the overlay text visible (0-based) */
   activeIndex?: number; // -1 = none open
 };
 
@@ -25,40 +25,38 @@ const {
 } = Astro.props as Props;
 ---
 
-<section class="lp__products__cats" aria-labelledby="lp__products__cats-title">
+<section class="lp-products" aria-labelledby="lp-products-title">
   <div class="container">
-    <header class="lp__products__cats__header">
-      <h2 id="lp__products__cats-title" class="lp__products__cats__title">
+    <header class="lp-products__header">
+      <h2 id="lp-products-title" class="lp-products__title">
         {heading}
       </h2>
-      {subheading && <p class="lp__products__cats__sub">{subheading}</p>}
+      {subheading && <p class="lp-products__sub">{subheading}</p>}
     </header>
 
-    <ul class="lp__products__cats__grid" role="list">
+    <ul class="lp-products__grid" role="list">
       {
         items.map((it, i) => (
-          <li class="lp__products__cats__item">
+          <li class="lp-products__item">
             <a
-              class={`lp__products__card${i === activeIndex ? " is-active" : ""}`}
+              class={`card${i === activeIndex ? " is-active" : ""}`}
               href={it.href}
               aria-label={`${it.title}${it.blurb ? ": " + it.blurb : ""}`}
             >
-              <figure class="lp__products__card__media">
+              <figure class="lp-products-card__media">
                 <img
                   src={it.image}
                   alt={it.alt}
-                  width="900"
-                  height="600"
+                  width="408"
+                  height="480"
                   loading={i === 0 ? "eager" : "lazy"}
                   decoding="async"
                 />
               </figure>
 
-              <div class="lp__products__card__overlay">
-                <h3 class="lp__products__card__title">{it.title}</h3>
-                {it.blurb && (
-                  <p class="lp__products__card__blurb">{it.blurb}</p>
-                )}
+              <div class="lp-products-card__overlay">
+                <h3 class="lp-products-card__title">{it.title}</h3>
+                {it.blurb && <p class="lp-products-card__blurb">{it.blurb}</p>}
               </div>
             </a>
           </li>
@@ -66,36 +64,32 @@ const {
       }
     </ul>
 
-    <div class="lp__products__cats__cta">
+    <div class="lp-products__cta">
       <Button color="secondary" href="/products">Explore All Products</Button>
     </div>
   </div>
 </section>
 
 <style>
-  /* Section uses global container; only vertical spacing here */
+  /* Base */
+  .lp-products {
+    padding: 16px;
+    background: var(--white);
+  }
 
-  /* Header: stacked by default; split at larger screens */
-  .lp__products__cats__header {
+  .lp-products__header {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: 1fr; /* stacked by default */
+    gap: 20px;
     align-items: start;
     margin-bottom: 40px;
   }
-  @media (min-width: 900px) {
-    .lp__products__cats__header {
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-bottom: 50px;
-    }
-  }
 
-  .lp__products__cats__title {
+  .lp-products__title {
     margin: 0;
   }
 
-  .lp__products__cats__sub {
+  .lp-products__sub {
     margin: 6px 0 0;
     color: var(--text);
     font-family: var(--ff-body);
@@ -104,43 +98,36 @@ const {
     max-width: 56ch;
   }
 
-  /* Grid — mobile-first */
-  .lp__products__cats__grid {
+  /* Grid (refined in MQs) */
+  .lp-products__grid {
     display: grid;
-    grid-template-columns: 1fr; /* mobile: one column */
-    gap: 16px; /* mobile spacing requirement */
+    grid-template-columns: 1fr;
+    gap: 28px; /* your spec */
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  @media (min-width: 561px) {
-    .lp__products__cats__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (min-width: 900px) {
-    .lp__products__cats__grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  @media (min-width: 1200px) {
-    .lp__products__cats__grid {
-      gap: 28px;
-    } /* desktop spacing requirement */
+
+  .lp-products__item {
+    list-style: none;
   }
 
-  .lp__products__card {
+  .card {
     position: relative;
     display: block;
     overflow: hidden;
     border-radius: 4px;
-    background: var(--grey-50); /* fallback while image loads */
+    background: var(--grey-50);
+    width: 100%;
+    margin-inline: auto;
   }
 
-  .lp__products__card__media {
-    aspect-ratio: 4 / 3;
-  }
-  .lp__products__card__media img {
+  /* Default ratio (desktop/tablet); mobile overrides below */
+  .lp-products-card__media {
+    aspect-ratio: 17 / 20;
+  } /* 408 × 480 */
+
+  .lp-products-card__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -148,7 +135,7 @@ const {
   }
 
   /* Overlay */
-  .lp__products__card__overlay {
+  .lp-products-card__overlay {
     position: absolute;
     inset: 0;
     display: grid;
@@ -166,25 +153,24 @@ const {
       transform 0.22s ease;
   }
 
-  .lp__products__card__title {
+  .lp-products-card__title {
     margin: 0;
     font-family: var(--ff-heading);
-    font-size: var(--fs-h3-sm);
+    font-size: var(--fs-h3-lg);
     font-weight: var(--fw-bold);
     color: var(--white);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     line-height: 1.2;
   }
 
-  .lp__products__card__blurb {
+  .lp-products-card__blurb {
     margin: 6px 0 0;
     font-family: var(--ff-body);
     font-size: var(--fs-body-s);
     line-height: 1.4;
     max-width: 38ch;
-    color: var(--white); /* same color/opacity as title */
+    color: var(--white);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-
     opacity: 0;
     max-height: 0;
     transform: translateY(6px);
@@ -194,15 +180,17 @@ const {
       max-height 0.25s ease;
   }
 
-  .lp__products__card.is-active .lp__products__card__blurb,
-  .lp__products__card:hover .lp__products__card__blurb {
+  .card.is-active .lp-products-card__blurb,
+  .card:hover .lp-products-card__blurb,
+  .card:focus-visible .lp-products-card__blurb {
     opacity: 1;
     max-height: 220px;
     transform: translateY(0);
   }
 
-  .lp__products__card:hover .lp__products__card__overlay,
-  .lp__products__card.is-active .lp__products__card__overlay {
+  .card:hover .lp-products-card__overlay,
+  .card:focus-visible .lp-products-card__overlay,
+  .card.is-active .lp-products-card__overlay {
     background:
       linear-gradient(
         360deg,
@@ -212,37 +200,77 @@ const {
       linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.55) 100%);
   }
 
-  .lp__products__cats__cta {
+  .lp-products__cta {
     display: flex;
     justify-content: center;
     margin-top: 40px;
   }
 
-  /* Mobile-specific tweaks */
+  /* =========================
+     MEDIA QUERIES (BOTTOM)
+     ========================= */
+
+  /* Phones: exact 343 × 360 visual box */
   @media (max-width: 560px) {
-    .lp__products__cats__sub {
+    .lp-products__sub {
       font-size: var(--fs-body-s);
       line-height: 1.55;
       max-width: none;
     }
-    /* Optional: taller media look on phones */
-    .lp__products__card__media {
-      aspect-ratio: 16 / 10;
+
+    .lp-products__grid {
+      grid-template-columns: 1fr;
     }
 
-    /* If you want overlay copy always visible on touch devices, keep this: */
-    .lp__products__card__overlay {
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0) 35%,
-        rgba(0, 0, 0, 0.65) 100%
-      );
+    .card {
+      max-width: 343px;
+    } /* visual width */
+    .lp-products-card__media {
+      aspect-ratio: 343 / 360;
+    } /* 343 × 360 */
+  }
+
+  /* Tablets: 2 columns */
+  @media (min-width: 561px) and (max-width: 899.98px) {
+    .lp-products__header {
+      grid-template-columns: 1fr;
+    }
+    .lp-products__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .card {
+      max-width: 100%;
+    }
+    .lp-products-card__media {
+      aspect-ratio: 17 / 20;
     }
   }
 
+  /* Desktop: FORCE 3 columns, let cards shrink to fit (no overflow) */
+  @media (min-width: 900px) {
+    .lp-products {
+      padding: 32px;
+    }
+    .lp-products__header {
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 40px;
+    }
+    .lp-products__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr)); /* always 3 columns */
+      gap: 28px;
+    }
+    .card {
+      max-width: 100%;
+    } /* no fixed 408px width */
+    .lp-products-card__media {
+      aspect-ratio: 17 / 20;
+    }
+  }
+
+  /* Motion-safe */
   @media (prefers-reduced-motion: reduce) {
-    .lp__products__card__blurb,
-    .lp__products__card__overlay {
+    .lp-products-card__blurb,
+    .lp-products-card__overlay {
       transition: none;
     }
   }

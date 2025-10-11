@@ -10,7 +10,7 @@ export interface CategoryCard {
 export const landingProductsData: CategoryCard[] = [
   {
     title: "Blinds",
-    image: "/images/Card1.png",
+    image: "/images/blinds.png",
     alt: "Stack of windows with blinds and cellular shades",
     href: "/products/blinds",
     blurb:
@@ -18,7 +18,7 @@ export const landingProductsData: CategoryCard[] = [
   },
   {
     title: "Natural Shades",
-    image: "/images/Card3.png",
+    image: "/images/natural-shades.png",
     alt: "Woven wood shades in a hallway",
     href: "/products/natural-shades",
     blurb:
@@ -26,7 +26,7 @@ export const landingProductsData: CategoryCard[] = [
   },
   {
     title: "Drapery",
-    image: "/images/Card3.png",
+    image: "/images/drapery.png",
     alt: "Neutral drapery in dining room",
     href: "/products/drapery",
     blurb:
@@ -34,7 +34,7 @@ export const landingProductsData: CategoryCard[] = [
   },
   {
     title: "Shutters",
-    image: "/images/Card4.png",
+    image: "/images/shutters.png",
     alt: "Plantation shutters in bathroom",
     href: "/products/shutters",
     blurb:
@@ -42,14 +42,14 @@ export const landingProductsData: CategoryCard[] = [
   },
   {
     title: "Motorization",
-    image: "/images/Card5.png",
+    image: "/images/motorization.png",
     alt: "Motorized cellular shade close-up",
     href: "/products/motorization",
     blurb: "App control, voice, and scenes—safer, smarter light control.",
   },
   {
     title: "Exterior Shades",
-    image: "/images/Card6.png",
+    image: "/images/exterior-shades.png",
     alt: "Exterior shades on patio doors",
     href: "/products/exterior-shades",
     blurb:
