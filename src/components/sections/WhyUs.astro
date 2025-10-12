@@ -65,108 +65,120 @@ const {
 
 <section class="why" aria-labelledby="why-title">
   <div class="container container--wide">
-    <header class="why__header">
-      <h2 class="why__h2" id="why-title">{heading}</h2>
-      <p class="why__lead">{subheading}</p>
-    </header>
+    <!-- inner wrapper enforces horizontal padding so the grid never touches edges -->
+    <div class="why__inner">
+      <header class="why__header">
+        <h2 class="why__h2" id="why-title">{heading}</h2>
+        <p class="why__lead">{subheading}</p>
+      </header>
 
-    <div class="why__grid">
-      <!-- Left stack (3 cards) -->
-      <ul class="why__list" role="list">
-        {
-          leftFeatures.map((f) => (
-            <li class="why__feat">
-              {f.icon ? (
-                <img
-                  class="why__feat__icon"
-                  src={f.icon}
-                  alt={f.alt ?? ""}
-                  aria-hidden={f.alt ? "false" : "true"}
-                  width="24"
-                  height="24"
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : (
-                <span
-                  class="why__feat__icon why__feat__icon--fallback"
-                  aria-hidden="true"
-                >
-                  💠
-                </span>
-              )}
-              <div class="why__feat__body">
-                <h3 class="small-heading why__feat__title">{f.title}</h3>
-                <p class="why__feat__text">{f.text}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
+      <div class="why__grid">
+        <!-- Left stack -->
+        <ul class="why__list" role="list">
+          {
+            leftFeatures.map((f) => (
+              <li class="why__feat">
+                {f.icon ? (
+                  <img
+                    class="why__feat__icon"
+                    src={f.icon}
+                    alt={f.alt ?? ""}
+                    aria-hidden={f.alt ? "false" : "true"}
+                    width="24"
+                    height="24"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <span
+                    class="why__feat__icon why__feat__icon--fallback"
+                    aria-hidden="true"
+                  >
+                    💠
+                  </span>
+                )}
+                <div class="why__feat__body">
+                  <h3 class="big-heading why__feat__title">{f.title}</h3>
+                  <p class="why__feat__text">{f.text}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
 
-      <!-- Center image -->
-      <figure class="why__media">
-        <img
-          src={imageSrc}
-          alt={imageAlt}
-          width="960"
-          height="640"
-          loading="lazy"
-          decoding="async"
-        />
-      </figure>
+        <!-- Center image -->
+        <figure class="why__media">
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            width="960"
+            height="640"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
 
-      <!-- Right stack (3 cards) -->
-      <ul class="why__list" role="list">
-        {
-          rightFeatures.map((f) => (
-            <li class="why__feat">
-              {f.icon ? (
-                <img
-                  class="why__feat__icon"
-                  src={f.icon}
-                  alt={f.alt ?? ""}
-                  aria-hidden={f.alt ? "false" : "true"}
-                  width="24"
-                  height="24"
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : (
-                <span
-                  class="why__feat__icon why__feat__icon--fallback"
-                  aria-hidden="true"
-                >
-                  💠
-                </span>
-              )}
-              <div class="why__feat__body">
-                <h3 class="big-heading why__feat__title">{f.title}</h3>
-                <p class="why__feat__text">{f.text}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+        <!-- Right stack -->
+        <ul class="why__list" role="list">
+          {
+            rightFeatures.map((f) => (
+              <li class="why__feat">
+                {f.icon ? (
+                  <img
+                    class="why__feat__icon"
+                    src={f.icon}
+                    alt={f.alt ?? ""}
+                    aria-hidden={f.alt ? "false" : "true"}
+                    width="24"
+                    height="24"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <span
+                    class="why__feat__icon why__feat__icon--fallback"
+                    aria-hidden="true"
+                  >
+                    💠
+                  </span>
+                )}
+                <div class="why__feat__body">
+                  <h3 class="big-heading why__feat__title">{f.title}</h3>
+                  <p class="why__feat__text">{f.text}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
 
-    <div class="why__cta">
-      <Button href={ctaHref} color="neutral">{ctaText}</Button>
+      <div class="why__cta">
+        <Button href={ctaHref} color="neutral">{ctaText}</Button>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .why {
+    /* target widths for ≥1200px, still clamped to viewport so they can shrink */
     --col-left: 360px;
-    --col-img: 640px;
+    --col-img: 600px; /* ↓ slightly narrower image to avoid bleed */
     --col-right: 360px;
     --grid-gap: 24px;
 
-    --feat-h: 150px; /* fixed card height */
-    --list-gap: 16px; /* space between cards */
+    --feat-h: 150px; /* base card height */
+    --list-gap: 16px;
+
+    /* section-specific horizontal padding (keeps the grid inside the container gutters) */
+    --section-gutter: clamp(16px, 4vw, 40px);
 
     background: var(--white);
+  }
+
+  /* local wrapper that actually applies the horizontal padding */
+  .why__inner {
+    padding-inline: var(--section-gutter);
   }
 
   .why__header {
@@ -186,17 +198,16 @@ const {
     max-width: 72ch;
   }
 
-  /* ===== Mobile-first: 3 cards → image → 3 cards ===== */
+  /* ===== Mobile-first ===== */
   .why__grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--list-gap);
     align-items: start;
     margin-top: clamp(16px, 3vw, 24px);
-    /* Always center the grid content within the container */
     justify-content: center;
-    margin-inline: auto;
     width: 100%;
+    margin-inline: auto;
   }
 
   .why__media {
@@ -228,13 +239,14 @@ const {
     border-radius: 2px;
     padding: 24px;
     height: var(--feat-h);
+    box-sizing: border-box;
   }
 
   .why__feat__icon {
     width: 24px;
     height: 24px;
-    display: block;
     object-fit: contain;
+    display: block;
   }
   .why__feat__icon--fallback {
     display: inline-grid;
@@ -265,61 +277,53 @@ const {
   .why__cta {
     display: flex;
     justify-content: center;
-    margin-top: 32px; /* mobile spacing below image */
+    margin-top: 32px;
   }
 
-  /* ===== Tablet (768–1199px): image full-width, two stacks below ===== */
+  /* ===== Tablet (768–1199px) ===== */
   @media (min-width: 768px) and (max-width: 1199px) {
     .why__grid {
       grid-template-columns: 1fr 1fr;
       gap: 20px;
-      justify-content: center;
-      width: 100%;
-      margin-inline: auto;
     }
-
     .why__media {
       grid-column: 1 / -1;
       grid-row: 1;
       height: auto;
     }
-
     .why__list:first-of-type {
       grid-column: 1;
     }
     .why__list:last-of-type {
       grid-column: 2;
     }
-
-    .why__list {
-      grid-template-columns: 1fr;
-    }
-
     .why__feat {
       height: var(--feat-h);
       min-height: var(--feat-h);
     }
   }
 
-  /* ===== Desktop (≥1200px): 360 | 640 | 360, always centered ===== */
+  /* ===== Desktop (≥1200px) ===== */
   @media (min-width: 1200px) {
     .why__grid {
-      /* fluid clamps so it can shrink if needed, but targets Figma sizes */
       grid-template-columns:
         clamp(300px, 26vw, var(--col-left))
-        clamp(520px, 48vw, var(--col-img))
+        clamp(480px, 44vw, var(--col-img)) /* narrower middle */
         clamp(300px, 26vw, var(--col-right));
       gap: var(--grid-gap);
 
-      /* center within container--wide and keep a tidy max width */
-      max-width: 1408px; /* 360 + 640 + 360 + (2 * 24) */
+      /* tie the grid’s max width to the column targets, but still allow shrinking */
+      max-width: calc(
+        var(--col-left) + var(--col-img) + var(--col-right) +
+          (2 * var(--grid-gap))
+      );
       width: 100%;
       margin-inline: auto;
       justify-content: center;
       align-items: start;
     }
 
-    /* Explicit placement to keep order consistent */
+    /* explicit placement */
     .why__list:first-of-type {
       grid-column: 1;
     }
@@ -330,7 +334,7 @@ const {
       grid-column: 3;
     }
 
-    /* Image matches total height of the three cards + gaps */
+    /* bottoms align: image height = 3 cards + 2 gaps */
     .why__media {
       height: calc((3 * var(--feat-h)) + (2 * var(--list-gap)));
     }
@@ -338,9 +342,5 @@ const {
       height: 100%;
       object-fit: cover;
     }
-
-    .why__cta {
-      margin-top: 48px;
-    } /* desktop spacing below image */
   }
 </style>
