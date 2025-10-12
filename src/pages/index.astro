@@ -10,6 +10,7 @@ import CTABannerSplit from "../components/sections/shared/CTABannerSplit.astro";
 // import Carousel from "../components/Carousel.astro";
 import Carousel from "../components/ui/Carousel.astro";
 import WhyUs from "../components/sections/WhyUs.astro";
+import Testimonials from "../components/sections/shared/Testimonials.astro";
 
 import { landingProductsData } from "../data/lp-products-data";
 import { bannerData } from "../data/banner-data";
@@ -39,4 +40,5 @@ const images = [
   <WhyUs />
   <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" />
   <!-- <Contact /> -->
+  <Testimonials />
 </Main>
