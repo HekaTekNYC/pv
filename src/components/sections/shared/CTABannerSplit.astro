@@ -1,41 +1,39 @@
 ---
+import type { BannerSplitProps } from "../../../data/banner-data";
 import Button from "../../ui/Button.astro";
+
+const { image, content } = Astro.props as BannerSplitProps;
 ---
 
 <section class="banner-split">
   <div class="banner-split__image">
     <picture>
-      <!-- Mobile WebP -->
       <source
-        srcset="/images/banner-sp-mbl.webp"
+        srcset={image.mobileWebp}
         media="(max-width: 1023px)"
         type="image/webp"
       />
-      <!-- Mobile PNG fallback -->
       <source
-        srcset="/images/banner-sp-mbl.png"
+        srcset={image.mobileFallback}
         media="(max-width: 1023px)"
         type="image/png"
       />
-      <!-- Desktop WebP -->
       <source
-        srcset="/images/banner-sp-dsk.webp"
+        srcset={image.desktopWebp}
         media="(min-width: 1024px)"
         type="image/webp"
       />
-      <!-- Desktop PNG fallback -->
       <source
-        srcset="/images/banner-sp-dsk.png"
+        srcset={image.desktopFallback}
         media="(min-width: 1024px)"
         type="image/png"
       />
-      <!-- Final fallback -->
       <img
-        src="/images/banner-sp-dsk.png"
-        alt="Your banner description"
+        src={image.desktopFallback}
+        alt={image.alt}
         class="banner-split__image"
-        width="1280"
-        height="854"
+        width={image.width || 1280}
+        height={image.height || 854}
         loading="lazy"
       />
     </picture>
@@ -43,15 +41,11 @@ import Button from "../../ui/Button.astro";
   <div class="banner-split__overlay"></div>
   <div class="banner-split__container container">
     <div class="banner-split__info">
-      <h2>Let’s Transform Your Windows Today</h2>
-      <p>
-        Bring your vision to life with custom-designed window coverings that
-        combine beauty, function, and expert care. Let’s create a perfect
-        view—together.
-      </p>
-      <Button href="/about" color="neutral" bordered variant="default"
-        >Request Your Free Consultation</Button
-      >
+      <h2>{content.title}</h2>
+      <p>{content.description}</p>
+      <Button href={content.buttonHref} color="neutral" variant="default">
+        {content.buttonText}
+      </Button>
     </div>
     <div class="banner-split__spacer"></div>
   </div>
@@ -112,5 +106,23 @@ import Button from "../../ui/Button.astro";
   }
 
   @media (min-width: 1024px) {
+    .banner-split__overlay {
+      background: linear-gradient(
+        to right,
+        rgb(36, 66, 86) 50%,
+        rgba(36, 66, 86, 0) 100%
+      );
+      opacity: 1;
+    }
+    .banner-split__info {
+      align-items: start;
+      text-align: start;
+      width: 40%;
+    }
+
+    .banner-split__spacer {
+      display: block;
+      width: 50%;
+    }
   }
 </style>
