@@ -1,0 +1,128 @@
+---
+import type { BannerSplitProps } from "../../../data/banner-data";
+import Button from "../../ui/Button.astro";
+
+const { image, content } = Astro.props as BannerSplitProps;
+---
+
+<section class="banner-split">
+  <div class="banner-split__image">
+    <picture>
+      <source
+        srcset={image.mobileWebp}
+        media="(max-width: 1023px)"
+        type="image/webp"
+      />
+      <source
+        srcset={image.mobileFallback}
+        media="(max-width: 1023px)"
+        type="image/png"
+      />
+      <source
+        srcset={image.desktopWebp}
+        media="(min-width: 1024px)"
+        type="image/webp"
+      />
+      <source
+        srcset={image.desktopFallback}
+        media="(min-width: 1024px)"
+        type="image/png"
+      />
+      <img
+        src={image.desktopFallback}
+        alt={image.alt}
+        class="banner-split__image"
+        width={image.width || 1280}
+        height={image.height || 854}
+        loading="lazy"
+      />
+    </picture>
+  </div>
+  <div class="banner-split__overlay"></div>
+  <div class="banner-split__container container">
+    <div class="banner-split__info">
+      <h2>{content.title}</h2>
+      <p>{content.description}</p>
+      <Button href={content.buttonHref} color="neutral" variant="default">
+        {content.buttonText}
+      </Button>
+    </div>
+    <div class="banner-split__spacer"></div>
+  </div>
+</section>
+
+<style>
+  .banner-split {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 400px;
+  }
+
+  .banner-split__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+  }
+
+  .banner-split__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--secondary);
+    opacity: 0.9;
+    z-index: 3;
+  }
+
+  .banner-split__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+  }
+  .banner-split__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .banner-split__spacer {
+    display: none;
+  }
+  .banner-split__info h2 {
+    color: var(--white) !important;
+  }
+  .banner-split__info p {
+    color: var(--grey-10) !important;
+    padding: 16px 0 32px;
+  }
+
+  @media (min-width: 1024px) {
+    .banner-split__overlay {
+      background: linear-gradient(
+        to right,
+        rgb(36, 66, 86) 50%,
+        rgba(36, 66, 86, 0) 100%
+      );
+      opacity: 1;
+    }
+    .banner-split__info {
+      align-items: start;
+      text-align: start;
+      width: 40%;
+    }
+
+    .banner-split__spacer {
+      display: block;
+      width: 50%;
+    }
+  }
+</style>
