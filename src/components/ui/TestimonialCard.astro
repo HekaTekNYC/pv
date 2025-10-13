@@ -2,13 +2,18 @@
 const { quote, initial, author, role } = Astro.props;
 ---
 
-<div class="testimonial-card">
+<article
+  class="testimonial-card"
+  role="article"
+  aria-label="Testimonial from {author}"
+>
   <p class="testimonial-card__quote">{quote}</p>
 
   <div class="testimonial-card__divider">
     <img
       src="/icons/mini-quotes.svg"
-      alt="dark deal quotation marks"
+      alt=""
+      aria-hidden="true"
       height="16"
       width="19.37"
       loading="lazy"
@@ -17,15 +22,17 @@ const { quote, initial, author, role } = Astro.props;
   </div>
 
   <div class="testimonial-card__user">
-    <div class="testimonial-card__avatar">
+    <div class="testimonial-card__avatar" aria-hidden="true">
       <div class="testimonial-card__initial">{initial}</div>
     </div>
     <div class="testimonial-card__info">
-      <h3 class="testimonial-card__name small-heading">{author}</h3>
+      <h3 class="testimonial-card__name small-heading">
+        {author}
+      </h3>
       <div class="testimonial-card__role">{role}</div>
     </div>
   </div>
-</div>
+</article>
 
 <style>
   .testimonial-card {
@@ -73,5 +80,11 @@ const { quote, initial, author, role } = Astro.props;
     font-weight: var(--fw-bold);
     color: var(--secondary);
     line-height: 1.2;
+  }
+
+  @media (min-width: 1024px) {
+    .testimonial-card {
+      padding: 40px 32px;
+    }
   }
 </style>

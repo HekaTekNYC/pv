@@ -55,7 +55,15 @@ import { testimonials } from "../../../data/testimonials-data";
 
   .testimonials__cards {
     display: grid;
+    grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    .testimonials__cards {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
   }
 
   @media (min-width: 1200px) {
