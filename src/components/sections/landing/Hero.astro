@@ -1,20 +1,5 @@
 ---
 import Button from "../../ui/Button.astro";
-
-interface Props {
-  title?: string;
-  subtitle?: string;
-  ctaText?: string;
-  ctaHref?: string;
-  extraText?: string;
-}
-
-const {
-  title = "Beautiful Window Coverings Beautifully Crafted for You",
-  subtitle = "Enhance your home or business with stylish, custom-fit window solutions tailored to your taste and space.",
-  ctaText = "Schedule Free Consultation",
-  ctaHref = "#",
-} = Astro.props as Props;
 ---
 
 <section class="lp-hero" aria-labelledby="hero-title">
@@ -30,36 +15,31 @@ const {
 
   <div class="container">
     <div class="lp-hero__content">
-      <h1 id="hero-title" class="lp-hero__title">{title}</h1>
-      {subtitle && <p class="lp-hero__subtitle">{subtitle}</p>}
-
-      {
-        ctaText && (
-          <div class="lp-hero__actions">
-            <Button color="neutral" href={ctaHref}>
-              {ctaText}
-            </Button>
-          </div>
-        )
-      }
+      <h1 id="hero-title" class="lp-hero__title">
+        Beautiful Window Coverings Beautifully Crafted for You
+      </h1>
+      <p class="lp-hero__subtitle">
+        Enhance your home or business with stylish, custom-fit window solutions
+        tailored to your taste and space.
+      </p>
+      <div class="lp-hero__actions">
+        <Button color="neutral" href="#"> Schedule Free Consultation </Button>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-  /* SECTION: uses global tokens and container gutters */
   .lp-hero {
     position: relative;
-    display: grid; /* vertical centering without absolute */
+    display: grid;
     align-items: center;
     min-height: clamp(520px, 100svh, 900px);
     isolation: isolate;
     color: var(--white);
     font-family: var(--ff-body);
-    overflow: visible; /* allow growth when text wraps */
   }
 
-  /* BACKGROUND */
   .lp-hero__bg {
     position: absolute;
     inset: 0;
@@ -71,67 +51,59 @@ const {
   }
 
   .lp-hero__overlay {
+    --overlay: 40, 43, 48; /* #282B30 */
     position: absolute;
     inset: 0;
     z-index: -1;
+    pointer-events: none;
     background: linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.62) 0%,
-      rgba(0, 0, 0, 0.45) 38%,
-      rgba(0, 0, 0, 0.18) 58%,
-      rgba(0, 0, 0, 0) 78%
+      rgba(var(--overlay), 0.96) 0%,
+      rgba(var(--overlay), 0.86) 38%,
+      rgba(var(--overlay), 0.64) 58%,
+      rgba(var(--overlay), 0.38) 85%,
+      rgba(var(--overlay), 0) 100%
     );
   }
 
-  /* CONTENT: relies on .container for horizontal padding */
   .lp-hero__content {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     max-width: 46rem;
-    padding-block: clamp(16px, 6vw, 64px); /* vertical spacing only */
+    padding-block: clamp(16px, 6vw, 64px);
   }
 
-  /* TYPOGRAPHY: pull from globals; tweak line-height locally */
   .lp-hero__title {
     font-family: var(--ff-heading);
     font-size: var(--fs-h1);
     font-weight: var(--fw-semibold);
-    line-height: 1.08; /* tighter than global h1 for lp-hero aesthetic */
+    line-height: 1.08;
     letter-spacing: -0.02em;
     color: var(--white);
   }
 
   .lp-hero__subtitle {
     font-family: var(--ff-body);
-    font-size: var(--fs-body-l);
+    font-size: var(--fs-body-r); /* This is 16px */
     line-height: 1.5;
-    font-weight: var(--fw-medium);
-    max-width: 42rem;
-    color: color-mix(in srgb, var(--white) 88%, transparent);
-  }
-
-  .lp-hero__text {
-    font-family: var(--ff-body);
-    font-size: var(--fs-body-r);
-    line-height: 1.6;
     font-weight: var(--fw-regular);
     max-width: 42rem;
-    color: color-mix(in srgb, var(--white) 85%, transparent);
+    color: color-mix(in srgb, var(--white) 88%, transparent);
   }
 
   .lp-hero__actions {
     margin-top: 0.25rem;
   }
 
-  /* MOBILE: your gradient flips to vertical; keep tokens */
   @media (max-width: 768px) {
     .lp-hero__overlay {
       background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.62) 0%,
-        rgba(0, 0, 0, 0.45) 35%,
-        rgba(0, 0, 0, 0) 75%
+        90deg,
+        rgba(var(--overlay), 0.96) 0%,
+        rgba(var(--overlay), 0.86) 45%,
+        rgba(var(--overlay), 0.5) 85%,
+        rgba(var(--overlay), 0) 100%
       );
     }
     .lp-hero__content {
