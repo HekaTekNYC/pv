@@ -1,35 +1,38 @@
-// src/scripts/carousel.client.ts
 function setupCarousel(root: HTMLElement) {
-  const viewport = root.querySelector<HTMLElement>(".viewport");
-  const track = root.querySelector<HTMLElement>(".track");
+  const viewport = root.querySelector<HTMLElement>(".carousel__viewport");
+  const track = root.querySelector<HTMLElement>(".carousel__track");
   if (!viewport || !track) return;
 
-  const slides = Array.from(track.querySelectorAll<HTMLLIElement>(".slide"));
+  const slides = Array.from(track.querySelectorAll<HTMLLIElement>(".carousel__slide"));
+
+  const getGap = () => {
+    const cs = getComputedStyle(track);
+    return parseFloat(cs.gap || "0");
+  };
 
   const stepSize = () => {
     const first = slides[0];
     if (!first) return 0;
-    const rect = first.getBoundingClientRect();
-    const gap = parseFloat(getComputedStyle(track).gap || "0");
-    return rect.width + gap;
+    return first.getBoundingClientRect().width + getGap();
   };
 
   const scrollBySlides = (dir: number) => {
     const step = stepSize();
-    if (step === 0) return;
+    if (!step) return;
     viewport.scrollBy({ left: dir * step, behavior: "smooth" });
   };
 
-  root.querySelectorAll<HTMLButtonElement>(".nav").forEach((btn) => {
+  // Simple event binding - no cloning needed
+  root.querySelectorAll<HTMLButtonElement>(".carousel__nav").forEach((btn) => {
     btn.addEventListener("click", (ev) => {
-      const t = ev.currentTarget;
-      if (!(t instanceof HTMLButtonElement)) return;
-      const parsed = parseInt(t.dataset.dir ?? "1", 10);
-      scrollBySlides(Number.isNaN(parsed) ? 1 : parsed);
+      ev.preventDefault();
+      const dir = parseInt(btn.dataset.dir ?? "1", 10);
+      scrollBySlides(dir);
     });
   });
 
-  root.addEventListener("keydown", (e) => {
+  // Keyboard navigation
+  viewport.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft") {
       e.preventDefault();
       scrollBySlides(-1);
@@ -40,15 +43,13 @@ function setupCarousel(root: HTMLElement) {
     }
   });
 
-  // mark as initialized so re-inclusion is harmless
-  root.dataset.carouselInit = "1";
-  new ResizeObserver(() => {}).observe(viewport);
+  root.setAttribute("data-carousel-init", "1");
 }
 
 export function initAllCarousels() {
-  document
-    .querySelectorAll<HTMLElement>(
-      '.carousel[data-carousel-id]:not([data-carousel-init="1"])',
-    )
-    .forEach(setupCarousel);
+  document.querySelectorAll<HTMLElement>('.carousel:not([data-carousel-init="1"])').forEach(setupCarousel);
+}
+
+if (typeof window !== "undefined") {
+  document.addEventListener("DOMContentLoaded", initAllCarousels);
 }
