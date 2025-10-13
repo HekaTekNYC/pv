@@ -2,7 +2,7 @@
 import Button from "../../ui/Button.astro";
 ---
 
-<section class="banner-center">
+<section class="banner-center" aria-labelledby="banner-center-heading">
   <div class="banner-center__image">
     <picture>
       <source
@@ -27,17 +27,18 @@ import Button from "../../ui/Button.astro";
       />
       <img
         src="/images/banner-center-dsk.png"
-        alt="cellular window shade"
+        alt="Close-up of cellular window shade showing light filtering through"
         class="banner-center__image"
         width="1280"
         height="854"
         loading="lazy"
+        decoding="async"
       />
     </picture>
   </div>
   <div class="banner-center__overlay"></div>
   <div class="banner-center__container container">
-    <h2>Let's Get Started Today</h2>
+    <h2 id="banner-center-heading">Let's Get Started Today</h2>
     <p>
       Whether you're building, remodeling, or upgrading your space, we’re here
       to help with stunning window coverings tailored to your needs.
@@ -95,8 +96,5 @@ import Button from "../../ui/Button.astro";
     padding: 16px 0 32px;
     max-width: 850px;
     width: 100%;
-  }
-
-  @media (min-width: 1024px) {
   }
 </style>
