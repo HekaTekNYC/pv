@@ -5,11 +5,12 @@ import AboutMission from "../components/sections/shared/AboutMission.astro";
 import LandingProducts from "../components/sections/landing/LandingProducts.astro";
 
 import LandingServices from "../components/sections/landing/LandingServices.astro";
-import Contact from "../components/sections/landing/Contact.astro";
+// import Contact from "../components/sections/landing/Contact.astro";
 import CTABannerSplit from "../components/sections/shared/CTABannerSplit.astro";
 // import Carousel from "../components/Carousel.astro";
 import Carousel from "../components/ui/Carousel.astro";
 import WhyUs from "../components/sections/WhyUs.astro";
+import Testimonials from "../components/sections/shared/Testimonials.astro";
 
 import { landingProductsData } from "../data/lp-products-data";
 import { bannerData } from "../data/banner-data";
@@ -37,6 +38,7 @@ const images = [
 
   <!-- <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" /> -->
   <WhyUs />
-  <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" />
+  <!-- <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" /> -->
   <!-- <Contact /> -->
+  <Testimonials />
 </Main>

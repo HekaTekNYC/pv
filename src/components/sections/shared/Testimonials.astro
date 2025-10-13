@@ -1,0 +1,94 @@
+---
+import TestimonialCard from "../../ui/TestimonialCard.astro";
+import { testimonials } from "../../../data/testimonials-data";
+---
+
+<section class="testimonials" aria-labelledby="testimonials-heading">
+  <div class="testimonials__container container--tall">
+    <div class="testimonials__header">
+      <h2 id="testimonials-heading">What Clients Are Saying</h2>
+      <p>
+        Our customers love the personal service, expert installation, and
+        stylish results we deliver. See what your neighbors are saying about
+        their experience with PerfectView Window Coverings.
+      </p>
+    </div>
+    <div
+      class="testimonials__cards"
+      aria-label="Customer testimonials"
+      aria-live="polite"
+    >
+      {
+        testimonials.length > 0 ? (
+          testimonials.map((card) => <TestimonialCard {...card} />)
+        ) : (
+          <p class="testimonials__empty">Loading Testimonials...</p>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    position: relative;
+    width: 100%;
+  }
+
+  .testimonials__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+  }
+
+  .testimonials__header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 24px;
+  }
+
+  .testimonials__header h2 {
+    padding-bottom: 16px;
+  }
+
+  .testimonials__cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    .testimonials__cards {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .testimonials::before,
+    .testimonials::after {
+      content: "";
+      position: absolute;
+      width: 194px; /* Adjust size as needed */
+      height: 161px;
+      background-image: url("/images/Quotes.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: 1;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .testimonials::before {
+      top: 0;
+      left: max(20px, calc(50% - 800px));
+    }
+
+    .testimonials::after {
+      bottom: 0;
+      right: max(20px, calc(50% - 850px));
+    }
+  }
+</style>
