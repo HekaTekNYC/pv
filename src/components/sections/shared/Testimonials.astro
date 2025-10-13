@@ -1,15 +1,9 @@
-<section class="testimonials">
-  <!-- <img
-    src="/images/Quotes.png"
-    alt=""
-    class="testimonials__q testimonials__q--top"
-  />
-  <img
-    src="/images/Quotes.png"
-    alt=""
-    class="testimonials__q testimonials__q--btm"
-  /> -->
+---
+import TestimonialCard from "../../ui/TestimonialCard.astro";
+import { testimonials } from "../../../data/testimonials-data";
+---
 
+<section class="testimonials">
   <div class="testimonials__container container">
     <div class="testimonials__header">
       <h2>What Clients Are Saying</h2>
@@ -19,7 +13,18 @@
         their experience with PerfectView Window Coverings.
       </p>
     </div>
-    <div class="testimonials__cards"></div>
+    <div class="testimonials__cards">
+      {
+        testimonials.map((card) => (
+          <TestimonialCard
+            quote={card.quote}
+            initial={card.initial}
+            author={card.author}
+            role={card.role}
+          />
+        ))
+      }
+    </div>
   </div>
 </section>
 
@@ -46,6 +51,19 @@
 
   .testimonials__header h2 {
     padding-bottom: 16px;
+  }
+
+  .testimonials__cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    .testimonials__cards {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
   }
 
   @media (min-width: 1200px) {
