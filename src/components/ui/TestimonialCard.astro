@@ -7,20 +7,71 @@ const { quote, initial, author, role } = Astro.props;
 
   <div class="testimonial-card__divider">
     <img
-      class="testimonial-card__quote-icon"
-      src="/images/mini-quotes.svg"
+      src="/icons/mini-quotes.svg"
       alt="dark deal quotation marks"
+      height="16"
+      width="19.37"
+      loading="lazy"
     />
     <div class="testimonial-card__line"></div>
   </div>
 
   <div class="testimonial-card__user">
     <div class="testimonial-card__avatar">
-      <span class="testimonial-card__initial">{initial}</span>
+      <div class="testimonial-card__initial">{initial}</div>
     </div>
     <div class="testimonial-card__info">
-      <div class="testimonial-card__name">{author}</div>
+      <h3 class="testimonial-card__name small-heading">{author}</h3>
       <div class="testimonial-card__role">{role}</div>
     </div>
   </div>
 </div>
+
+<style>
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color: var(--grey-10);
+    padding: 24px;
+    width: 100%;
+  }
+
+  .testimonial-card__divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 32px 0 23px;
+  }
+
+  .testimonial-card__line {
+    border: none;
+    height: 0.125rem;
+    background-color: var(--secondary);
+    width: 100%;
+    margin-left: 16px;
+  }
+
+  .testimonial-card__user {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .testimonial-card__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--neutral-lighter);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+  }
+
+  :global(.testimonial-card__initial) {
+    font-family: var(--ff-heading);
+    font-size: var(--fs-h3-lg);
+    font-weight: var(--fw-bold);
+    color: var(--secondary);
+    line-height: 1.2;
+  }
+</style>

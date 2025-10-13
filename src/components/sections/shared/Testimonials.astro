@@ -1,5 +1,6 @@
 ---
 import TestimonialCard from "../../ui/TestimonialCard.astro";
+import { testimonials } from "../../../data/testimonials-data";
 ---
 
 <section class="testimonials">
@@ -13,17 +14,16 @@ import TestimonialCard from "../../ui/TestimonialCard.astro";
       </p>
     </div>
     <div class="testimonials__cards">
-      <!-- {
-          .map((card) => (
-            <TestimonialCard
-              quote={card.quote}
-              initial={card.initial}
-              author={card.author}
-              role={card.role}
-           
-            />
-          ))
-        } -->
+      {
+        testimonials.map((card) => (
+          <TestimonialCard
+            quote={card.quote}
+            initial={card.initial}
+            author={card.author}
+            role={card.role}
+          />
+        ))
+      }
     </div>
   </div>
 </section>
@@ -51,6 +51,11 @@ import TestimonialCard from "../../ui/TestimonialCard.astro";
 
   .testimonials__header h2 {
     padding-bottom: 16px;
+  }
+
+  .testimonials__cards {
+    display: grid;
+    gap: 16px;
   }
 
   @media (min-width: 1200px) {
