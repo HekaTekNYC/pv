@@ -3,17 +3,21 @@ import TestimonialCard from "../../ui/TestimonialCard.astro";
 import { testimonials } from "../../../data/testimonials-data";
 ---
 
-<section class="testimonials">
-  <div class="testimonials__container container">
+<section class="testimonials" aria-labelledby="testimonials-heading">
+  <div class="testimonials__container container--tall">
     <div class="testimonials__header">
-      <h2>What Clients Are Saying</h2>
+      <h2 id="testimonials-heading">What Clients Are Saying</h2>
       <p>
         Our customers love the personal service, expert installation, and
         stylish results we deliver. See what your neighbors are saying about
         their experience with PerfectView Window Coverings.
       </p>
     </div>
-    <div class="testimonials__cards">
+    <div
+      class="testimonials__cards"
+      aria-label="Customer testimonials"
+      aria-live="polite"
+    >
       {
         testimonials.map((card) => (
           <TestimonialCard
@@ -82,12 +86,12 @@ import { testimonials } from "../../../data/testimonials-data";
     }
     .testimonials::before {
       top: 0;
-      left: max(20px, calc(50% - 650px));
+      left: max(20px, calc(50% - 800px));
     }
 
     .testimonials::after {
       bottom: 0;
-      right: max(20px, calc(50% - 650px));
+      right: max(20px, calc(50% - 850px));
     }
   }
 </style>
