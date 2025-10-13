@@ -1,10 +1,9 @@
 ---
-import Main from "../layouts/Main.astro";
+import Inner from "../layouts/Inner.astro";
 ---
 
-<Main title="About PerfectView">
-  <div class="about">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit provident
-    perferendis nihil saepe sapiente quisquam omnis, labore aut eum in!
-  </div>
-</Main>
+<Inner
+  title="About PerfectView"
+  heading="About"
+  breadcrumbItems={[{ label: "Home", href: "/" }, { label: "About" }]}
+/>

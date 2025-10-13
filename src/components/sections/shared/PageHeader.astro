@@ -1,0 +1,51 @@
+---
+export interface Props {
+  heading: string;
+  breadcrumbItems: Array<{
+    label: string;
+    href?: string;
+  }>;
+}
+
+const { heading, breadcrumbItems } = Astro.props;
+---
+
+<section class="page-header">
+  <div class="container">
+    <nav class="page-header__breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        {
+          breadcrumbItems.map((item, index) => (
+            <li>
+              {item.href ? (
+                <a href={item.href}>{item.label}</a>
+              ) : (
+                <span aria-current="page">{item.label}</span>
+              )}
+              {index < breadcrumbItems.length - 1 && (
+                <span class="breadcrumb__separator">/</span>
+              )}
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+    <h1 class="page-header__heading">{heading}</h1>
+  </div>
+</section>
+
+<style>
+  .page-header__breadcrumb ol {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px 0;
+    gap: 8px;
+    font-size: var(--fs-body-s);
+  }
+
+  .breadcrumb__separator {
+    margin-left: 8px;
+    color: var(--grey-50);
+  }
+</style>
