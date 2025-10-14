@@ -1,105 +1,39 @@
 ---
+import { whyUsFeatures } from "../../../data/why-us-data";
 import Button from "../../ui/Button.astro";
 
-export interface Feature {
-  title: string;
-  text: string;
-  icon?: string;
-  alt?: string;
-}
-
-interface Props {
-  heading?: string;
-  subheading?: string;
-  imageSrc?: string;
-  imageAlt?: string;
-  leftFeatures?: Feature[];
-  rightFeatures?: Feature[];
-  ctaText?: string;
-  ctaHref?: string;
-}
-
-const {
-  heading = "Why Homeowners and Designers Choose Us",
-  subheading = "We combine expert knowledge, design-focused thinking, and family-level care to deliver window treatments that perform beautifully, last long, and perfectly suit your space and lifestyle.",
-  imageSrc = "/images/WhyUs.jpg",
-  imageAlt = "Living room with custom window treatments",
-  leftFeatures = [
-    {
-      title: "Expert Design Advice",
-      text: "We help you choose the right styles, colors, and functionality for your space.",
-      icon: "/icons/handshake_icon.png",
-    },
-    {
-      title: "Friendly Assistance",
-      text: "Expert installers guarantee a flawless fit and finish, ensuring satisfaction with every setup.",
-      icon: "/icons/ppl_comms_icon.png",
-    },
-    {
-      title: "Family-Owned Values",
-      text: "You’ll work directly with us—no middlemen, just personal attention and integrity.",
-      icon: "/icons/hands_heart_icon.png",
-    },
-  ],
-  rightFeatures = [
-    {
-      title: "15+ Years Experience",
-      text: "Our deep knowledge ensures a seamless experience from measurement to final install.",
-      icon: "/icons/briefcase_icon.png",
-    },
-    {
-      title: "Clean & Safe Work",
-      text: "We ensure your home is left tidy, damage-free, and treated with utmost respect.",
-      icon: "/icons/shield_check_icon.png",
-    },
-    {
-      title: "Stylish & Functional",
-      text: "Innovative products that improve light control, privacy, and energy efficiency with a stylish touch.",
-      icon: "/icons/comp_gear_icon.png",
-    },
-  ],
-  ctaText = "See What Sets Us Apart",
-  ctaHref = "/about",
-} = Astro.props as Props;
+const { leftFeatures, rightFeatures } = whyUsFeatures;
 ---
 
-<section class="why" aria-labelledby="why-title">
+<section class="why-us" aria-labelledby="why-us-title">
   <div class="container container--wide">
-    <!-- inner wrapper enforces horizontal padding so the grid never touches edges -->
-    <div class="why__inner">
-      <header class="why__header">
-        <h2 class="why__h2" id="why-title">{heading}</h2>
-        <p class="why__lead">{subheading}</p>
+    <div class="why-us__inner">
+      <header class="why-us__header">
+        <h2 id="why-us-title">Why Homeowners and Designers Choose Us</h2>
+        <p>
+          We combine expert knowledge, design-focused thinking, and family-level
+          care to deliver window treatments that perform beautifully, last long,
+          and perfectly suit your space and lifestyle.
+        </p>
       </header>
 
-      <div class="why__grid">
+      <div class="why-us__grid">
         <!-- Left stack -->
-        <ul class="why__list" role="list">
+        <ul class="why-us__list">
           {
-            leftFeatures.map((f) => (
-              <li class="why__feat">
-                {f.icon ? (
-                  <img
-                    class="why__feat__icon"
-                    src={f.icon}
-                    alt={f.alt ?? ""}
-                    aria-hidden={f.alt ? "false" : "true"}
-                    width="24"
-                    height="24"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                ) : (
-                  <span
-                    class="why__feat__icon why__feat__icon--fallback"
-                    aria-hidden="true"
-                  >
-                    💠
-                  </span>
-                )}
-                <div class="why__feat__body">
-                  <h3 class="big-heading why__feat__title">{f.title}</h3>
-                  <p class="why__feat__text">{f.text}</p>
+            leftFeatures.map((feature) => (
+              <li class="why-us__card">
+                <img
+                  class="why-us__card-icon"
+                  src={feature.icon}
+                  alt={feature.alt || ""}
+                  width="24"
+                  height="24"
+                  loading="lazy"
+                />
+                <div class="why-us__card-content">
+                  <h3>{feature.title}</h3>
+                  <p>{feature.text}</p>
                 </div>
               </li>
             ))
@@ -107,11 +41,10 @@ const {
         </ul>
 
         <!-- Center image -->
-        <figure class="why__media">
+        <figure class="why-us__media">
           <img
-            src={imageSrc}
-            alt={imageAlt}
-            width="960"
+            src="/images/WhyUs.jpg"
+            alt='width="960"'
             height="640"
             loading="lazy"
             decoding="async"
@@ -119,32 +52,21 @@ const {
         </figure>
 
         <!-- Right stack -->
-        <ul class="why__list" role="list">
+        <ul class="why-us__list">
           {
-            rightFeatures.map((f) => (
-              <li class="why__feat">
-                {f.icon ? (
-                  <img
-                    class="why__feat__icon"
-                    src={f.icon}
-                    alt={f.alt ?? ""}
-                    aria-hidden={f.alt ? "false" : "true"}
-                    width="24"
-                    height="24"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                ) : (
-                  <span
-                    class="why__feat__icon why__feat__icon--fallback"
-                    aria-hidden="true"
-                  >
-                    💠
-                  </span>
-                )}
-                <div class="why__feat__body">
-                  <h3 class="big-heading why__feat__title">{f.title}</h3>
-                  <p class="why__feat__text">{f.text}</p>
+            rightFeatures.map((feature) => (
+              <li class="why-us__card">
+                <img
+                  class="why-us__card-icon"
+                  src={feature.icon}
+                  alt={feature.alt || ""}
+                  width="24"
+                  height="24"
+                  loading="lazy"
+                />
+                <div class="why-us__card-content">
+                  <h3>{feature.title}</h3>
+                  <p>{feature.text}</p>
                 </div>
               </li>
             ))
@@ -152,31 +74,18 @@ const {
         </ul>
       </div>
 
-      <div class="why__cta">
-        <Button href={ctaHref} color="neutral">{ctaText}</Button>
+      <div class="why-us__cta">
+        <Button href="/about" color="neutral">See What Sets Us Apart</Button>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .why {
-    /* target widths for ≥1200px, still clamped to viewport so they can shrink */
-    --col-left: 360px;
-    --col-img: 600px; /* ↓ slightly narrower image to avoid bleed */
-    --col-right: 360px;
-    --grid-gap: 24px;
-
-    --feat-h: 150px; /* base card height */
-    --list-gap: 16px;
-
-    /* section-specific horizontal padding (keeps the grid inside the container gutters) */
-    --section-gutter: clamp(16px, 4vw, 40px);
-
+  .why-us {
     background: var(--white);
   }
 
-  /* local wrapper that actually applies the horizontal padding */
   .why__inner {
     padding-inline: var(--section-gutter);
   }
