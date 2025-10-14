@@ -1,0 +1,173 @@
+---
+import Button from "../../ui/Button.astro";
+const aboutClientsData = [
+  {
+    num: "01",
+    client: "Homeowners",
+    info: "Transform rooms with stylish, functional window coverings tailored to your home's needs and design vision.",
+  },
+  {
+    num: "02",
+    client: "Designers",
+    info: "Partner with us for precision measurements, quality products, and seamless installations your clients will love.",
+  },
+  {
+    num: "03",
+    client: "Business Owners",
+    info: "Create comfortable, professional spaces with durable, attractive treatments that impress clients and employees alike.",
+  },
+  {
+    num: "04",
+    client: "Builders & Contractors",
+    info: "Add value to new builds with expertly installed, custom-fit window solutions ready for move-in day.",
+  },
+];
+---
+
+<section class="about-clients">
+  <div class="about-clients__container container">
+    <div class="about-clients__header">
+      <h2>Custom Window Solutions&shy; for Every Client</h2>
+      <div class="about-clients__btn-dsk">
+        <Button href="/contact" color="secondary">Get a Free Estimate</Button>
+      </div>
+    </div>
+    <div class="about-clients__grid">
+      {
+        aboutClientsData.map(({ num, client, info }) => (
+          <div class="about-clients__item">
+            <div class="about-clients__num">{num}</div>
+            <div class="about-clients__content">
+              <h3 class="big-heading">{client}</h3>
+              <p class="about-clients__info">{info}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <div class="about-clients__btn-mbl">
+      <Button href="/contact" color="secondary">Get a Free Estimate</Button>
+    </div>
+    <div class="about-clients__img-container">
+      <picture>
+        <!-- Mobile WebP -->
+        <source
+          srcset="/images/about-clients-mbl.webp"
+          type="image/webp"
+          media="(max-width: 1023px)"
+        />
+        <!-- Mobile PNG fallback -->
+        <source
+          srcset="/images/about-clients-mbl.png"
+          type="image/png"
+          media="(max-width: 1023px)"
+        />
+        <!-- Desktop WebP -->
+        <source
+          srcset="/images/about-clients-dsk.webp"
+          type="image/webp"
+          media="(min-width: 1024px)"
+        />
+        <!-- Desktop PNG fallback -->
+        <source
+          srcset="/images/about-clients-dsk.png"
+          type="image/png"
+          media="(min-width: 1024px)"
+        />
+        <img
+          src="/images/about-lp-dsk.png"
+          alt="Cellular shades in a full length bathroom window"
+          class="about-clients__img"
+          width="854"
+          height="1280"
+        />
+      </picture>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-clients {
+    background-color: var(--grey-10);
+  }
+  .about-clients__container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .about-clients__btn-dsk {
+    display: none;
+  }
+
+  .about-clients__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .about-clients__item {
+    display: flex;
+    gap: 16px;
+  }
+
+  .about-clients__num {
+    font-family: var(--ff-heading);
+    font-size: var(--fs-h3-lg);
+    font-weight: var(--fw-bold);
+    color: var(--neutral);
+    line-height: 1.2;
+  }
+
+  .about-clients__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .about-clients__img-container {
+    display: block;
+    max-width: 100%;
+  }
+
+  .about-clients__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media (min-width: 840px) {
+    .about-clients__container {
+      gap: 64px;
+    }
+    .about-clients__btn-dsk {
+      display: block;
+    }
+    .about-clients__btn-mbl {
+      display: none;
+    }
+
+    .about-clients__header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+    }
+
+    .about-clients__header h2 {
+      width: 70%;
+    }
+
+    .about-clients__grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .about-clients__img-container {
+      max-height: 630px;
+    }
+    .about-clients__img {
+      height: 630px;
+    }
+  }
+</style>
