@@ -24,10 +24,10 @@ const aboutClientsData = [
 ];
 ---
 
-<section class="about-clients">
+<section class="about-clients" aria-labelledby="clients-heading">
   <div class="about-clients__container container">
     <div class="about-clients__header">
-      <h2>Custom Window Solutions&shy; for Every Client</h2>
+      <h2 id="clients-heading">Custom Window Solutions for Every Client</h2>
       <div class="about-clients__btn-dsk">
         <Button href="/contact" color="secondary">Get a Free Estimate</Button>
       </div>
@@ -75,13 +75,18 @@ const aboutClientsData = [
           media="(min-width: 1024px)"
         />
         <img
-          src="/images/about-lp-dsk.png"
+          src="/images/about-clients-dsk.png"
           alt="Cellular shades in a full length bathroom window"
           class="about-clients__img"
           width="854"
           height="1280"
+          loading="lazy"
+          decoding="async"
         />
       </picture>
+      <noscript>
+        <img src="/images/about-clients-dsk.png" alt="Cellular shades" />
+      </noscript>
     </div>
   </div>
 </section>
