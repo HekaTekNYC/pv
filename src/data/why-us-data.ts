@@ -9,7 +9,7 @@ export const whyUsFeatures = {
   leftFeatures: [
     {
       title: "Expert Design Advice",
-      text: "We help you choose the right styles, colors, and functionality for your space.",
+      text: "We help you choose the right styles, colors, and functionality that perfectly suit your space",
       icon: "/icons/handshake.svg",
       alt: "Handshake icon representing partnership and trust",
     },
