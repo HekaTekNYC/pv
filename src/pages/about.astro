@@ -1,9 +1,16 @@
 ---
 import Inner from "../layouts/Inner.astro";
+import AboutCustom from "../components/sections/about/AboutCustom.astro";
+import AboutMission from "../components/sections/shared/AboutMission.astro";
+import Testimonials from "../components/sections/shared/Testimonials.astro";
 ---
 
 <Inner
   title="About PerfectView"
   heading="About"
   breadcrumbItems={[{ label: "Home", href: "/" }, { label: "About" }]}
-/>
+>
+  <AboutCustom />
+  <AboutMission />
+  <Testimonials />
+</Inner>

@@ -1,0 +1,46 @@
+---
+import Button from "../../ui/Button.astro";
+const aboutClientsData = [
+  {
+    num: "01",
+    client: "Homeowners",
+    info: "Transform rooms with stylish, functional window coverings tailored to your home's needs and design vision.",
+  },
+  {
+    num: "02",
+    client: "Designers",
+    info: "Partner with us for precision measurements, quality products, and seamless installations your clients will love.",
+  },
+  {
+    num: "03",
+    client: "Business Owners",
+    info: "Create comfortable, professional spaces with durable, attractive treatments that impress clients and employees alike.",
+  },
+  {
+    num: "04",
+    client: "Builders & Contractors",
+    info: "Add value to new builds with expertly installed, custom-fit window solutions ready for move-in day.",
+  },
+];
+---
+
+<section class="about-clients">
+  <div class="about-clients__header">
+    <h2>Custom Window Solutions for Every Client</h2>
+    <Button href="/contact" color="secondary">Get a Free Estimate</Button>
+  </div>
+  <div class="about-clients__grid">
+    {
+      aboutClientsData.map(({ num, client, info }) => (
+        <div class="about-clients__item">
+          <div class="about-clients__num">{num}</div>
+          <div class="about-clients__content">
+            <h3 class="about-clients__type">{client}</h3>
+            <p class="about-clients__info">{info}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <div class="about-clients__image"></div>
+</section>
