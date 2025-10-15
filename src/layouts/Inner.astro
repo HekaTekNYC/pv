@@ -1,6 +1,7 @@
 ---
 import Main from "./Main.astro";
 import PageHeader from "../components/sections/shared/PageHeader.astro";
+import CTABannerCenter from "../components/sections/shared/CTABannerCenter.astro";
 
 export interface Props {
   title: string;
@@ -17,4 +18,5 @@ const { title, heading, breadcrumbItems } = Astro.props;
 <Main title={title}>
   <PageHeader heading={heading} breadcrumbItems={breadcrumbItems} />
   <slot />
+  <CTABannerCenter />
 </Main>
