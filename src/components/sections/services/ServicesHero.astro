@@ -1,0 +1,40 @@
+---
+import Button from "../../ui/Button.astro";
+---
+
+<section class="services-hero" aria-labelledby="services-hero-heading">
+  <div class="container">
+    <div class="services-hero__img-container">
+      <picture>
+        <!-- WebP first -->
+        <source srcset="/images/services-hero.webp" type="image/webp" />
+        <!-- PNG fallback -->
+        <img
+          src="/images/services-hero.png"
+          alt="Descriptive alt text"
+          class="services-hero__img"
+          width="1200"
+          height="800"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+    </div>
+    <div class="services-hero__content">
+      <h2>Professional Window Treatment Installation</h2>
+      <p class="p-subheader">
+        Expertly installed custom window coverings tailored to your style. Enjoy
+        free consultations, design advice, and motorization setup, all backed by
+        years of experience.
+      </p>
+      <p>
+        We specialize in installing all types of window treatments, from custom
+        blinds to elegant drapes and modern roller shades. Our skilled team
+        ensures a perfect fit and smooth operation.
+      </p>
+      <div class="services-hero__service-pills"></div>
+      <Button href="/contact" color="secondary">Get to Know Our Services</Button
+      >
+    </div>
+  </div>
+</section>
