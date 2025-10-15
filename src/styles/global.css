@@ -49,6 +49,10 @@ textarea:focus,
   outline-offset: 2px;
 }
 
+img {
+  border-radius: 2px;
+}
+
 h1 {
   font-family: var(--ff-heading);
   font-size: var(--fs-h1);
