@@ -131,6 +131,13 @@ a {
   padding: clamp(60px, 8vw, 100px) clamp(16px, 5vw, 64px);
   width: 100%;
 }
+.container--tall {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: clamp(60px, 8vw, 100px) clamp(16px, 5vw, 64px)
+    clamp(60px, 8vw, 160px);
+  width: 100%;
+}
 
 /* --- Media Queries --- */
 @media (min-width: 768px) {

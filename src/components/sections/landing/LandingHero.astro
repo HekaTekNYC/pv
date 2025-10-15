@@ -1,0 +1,103 @@
+---
+import Button from "../../ui/Button.astro";
+---
+
+<section class="lp-hero" aria-labelledby="hero-title">
+  <div class="lp-hero__overlay" aria-hidden="true"></div>
+  <div class="container">
+    <div class="lp-hero__content">
+      <h1 id="hero-title">
+        Beautiful Window Coverings Beautifully Crafted for You
+      </h1>
+      <p>
+        Enhance your home or business with stylish, custom-fit window solutions
+        tailored to your taste and space.
+      </p>
+      <div class="lp-hero__actions">
+        <Button color="neutral" href="/contact">
+          Schedule Free Consultation
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .lp-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: clamp(520px, calc(100svh - 112px), 900px);
+    height: 100%;
+    width: 100%;
+    isolation: isolate;
+    background-image: url("/images/Hero.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .lp-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: rgba(40, 43, 48, 0.8);
+    width: 100%;
+  }
+
+  .lp-hero__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+    z-index: 2;
+  }
+
+  .lp-hero__content p {
+    color: var(--white);
+  }
+
+  .lp-hero__actions {
+    margin-top: 0.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .lp-hero__content {
+      align-items: start;
+      width: 75%;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .lp-hero {
+      min-height: clamp(520px, calc(100svh - 144px), 900px);
+    }
+
+    .lp-hero__overlay {
+      background: linear-gradient(
+        90deg,
+        rgba(40, 43, 48, 0.95) 0%,
+        rgba(40, 43, 48, 0.8) 50%,
+        rgba(40, 43, 48, 0.5) 70%,
+        rgba(40, 43, 48, 0) 100%
+      );
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lp-hero__content {
+      width: 60%;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .lp-hero__content {
+      align-items: start;
+      width: 50%;
+    }
+  }
+</style>

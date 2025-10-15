@@ -1,0 +1,101 @@
+---
+import Button from "../../ui/Button.astro";
+---
+
+<section class="banner-center" aria-labelledby="banner-center-heading">
+  <div class="banner-center__image">
+    <picture>
+      <source
+        srcset="/images/banner-center-mbl.webp"
+        media="(max-width: 1023px)"
+        type="image/webp"
+      />
+      <source
+        srcset="/images/banner-center-mbl.png"
+        media="(max-width: 1023px)"
+        type="image/png"
+      />
+      <source
+        srcset="/images/banner-center-dsk.webp"
+        media="(min-width: 1024px)"
+        type="image/webp"
+      />
+      <source
+        srcset="/images/banner-center-dsk.png"
+        media="(min-width: 1024px)"
+        type="image/png"
+      />
+      <img
+        src="/images/banner-center-dsk.png"
+        alt="Close-up of cellular window shade showing light filtering through"
+        class="banner-center__image"
+        width="1280"
+        height="854"
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
+  </div>
+  <div class="banner-center__overlay"></div>
+  <div class="banner-center__container container">
+    <h2 id="banner-center-heading">Let's Get Started Today</h2>
+    <p>
+      Whether you're building, remodeling, or upgrading your space, we’re here
+      to help with stunning window coverings tailored to your needs.
+    </p>
+    <Button href="/contact" color="neutral" variant="default">
+      Schedule a Free Consultation
+    </Button>
+  </div>
+</section>
+
+<style>
+  .banner-center {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 400px;
+  }
+
+  .banner-center__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+    background: var(--grey-50);
+  }
+
+  .banner-center__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--secondary);
+    opacity: 0.9;
+    z-index: 3;
+  }
+
+  .banner-center__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 4;
+  }
+
+  .banner-center__container h2 {
+    color: var(--white) !important;
+  }
+  .banner-center__container p {
+    color: var(--grey-10) !important;
+    padding: 16px 0 32px;
+    max-width: 850px;
+    width: 100%;
+  }
+</style>

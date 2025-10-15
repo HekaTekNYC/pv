@@ -1,15 +1,17 @@
 ---
 import Main from "../layouts/Main.astro";
-import Hero from "../components/sections/landing/Hero.astro";
+import LandingHero from "../components/sections/landing/LandingHero.astro";
 import AboutMission from "../components/sections/shared/AboutMission.astro";
 import LandingProducts from "../components/sections/landing/LandingProducts.astro";
 
 import LandingServices from "../components/sections/landing/LandingServices.astro";
-import Contact from "../components/sections/landing/Contact.astro";
+// import Contact from "../components/sections/landing/Contact.astro";
 import CTABannerSplit from "../components/sections/shared/CTABannerSplit.astro";
 // import Carousel from "../components/Carousel.astro";
 import Carousel from "../components/ui/Carousel.astro";
-import WhyUs from "../components/sections/WhyUs.astro";
+import WhyUs from "../components/sections/landing/WhyUs.astro";
+import Testimonials from "../components/sections/shared/Testimonials.astro";
+import CTABannerCenter from "../components/sections/shared/CTABannerCenter.astro";
 
 import { landingProductsData } from "../data/lp-products-data";
 import { bannerData } from "../data/banner-data";
@@ -24,7 +26,7 @@ const images = [
 ---
 
 <Main title="PerfectView">
-  <Hero />
+  <LandingHero />
   <AboutMission />
   <LandingProducts
     heading="Custom Window Coverings for Every Space"
@@ -32,11 +34,11 @@ const images = [
     items={landingProductsData}
     activeIndex={-1}
   />
+  <WhyUs />
   <LandingServices />
   <CTABannerSplit image={bannerData.image} content={bannerData.content} />
-
   <!-- <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" /> -->
-  <WhyUs />
-  <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" />
   <!-- <Contact /> -->
+  <Testimonials />
+  <CTABannerCenter />
 </Main>
