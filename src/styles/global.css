@@ -86,7 +86,7 @@ h3.small-heading {
   vertical-align: middle;
 }
 
-p-subheader {
+.p-subheader {
   font-family: var(--ff-body);
   font-size: var(--fs-body-l);
   color: var(--primary);

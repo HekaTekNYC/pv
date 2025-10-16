@@ -1,6 +1,13 @@
 ---
 import PillTab from "../../ui/PillTab.astro";
 import Button from "../../ui/Button.astro";
+export const pillTabsData = [
+  { text: "Pro Installation" },
+
+  { text: "Motorized Systems" },
+  { text: "Design Consultation" },
+  { text: "Free Estimates" },
+];
 ---
 
 <section class="services-hero" aria-labelledby="services-hero-heading">
@@ -23,21 +30,24 @@ import Button from "../../ui/Button.astro";
     </div>
     <div class="services-hero__content">
       <h2>Professional Window Treatment Installation</h2>
-      <p class="p-subheader">
-        Expertly installed custom window coverings tailored to your style. Enjoy
-        free consultations, design advice, and motorization setup, all backed by
-        years of experience.
-      </p>
-      <p>
-        We specialize in installing all types of window treatments, from custom
-        blinds to elegant drapes and modern roller shades. Our skilled team
-        ensures a perfect fit and smooth operation.
-      </p>
-      <div class="services-hero__service-pills">
-        <PillTab text="Pro Installation" />
+      <div class="services-hero__info">
+        <p class="p-subheader">
+          Expertly installed custom window coverings tailored to your style.
+          Enjoy free consultations, design advice, and motorization setup, all
+          backed by years of experience.
+        </p>
+        <p>
+          We specialize in installing all types of window treatments, from
+          custom blinds to elegant drapes and modern roller shades. Our skilled
+          team ensures a perfect fit and smooth operation.
+        </p>
       </div>
-      <Button href="/contact" color="secondary">Get to Know Our Services</Button
-      >
+      <div class="services-hero__service-pills">
+        {pillTabsData.map((tab) => <PillTab text={tab.text} />)}
+      </div>
+      <div class="services-hero__btn">
+        <Button href="/contact" color="secondary">Get Free Consultation</Button>
+      </div>
     </div>
   </div>
 </section>
@@ -52,20 +62,98 @@ import Button from "../../ui/Button.astro";
 
   .services-hero__img-container {
     display: block;
-    max-width: 100%;
+    height: 360px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .services-hero__img-container picture {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .services-hero__img {
-    display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
+    object-position: 50% 40%;
   }
-
   .services-hero__content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
     gap: 16px;
+  }
+
+  .services-hero__info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .services-hero__service-pills {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px 0;
+    width: 100%;
+  }
+
+  .services-hero__btn {
+    width: 100%;
+    text-align: start;
+  }
+
+  @media (min-width: 768px) {
+    .services-hero__img-container {
+      height: 560px;
+    }
+
+    .services-hero__img {
+      object-position: 50% 30%;
+    }
+
+    .services-hero__service-pills {
+      width: 75%;
+    }
+  }
+
+  @media (min-width: 820px) {
+    .services-hero__img-container {
+      height: 650px;
+    }
+
+    .services-hero__img {
+      object-position: 50% 40%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .services-hero__img-container {
+      height: 750px;
+    }
+
+    .services-hero__img {
+      object-position: 50% 40%;
+    }
+    .services-hero__service-pills {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-hero__container {
+      flex-direction: row;
+    }
+
+    .services-hero__service-pills {
+      width: 100%;
+    }
   }
 </style>
