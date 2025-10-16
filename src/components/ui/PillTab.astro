@@ -1,0 +1,38 @@
+---
+const { text } = Astro.props;
+---
+
+<div class="pill-tab__container" role="listitem">
+  <div class="pill-tab__text">{text}</div>
+</div>
+
+<style>
+  .pill-tab__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    background-color: var(--grey-10);
+    padding: 12px 24px;
+    border-radius: 24px;
+  }
+
+  .pill-tab__text {
+    font-family: var(--roboto-text);
+    font-size: var(--fs-body-s);
+    font-weight: var(--fw-semibold);
+    color: var(--secondary);
+    line-height: 1.5;
+  }
+
+  @media (min-width: 768px) {
+    .pill-tab__container {
+      padding: 12px 32px;
+    }
+
+    .pill-tab__text {
+      font-family: var(--ff-body);
+      font-size: var(--fs-body-r);
+    }
+  }
+</style>

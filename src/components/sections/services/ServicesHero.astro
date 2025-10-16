@@ -1,0 +1,168 @@
+---
+import PillTab from "../../ui/PillTab.astro";
+import Button from "../../ui/Button.astro";
+export const pillTabsData = [
+  { text: "Pro Installation" },
+
+  { text: "Motorized Systems" },
+  { text: "Design Consultation" },
+  { text: "Free Estimates" },
+];
+---
+
+<section class="services-hero" aria-labelledby="services-hero-heading">
+  <div class="services-hero__container container">
+    <div class="services-hero__img-container">
+      <picture>
+        <!-- WebP first -->
+        <source srcset="/images/services-hero.webp" type="image/webp" />
+        <!-- PNG fallback -->
+        <img
+          src="/images/services-hero.png"
+          alt="Tall double bedroom window with sheer curtains and natural blinds"
+          class="services-hero__img"
+          width="1200"
+          height="800"
+        />
+      </picture>
+    </div>
+    <div class="services-hero__content">
+      <h2 id="services-hero-heading">
+        Professional Window Treatment Installation
+      </h2>
+      <div class="services-hero__info">
+        <p class="p-subheader">
+          Expertly installed custom window coverings tailored to your style.
+          Enjoy free consultations, design advice, and motorization setup, all
+          backed by years of experience.
+        </p>
+        <p>
+          We specialize in installing all types of window treatments, from
+          custom blinds to elegant drapes and modern roller shades. Our skilled
+          team ensures a perfect fit and smooth operation.
+        </p>
+      </div>
+      <div class="services-hero__service-pills" role="list">
+        {pillTabsData.map((tab) => <PillTab text={tab.text} />)}
+      </div>
+      <div class="services-hero__btn">
+        <Button href="/contact" color="secondary">Get Free Consultation</Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-hero__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .services-hero__img-container {
+    display: block;
+    height: 360px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .services-hero__img-container picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .services-hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 40%;
+  }
+  .services-hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+    gap: 16px;
+  }
+
+  .services-hero__info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .services-hero__service-pills {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px 0;
+    width: 100%;
+  }
+
+  .services-hero__btn {
+    width: 100%;
+    text-align: start;
+  }
+
+  @media (min-width: 768px) {
+    .services-hero__img-container {
+      height: 560px;
+    }
+
+    .services-hero__img {
+      object-position: 50% 30%;
+    }
+
+    .services-hero__service-pills {
+      width: 75%;
+    }
+  }
+
+  @media (min-width: 820px) {
+    .services-hero__img-container {
+      height: 650px;
+    }
+
+    .services-hero__img {
+      object-position: 50% 40%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .services-hero__img-container {
+      height: 750px;
+    }
+
+    .services-hero__img {
+      object-position: 50% 40%;
+    }
+    .services-hero__service-pills {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-hero__container {
+      flex-direction: row;
+      gap: 64px;
+    }
+
+    .services-hero__img-container {
+      height: 675px;
+    }
+
+    .services-hero__img {
+      object-position: 100% 40%;
+    }
+
+    .services-hero__service-pills {
+      width: 100%;
+    }
+  }
+</style>
