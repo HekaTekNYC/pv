@@ -1,0 +1,140 @@
+---
+import Button from "../../ui/Button.astro";
+---
+
+<section class="products-hero" aria-labelledby="products-hero-title">
+  <div class="products-hero__container container">
+    <!-- LEFT -->
+    <div class="products-hero__image-container">
+      <img
+        src="/images/products-hero.png"
+        alt="Cellular shades installed above a sofa with pillows"
+        class="products-hero__image"
+        width="630"
+        height="732"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <!-- RIGHT -->
+    <div class="products-hero__content">
+      <h2 id="products-hero-title" class="products-hero__title">
+        Explore Our Window Treatment Installation Options
+      </h2>
+
+      <div class="products-hero__paragraph">
+        <p class="products-hero__sub">
+          We install beautiful, functional window coverings from Roman to
+          cellular shades, offering styles that enhance your home's comfort and
+          design.
+        </p>
+        <p class="products-hero__text">
+          Our professional team installs a wide variety of window coverings,
+          from elegant Roman shades to energy-efficient cellular styles. Each
+          option is tailored to match your home's aesthetic and lifestyle needs,
+          combining beauty, practicality, and lasting quality in every
+          installation.
+        </p>
+      </div>
+
+      <div class="products-hero__cta">
+        <Button href="/products" color="secondary"
+          >Get to Know Our Products</Button
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .products-hero__container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .products-hero__image-container {
+    display: block;
+    max-width: 100%;
+  }
+
+  .products-hero__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .products-hero__title {
+    margin: 0 0 16px 0;
+    font-family: var(--ff-heading);
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--primary);
+  }
+
+  .products-hero__sub {
+    font-family: var(--ff-body);
+    font-size: var(--fs-body-l);
+    line-height: 1.5;
+    color: var(--text);
+    margin: 0 0 12px 0;
+  }
+
+  .products-hero__paragraph {
+    margin: 0; /* Remove any default margins */
+  }
+
+  .products-hero__paragraph p:first-child {
+    padding-bottom: 0; /* Remove this since we're using margins now */
+  }
+
+  .products-hero__text {
+    font-family: var(--ff-body);
+    font-size: var(--fs-body-r);
+    line-height: 1.5;
+    color: var(--text);
+    margin: 0; /* Remove default margins */
+  }
+
+  .products-hero__cta {
+    margin-top: 32px;
+  }
+
+  /* --- Media Queries  --- */
+  @media (min-width: 690px) {
+    .products-hero__title {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .products-hero__image {
+      height: 320px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center 65%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .products-hero__container {
+      flex-direction: row;
+      align-items: center;
+      gap: 40px;
+    }
+    .products-hero__image-container {
+      width: 50%;
+    }
+    .products-hero__image {
+      width: 100%;
+      height: auto;
+    }
+    .products-hero__content {
+      width: 630px;
+    }
+  }
+</style>
