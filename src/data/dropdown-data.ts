@@ -1,4 +1,5 @@
 export const productLinks = [
+  { href: "/products", label: "All Products" },
   { href: "/products/solar-roller-shades", label: "Solar / Roller Shades" },
   {
     href: "/products/cellular-pleated-shades",
