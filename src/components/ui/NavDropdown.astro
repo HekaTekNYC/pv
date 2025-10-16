@@ -40,7 +40,13 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
   <ul class="nav-bar__dropdown-menu" role="menu">
     {
       links.map((link) => (
-        <li role="none">
+        <li
+          role="none"
+          class:list={[
+            "nav-bar__dropdown-item",
+            link.label === "All Products" && "all-products-item",
+          ]}
+        >
           <a href={link.href} class="nav-bar__dropdown-link" role="menuitem">
             {link.label}
           </a>
@@ -139,6 +145,10 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
       pointer-events: none;
     }
 
+    .all-products-item {
+      display: none;
+    }
+
     .nav-bar__dropdown:hover .nav-bar__dropdown-menu,
     .nav-bar__dropdown.open .nav-bar__dropdown-menu {
       opacity: 1;
@@ -189,12 +199,8 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
 
     if (!dropdownToggle || !dropdown) return;
 
-    let clickCount = 0;
-    let clickTimer: NodeJS.Timeout;
-    let preventAutoClose = false;
-    let listenersAttached = false;
-
     function toggleDropdown() {
+      // Add null checks for both elements
       if (!dropdown || !dropdownToggle) return;
 
       const isOpen = dropdown.classList.contains("open");
@@ -209,95 +215,34 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
       });
 
       if (!isOpen) {
-        openDropdown();
+        dropdown.classList.add("open");
+        dropdownToggle.setAttribute("aria-expanded", "true");
       } else {
-        closeDropdown();
+        dropdown.classList.remove("open");
+        dropdownToggle.setAttribute("aria-expanded", "false");
       }
     }
 
-    function handleDropdownClick(e: Event) {
-      if (!dropdownToggle) return;
-      e.preventDefault();
+    function handleDocumentClick(e: { target: Node | null }) {
+      if (
+        !dropdown ||
+        !dropdownToggle ||
+        !e.target ||
+        !dropdown.contains(e.target)
+      ) {
+        dropdown?.classList.remove("open");
+        dropdownToggle?.setAttribute("aria-expanded", "false");
+      }
+    }
 
-      clickCount++;
-
-      if (clickCount === 1) {
+    // Only prevent default on mobile
+    if (window.innerWidth < 992) {
+      dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
         toggleDropdown();
-        clickTimer = setTimeout(() => {
-          clickCount = 0;
-        }, 300);
-      } else if (clickCount === 2) {
-        clearTimeout(clickTimer);
-        clickCount = 0;
-        window.location.href = dropdownToggle.getAttribute("href") || "#";
-      }
+      });
+
+      document.addEventListener("click", handleDocumentClick);
     }
-
-    function openDropdown() {
-      if (!dropdown || !dropdownToggle) return;
-      dropdown.classList.add("open");
-      dropdownToggle.setAttribute("aria-expanded", "true");
-    }
-
-    function closeDropdown() {
-      if (!dropdown || !dropdownToggle) return;
-      dropdown.classList.remove("open");
-      dropdownToggle.setAttribute("aria-expanded", "false");
-    }
-
-    // Event handlers
-    function handleDocumentClick(e: Event) {
-      if (!e.target || !dropdown || !dropdown.contains(e.target as Node)) {
-        closeDropdown();
-        preventAutoClose = false;
-        clickCount = 0;
-      }
-    }
-
-    function handleDropdownLinkClick(e: Event) {
-      if (!e.target) return;
-      if ((e.target as Element).closest(".nav-bar__dropdown-link")) {
-        closeDropdown();
-      }
-    }
-
-    function removeAllListeners() {
-      if (!dropdown || !dropdownToggle) return;
-      dropdownToggle.removeEventListener("click", handleDropdownClick);
-      document.removeEventListener("click", handleDocumentClick);
-      dropdown.removeEventListener("click", handleDropdownLinkClick);
-    }
-
-    function setupEventListeners() {
-      if (!dropdown || !dropdownToggle || listenersAttached) return;
-      removeAllListeners();
-
-      const isMobile = window.innerWidth < 992;
-
-      if (isMobile) {
-        // Mobile: Click to toggle, click outside to close
-        dropdownToggle.addEventListener("click", handleDropdownClick);
-        document.addEventListener("click", handleDocumentClick);
-      } else {
-        // Desktop: Hybrid hover + click behavior
-        dropdownToggle.addEventListener("click", (e) => {
-          e.preventDefault();
-          preventAutoClose = true;
-          handleDropdownClick(e);
-        });
-
-        document.addEventListener("click", handleDocumentClick);
-        dropdown.addEventListener("click", handleDropdownLinkClick);
-      }
-      listenersAttached = true;
-    }
-
-    // Initial setup
-    setupEventListeners();
-
-    // Update on resize
-    window.addEventListener("resize", () => {
-      setTimeout(setupEventListeners, 10);
-    });
   });
 </script>

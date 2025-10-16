@@ -38,17 +38,15 @@ html::-webkit-scrollbar {
   outline: 2px solid var(--focus, var(--neutral));
   outline-offset: 2px;
 }
-
-a:focus,
-button:focus,
-input:focus,
-select:focus,
-textarea:focus,
-[tabindex]:focus {
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
   outline: 2px solid var(--focus, var(--neutral));
   outline-offset: 2px;
 }
-
 img {
   border-radius: 2px;
 }

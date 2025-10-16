@@ -14,7 +14,7 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
   aria-expanded={isOpen}
   type="button"
 >
-  <svg viewBox="0 0 90 100" width="55" height="55">
+  <svg viewBox="0 0 100 100" width="55" height="55">
     <path
       class="ham-line ham-line-top"
       d="m 30,33 h 40 c 0,0 9.044436,-0.654587 9.044436,-8.508902 0,-7.854315 -8.024349,-11.958003 -14.89975,-10.85914 -6.875401,1.098863 -13.637059,4.171617 -13.637059,16.368042 v 40"
@@ -30,7 +30,7 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
 <style>
   .ham {
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
+    /* -webkit-tap-highlight-color: transparent; */
     transition: transform 400ms;
     user-select: none;
     background: none;
@@ -54,10 +54,12 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
 
   .ham-line-top {
     stroke-dasharray: 40 139;
+    stroke-dashoffset: 0.5;
   }
 
   .ham-line-bottom {
     stroke-dasharray: 40 180;
+    stroke-dashoffset: -0.5;
   }
 
   .ham-rotate.active .ham-line-top {
