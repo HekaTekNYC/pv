@@ -59,15 +59,7 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
 
   .ham-line-bottom {
     stroke-dasharray: 40 180;
-
     stroke-dashoffset: -0.5;
-  }
-
-  .ham:not(.active) .ham-line-top {
-    stroke-dashoffset: 0.5; /* 👈 Tiny offset to hide the corner */
-  }
-  .ham:not(.active) .ham-line-bottom {
-    stroke-dashoffset: -0.5; /* 👈 Tiny offset to hide the corner */
   }
 
   .ham-rotate.active .ham-line-top {
