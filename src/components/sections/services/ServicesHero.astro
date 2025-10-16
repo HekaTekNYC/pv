@@ -19,17 +19,17 @@ export const pillTabsData = [
         <!-- PNG fallback -->
         <img
           src="/images/services-hero.png"
-          alt="Descriptive alt text"
+          alt="Tall double bedroom window with sheer curtains and natural blinds"
           class="services-hero__img"
           width="1200"
           height="800"
-          loading="lazy"
-          decoding="async"
         />
       </picture>
     </div>
     <div class="services-hero__content">
-      <h2>Professional Window Treatment Installation</h2>
+      <h2 id="services-hero-heading">
+        Professional Window Treatment Installation
+      </h2>
       <div class="services-hero__info">
         <p class="p-subheader">
           Expertly installed custom window coverings tailored to your style.
@@ -42,7 +42,7 @@ export const pillTabsData = [
           team ensures a perfect fit and smooth operation.
         </p>
       </div>
-      <div class="services-hero__service-pills">
+      <div class="services-hero__service-pills" role="list">
         {pillTabsData.map((tab) => <PillTab text={tab.text} />)}
       </div>
       <div class="services-hero__btn">
