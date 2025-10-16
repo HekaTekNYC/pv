@@ -1,4 +1,5 @@
 ---
+import PillTab from "../../ui/PillTab.astro";
 import Button from "../../ui/Button.astro";
 ---
 
@@ -32,7 +33,9 @@ import Button from "../../ui/Button.astro";
         blinds to elegant drapes and modern roller shades. Our skilled team
         ensures a perfect fit and smooth operation.
       </p>
-      <div class="services-hero__service-pills"></div>
+      <div class="services-hero__service-pills">
+        <PillTab text="Pro Installation" />
+      </div>
       <Button href="/contact" color="secondary">Get to Know Our Services</Button
       >
     </div>
