@@ -24,6 +24,8 @@ import Button from "./Button.astro";
           class="contact-form__input"
           autocomplete="name"
           required
+          required
+          aria-required="true"
         />
       </div>
 
@@ -51,6 +53,7 @@ import Button from "./Button.astro";
           class="contact-form__input"
           autocomplete="email"
           required
+          aria-required="true"
         />
       </div>
 
@@ -78,7 +81,9 @@ import Button from "./Button.astro";
           name="message"
           rows="6"
           placeholder="Message"
-          class="contact-form__textarea"></textarea>
+          class="contact-form__textarea"
+          required
+          aria-required="true"></textarea>
       </div>
     </div>
     <!-- Actions -->
