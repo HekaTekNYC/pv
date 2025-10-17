@@ -1,0 +1,14 @@
+---
+import Inner from "../layouts/Inner.astro";
+import ProductHero from "../components/sections/products/ProductHero.astro";
+import ProductsShowcase from "../components/sections/products/ProductsShowcase.astro";
+---
+
+<Inner
+  title="PerfectView Products"
+  heading="Products"
+  breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Products" }]}
+>
+  <ProductHero />
+  <ProductsShowcase />
+</Inner>
