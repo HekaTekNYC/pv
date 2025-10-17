@@ -5,11 +5,12 @@ import AboutMission from "../components/sections/shared/AboutMission.astro";
 import LandingProducts from "../components/sections/landing/LandingProducts.astro";
 import ProductHero from "../components/sections/products/ProductHero.astro";
 import LandingServices from "../components/sections/landing/LandingServices.astro";
-// import Contact from "../components/sections/landing/Contact.astro";
+
 import CTABannerSplit from "../components/sections/shared/CTABannerSplit.astro";
-// import Carousel from "../components/Carousel.astro";
+
 import Carousel from "../components/ui/Carousel.astro";
 import WhyUs from "../components/sections/landing/WhyUs.astro";
+import ContactFull from "../components/sections/shared/ContactFull.astro";
 import Testimonials from "../components/sections/shared/Testimonials.astro";
 import CTABannerCenter from "../components/sections/shared/CTABannerCenter.astro";
 
@@ -35,10 +36,11 @@ const images = [
     activeIndex={-1}
   />
   <WhyUs />
-  <LandingServices />
+
   <CTABannerSplit image={bannerData.image} content={bannerData.content} />
   <!-- <Carousel images={images} gap={16} circleBg="rgba(255,255,255,0.92)" /> -->
-  <!-- <Contact /> -->
+  <LandingServices />
+  <ContactFull />
   <Testimonials />
   <CTABannerCenter />
   <ProductHero />
