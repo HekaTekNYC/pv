@@ -1,0 +1,193 @@
+---
+import Button from "./Button.astro";
+---
+
+<section class="contact-form" aria-labelledby="contact-form-title">
+  <header class="contact-form__header">
+    <h2 id="contact-form-title">Get in Touch</h2>
+    <p>
+      Have a question or ready to schedule your consultation? Send us a
+      message—we’ll get back to you.
+    </p>
+  </header>
+
+  <form class="contact-form__form" action="#" method="post" novalidate>
+    <div class="contact-form__grid">
+      <!-- Full name -->
+      <div class="contact-form__field">
+        <label for="contact-name" class="contact-form__label">Full name</label>
+        <input
+          id="contact-name"
+          name="name"
+          type="text"
+          placeholder="Full name"
+          class="contact-form__input"
+          autocomplete="name"
+          required
+          required
+          aria-required="true"
+        />
+      </div>
+
+      <!-- Phone -->
+      <div class="contact-form__field">
+        <label for="contact-phone" class="contact-form__label">Phone</label>
+        <input
+          id="contact-phone"
+          name="phone"
+          type="tel"
+          placeholder="Phone"
+          class="contact-form__input"
+          autocomplete="tel"
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="contact-form__field">
+        <label for="contact-email" class="contact-form__label">Email</label>
+        <input
+          id="contact-email"
+          name="email"
+          type="email"
+          placeholder="Email"
+          class="contact-form__input"
+          autocomplete="email"
+          required
+          aria-required="true"
+        />
+      </div>
+
+      <!-- How did you hear about us? -->
+      <div class="contact-form__field">
+        <label for="contact-ref" class="contact-form__label"
+          >How did you hear about us?</label
+        >
+        <input
+          id="contact-ref"
+          name="referrer"
+          type="text"
+          placeholder="Google"
+          class="contact-form__input"
+        />
+      </div>
+
+      <!-- Message -->
+      <div class="contact-form__field contact-form__field--span2">
+        <label for="contact-msg" class="contact-form__label"
+          >Write your message</label
+        >
+        <textarea
+          id="contact-msg"
+          name="message"
+          rows="6"
+          placeholder="Message"
+          class="contact-form__textarea"
+          required
+          aria-required="true"></textarea>
+      </div>
+    </div>
+    <!-- Actions -->
+    <div class="contact-form__actions contact-form__field--span2">
+      <Button color="secondary" type="submit">Submit</Button>
+    </div>
+  </form>
+</section>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    background: var(--grey-10);
+    padding: 24px;
+    border-radius: 2px;
+    gap: 24px;
+  }
+
+  .contact-form__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .contact-form__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-form__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .contact-form__field {
+    display: grid;
+    gap: 6px;
+  }
+
+  .contact-form__label {
+    font-family: var(--ff-roboto);
+    font-size: var(--fs-body-s);
+    color: var(--primary);
+  }
+
+  .contact-form__input,
+  .contact-form__textarea {
+    width: 100%;
+    border: none;
+    font-family: var(--ff-roboto);
+    font-size: var(--fs-body-s);
+    background: var(--white);
+    line-height: 1.5;
+    border-radius: 2px;
+  }
+
+  .contact-form__input {
+    height: 48px;
+    padding: 16px;
+  }
+
+  .contact-form__textarea {
+    min-height: 180px;
+    padding: 16px;
+    resize: vertical;
+  }
+
+  .contact-form__input::placeholder,
+  .contact-form__textarea::placeholder {
+    color: var(--grey-40);
+  }
+
+  .contact-form__actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 700px) {
+    .contact-form {
+      padding: 64px;
+    }
+    .contact-form__header {
+      text-align: start;
+    }
+    .contact-form__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .contact-form__field--span2 {
+      grid-column: 1 / -1;
+    }
+
+    .contact-form__textarea {
+      min-height: 120px;
+      height: 120px;
+    }
+
+    .contact-form__actions {
+      justify-content: start;
+    }
+  }
+</style>
