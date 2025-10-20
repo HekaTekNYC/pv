@@ -2,10 +2,10 @@
 import { installationFAQs } from "../../../data/faq-data";
 ---
 
-<section class="faq">
+<section class="faq" aria-labelledby="faq-heading">
   <div class="faq__container container">
     <div class="faq__left">
-      <h2>Frequently Asked Questions</h2>
+      <h2 id="faq-heading">Frequently Asked Questions</h2>
       <div class="faq__media">
         <picture>
           <source srcset="/images/faq.webp" type="image/webp" />
@@ -21,7 +21,7 @@ import { installationFAQs } from "../../../data/faq-data";
       </div>
     </div>
     <div class="faq__right">
-      <div class="faq__accordian">
+      <div class="faq__accordian" role="region" aria-label="FAQ Accordion">
         {
           installationFAQs.map((faq) => (
             <div class="faq__item">
@@ -32,11 +32,15 @@ import { installationFAQs } from "../../../data/faq-data";
                     src="/icons/down-arrow.svg"
                     alt="dark green down caret"
                     class="faq__toggle-down"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <img
                     src="/icons/cancel-x.svg"
                     alt="dark green x"
                     class="faq__toggle-x"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </div>
@@ -216,15 +220,15 @@ import { installationFAQs } from "../../../data/faq-data";
     faqItems.forEach((item) => {
       const header = item.querySelector(".faq__header");
 
+      if (!header) return;
+
       header.addEventListener("click", () => {
-        // Close all other items
         faqItems.forEach((otherItem) => {
           if (otherItem !== item && otherItem.classList.contains("active")) {
             otherItem.classList.remove("active");
           }
         });
 
-        // Toggle current item
         item.classList.toggle("active");
       });
     });
