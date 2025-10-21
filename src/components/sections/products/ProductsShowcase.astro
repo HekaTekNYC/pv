@@ -22,14 +22,21 @@ import { productCategories } from "../../../data/product-categories";
           <li class="products-showcase__card">
             <a href={`/products/${cat.slug}`} class="products-showcase__link">
               <figure class="products-showcase__media">
-                <img
-                  src={cat.image}
-                  alt={cat.title}
-                  width="413"
-                  height="420"
-                  loading="lazy"
-                  decoding="async"
-                />
+                <picture>
+                  <source srcset={cat.image} type="image/webp" />
+                  <source
+                    srcset={cat.image.replace(".webp", ".png")}
+                    type="image/png"
+                  />
+                  <img
+                    src={cat.image.replace(".webp", ".png")}
+                    alt={cat.title}
+                    width="413"
+                    height="420"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
               </figure>
               <div class="products-showcase__body">
                 <h3 class="products-showcase__card-title">{cat.title}</h3>
@@ -143,11 +150,15 @@ import { productCategories } from "../../../data/product-categories";
     aspect-ratio: 343 / 360;
   }
 
+  .products-showcase__media picture,
   .products-showcase__media img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     display: block;
+  }
+
+  .products-showcase__media img {
+    object-fit: cover;
   }
 
   .products-showcase__body {

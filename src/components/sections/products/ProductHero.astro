@@ -6,15 +6,19 @@ import Button from "../../ui/Button.astro";
   <div class="products-hero__container container">
     <!-- LEFT -->
     <div class="products-hero__image-container">
-      <img
-        src="/images/products-hero.png"
-        alt="Cellular shades installed above a sofa with pillows"
-        class="products-hero__image"
-        width="630"
-        height="732"
-        loading="lazy"
-        decoding="async"
-      />
+      <picture>
+        <source srcset="/images/products-hero.webp" type="image/webp" />
+        <source srcset="/images/products-hero.jpg" type="image/jpeg" />
+        <img
+          src="/images/products-hero.jpg"
+          alt="Cellular shades installed above a sofa with pillows"
+          class="products-hero__image"
+          width="630"
+          height="732"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
     </div>
 
     <!-- RIGHT -->
@@ -59,6 +63,7 @@ import Button from "../../ui/Button.astro";
     max-width: 100%;
   }
 
+  .products-hero__image-container picture,
   .products-hero__image {
     display: block;
     width: 100%;
@@ -85,11 +90,11 @@ import Button from "../../ui/Button.astro";
   }
 
   .products-hero__paragraph {
-    margin: 0; 
+    margin: 0;
   }
 
   .products-hero__paragraph p:first-child {
-    padding-bottom: 0; 
+    padding-bottom: 0;
   }
 
   .products-hero__text {
@@ -112,6 +117,7 @@ import Button from "../../ui/Button.astro";
   }
 
   @media (min-width: 768px) {
+    .products-hero__image-container picture,
     .products-hero__image {
       height: 320px;
       width: 100%;
@@ -129,6 +135,7 @@ import Button from "../../ui/Button.astro";
     .products-hero__image-container {
       width: 50%;
     }
+    .products-hero__image-container picture,
     .products-hero__image {
       width: 100%;
       height: auto;
