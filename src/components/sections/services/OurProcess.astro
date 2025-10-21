@@ -1,0 +1,73 @@
+---
+import { processSteps, type IconKey } from "../../../data/services-data";
+
+import Window from "./src/assets/icons/window.svg";
+import DesignConsult from "./src/assets/icons/design-consult.svg";
+import StepBkrnd from "./src/assets/icons/step-bkrnd.svg";
+
+const icons: Record<IconKey, typeof Window> = {
+  window: Window,
+  design: DesignConsult,
+  install: Window,
+  guarantee: Window,
+};
+
+const getIcon = (key: IconKey) => icons[key];
+---
+
+<section class="our-process">
+  <div class="container">
+    <div class="our-process__header">
+      <h2>Our Process: From Consultation to Installation</h2>
+      <p>
+        We make your window treatment project simple and stress-free—from your
+        first call to the final installation, our team guides you every step of
+        the way.
+      </p>
+    </div>
+    <div class="our-process__grid">
+      {
+        processSteps.map((card) => {
+          const Icon = getIcon(card.icon);
+          return (
+            <div class="our-process__card">
+              <p class="our-process__card-num">{card.num}</p>
+              <div class="our-process__card-icon-bkrd">
+                <StepBkrnd class="our-process__card-shape" />
+                {Icon && <Icon class="our-process__card-icon" />}
+              </div>
+              <div class="our-process__card-info">
+                <h3>{card.header}</h3>
+                <p>{card.text}</p>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .our-process__card-bkrnd {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .our-process__card-shape {
+    position: absolute;
+    z-index: 2;
+  }
+  .our-process__card-icon {
+    position: absolute;
+    color: var(--secondary);
+    height: 60px;
+    width: 60px;
+    z-index: 3;
+  }
+</style>
