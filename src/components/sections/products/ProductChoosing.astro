@@ -1,0 +1,302 @@
+---
+import { productChoosingCards } from "../../../data/product-choosing";
+import Button from "../../ui/Button.astro";
+---
+
+<section class="product-choosing" aria-labelledby="product-choosing__title">
+  <div class="product-choosing__container container">
+    <!-- LEFT -->
+    <div class="product-choosing__left">
+      <header class="product-choosing__header">
+        <h2 id="product-choosing__title" class="product-choosing__title">
+          How to Choose the Right Window Treatment
+        </h2>
+        <p class="product-choosing__intro">
+          Choosing the right window treatment involves carefully considering
+          your style, light control needs, and privacy preferences. Explore
+          various options to beautifully enhance your space while reflecting
+          your unique personality.
+        </p>
+        <div class="product-choosing__cta">
+          <Button href="/contact" color="secondary">
+            Order Your Treatment Today
+          </Button>
+        </div>
+      </header>
+
+      <figure class="product-choosing__media">
+        <img
+          src="/images/product-how-to-choose.webp"
+          alt="Example window treatments installed in a modern living room with natural lighting"
+          loading="lazy"
+          decoding="async"
+          width="522"
+          height="356"
+        />
+      </figure>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="product-choosing__right">
+      <ul class="product-choosing__list" role="list">
+        {
+          productChoosingCards.map((card) => (
+            <li class="product-choosing__card" aria-label={card.ariaLabel}>
+              <div class="product-choosing__card-icon">
+                <img
+                  src={card.blob.src}
+                  alt={card.blob.alt}
+                  width="100"
+                  height="103.22"
+                  aria-hidden="true"
+                  loading="lazy"
+                  class="product-choosing__blob"
+                />
+                <img
+                  src={card.icon.src}
+                  alt={card.icon.alt}
+                  width={card.icon.width}
+                  height={card.icon.height}
+                  aria-hidden="true"
+                  loading="lazy"
+                  class="product-choosing__icon"
+                />
+              </div>
+              <div class="product-choosing__card-body">
+                <h3 class="product-choosing__card-title">{card.title}</h3>
+                <p class="product-choosing__card-text">{card.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-choosing {
+    background: var(--white);
+    padding-block: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  .product-choosing__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+
+  .product-choosing__header {
+    margin-bottom: clamp(3rem, 6vw, 4rem);
+  }
+
+  .product-choosing__title {
+    margin: 0 0 0.75rem 0;
+    font-family: var(--ff-heading);
+    font-weight: var(--fw-bold);
+    font-size: clamp(1.5rem, 4vw, var(--fs-h2));
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--primary);
+  }
+
+  .product-choosing__intro {
+    margin: 0;
+    font-family: var(--ff-body);
+    font-size: clamp(1rem, 2vw, var(--fs-body-r));
+    line-height: 1.6;
+    color: var(--text);
+    max-width: 65ch;
+  }
+
+  .product-choosing__cta {
+    margin-top: 1rem;
+  }
+
+  .product-choosing__media {
+    margin: 1.5rem 0 0 0;
+    border-radius: 2px;
+    overflow: hidden;
+    background: #e9ecef;
+    width: 100%;
+    aspect-ratio: 4/3;
+  }
+
+  .product-choosing__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Cards list */
+  .product-choosing__list {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .product-choosing__card {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1rem;
+    align-items: start;
+    background: var(--grey-10, #f4f5f6);
+    border: 1px solid color-mix(in srgb, #000 8%, transparent);
+    border-radius: 6px;
+    padding: 1rem;
+    height: fit-content;
+    min-height: 120px;
+  }
+
+  .product-choosing__card-icon {
+    position: relative;
+    width: 80px;
+    height: 82.58px;
+    display: grid;
+    place-items: center;
+  }
+
+  .product-choosing__blob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 82.58px;
+    z-index: 1;
+  }
+
+  .product-choosing__icon {
+    position: relative;
+    z-index: 2;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+  }
+
+  .product-choosing__card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 82.58px;
+  }
+
+  .product-choosing__card-title {
+    margin: 0 0 0.5rem 0;
+    font-family: var(--ff-heading);
+    font-weight: var(--fw-regular, 400);
+    font-size: clamp(1.125rem, 2vw, var(--fs-h3-lg));
+    line-height: 1.3;
+    color: var(--primary);
+  }
+
+  .product-choosing__card-text {
+    margin: 0;
+    font-family: var(--ff-body);
+    font-size: clamp(0.875rem, 1.5vw, var(--fs-body-r));
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  /* Media Queries */
+  @media (min-width: 768px) {
+    .product-choosing__container {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: clamp(2rem, 4vw, 3rem);
+    }
+
+    .product-choosing__media {
+      aspect-ratio: 3/2;
+      margin-top: 2rem;
+    }
+
+    .product-choosing__list {
+      gap: 1.25rem;
+      grid-auto-rows: 1fr;
+    }
+
+    .product-choosing__card {
+      grid-template-columns: 90px 1fr;
+      padding: 1.25rem;
+      min-height: 140px;
+      height: 100%;
+      align-items: center;
+    }
+
+    .product-choosing__card-icon {
+      width: 90px;
+      height: 92.9px;
+    }
+
+    .product-choosing__blob {
+      width: 90px;
+      height: 92.9px;
+    }
+
+    .product-choosing__icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .product-choosing__card-body {
+      min-height: 92.9px;
+    }
+  }
+
+  /* Desktop: Optimized proportions */
+  @media (min-width: 1024px) {
+    .product-choosing__container {
+      grid-template-columns: minmax(400px, 1fr) minmax(350px, 1fr);
+      gap: clamp(3rem, 5vw, 4rem);
+    }
+
+    .product-choosing__media {
+      aspect-ratio: 522/356;
+      max-width: 522px;
+    }
+
+    .product-choosing__list {
+      gap: 1.5rem;
+    }
+
+    .product-choosing__card {
+      grid-template-columns: 100px 1fr;
+      padding: 1.5rem 1.25rem;
+      min-height: 160px;
+    }
+
+    .product-choosing__card-icon {
+      width: 100px;
+      height: 103.22px;
+    }
+
+    .product-choosing__blob {
+      width: 100px;
+      height: 103.22px;
+    }
+
+    .product-choosing__icon {
+      width: 48px;
+      height: 48px;
+    }
+
+    .product-choosing__card-body {
+      min-height: 103.22px;
+    }
+  }
+
+  /* Large Desktop: Generous spacing */
+  @media (min-width: 1200px) {
+    .product-choosing__container {
+      grid-template-columns: minmax(500px, 1fr) minmax(400px, 1fr);
+      gap: 4rem;
+    }
+
+    .product-choosing__intro {
+      max-width: 62ch;
+    }
+  }
+</style>
