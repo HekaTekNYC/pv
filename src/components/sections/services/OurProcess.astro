@@ -1,0 +1,227 @@
+---
+import { processSteps, type IconKey } from "../../../data/services-data";
+
+import Window from "./src/assets/icons/window.svg";
+import DesignConsult from "./src/assets/icons/design-consult.svg";
+import StepBkrnd from "./src/assets/icons/step-bkrnd.svg";
+import Estimate from "./src/assets/icons/estimate.svg";
+import Quality from "./src/assets/icons/quality.svg";
+
+const icons: Record<IconKey, typeof Window> = {
+  estimate: Estimate,
+  design: DesignConsult,
+  install: Window,
+  quality: Quality,
+};
+
+const getIcon = (key: IconKey) => icons[key];
+---
+
+<section class="our-process" aria-labelledby="process-heading" role="region">
+  <div class="our-process__overlay"></div>
+  <div class="our-process__container container--wide">
+    <div class="our-process__header">
+      <h2 id="process-heading">
+        Our Process: From Consultation to Installation
+      </h2>
+      <p>
+        We make your window treatment project simple and stress-free—from your
+        first call to the final installation, our team guides you every step of
+        the way.
+      </p>
+    </div>
+    <div
+      class="our-process__grid"
+      role="list"
+      aria-label="Steps in our process"
+    >
+      {
+        processSteps.map((card) => {
+          const Icon = getIcon(card.icon);
+          return (
+            <div
+              class="our-process__card"
+              role="listitem"
+              aria-label={`Step ${card.num}: ${card.header}`}
+            >
+              <div class="our-process__card-header">
+                <p class="our-process__card-num">{card.num}</p>
+                <div class="our-process__card-icon-bkrd" aria-hidden="true">
+                  <StepBkrnd class="our-process__card-shape" />
+                  {Icon && <Icon class="our-process__card-icon" />}
+                </div>
+              </div>
+              <div class="our-process__card-info">
+                <h3 class="big-heading">{card.header}</h3>
+                <p>{card.text}</p>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .our-process {
+    background-color: var(--grey-10);
+    position: relative;
+  }
+
+  .our-process__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/images/geometric-new.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+
+  .our-process__container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .our-process__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    z-index: 2;
+  }
+
+  .our-process__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 16px;
+    z-index: 2;
+  }
+  .our-process__card {
+    position: relative;
+    display: flex;
+    background-color: var(--white);
+    flex-direction: column;
+    align-items: start;
+    padding: 24px;
+    border-radius: 2px;
+    gap: 24px;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .our-process__card-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .our-process__card-num {
+    position: absolute;
+    top: 3%;
+    font-family: var(--ff-heading);
+    font-size: 2.2rem;
+    font-weight: var(--fw-bold);
+    color: var(--secondary);
+    z-index: 2;
+  }
+
+  .our-process__card-icon-bkrd {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 100px;
+    height: 104px;
+    position: relative;
+  }
+
+  .our-process__card-shape,
+  .our-process__card-icon {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .our-process__card:hover,
+  .our-process__card:focus-within {
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  .our-process__card-icon,
+  .our-process__card-shape,
+  .our-process__card h3 {
+    transition:
+      color 0.4s ease,
+      transform 0.3s ease;
+  }
+
+  .our-process__card-shape {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--neutral-lightest);
+    width: 110px;
+    height: 114px;
+  }
+
+  .our-process__card:hover .our-process__card-icon-bkrd,
+  .our-process__card:focus-within .our-process__card-icon-bkrd {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+
+  .our-process__card:hover .our-process__card-icon,
+  .our-process__card:focus-within .our-process__card-icon {
+    color: var(--secondary);
+  }
+
+  .our-process__card:hover .our-process__card-shape,
+  .our-process__card:focus-within .our-process__card-shape {
+    color: var(--neutral-lighter);
+  }
+
+  .our-process__card:hover h3,
+  .our-process__card:focus-within h3 {
+    color: var(--secondary);
+  }
+
+  .our-process__card-icon {
+    color: var(--neutral);
+    height: 48px;
+    width: 48px;
+  }
+
+  .our-process__card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  @media (min-width: 768px) {
+    .our-process__grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 34px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .our-process__grid {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr;
+    }
+
+    .our-process__card {
+      padding: 32px;
+    }
+  }
+</style>

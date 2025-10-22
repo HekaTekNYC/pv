@@ -33,3 +33,38 @@ export const lpServicesData = [
     imgimgAlt: "Smart motorized window shades controlled by smartphone app",
   },
 ];
+
+export interface ProcessStep {
+  num: string;
+  icon: IconKey;
+  header: string;
+  text: string;
+}
+
+export type IconKey = "estimate" | "design" | "install" | "quality";
+export const processSteps: ProcessStep[] = [
+  {
+    num: "01",
+    icon: "estimate" as IconKey,
+    header: "Get an Estimate",
+    text: "Get a free, no-obligation estimate for your custom window treatments — we’ll work around your schedule.",
+  },
+  {
+    num: "02",
+    icon: "design" as IconKey,
+    header: "Design Consultation",
+    text: "We’ll guide you through styles, fabrics, and finishes to find the perfect window treatments for your home.",
+  },
+  {
+    num: "03",
+    icon: "install" as IconKey,
+    header: "Pro Installation",
+    text: "Every installation is handled by us personally — precise, clean, and built to last for years to come.",
+  },
+  {
+    num: "04",
+    icon: "quality" as IconKey,
+    header: "Quality Guarantee",
+    text: "You’ll love the results — every installation is backed by our commitment to quality and care.",
+  },
+];
