@@ -17,26 +17,36 @@ const icons: Record<IconKey, typeof Window> = {
 const getIcon = (key: IconKey) => icons[key];
 ---
 
-<section class="our-process">
+<section class="our-process" aria-labelledby="process-heading" role="region">
   <div class="our-process__overlay"></div>
   <div class="our-process__container container--wide">
     <div class="our-process__header">
-      <h2>Our Process: From Consultation to Installation</h2>
+      <h2 id="process-heading">
+        Our Process: From Consultation to Installation
+      </h2>
       <p>
         We make your window treatment project simple and stress-free—from your
         first call to the final installation, our team guides you every step of
         the way.
       </p>
     </div>
-    <div class="our-process__grid">
+    <div
+      class="our-process__grid"
+      role="list"
+      aria-label="Steps in our process"
+    >
       {
         processSteps.map((card) => {
           const Icon = getIcon(card.icon);
           return (
-            <div class="our-process__card">
+            <div
+              class="our-process__card"
+              role="listitem"
+              aria-label={`Step ${card.num}: ${card.header}`}
+            >
               <div class="our-process__card-header">
                 <p class="our-process__card-num">{card.num}</p>
-                <div class="our-process__card-icon-bkrd">
+                <div class="our-process__card-icon-bkrd" aria-hidden="true">
                   <StepBkrnd class="our-process__card-shape" />
                   {Icon && <Icon class="our-process__card-icon" />}
                 </div>
