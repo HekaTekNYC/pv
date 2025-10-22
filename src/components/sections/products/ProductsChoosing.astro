@@ -4,28 +4,28 @@ import Button from "../../ui/Button.astro";
 import Image from "astro/components/Image.astro";
 ---
 
-<section class="product-choosing" aria-labelledby="product-choosing__title">
-  <div class="product-choosing__container container">
+<section class="products-choosing" aria-labelledby="product-choosing__title">
+  <div class="products-choosing__container container">
     <!-- LEFT -->
-    <div class="product-choosing__left">
-      <header class="product-choosing__header">
-        <h2 id="product-choosing__title" class="product-choosing__title">
+    <div class="products-choosing__left">
+      <header class="products-choosing__header">
+        <h2 id="product-choosing__title" class="products-choosing__title">
           How to Choose the Right Window Treatment
         </h2>
-        <p class="product-choosing__intro">
+        <p class="products-choosing__intro">
           Choosing the right window treatment involves carefully considering
           your style, light control needs, and privacy preferences. Explore
           various options to beautifully enhance your space while reflecting
           your unique personality.
         </p>
-        <div class="product-choosing__cta">
+        <div class="products-choosing__cta">
           <Button href="/contact" color="secondary">
             Order Your Treatment Today
           </Button>
         </div>
       </header>
 
-      <figure class="product-choosing__media">
+      <figure class="products-choosing__media">
         <Image
           src="/images/product-how-to-choose.webp"
           alt="Example window treatments installed in a modern living room with natural lighting"
@@ -37,12 +37,12 @@ import Image from "astro/components/Image.astro";
     </div>
 
     <!-- RIGHT -->
-    <div class="product-choosing__right">
-      <ul class="product-choosing__list" role="list">
+    <div class="products-choosing__right">
+      <ul class="products-choosing__list" role="list">
         {
           productChoosingCards.map((card) => (
-            <li class="product-choosing__card" aria-label={card.ariaLabel}>
-              <div class="product-choosing__card-icon">
+            <li class="products-choosing__card" aria-label={card.ariaLabel}>
+              <div class="products-choosing__card-icon">
                 <Image
                   src={card.blob.src}
                   alt={card.blob.alt}
@@ -50,7 +50,7 @@ import Image from "astro/components/Image.astro";
                   height={103}
                   aria-hidden="true"
                   loading="eager"
-                  class="product-choosing__blob"
+                  class="products-choosing__blob"
                 />
                 <Image
                   src={card.icon.src}
@@ -59,12 +59,12 @@ import Image from "astro/components/Image.astro";
                   height={card.icon.height}
                   aria-hidden="true"
                   loading="eager"
-                  class="product-choosing__icon"
+                  class="products-choosing__icon"
                 />
               </div>
-              <div class="product-choosing__card-body">
-                <h3 class="product-choosing__card-title">{card.title}</h3>
-                <p class="product-choosing__card-text">{card.text}</p>
+              <div class="products-choosing__card-body">
+                <h3 class="products-choosing__card-title">{card.title}</h3>
+                <p class="products-choosing__card-text">{card.text}</p>
               </div>
             </li>
           ))
