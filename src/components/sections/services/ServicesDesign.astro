@@ -1,0 +1,134 @@
+---
+import ContentBlock from "../../ui/ContentBlock.astro";
+---
+
+<section class="services-design" aria-labelledby="services-design-title">
+  <div class="services-design__container container">
+    <!-- LEFT -->
+    <div class="services-design__image-container">
+      <picture>
+        <source srcset="/images/services-design.webp" type="image/webp" />
+        <source srcset="/images/services-design.jpg" type="image/jpeg" />
+        <img
+          src="/images/services-design.webp"
+          alt="Cellular shades installed above a sofa with pillows"
+          class="services-design__image"
+          width="630"
+          height="732"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="services-design__right">
+      <ContentBlock
+        title="Start with a Free Estimate, End with a Beautiful Plan"
+        introText="We make the journey simple and stress-free. With clear guidance and personalized support at every step, you’ll feel confident knowing your home is in expert hands."
+        description="We begin with a complimentary estimate so you’ll know exactly what to expect. After that, our design consultation turns your ideas into a detailed, custom plan — ensuring the perfect look and fit for every window."
+        cta={{
+          text: "Schedule a Free Estimate",
+          href: "/",
+          color: "secondary",
+        }}
+        id="services-design-title"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-design__container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .services-design__image-container {
+    display: block;
+    max-width: 100%;
+  }
+
+  .services-design__image-container picture,
+  .services-design__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .services-design__title {
+    margin: 0 0 16px 0;
+    font-family: var(--ff-heading);
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--primary);
+  }
+
+  .services-design__sub {
+    font-family: var(--ff-body);
+    font-size: var(--fs-body-l);
+    line-height: 1.5;
+    color: var(--text);
+    margin: 0 0 12px 0;
+  }
+
+  .services-design__paragraph {
+    margin: 0;
+  }
+
+  .services-design__paragraph p:first-child {
+    padding-bottom: 0;
+  }
+
+  .services-design__text {
+    font-family: var(--ff-body);
+    font-size: var(--fs-body-r);
+    line-height: 1.5;
+    color: var(--text);
+    margin: 0; /* Remove default margins */
+  }
+
+  .services-design__cta {
+    margin-top: 32px;
+  }
+
+  /* --- Media Queries  --- */
+  @media (min-width: 690px) {
+    .services-design__title {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .services-design__image-container picture,
+    .services-design__image {
+      height: 320px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center 65%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-design__container {
+      flex-direction: row;
+      align-items: center;
+      gap: 40px;
+    }
+    .services-design__image-container {
+      width: 50%;
+    }
+    .services-design__image-container picture,
+    .services-design__image {
+      width: 100%;
+      height: auto;
+    }
+    .services-design__content {
+      width: 630px;
+    }
+  }
+</style>
