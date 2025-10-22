@@ -41,13 +41,13 @@ export interface ProcessStep {
   text: string;
 }
 
-export type IconKey = "window" | "design" | "install" | "guarantee";
+export type IconKey = "estimate" | "design" | "install" | "quality";
 export const processSteps: ProcessStep[] = [
   {
     num: "01",
-    icon: "window" as IconKey,
+    icon: "estimate" as IconKey,
     header: "Get an Estimate",
-    text: "Get a free, no-obligation estimate for your custom window treatments — we’ll work around your schedule every time.",
+    text: "Get a free, no-obligation estimate for your custom window treatments — we’ll work around your schedule.",
   },
   {
     num: "02",
@@ -57,14 +57,14 @@ export const processSteps: ProcessStep[] = [
   },
   {
     num: "03",
-    icon: "window" as IconKey,
-    header: "Professional Installation",
+    icon: "install" as IconKey,
+    header: "Pro Installation",
     text: "Every installation is handled by us personally — precise, clean, and built to last for years to come.",
   },
   {
     num: "04",
-    icon: "window" as IconKey,
-    header: "Satisfaction Guarantee",
-    text: "You’ll love the results — every window treatment installation is backed by our commitment to quality and care.",
+    icon: "quality" as IconKey,
+    header: "Quality Guarantee",
+    text: "You’ll love the results — every installation is backed by our commitment to quality and care.",
   },
 ];
