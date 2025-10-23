@@ -1,0 +1,117 @@
+---
+import ContentBlock from "../../ui/ContentBlock.astro";
+---
+
+<section class="services-design" aria-labelledby="services-design-title">
+  <div class="services-design__container container">
+    <div class="services-design__left">
+      <ContentBlock
+        title="Start with a Free Estimate, End with a Beautiful Plan"
+        introText="We make it easy to get started. Every project begins with a free estimate and expert guidance tailored to your home or business."
+        description="Once you’re ready to move forward, our design consultation helps you plan every detail — from layout and function to the perfect window treatments for your space."
+        cta={{
+          text: "Schedule a Free Estimate",
+          href: "/",
+          color: "secondary",
+        }}
+        id="services-design-title"
+      />
+    </div>
+    <div class="services-design__right">
+      <div class="services-design__image-container">
+        <img src="/images/temp1.png" alt="temp image" />
+        <!-- <picture>
+          <source srcset="/images/services-design.webp" type="image/webp" />
+          <source srcset="/images/services-design.jpg" type="image/jpeg" />
+          <img
+            src="/images/services-design.webp"
+            alt="Cellular shades installed above a sofa with pillows"
+            class="services-design__image"
+            width="630"
+            height="732"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-design__container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .services-design__left {
+    order: 2;
+  }
+
+  .services-design__right {
+    order: 1;
+  }
+
+  .services-design__image-container {
+    display: block;
+    max-width: 100%;
+  }
+
+  .services-design__image-container img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  /* --- Media Queries  --- */
+
+  @media (min-width: 768px) {
+    .services-design__image-container img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-design__container {
+      flex-direction: row;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .services-design__left {
+      order: 1;
+      width: 50%;
+    }
+
+    .services-design__right {
+      order: 2;
+      width: 50%;
+    }
+    .services-design__image-container {
+      display: block;
+      max-width: 100%;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .services-design__image-container img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  @media (min-width: 1200px) {
+    .services-design__image-container {
+      display: block;
+      max-width: 100%;
+      height: 675px;
+      overflow: hidden;
+    }
+  }
+</style>
