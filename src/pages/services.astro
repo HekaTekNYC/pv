@@ -3,7 +3,10 @@ import Inner from "../layouts/Inner.astro";
 import ServicesHero from "../components/sections/services/ServicesHero.astro";
 import OurProcess from "../components/sections/services/OurProcess.astro";
 import ServicesDesign from "../components/sections/services/ServicesDesign.astro";
+import CTABannerSplit from "../components/sections/shared/CTABannerSplit.astro";
 import FAQ from "../components/sections/services/FAQ.astro";
+
+import { bannerData } from "../data/banner-data";
 ---
 
 <Inner
@@ -14,5 +17,7 @@ import FAQ from "../components/sections/services/FAQ.astro";
   <ServicesHero />
   <OurProcess />
   <ServicesDesign />
+  <CTABannerSplit image={bannerData.image} content={bannerData.content} />
+
   <FAQ />
 </Inner>
