@@ -1,0 +1,88 @@
+---
+import Button from "../../ui/Button.astro";
+import Shield from "./src/assets/icons/shield.svg";
+import Arrow from "./src/assets/icons/arrow.svg";
+---
+
+<section class="services-install">
+  <div class="services-install__container container">
+    <div class="services-install__left">
+      <div class="services-install__card">
+        <div class="services-install__card-header">
+          <h3 class="big-heading">Professional Installation</h3>
+          <div class="divider"></div>
+          <p>
+            Our trained installers ensure your blinds, shades, and drapery are
+            mounted with precision and care — guaranteeing smooth operation, a
+            perfect fit, and a flawless finish.
+          </p>
+        </div>
+        <ul>
+          <li>
+            <Shield aria-hidden="true" class="services-install__shield" />
+            <p>
+              <span>Precision & Fit:</span>installs done right the first time
+            </p>
+          </li>
+          <li>
+            <Shield aria-hidden="true" class="services-install__shield" />
+            <p>
+              <span>Expert Handling:</span>care for homes and businesses alike
+            </p>
+          </li>
+          <li>
+            <Shield aria-hidden="true" class="services-install__shield" />
+            <p>
+              <span>Lasting Quality:</span>durable, smooth and built to perform
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="services-install__card">
+        <div class="services-install__card-header">
+          <h3 class="big-heading">Motorized Installation</h3>
+          <div class="divider"></div>
+
+          <p>
+            Enjoy modern convenience with motorized shades and blinds that move
+            at the touch of a button — or automatically throughout the day.
+          </p>
+        </div>
+        <div class="services-install__cta">
+          <p>Learn more about our Motorized Solutions</p>
+          <Arrow aria-hidden="true" class="services-install__arrow" />
+        </div>
+      </div>
+    </div>
+    <div class="services-install__right">
+      <div class="services-install__content">
+        <div class="services-install__header">
+          <h2>Expert Window Treatment Installation Services</h2>
+          <p>
+            From precise measurements to flawless finishes, we handle every
+            detail so your window coverings fit beautifully and work perfectly.
+          </p>
+        </div>
+        <Button href="/contact" color="secondary"
+          >Get a Free Estimate Today</Button
+        >
+      </div>
+      <div class="services-install__img-container">
+        <picture>
+          <!-- WebP first -->
+          <source
+            srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761315860/services-install_ljpowy.webp"
+            type="image/webp"
+          />
+          <!-- PNG fallback -->
+          <img
+            src="https://res.cloudinary.com/ds2oztufv/image/upload/v1761315861/services-install_paohlr.png"
+            alt="Woman on ladder measuring a hanging curtain"
+            width="1200"
+            height="800"
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
