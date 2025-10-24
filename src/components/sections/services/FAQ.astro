@@ -25,7 +25,7 @@ import { installationFAQs } from "../../../data/faq-data";
         {
           installationFAQs.map((faq) => (
             <div class="faq__item">
-              <div class="faq__header">
+              <div class="faq__header" tabindex="0">
                 <h3 class="big-heading faq__question">{faq.question}</h3>
                 <div class="faq__toggle-container">
                   <img
@@ -106,6 +106,7 @@ import { installationFAQs } from "../../../data/faq-data";
     flex-direction: row;
     width: 100%;
     gap: 10px;
+    cursor: pointer;
   }
 
   .faq__header h3 {
@@ -214,22 +215,41 @@ import { installationFAQs } from "../../../data/faq-data";
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const faqItems = document.querySelectorAll(".faq__item");
+  document.addEventListener("DOMContentLoaded", () => {
+    const faqItems = document.querySelectorAll<HTMLDivElement>(".faq__item");
 
     faqItems.forEach((item) => {
-      const header = item.querySelector(".faq__header");
+      const header = item.querySelector<HTMLElement>(".faq__header");
+      const answer = item.querySelector<HTMLElement>(".faq__answer");
 
-      if (!header) return;
+      // Guard against null elements
+      if (!header || !answer) return;
 
       header.addEventListener("click", () => {
-        faqItems.forEach((otherItem) => {
-          if (otherItem !== item && otherItem.classList.contains("active")) {
-            otherItem.classList.remove("active");
+        const isOpen = item.classList.contains("active");
+
+        // Close all others
+        faqItems.forEach((i) => {
+          const a = i.querySelector<HTMLElement>(".faq__answer");
+          if (a) {
+            i.classList.remove("active");
+            a.style.maxHeight = "";
           }
         });
 
-        item.classList.toggle("active");
+        // Toggle this one
+        if (!isOpen) {
+          item.classList.add("active");
+          answer.style.maxHeight = `${answer.scrollHeight}px`;
+        }
+      });
+
+      // Accessibility: toggle with keyboard
+      header.addEventListener("keydown", (e: KeyboardEvent) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          header.click();
+        }
       });
     });
   });
