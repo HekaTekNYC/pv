@@ -109,7 +109,11 @@ const { image, content } = Astro.props as BannerSplitProps;
     .banner-split__overlay {
       background: linear-gradient(
         to right,
-        rgb(36, 66, 86) 50%,
+        rgb(36, 66, 86) 0%,
+        rgb(36, 66, 86) 45%,
+        rgba(36, 66, 86, 0.85) 55%,
+        rgba(36, 66, 86, 0.6) 65%,
+        rgba(36, 66, 86, 0.3) 80%,
         rgba(36, 66, 86, 0) 100%
       );
       opacity: 1;
