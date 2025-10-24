@@ -119,11 +119,17 @@ a {
   color: var(--text);
 }
 
+.bold {
+  font-weight: var(--fw-semibold);
+  color: var(--primary);
+}
+
 .divider {
   border: none;
   height: 0.094rem;
   background-color: var(--grey-50);
 }
+
 .divider-lt {
   border: none;
   height: 0.094rem;
