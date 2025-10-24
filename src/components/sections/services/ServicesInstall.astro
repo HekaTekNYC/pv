@@ -1,0 +1,317 @@
+---
+import Button from "../../ui/Button.astro";
+import Shield from "./src/assets/icons/shield.svg";
+import Arrow from "./src/assets/icons/arrow.svg";
+---
+
+<section class="services-install" aria-labelledby="services-install-title">
+  <div class="services-install__container container">
+    <div class="services-install__left">
+      <div class="services-install__card">
+        <div class="services-install__card-header">
+          <h3 class="big-heading">Professional Installation</h3>
+          <div class="services-line"></div>
+          <p>
+            Our trained installers ensure your blinds, shades, and drapery are
+            mounted with precision and care — guaranteeing smooth operation, a
+            perfect fit, and a flawless finish.
+          </p>
+        </div>
+        <ul>
+          <li>
+            <div class="services-install__shield">
+              <Shield aria-hidden="true" />
+            </div>
+            <p>
+              <span class="bold">Precision & Fit:</span> installs done right the
+              first time
+            </p>
+          </li>
+          <li>
+            <div class="services-install__shield">
+              <Shield aria-hidden="true" />
+            </div>
+
+            <p>
+              <span class="bold">Expert Handling:</span> care for homes and businesses
+              alike
+            </p>
+          </li>
+          <li>
+            <div class="services-install__shield">
+              <Shield aria-hidden="true" />
+            </div>
+            <p>
+              <span class="bold">Lasting Quality:</span> durable, smooth and built
+              to perform
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="services-install__card">
+        <div class="services-install__card-header">
+          <h3 class="big-heading">Motorized Installation</h3>
+          <div class="services-line"></div>
+
+          <p>
+            Enjoy modern convenience with motorized shades and blinds that move
+            at the touch of a button — or automatically throughout the day.
+          </p>
+        </div>
+
+        <p class="services-install__cta">
+          Learn more about our
+          <a
+            href="/motorized"
+            class="services-install__cta-link"
+            aria-label="Learn more about our motorized window treatment solutions"
+          >
+            <span class="services-bold">Motorized Solutions</span>
+            <Arrow aria-hidden="true" class="services-install__arrow" />
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="services-install__right">
+      <div class="services-install__content">
+        <div class="services-install__header">
+          <h2 id="services-install-title">
+            Expert Window Treatment Installation Services
+          </h2>
+          <p>
+            From precise measurements to flawless finishes, we handle every
+            detail so your window coverings fit beautifully and work perfectly.
+          </p>
+        </div>
+        <div class="services-install__btn">
+          <Button href="/contact" color="secondary"
+            >Get a Free Estimate Today</Button
+          >
+        </div>
+      </div>
+      <div class="services-install__img-container">
+        <picture>
+          <!-- WebP first -->
+          <source
+            srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761315860/services-install_ljpowy.webp"
+            type="image/webp"
+          />
+          <!-- PNG fallback -->
+          <img
+            src="https://res.cloudinary.com/ds2oztufv/image/upload/v1761315861/services-install_paohlr.png"
+            alt="Woman on ladder measuring a hanging curtain"
+            width="1200"
+            height="800"
+          />
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-install__container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .services-install__left,
+  .services-install__right {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .services-install__left {
+    order: 2;
+  }
+
+  .services-install__card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--grey-10);
+    padding: 32px 28px;
+    gap: 24px;
+  }
+
+  .services-install__card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .services-line {
+    border: none;
+    height: 0.094rem;
+    background-color: var(--grey-20);
+  }
+
+  .services-install__card ul {
+    display: grid;
+    gap: 15px;
+  }
+  .services-install__card li {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .services-install__shield {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    color: var(--secondary);
+  }
+  .services-install__shield svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+
+  .services-install__cta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .services-install__cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--secondary) !important;
+  }
+
+  .services-install__arrow {
+    height: 12px;
+    width: 12px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .services-install__cta-link:hover .services-install__arrow {
+    transform: translateX(4px);
+  }
+
+  .services-bold {
+    font-weight: var(--fw-semibold);
+    color: var(--secondary) !important;
+  }
+  .services-install__right {
+    order: 1;
+  }
+  .services-install__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .services-install__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .services-install__img-container {
+    display: block;
+    max-width: 100%;
+  }
+  .services-install__img-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .services-install__cta-link:hover .services-install__arrow {
+      transform: none;
+    }
+    .services-install__arrow {
+      transition: none;
+    }
+  }
+
+  @media (min-width: 586px) {
+    .services-install__card {
+      padding: 28px;
+      gap: 28px;
+    }
+    .services-install__card-header {
+      gap: 18px;
+    }
+    .services-line {
+      max-width: 70%;
+    }
+    .services-install__card ul {
+      display: grid;
+      gap: 24px;
+    }
+    .services-install__card li {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .services-install__shield {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-install__container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .services-install__left {
+      order: 1;
+    }
+
+    .services-install__left,
+    .services-install__right {
+      width: 50%;
+    }
+
+    .services-install__card {
+      padding: 32px;
+      gap: 32px;
+    }
+    .services-line {
+      max-width: 90%;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .services-install__left,
+    .services-install__right {
+      gap: 48px;
+    }
+
+    .services-install__card {
+      padding: 42px;
+    }
+    .services-line {
+      max-width: 75%;
+    }
+
+    .services-install__card-header {
+      gap: 24px;
+    }
+
+    .services-install__card li {
+      gap: 12px;
+    }
+
+    .services-install__img-container {
+      display: block;
+      max-width: 95%;
+    }
+  }
+</style>
