@@ -1,0 +1,172 @@
+---
+import Button from "../../ui/Button.astro";
+---
+
+<section>
+  <div class="product-features container">
+    <div class="product-features__media">
+      <picture>
+        <source
+          srcset="/images/product-features.webp"
+          type="image/webp"
+          media="(max-width: 1023px)"
+        />
+        <source
+          srcset="/images/product-features.png"
+          type="image/png"
+          media="(max-width: 1023px)"
+        />
+        <img
+          src="/images/product-features.png"
+          alt="Roman shade close-up by a window with plant"
+          width="630"
+          height="550"
+          loading="eager"
+          decoding="async"
+        />
+      </picture>
+    </div>
+    <div class="product-features__right">
+      <div class="product-features__content">
+        <div class="product-features__header">
+          <h2>Features of Roman Shades</h2>
+          <p>
+            Roman shades offer versatile styles, fabric choices, and operation
+            options, providing beauty, functionality, and a perfect fit for any
+            room.
+          </p>
+        </div>
+        <div class="product-features__specs">
+          <ul>
+            <li>
+              <img
+                class="product-fetures__specs-icon"
+                src="../icons/bullet-point.svg"
+                alt=""
+                aria-hidden="true"
+                width="12"
+                height="12"
+              />
+              <p>Available in light-filtering and blackout fabrics</p>
+            </li>
+            <li>
+              <img
+                class="product-fetures__specs-icon"
+                src="../icons/bullet-point.svg"
+                alt=""
+                aria-hidden="true"
+                width="12"
+                height="12"
+              />
+              <p>Flat, hobbled, or relaxed fold styles</p>
+            </li>
+            <li>
+              <img
+                class="product-fetures__specs-icon"
+                src="../icons/bullet-point.svg"
+                alt=""
+                aria-hidden="true"
+                width="12"
+                height="12"
+              />
+              <p>Clean stack when raised</p>
+            </li>
+            <li>
+              <img
+                class="product-fetures__specs-icon"
+                src="../icons/bullet-point.svg"
+                alt=""
+                aria-hidden="true"
+                width="12"
+                height="12"
+              />
+              <p>Corded, cordless, or motorized operation</p>
+            </li>
+            <li>
+              <img
+                class="product-fetures__specs-icon"
+                src="../icons/bullet-point.svg"
+                alt=""
+                aria-hidden="true"
+                width="12"
+                height="12"
+              />
+              <p>Great for both modern and traditional interiors</p>
+            </li>
+          </ul>
+        </div>
+        <div class="product-features__cta">
+          <Button color="secondary" href="/contact">
+            Explore More Shade Styles
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-features {
+    display: flex;
+    gap: 64px;
+  }
+  .product-features__media {
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+  }
+  .product-features__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+  .product-features__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .product-features__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .product-features__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .product-fetures__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .product-features__specs ul {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+  }
+  .product-features__specs li {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .product-features__media img {
+      height: 690px;
+    }
+  }
+  @media (min-width: 992px) {
+    .product-features__media img {
+      height: 690px;
+    }
+    .product-features__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

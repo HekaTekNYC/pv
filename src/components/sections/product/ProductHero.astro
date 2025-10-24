@@ -79,128 +79,127 @@ import Button from "../../ui/Button.astro";
               <span class="product-hero__specs-term">Cordless:</span>
               <span class="product-hero__specs-value">Available</span>
             </li>
-              <li>
-                <img
-                  class="product-hero__specs-icon"
-                  src="../icons/bullet-point.svg"
-                  alt=""
-                  aria-hidden="true"
-                  width="12"
-                  height="12"
-                />
-                <span class="product-hero__specs-term">Custom Sizes:</span>
-                <span class="product-hero__specs-value">Yes</span>
-              </li>
-              <li>
-                <img
-                  class="product-hero__specs-icon"
-                  src="../icons/bullet-point.svg"
-                  alt=""
-                  aria-hidden="true"
-                  width="12"
-                  height="12"
-                />
-                <span class="product-hero__specs-term">Mount Types:</span>
-                <span class="product-hero__specs-value">Inside / Outside</span>
-              </li>
-              <li>
-                <img
-                  class="product-hero__specs-icon"
-                  src="../icons/bullet-point.svg"
-                  alt=""
-                  aria-hidden="true"
-                  width="12"
-                  height="12"
-                />
-                <span class="product-hero__specs-term">Control Options:</span>
-                <span class="product-hero__specs-value"
-                  >Corded, Cordless, Motorized</span
-                >
-              </li>
+            <li>
+              <img
+                class="product-hero__specs-icon"
+                src="../icons/bullet-point.svg"
+                alt=""
+                aria-hidden="true"
+                width="12"
+                height="12"
+              />
+              <span class="product-hero__specs-term">Custom Sizes:</span>
+              <span class="product-hero__specs-value">Yes</span>
+            </li>
+            <li>
+              <img
+                class="product-hero__specs-icon"
+                src="../icons/bullet-point.svg"
+                alt=""
+                aria-hidden="true"
+                width="12"
+                height="12"
+              />
+              <span class="product-hero__specs-term">Mount Types:</span>
+              <span class="product-hero__specs-value">Inside / Outside</span>
+            </li>
+            <li>
+              <img
+                class="product-hero__specs-icon"
+                src="../icons/bullet-point.svg"
+                alt=""
+                aria-hidden="true"
+                width="12"
+                height="12"
+              />
+              <span class="product-hero__specs-term">Control Options:</span>
+              <span class="product-hero__specs-value"
+                >Corded, Cordless, Motorized</span
+              >
             </li>
           </ul>
         </div>
-        <div class="product-hero__cta">
-          <Button color="secondary" href="/contact">
-            Schedule Free Consultation
-          </Button>
-        </div>
+      </div>
+      <div class="product-hero__cta">
+        <Button color="secondary" href="/contact">
+          Schedule Free Consultation
+        </Button>
       </div>
     </div>
   </div>
-
-  <style>
-    .product-hero__grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .product-hero__media {
-      display: block;
-      max-width: 100%;
-      object-fit: cover;
-    }
-
-    .product-hero__media img {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      border-radius: 2px;
-    }
-    .product-hero__right {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 32px;
-    }
-
-    .product-hero__content {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .product-hero__header {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .product-hero__specs {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .product-hero__specs ul {
-      list-style: none;
-      display: grid;
-      gap: 12px;
-    }
-
-    .product-hero__specs li {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .product-hero__specs-term {
-      font-weight: var(--fw-semibold);
-    }
-
-    @media (min-width: 768px) {
-      .product-hero__media img {
-        height: 690px;
-      }
-    }
-    @media (min-width: 992px) {
-      .product-hero__media img {
-        height: 690px;
-      }
-      .product-hero__grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-  </style>
 </section>
+
+<style>
+  .product-hero__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .product-hero__media {
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  .product-hero__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+  .product-hero__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .product-hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .product-hero__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .product-hero__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .product-hero__specs ul {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }
+
+  .product-hero__specs li {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .product-hero__specs-term {
+    font-weight: var(--fw-semibold);
+  }
+
+  @media (min-width: 768px) {
+    .product-hero__media img {
+      height: 690px;
+    }
+  }
+  @media (min-width: 992px) {
+    .product-hero__media img {
+      height: 690px;
+    }
+    .product-hero__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
