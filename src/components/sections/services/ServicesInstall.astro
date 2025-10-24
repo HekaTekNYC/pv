@@ -4,7 +4,7 @@ import Shield from "./src/assets/icons/shield.svg";
 import Arrow from "./src/assets/icons/arrow.svg";
 ---
 
-<section class="services-install">
+<section class="services-install" aria-labelledby="services-install-title">
   <div class="services-install__container container">
     <div class="services-install__left">
       <div class="services-install__card">
@@ -61,7 +61,11 @@ import Arrow from "./src/assets/icons/arrow.svg";
 
         <p class="services-install__cta">
           Learn more about our
-          <a href="/motorized" class="services-install__cta-link">
+          <a
+            href="/motorized"
+            class="services-install__cta-link"
+            aria-label="Learn more about our motorized window treatment solutions"
+          >
             <span class="services-bold">Motorized Solutions</span>
             <Arrow aria-hidden="true" class="services-install__arrow" />
           </a>
@@ -71,7 +75,9 @@ import Arrow from "./src/assets/icons/arrow.svg";
     <div class="services-install__right">
       <div class="services-install__content">
         <div class="services-install__header">
-          <h2>Expert Window Treatment Installation Services</h2>
+          <h2 id="services-install-title">
+            Expert Window Treatment Installation Services
+          </h2>
           <p>
             From precise measurements to flawless finishes, we handle every
             detail so your window coverings fit beautifully and work perfectly.
@@ -213,6 +219,15 @@ import Arrow from "./src/assets/icons/arrow.svg";
     width: 100%;
     height: auto;
     object-fit: cover;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .services-install__cta-link:hover .services-install__arrow {
+      transform: none;
+    }
+    .services-install__arrow {
+      transition: none;
+    }
   }
 
   @media (min-width: 586px) {
