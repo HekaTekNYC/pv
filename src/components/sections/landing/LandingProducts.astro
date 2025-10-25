@@ -115,7 +115,7 @@ import { landingProductsData } from "../../../data/lp-products-data";
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 1.25rem;
+    padding: 16px;
     color: var(--white) !important;
   }
 
@@ -130,16 +130,31 @@ import { landingProductsData } from "../../../data/lp-products-data";
     background: linear-gradient(
       to top,
       rgba(40, 43, 48, 1) 0%,
-      /* rgba(40, 43, 48, 0.85) 35%, */ rgba(26, 26, 26, 0) 100%
+      rgba(40, 43, 48, 0.7) 20%,
+      rgba(40, 43, 48, 0.45) 30%,
+      rgba(26, 26, 26, 0) 50%
     );
-    transition: opacity 0.3s ease;
+    transition:
+      background 0.5s ease,
+      transform 0.5s ease;
     z-index: 0;
-    opacity: 1;
   }
 
   .card:hover .lp-products-card__overlay::after,
   .card:focus-within .lp-products-card__overlay::after {
-    opacity: 0.9;
+    background: linear-gradient(
+      to top,
+      rgba(40, 43, 48, 1) 0%,
+      rgba(40, 43, 48, 0.9) 40%,
+      rgba(26, 26, 26, 0) 100%
+    );
+  }
+  .card:hover .lp-products-card__blurb,
+  .card:focus-within .lp-products-card__blurb {
+    opacity: 1;
+    max-height: 200px;
+    margin-top: 0.4rem;
+    transform: translateY(0);
   }
 
   .lp-products-card__overlay > * {
@@ -155,19 +170,11 @@ import { landingProductsData } from "../../../data/lp-products-data";
       opacity 0.3s ease,
       transform 0.3s ease,
       max-height 0.3s ease;
-    margin-top: 0.4rem;
     color: var(--white);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
     overflow: hidden;
     position: relative;
     z-index: 2;
-  }
-
-  .card:hover .lp-products-card__blurb,
-  .card:focus-within .lp-products-card__blurb {
-    opacity: 1;
-    max-height: 200px;
-    transform: translateY(0);
   }
 
   .lp-products__cta {
@@ -177,7 +184,7 @@ import { landingProductsData } from "../../../data/lp-products-data";
 
   @media (min-width: 520px) {
     .lp-products__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, 1fr);
     }
     .lp-products-card__media {
       aspect-ratio: 17 / 20;
@@ -193,6 +200,10 @@ import { landingProductsData } from "../../../data/lp-products-data";
     .lp-products__grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 28px;
+    }
+
+    .lp-products-card__overlay {
+      padding: 32px;
     }
   }
 
