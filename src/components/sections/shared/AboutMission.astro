@@ -10,34 +10,36 @@ import Button from "../../ui/Button.astro";
       <picture>
         <!-- Mobile WebP -->
         <source
-          srcset="/images/about-lp-mbl.webp"
+          srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761351705/about-lp-mbl_erzsiz.webp"
           type="image/webp"
           media="(max-width: 1023px)"
         />
         <!-- Mobile PNG fallback -->
         <source
-          srcset="/images/about-lp-mbl.png"
+          srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761351708/about-lp-mbl_iuub7o.png"
           type="image/png"
           media="(max-width: 1023px)"
         />
         <!-- Desktop WebP -->
         <source
-          srcset="/images/about-lp-dsk.webp"
+          srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761351705/about-lp-dsk_ptemfd.webp"
           type="image/webp"
           media="(min-width: 1024px)"
         />
         <!-- Desktop PNG fallback -->
         <source
-          srcset="/images/about-lp-dsk.png"
+          srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761351708/about-lp-mbl_iuub7o.png"
           type="image/png"
           media="(min-width: 1024px)"
         />
         <img
-          src="/images/about-lp-dsk.png"
+          src="https://res.cloudinary.com/ds2oztufv/image/upload/v1761351708/about-lp-mbl_iuub7o.png"
           alt="Layered shades on office windows"
           class="about-mission__image"
           width="797"
           height="1057"
+          loading="eager"
+          decoding="async"
         />
       </picture>
     </div>

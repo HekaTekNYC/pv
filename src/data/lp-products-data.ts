@@ -1,4 +1,6 @@
-// src/data/landingProductsData.ts
+const CLOUDINARY_BASE =
+  "https://res.cloudinary.com/ds2oztufv/image/upload/f_auto,q_auto";
+
 export interface CategoryCard {
   title: string;
   image: string;
@@ -10,7 +12,7 @@ export interface CategoryCard {
 export const landingProductsData: CategoryCard[] = [
   {
     title: "Blinds",
-    image: "/images/lp-blinds.webp",
+    image: `${CLOUDINARY_BASE}/v1761428610/lp-blinds_qh2bvx.png`,
     alt: "Stack of windows with blinds and cellular shades",
     href: "/products/blinds",
     blurb:
@@ -18,7 +20,7 @@ export const landingProductsData: CategoryCard[] = [
   },
   {
     title: "Natural Shades",
-    image: "/images/lp-natural-shades.webp",
+    image: `${CLOUDINARY_BASE}/v1761429058/lp-natural-shades_xt5djz.png`,
     alt: "Woven wood shades in a hallway",
     href: "/products/natural-shades",
     blurb:
@@ -26,7 +28,7 @@ export const landingProductsData: CategoryCard[] = [
   },
   {
     title: "Drapery",
-    image: "/images/lp-drapery.webp",
+    image: `${CLOUDINARY_BASE}/v1761429595/lp-drapery_j7mokb.png`,
     alt: "Neutral drapery in dining room",
     href: "/products/drapery",
     blurb:
@@ -34,7 +36,7 @@ export const landingProductsData: CategoryCard[] = [
   },
   {
     title: "Shutters",
-    image: "/images/lp-shutters.webp",
+    image: `${CLOUDINARY_BASE}/v1761429840/lp-shutters_xaxot5.png`,
     alt: "Plantation shutters in bathroom",
     href: "/products/shutters",
     blurb:
@@ -42,14 +44,14 @@ export const landingProductsData: CategoryCard[] = [
   },
   {
     title: "Motorization",
-    image: "/images/lp-motorization.webp",
+    image: `${CLOUDINARY_BASE}/v1761429945/lp-motorized_g0ldur.png`,
     alt: "Motorized cellular shade close-up",
     href: "/products/motorization",
     blurb: "App control, voice, and scenes—safer, smarter light control.",
   },
   {
     title: "Exterior Shades",
-    image: "/images/lp-exterior-shades.webp",
+    image: `${CLOUDINARY_BASE}/v1761430077/lp-exterior_pqhl3p.png`,
     alt: "Exterior shades on patio doors",
     href: "/products/exterior-shades",
     blurb:

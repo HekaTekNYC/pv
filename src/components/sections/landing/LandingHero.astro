@@ -3,6 +3,39 @@ import Button from "../../ui/Button.astro";
 ---
 
 <section class="lp-hero" aria-labelledby="hero-title">
+  <picture class="lp-hero__bg">
+    <!-- Mobile first -->
+    <source
+      srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761347110/lp-hero-mbl_ghyiks.webp"
+      type="image/webp"
+      media="(max-width: 768px)"
+    />
+    <source
+      srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761347110/lp-hero-mbl_whze0j.png"
+      type="image/png"
+      media="(max-width: 768px)"
+    />
+
+    <!-- Desktop -->
+    <source
+      srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761347109/lp-hero-dsk_rcf1el.webp"
+      type="image/webp"
+      media="(min-width: 769px)"
+    />
+    <source
+      srcset="/https://res.cloudinary.com/ds2oztufv/image/upload/v1761347109/lp-hero-dsk_rcf1el.webp"
+      type="image/png"
+      media="(min-width: 769px)"
+    />
+
+    <img
+      src="https://res.cloudinary.com/ds2oztufv/image/upload/v1761347109/lp-hero-dsk_rcf1el.webp"
+      alt="Modern living room with custom window treatments"
+      loading="eager"
+      decoding="async"
+    />
+  </picture>
+
   <div class="lp-hero__overlay" aria-hidden="true"></div>
   <div class="container">
     <div class="lp-hero__content">
@@ -27,23 +60,29 @@ import Button from "../../ui/Button.astro";
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     min-height: clamp(520px, calc(100svh - 112px), 900px);
-    height: 100%;
     width: 100%;
     isolation: isolate;
-    background-image: url("/images/lp-hero.webp");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+
+  .lp-hero__bg,
+  .lp-hero__bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
   }
 
   .lp-hero__overlay {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    background: rgba(40, 43, 48, 0.83);
+    z-index: 2;
     pointer-events: none;
-    background: rgba(40, 43, 48, 0.8);
-    width: 100%;
   }
 
   .lp-hero__content {
@@ -54,7 +93,7 @@ import Button from "../../ui/Button.astro";
     width: 100%;
     height: 100%;
     gap: 20px;
-    z-index: 2;
+    z-index: 3;
   }
 
   .lp-hero__content p {
