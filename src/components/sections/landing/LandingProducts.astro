@@ -1,49 +1,25 @@
 ---
 import Button from "../../ui/Button.astro";
-
-export interface CategoryCard {
-  title: string;
-  image: string;
-  alt: string;
-  href: string;
-  blurb?: string;
-}
-
-type Props = {
-  heading?: string;
-  subheading?: string;
-  items: CategoryCard[];
-  /** which card starts with the overlay text visible (0-based) */
-  activeIndex?: number; // -1 = none open
-};
-
-const {
-  heading = "Custom Window Coverings for Every Space",
-  subheading = "",
-  items,
-  activeIndex = -1,
-} = Astro.props as Props;
+import { landingProductsData } from "../../../data/lp-products-data";
 ---
 
 <section class="lp-products" aria-labelledby="lp-products-title">
-  <div class="container">
+  <div class="container lp-products__container">
     <header class="lp-products__header">
-      <h2 id="lp-products-title" class="lp-products__title">
-        {heading}
-      </h2>
-      {subheading && <p class="lp-products__sub">{subheading}</p>}
+      <h2 id="lp-products-title">Custom Window Coverings for Every Space</h2>
+      <p>
+        Explore our full range of beautiful window treatments designed for
+        comfort, privacy, and style—expertly measured, designed, and installed
+        to fit your home or commercial space perfectly.
+      </p>
     </header>
 
-    <ul class="lp-products__grid" role="list">
+    <ul class="lp-products__grid" aria-label="Product categories" role="list">
       {
-        items.map((it, i) => (
+        landingProductsData.map((it, i) => (
           <li class="lp-products__item">
-            <a
-              class={`card${i === activeIndex ? " is-active" : ""}`}
-              href={it.href}
-              aria-label={`${it.title}${it.blurb ? ": " + it.blurb : ""}`}
-            >
-              <figure class="lp-products-card__media">
+            <a class="card" href={it.href}>
+              <div class="lp-products-card__media">
                 <img
                   src={it.image}
                   alt={it.alt}
@@ -52,11 +28,12 @@ const {
                   loading={i === 0 ? "eager" : "lazy"}
                   decoding="async"
                 />
-              </figure>
-
-              <div class="lp-products-card__overlay">
-                <h3 class="lp-products-card__title">{it.title}</h3>
-                {it.blurb && <p class="lp-products-card__blurb">{it.blurb}</p>}
+                <div class="lp-products-card__overlay">
+                  <h3 class="big-heading">{it.title}</h3>
+                  {it.blurb && (
+                    <p class="lp-products-card__blurb">{it.blurb}</p>
+                  )}
+                </div>
               </div>
             </a>
           </li>
@@ -71,206 +48,157 @@ const {
 </section>
 
 <style>
-  /* Base */
   .lp-products {
-    padding: 16px;
     background: var(--grey-10);
+  }
+
+  .lp-products__container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
   }
 
   .lp-products__header {
     display: grid;
-    grid-template-columns: 1fr; /* stacked by default */
-    gap: 20px;
-    align-items: start;
-    margin-bottom: 40px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  .lp-products__title {
-    margin: 0;
-  }
-
-  .lp-products__sub {
-    margin: 6px 0 0;
-    color: var(--text);
-    font-family: var(--ff-body);
-    font-size: var(--fs-body-l);
-    line-height: 1.6;
-    max-width: 56ch;
-  }
-
-  /* Grid (refined in MQs) */
   .lp-products__grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 28px; /* your spec */
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  .lp-products__item {
-    list-style: none;
+  .card {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.3s ease;
   }
 
-  .card {
+  .card:hover,
+  .card:focus-within {
+    transform: translateY(-2px);
+  }
+
+  .lp-products-card__media {
     position: relative;
     display: block;
     overflow: hidden;
-    border-radius: 4px;
-    background: var(--grey-50);
-    width: 100%;
-    margin-inline: auto;
+    aspect-ratio: 4 / 5;
   }
-
-  /* Default ratio (desktop/tablet); mobile overrides below */
-  .lp-products-card__media {
-    aspect-ratio: 17 / 20;
-  } /* 408 × 480 */
 
   .lp-products-card__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.35s ease;
   }
 
-  /* Overlay */
+  .card:hover .lp-products-card__media img,
+  .card:focus-within .lp-products-card__media img {
+    transform: scale(1.03);
+  }
+
   .lp-products-card__overlay {
     position: absolute;
     inset: 0;
-    display: grid;
-    align-content: end;
-    padding: 14px;
-    color: var(--white);
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 40%,
-      rgba(0, 0, 0, 0.55) 100%
-    );
-    transition:
-      background 0.2s ease,
-      opacity 0.22s ease,
-      transform 0.22s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.25rem;
+    color: var(--white) !important;
   }
 
-  .lp-products-card__title {
-    margin: 0;
-    font-family: var(--ff-heading);
-    font-size: var(--fs-h3-lg);
-    font-weight: var(--fw-bold);
-    color: var(--white);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-    line-height: 1.2;
+  .lp-products-card__overlay h3 {
+    color: var(--white) !important;
+  }
+
+  .lp-products-card__overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(40, 43, 48, 1) 0%,
+      /* rgba(40, 43, 48, 0.85) 35%, */ rgba(26, 26, 26, 0) 100%
+    );
+    transition: opacity 0.3s ease;
+    z-index: 0;
+    opacity: 1;
+  }
+
+  .card:hover .lp-products-card__overlay::after,
+  .card:focus-within .lp-products-card__overlay::after {
+    opacity: 0.9;
+  }
+
+  .lp-products-card__overlay > * {
+    position: relative;
+    z-index: 1;
   }
 
   .lp-products-card__blurb {
-    margin: 6px 0 0;
-    font-family: var(--ff-body);
-    font-size: var(--fs-body-s);
-    line-height: 1.4;
-    max-width: 38ch;
-    color: var(--white);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     opacity: 0;
     max-height: 0;
     transform: translateY(6px);
     transition:
-      opacity 0.25s ease,
-      transform 0.25s ease,
-      max-height 0.25s ease;
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      max-height 0.3s ease;
+    margin-top: 0.4rem;
+    color: var(--white);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
   }
 
-  .card.is-active .lp-products-card__blurb,
   .card:hover .lp-products-card__blurb,
-  .card:focus-visible .lp-products-card__blurb {
+  .card:focus-within .lp-products-card__blurb {
     opacity: 1;
-    max-height: 220px;
+    max-height: 200px;
     transform: translateY(0);
-  }
-
-  .card:hover .lp-products-card__overlay,
-  .card:focus-visible .lp-products-card__overlay,
-  .card.is-active .lp-products-card__overlay {
-    background:
-      linear-gradient(
-        360deg,
-        rgba(26, 26, 26, 0.76) 13.1%,
-        rgba(26, 26, 26, 0) 64.22%
-      ),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.55) 100%);
   }
 
   .lp-products__cta {
     display: flex;
     justify-content: center;
-    margin-top: 40px;
   }
 
-  /* =========================
-     MEDIA QUERIES (BOTTOM)
-     ========================= */
-
-  /* Phones: exact 343 × 360 visual box */
-  @media (max-width: 560px) {
-    .lp-products__sub {
-      font-size: var(--fs-body-s);
-      line-height: 1.55;
-      max-width: none;
-    }
-
-    .lp-products__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .card {
-      max-width: 343px;
-    } /* visual width */
-    .lp-products-card__media {
-      aspect-ratio: 343 / 360;
-    } /* 343 × 360 */
-  }
-
-  /* Tablets: 2 columns */
-  @media (min-width: 561px) and (max-width: 899.98px) {
-    .lp-products__header {
-      grid-template-columns: 1fr;
-    }
+  @media (min-width: 520px) {
     .lp-products__grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .card {
-      max-width: 100%;
-    }
     .lp-products-card__media {
       aspect-ratio: 17 / 20;
     }
   }
 
-  /* Desktop: FORCE 3 columns, let cards shrink to fit (no overflow) */
-  @media (min-width: 900px) {
-    .lp-products {
-      padding: 32px;
-    }
+  @media (min-width: 768px) {
     .lp-products__header {
       grid-template-columns: 1fr 1fr;
-      margin-bottom: 40px;
+      align-items: end;
+      gap: 40px;
     }
     .lp-products__grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr)); /* always 3 columns */
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 28px;
-    }
-    .card {
-      max-width: 100%;
-    } /* no fixed 408px width */
-    .lp-products-card__media {
-      aspect-ratio: 17 / 20;
     }
   }
 
-  /* Motion-safe */
   @media (prefers-reduced-motion: reduce) {
     .lp-products-card__blurb,
-    .lp-products-card__overlay {
+    .lp-products-card__overlay::after {
       transition: none;
     }
   }

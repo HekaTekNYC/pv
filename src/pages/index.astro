@@ -10,19 +10,13 @@ import ContactFull from "../components/sections/shared/ContactFull.astro";
 import Testimonials from "../components/sections/shared/Testimonials.astro";
 import CTABannerCenter from "../components/sections/shared/CTABannerCenter.astro";
 
-import { landingProductsData } from "../data/lp-products-data";
 import { bannerLPData } from "../data/banner-data";
 ---
 
 <Main title="PerfectView">
   <LandingHero />
   <AboutMission />
-  <LandingProducts
-    heading="Custom Window Coverings for Every Space"
-    subheading="Explore our full range of beautiful window treatments designed for comfort, privacy, and style—expertly measured, designed, and installed to fit your home or commercial space perfectly."
-    items={landingProductsData}
-    activeIndex={-1}
-  />
+  <LandingProducts />
   <WhyUs />
 
   <CTABannerSplit image={bannerLPData.image} content={bannerLPData.content} />
