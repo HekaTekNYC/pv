@@ -1,7 +1,6 @@
 ---
-import { productChoosingCards } from "../../../data/product-choosing";
+import { productChoosingCards } from "../../../data/product-cards";
 import Button from "../../ui/Button.astro";
-import Image from "astro/components/Image.astro";
 ---
 
 <section class="products-choosing" aria-labelledby="product-choosing__title">
@@ -26,12 +25,14 @@ import Image from "astro/components/Image.astro";
       </header>
 
       <figure class="products-choosing__media">
-        <Image
+        <img
           src="/images/product-how-to-choose.webp"
           alt="Example window treatments installed in a modern living room with natural lighting"
-          width={522}
-          height={356}
+          width="522"
+          height="356"
           loading="eager"
+          decoding="async"
+          style="width:100%;height:auto"
         />
       </figure>
     </div>
@@ -41,31 +42,36 @@ import Image from "astro/components/Image.astro";
       <ul class="products-choosing__list" role="list">
         {
           productChoosingCards.map((card) => (
-            <li class="products-choosing__card" aria-label={card.ariaLabel}>
-              <div class="products-choosing__card-icon">
-                <Image
-                  src={card.blob.src}
-                  alt={card.blob.alt}
-                  width={100}
-                  height={103}
-                  aria-hidden="true"
-                  loading="eager"
-                  class="products-choosing__blob"
-                />
-                <Image
-                  src={card.icon.src}
-                  alt={card.icon.alt}
-                  width={card.icon.width}
-                  height={card.icon.height}
-                  aria-hidden="true"
-                  loading="eager"
-                  class="products-choosing__icon"
-                />
-              </div>
-              <div class="products-choosing__card-body">
-                <h3 class="products-choosing__card-title">{card.title}</h3>
-                <p class="products-choosing__card-text">{card.text}</p>
-              </div>
+            <li class="products-choosing__card">
+              <a
+                href={`/products/${card.slug}`}
+                class="products-choosing__card-link"
+                aria-label={card.ariaLabel}
+              >
+                <div class="products-choosing__card-icon">
+                  <img
+                    src={card.blob.src}
+                    alt=""
+                    aria-hidden="true"
+                    width="100"
+                    height="103"
+                    loading="eager"
+                    class="products-choosing__blob"
+                  />
+                  <img
+                    src={card.icon.src}
+                    alt={card.icon.alt}
+                    width={card.icon.width}
+                    height={card.icon.height}
+                    loading="eager"
+                    class="products-choosing__icon"
+                  />
+                </div>
+                <div class="products-choosing__card-body">
+                  <h3 class="products-choosing__card-title">{card.title}</h3>
+                  <p class="products-choosing__card-text">{card.text}</p>
+                </div>
+              </a>
             </li>
           ))
         }
@@ -75,22 +81,22 @@ import Image from "astro/components/Image.astro";
 </section>
 
 <style>
-  .product-choosing {
-    background: var(--white);
+  .products-choosing {
+    /* background: var(--white); */
     padding-block: clamp(2.5rem, 6vw, 5rem);
   }
 
-  .product-choosing__container {
+  .products-choosing__container {
     display: grid;
     grid-template-columns: 1fr;
     gap: clamp(2rem, 4vw, 3rem);
   }
 
-  .product-choosing__header {
+  .products-choosing__header {
     margin-bottom: clamp(3rem, 6vw, 4rem);
   }
 
-  .product-choosing__title {
+  .products-choosing__title {
     margin: 0 0 0.75rem 0;
     font-family: var(--ff-heading);
     font-weight: var(--fw-bold);
@@ -100,7 +106,7 @@ import Image from "astro/components/Image.astro";
     color: var(--primary);
   }
 
-  .product-choosing__intro {
+  .products-choosing__intro {
     margin: 0 0 2rem;
     font-family: var(--ff-body);
     font-size: clamp(1rem, 2vw, var(--fs-body-r));
@@ -109,11 +115,11 @@ import Image from "astro/components/Image.astro";
     max-width: 65ch;
   }
 
-  .product-choosing__cta {
+  .products-choosing__cta {
     margin-top: 1rem;
   }
 
-  .product-choosing__media {
+  .products-choosing__media {
     margin: 1.5rem 0 0 0;
     border-radius: 2px;
     overflow: hidden;
@@ -122,7 +128,7 @@ import Image from "astro/components/Image.astro";
     aspect-ratio: 4/3;
   }
 
-  .product-choosing__media img {
+  .products-choosing__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -130,14 +136,14 @@ import Image from "astro/components/Image.astro";
   }
 
   /* Cards list */
-  .product-choosing__list {
+  .products-choosing__list {
     display: grid;
     gap: 1rem;
     margin: 0;
     padding: 0;
   }
 
-  .product-choosing__card {
+  .products-choosing__card {
     list-style: none;
     display: grid;
     grid-template-columns: 80px 1fr;
@@ -149,9 +155,29 @@ import Image from "astro/components/Image.astro";
     padding: 1rem;
     height: fit-content;
     min-height: 120px;
+    position: relative;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
-  .product-choosing__card-icon {
+  .products-choosing__card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .products-choosing__card:focus-within {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  .products-choosing__card-link {
+    display: contents;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .products-choosing__card-icon {
     position: relative;
     width: 80px;
     height: 82.58px;
@@ -159,7 +185,7 @@ import Image from "astro/components/Image.astro";
     place-items: center;
   }
 
-  .product-choosing__blob {
+  .products-choosing__blob {
     position: absolute;
     top: 0;
     left: 0;
@@ -168,7 +194,7 @@ import Image from "astro/components/Image.astro";
     z-index: 1;
   }
 
-  .product-choosing__icon {
+  .products-choosing__icon {
     position: relative;
     z-index: 2;
     width: 28px;
@@ -176,14 +202,14 @@ import Image from "astro/components/Image.astro";
     object-fit: contain;
   }
 
-  .product-choosing__card-body {
+  .products-choosing__card-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 82.58px;
   }
 
-  .product-choosing__card-title {
+  .products-choosing__card-title {
     margin: 0 0 0.5rem 0;
     font-family: var(--ff-heading);
     font-weight: var(--fw-regular, 400);
@@ -192,7 +218,7 @@ import Image from "astro/components/Image.astro";
     color: var(--primary);
   }
 
-  .product-choosing__card-text {
+  .products-choosing__card-text {
     margin: 0;
     font-family: var(--ff-body);
     font-size: clamp(0.875rem, 1.5vw, var(--fs-body-r));
@@ -202,23 +228,23 @@ import Image from "astro/components/Image.astro";
 
   /* Media Queries */
   @media (min-width: 768px) {
-    .product-choosing__container {
+    .products-choosing__container {
       grid-template-columns: 1fr 1fr;
       align-items: start;
       gap: clamp(2rem, 4vw, 3rem);
     }
 
-    .product-choosing__media {
+    .products-choosing__media {
       aspect-ratio: 3/2;
       margin-top: 2rem;
     }
 
-    .product-choosing__list {
+    .products-choosing__list {
       gap: 1.25rem;
       grid-auto-rows: 1fr;
     }
 
-    .product-choosing__card {
+    .products-choosing__card {
       grid-template-columns: 90px 1fr;
       padding: 1.25rem;
       min-height: 140px;
@@ -226,74 +252,74 @@ import Image from "astro/components/Image.astro";
       align-items: center;
     }
 
-    .product-choosing__card-icon {
+    .products-choosing__card-icon {
       width: 90px;
       height: 92.9px;
     }
 
-    .product-choosing__blob {
+    .products-choosing__blob {
       width: 90px;
       height: 92.9px;
     }
 
-    .product-choosing__icon {
+    .products-choosing__icon {
       width: 30px;
       height: 30px;
     }
 
-    .product-choosing__card-body {
+    .products-choosing__card-body {
       min-height: 92.9px;
     }
   }
 
   @media (min-width: 1024px) {
-    .product-choosing__container {
+    .products-choosing__container {
       grid-template-columns: minmax(400px, 1fr) minmax(350px, 1fr);
       gap: clamp(3rem, 5vw, 4rem);
     }
 
-    .product-choosing__media {
+    .products-choosing__media {
       aspect-ratio: 522/356;
       max-width: 522px;
     }
 
-    .product-choosing__list {
+    .products-choosing__list {
       gap: 1.5rem;
     }
 
-    .product-choosing__card {
+    .products-choosing__card {
       grid-template-columns: 100px 1fr;
       padding: 1.5rem 1.25rem;
       min-height: 160px;
     }
 
-    .product-choosing__card-icon {
+    .products-choosing__card-icon {
       width: 100px;
       height: 103.22px;
     }
 
-    .product-choosing__blob {
+    .products-choosing__blob {
       width: 100px;
       height: 103.22px;
     }
 
-    .product-choosing__icon {
+    .products-choosing__icon {
       width: 48px;
       height: 48px;
     }
 
-    .product-choosing__card-body {
+    .products-choosing__card-body {
       min-height: 103.22px;
     }
   }
 
   @media (min-width: 1200px) {
-    .product-choosing__container {
+    .products-choosing__container {
       grid-template-columns: minmax(500px, 1fr) minmax(400px, 1fr);
       gap: 4rem;
     }
 
-    .product-choosing__intro {
+    .products-choosing__intro {
       max-width: 62ch;
     }
   }

@@ -1,71 +1,66 @@
+// src/data/product-categories.ts
+import type { ProductSlug } from "./products";
+
 export type ProductCategory = {
-  slug: string;
+  slug: ProductSlug;
   title: string;
   blurb: string;
-  image: string;
+  image: string; 
 };
 
 export const productCategories: ProductCategory[] = [
   {
-    slug: "roman",
+    slug: "roman-shades",
     title: "Roman Shades",
-    blurb:
-      "Soft folds and tailored fabric create a classic look for bedrooms and living spaces.",
+    blurb: "Tailored fabric folds with classic, soft style.",
     image: "/images/products-roman.webp",
   },
   {
-    slug: "roller",
+    slug: "roller-shades",
     title: "Roller Shades",
-    blurb: "Sleek and modern design, perfect for tight spaces and easy to use.",
+    blurb: "Clean profiles, powerful light control, zero fuss.",
     image: "/images/products-roller.webp",
   },
   {
-    slug: "cellular",
+    slug: "cellular-shades",
     title: "Cellular Shades",
-    blurb:
-      "Energy-efficient and insulating, perfect for maintaining comfortable temperatures.",
+    blurb: "Honeycomb insulation for comfort and efficiency.",
     image: "/images/products-cellular.webp",
   },
   {
-    slug: "wood",
-    title: "Wood/Faux Blinds",
-    blurb:
-      "Warmth and clean lines provide durability and a timeless style for any space.",
+    slug: "wood-faux-blinds",
+    title: "Wood & Faux Wood Blinds",
+    blurb: "Precise light control with timeless slatted style.",
     image: "/images/products-wood-faux.webp",
   },
   {
     slug: "shutters",
     title: "Shutters",
-    blurb:
-      "Elegant and durable, enhancing value while providing excellent light control.",
+    blurb: "Architectural louvers with lasting durability.",
     image: "/images/products-shutters.webp",
   },
   {
     slug: "draperies",
     title: "Draperies",
-    blurb:
-      "Brings drama and softness, perfect for grand windows or elegant settings.",
+    blurb: "Luxurious fabrics with full custom styling.",
     image: "/images/products-draperies.webp",
   },
   {
-    slug: "exterior",
+    slug: "exterior-shades",
     title: "Exterior Shades",
-    blurb:
-      "Designed for patios and sunrooms, effectively reducing heat and glare.",
+    blurb: "Block heat outside for cooler interiors.",
     image: "/images/products-exterior.webp",
   },
   {
-    slug: "sheer",
-    title: "Sheer/Layered",
-    blurb:
-      "Light filtering and decorative, perfect for layering with other treatments.",
+    slug: "sheer-layered",
+    title: "Sheer & Layered Shades",
+    blurb: "Sheer views with on-demand privacy.",
     image: "/images/products-sheer.webp",
   },
   {
     slug: "natural-woven",
-    title: "Natural Woven",
-    blurb:
-      "Natural textures evoke a coastal or earthy feel, enhancing the ambiance.",
+    title: "Natural Woven Shades",
+    blurb: "Organic textures in renewable materials.",
     image: "/images/products-natural-woven.webp",
   },
 ];

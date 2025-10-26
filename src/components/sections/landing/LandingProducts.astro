@@ -1,11 +1,12 @@
 ---
 import Button from "../../ui/Button.astro";
+import type { ProductSlug } from "../../../data/products";
 
 export interface CategoryCard {
   title: string;
   image: string;
   alt: string;
-  href: string;
+  slug: ProductSlug;   // <- canonical slug instead of href
   blurb?: string;
 }
 
@@ -40,7 +41,7 @@ const {
           <li class="lp-products__item">
             <a
               class={`card${i === activeIndex ? " is-active" : ""}`}
-              href={it.href}
+              href={`/products/${it.slug}`}   
               aria-label={`${it.title}${it.blurb ? ": " + it.blurb : ""}`}
             >
               <figure class="lp-products-card__media">
@@ -122,7 +123,6 @@ const {
     margin-inline: auto;
   }
 
-  /* Default ratio (desktop/tablet); mobile overrides below */
   .lp-products-card__media {
     aspect-ratio: 17 / 20;
   } /* 408 × 480 */
