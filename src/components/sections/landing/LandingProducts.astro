@@ -1,6 +1,29 @@
 ---
 import Button from "../../ui/Button.astro";
-import { landingProductsData } from "../../../data/lp-products-data";
+import type { ProductSlug } from "../../../data/products";
+
+export interface CategoryCard {
+  title: string;
+  image: string;
+  alt: string;
+  slug: ProductSlug;   // <- canonical slug instead of href
+  blurb?: string;
+}
+
+type Props = {
+  heading?: string;
+  subheading?: string;
+  items: CategoryCard[];
+  /** which card starts with the overlay text visible (0-based) */
+  activeIndex?: number; // -1 = none open
+};
+
+const {
+  heading = "Custom Window Coverings for Every Space",
+  subheading = "",
+  items,
+  activeIndex = -1,
+} = Astro.props as Props;
 ---
 
 <section class="lp-products" aria-labelledby="lp-products-title">
@@ -18,8 +41,12 @@ import { landingProductsData } from "../../../data/lp-products-data";
       {
         landingProductsData.map((it, i) => (
           <li class="lp-products__item">
-            <a class="card" href={it.href}>
-              <div class="lp-products-card__media">
+            <a
+              class={`card${i === activeIndex ? " is-active" : ""}`}
+              href={`/products/${it.slug}`}   
+              aria-label={`${it.title}${it.blurb ? ": " + it.blurb : ""}`}
+            >
+              <figure class="lp-products-card__media">
                 <img
                   src={it.image}
                   alt={it.alt}

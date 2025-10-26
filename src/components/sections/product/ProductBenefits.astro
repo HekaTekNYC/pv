@@ -1,129 +1,115 @@
 ---
 import Button from "../../ui/Button.astro";
+import { getProductBenefits } from "../../../data/product-benefits";
+
+export interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props as Props;
+
+// Pull the record for this product
+const product = getProductBenefits(slug);
+
+// Gentle guard so we don't crash on bad slugs
+if (!product) {
+  console.warn(`[ProductBenefits] No data found for slug: ${slug}`);
+}
+const benefits = product?.benefits ?? [];
+const img = product?.images;
 ---
 
-<section>
-  <div class="product-benefits container">
+{product ? (
+<section class="product-benefits">
+  <div class="container product-benefits__wrap">
+     {/* LEFT  */}
     <div class="product-benefits__left">
       <div class="product-benefits__content">
-        <div class="product-benefits__header">
-          <h2>Benefits of Roman Shades</h2>
-          <p>
-            Roman shades offer versatile styles, fabric choices, and operation
-            options, providing beauty, functionality, and a perfect fit for any
-            room.
-          </p>
-        </div>
+        <header class="product-benefits__header">
+          <h2>{product.title}</h2>
+          {product.description && <p>{product.description}</p>}
+        </header>
+
         <div class="product-benefits__specs">
-          <ul>
-            <li>
-              <img
-                class="product-benefits__specs-icon"
-                src="/icons/bullet-point.svg"
-                alt=""
-                aria-hidden="true"
-                width="12"
-                height="12"
-                loading="eager"
-              />
-              <p>Available in light-filtering and blackout fabrics</p>
-            </li>
-            <li>
-              <img
-                class="product-benefits__specs-icon"
-                src="/icons/bullet-point.svg"
-                alt=""
-                aria-hidden="true"
-                width="12"
-                height="12"
-                loading="eager"
-              />
-              <p>Flat, hobbled, or relaxed fold styles</p>
-            </li>
-            <li>
-              <img
-                class="product-benefits__specs-icon"
-                src="/icons/bullet-point.svg"
-                alt=""
-                aria-hidden="true"
-                width="12"
-                height="12"
-                loading="eager"
-              />
-              <p>Clean stack when raised</p>
-            </li>
-            <li>
-              <img
-                class="product-benefits__specs-icon"
-                src="/icons/bullet-point.svg"
-                alt=""
-                aria-hidden="true"
-                width="12"
-                height="12"
-                loading="eager"
-              />
-              <p>Corded, cordless, or motorized operation</p>
-            </li>
-            <li>
-              <img
-                class="product-benefits__specs-icon"
-                src="/icons/bullet-point.svg"
-                alt=""
-                aria-hidden="true"
-                width="12"
-                height="12"
-                loading="eager"
-              />
-              <p>Great for both modern and traditional interiors</p>
-            </li>
+          <ul class="product-benefits__list" role="list">
+            {benefits.map((line) => (
+              <li class="product-benefits__item">
+                <img
+                  class="product-benefits__icon"
+                  src="/icons/bullet-point.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width="12"
+                  height="12"
+                  loading="eager"
+                  decoding="async"
+                />
+                <p class="product-benefits__text">{line}</p>
+              </li>
+            ))}
           </ul>
         </div>
-        <div class="product-benefits__cta">
-          <Button color="secondary" href="/contact">
-            Explore More Shade Styles
-          </Button>
-        </div>
+
+        {product.cta && (
+          <div class="product-benefits__cta">
+            <Button color="secondary" href={product.cta.href}>
+              {product.cta.text}
+            </Button>
+          </div>
+        )}
       </div>
     </div>
-    <div class="product-benefits__media">
-      <picture>
-        <source
-          srcset="/images/product-benefit.webp"
-          type="image/webp"
-          media="(max-width: 1023px)"
-        />
-        <source
-          srcset="/images/product-benefit.png"
-          type="image/png"
-          media="(max-width: 1023px)"
-        />
-        <img
-          src="/images/product-benefit.png"
-          alt="Roman shade close-up by a window with plant"
-          width="630"
-          height="550"
-          loading="eager"
-          decoding="async"
-        />
-      </picture>
-    </div>
+
+    {/* RIGHT */}
+    {img && (
+      <figure class="product-benefits__media">
+        <picture>
+          {/* Prefer WebP when available; no media queries needed unless you have different art per breakpoint */}
+          {img.webp && <source srcset={img.webp} type="image/webp" />}
+          {img.png && <source srcset={img.png} type="image/png" />}
+          <img
+            src={img.png ?? img.webp}
+            alt={img.alt}
+            width={img.width}
+            height={img.height}
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
+      </figure>
+    )}
   </div>
 </section>
+) : (
+  <section class="product-benefits">
+    <div class="container">
+      <p class="product-benefits__fallback">
+        Sorry, we couldn’t load this product’s benefits.
+      </p>
+    </div>
+  </section>
+)}
 
 <style>
-  .container {
-    padding-top: 0;
-  }
-  .product-benefits {
+  /* Layout */
+  .product-benefits__wrap {
     display: flex;
-    gap: 64px;
-    align-items: center;
+    flex-direction: column;
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  @media (min-width: 992px) {
+    .product-benefits__wrap {
+      flex-direction: row;
+      gap: 64px;
+      align-items: center;
+    }
   }
 
   .product-benefits__left {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex: 1 1 0%;
   }
 
   .product-benefits__content {
@@ -135,62 +121,64 @@ import Button from "../../ui/Button.astro";
   .product-benefits__header {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
   }
 
-  .product-benefits__specs {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .product-benefits__specs ul {
+  /* List */
+  .product-benefits__list {
     list-style: none;
     display: grid;
-    gap: 8px;
+    gap: 10px;
     margin: 0;
     padding: 0;
   }
 
-  .product-benefits__specs li {
+  .product-benefits__item {
     display: flex;
     gap: 12px;
     align-items: flex-start;
   }
 
-  .product-benefits__specs-icon {
+  .product-benefits__icon {
     flex-shrink: 0;
-    margin-top: 0.125rem;
+    margin-top: 0.2rem;
+    width: 12px;
+    height: 12px;
+    display: block;
   }
 
-  .product-benefits__specs p {
+  .product-benefits__text {
     margin: 0;
     line-height: 1.5;
   }
 
+  /* Media (image) */
   .product-benefits__media {
-    display: block;
-    max-width: 100%;
-    object-fit: cover;
+    margin: 0;
+    flex: 0 0 auto;
+    max-width: 630px; /* matches your data width for most records */
   }
 
   .product-benefits__media img {
     display: block;
     width: 100%;
     height: auto;
-    object-fit: cover;
     border-radius: 2px;
+    object-fit: cover;
   }
 
   @media (min-width: 768px) {
     .product-benefits__media img {
-      height: 550px;
+      /* cap the visible height to keep the row balanced */
+      max-height: 550px;
     }
   }
 
-  @media (min-width: 992px) {
-    .product-benefits__media img {
-      height: 550px;
-    }
+  .product-benefits__cta {
+    margin-top: 8px;
+  }
+
+  .product-benefits__fallback {
+    margin: 0;
   }
 </style>
