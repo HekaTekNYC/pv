@@ -66,7 +66,7 @@ import { landingProductsData } from "../../../data/lp-products-data";
 
   .lp-products__grid {
     display: grid;
-    gap: 1.5rem;
+    gap: 16px;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     list-style: none;
     padding: 0;
@@ -199,9 +199,17 @@ import { landingProductsData } from "../../../data/lp-products-data";
     }
     .lp-products__grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 28px;
     }
 
+    .lp-products-card__overlay {
+      padding: 20px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lp-products__grid {
+      gap: 28px;
+    }
     .lp-products-card__overlay {
       padding: 32px;
     }
