@@ -11,66 +11,50 @@ type LandingCard = {
 
 export const landingProductsData: LandingCard[] = [
   {
-    title: "Draperies",
-    image: "/images/lp-drapery.webp",
+    title: "Blinds",
+    image: `${CLOUDINARY_BASE}/v1761428610/lp-blinds_qh2bvx.png`,
+    alt: "Stack of windows with blinds and cellular shades",
+    href: "/products/blinds",
+    blurb:
+      "Soft, versatile, and energy-efficient—woven woods bring warmth and texture to any room.",
+  },
+  {
+    title: "Natural Shades",
+    image: `${CLOUDINARY_BASE}/v1761429058/lp-natural-shades_xt5djz.png`,
+    alt: "Woven wood shades in a hallway",
+    href: "/products/natural-shades",
+    blurb:
+      "Soft, versatile, and energy-efficient—woven woods bring warmth and texture to any room.",
+  },
+  {
+    title: "Drapery",
+    image: `${CLOUDINARY_BASE}/v1761429595/lp-drapery_j7mokb.png`,
     alt: "Neutral drapery in dining room",
-    slug: "draperies",
-    blurb: "Soft, elegant panels with superior insulation and light control.",
-  },
-  {
-    title: "Roman Shades",
-    image: "/images/lp-roman.webp",
-    alt: "Roman shades in living room",
-    slug: "roman-shades",
-    blurb: "Tailored folds, luxe fabrics, and smooth operation.",
-  },
-  {
-    title: "Roller Shades",
-    image: "/images/lp-roller.webp",
-    alt: "Modern roller shades",
-    slug: "roller-shades",
-    blurb: "Minimal profile, sheer-to-blackout control, easy to live with.",
-  },
-  {
-    title: "Cellular Shades",
-    image: "/images/lp-cellular.webp",
-    alt: "Cellular shades filtering light",
-    slug: "cellular-shades",
-    blurb: "Energy-smart honeycomb design with great insulation.",
-  },
-  {
-    title: "Wood & Faux Blinds",
-    image: "/images/lp-wood-blinds.webp",
-    alt: "Wood blinds in office",
-    slug: "wood-faux-blinds",
-    blurb: "Classic slat control for light and privacy with timeless style.",
+    href: "/products/drapery",
+    blurb:
+      "Soft, versatile, and energy-efficient—woven woods bring warmth and texture to any room.",
   },
   {
     title: "Shutters",
-    image: "/images/lp-shutters.webp",
-    alt: "Plantation shutters in sunroom",
-    slug: "shutters",
-    blurb: "Architectural, durable, and custom-fitted to your windows.",
+    image: `${CLOUDINARY_BASE}/v1761429840/lp-shutters_xaxot5.png`,
+    alt: "Plantation shutters in bathroom",
+    href: "/products/shutters",
+    blurb:
+      "Soft, versatile, and energy-efficient—woven woods bring warmth and texture to any room.",
   },
   {
-    title: "Sheer & Layered Shades",
-    image: "/images/lp-sheer.webp",
-    alt: "Sheer layered shades",
-    slug: "sheer-layered",
-    blurb: "Variable light from soft diffusion to private blackout.",
-  },
-  {
-    title: "Natural Woven Shades",
-    image: "/images/lp-woven.webp",
-    alt: "Woven wood shades",
-    slug: "natural-woven",
-    blurb: "Organic texture in renewable materials like bamboo & grasses.",
+    title: "Motorization",
+    image: `${CLOUDINARY_BASE}/v1761429945/lp-motorized_g0ldur.png`,
+    alt: "Motorized cellular shade close-up",
+    href: "/products/motorization",
+    blurb: "App control, voice, and scenes—safer, smarter light control.",
   },
   {
     title: "Exterior Shades",
-    image: "/images/lp-exterior.webp",
-    alt: "Exterior solar shades",
-    slug: "exterior-shades",
-    blurb: "Block heat before it hits the glass. Patio-perfect.",
+    image: `${CLOUDINARY_BASE}/v1761430077/lp-exterior_pqhl3p.png`,
+    alt: "Exterior shades on patio doors",
+    href: "/products/exterior-shades",
+    blurb:
+      "Soft, versatile, and energy-efficient—woven woods bring warmth and texture to any room.",
   },
 ];
