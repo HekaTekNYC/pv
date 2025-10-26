@@ -8,33 +8,39 @@ const { image, content } = Astro.props as BannerSplitProps;
 <section class="banner-split">
   <div class="banner-split__image">
     <picture>
+      <!-- Mobile first -->
       <source
-        srcset={image.mobileWebp}
+        srcset={image.mobile.webp}
         media="(max-width: 1023px)"
         type="image/webp"
       />
       <source
-        srcset={image.mobileFallback}
+        srcset={image.mobile.png}
         media="(max-width: 1023px)"
         type="image/png"
       />
+
+      <!-- Desktop -->
       <source
-        srcset={image.desktopWebp}
+        srcset={image.desktop.webp}
         media="(min-width: 1024px)"
         type="image/webp"
       />
       <source
-        srcset={image.desktopFallback}
+        srcset={image.desktop.png}
         media="(min-width: 1024px)"
         type="image/png"
       />
+
+      <!-- Fallback -->
       <img
-        src={image.desktopFallback}
+        src={image.desktop.png}
         alt={image.alt}
-        class="banner-split__image"
         width={image.width || 1280}
         height={image.height || 854}
         loading="lazy"
+        decoding="async"
+        class="banner-split__image"
       />
     </picture>
   </div>

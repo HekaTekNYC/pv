@@ -1,9 +1,15 @@
+import { getCloudinaryFourSet } from "../config/cloudinary";
+
 export interface BannerSplitProps {
   image: {
-    mobileWebp: string;
-    mobileFallback: string;
-    desktopWebp: string;
-    desktopFallback: string;
+    mobile: {
+      webp: string;
+      png: string;
+    };
+    desktop: {
+      webp: string;
+      png: string;
+    };
     alt: string;
     width?: number;
     height?: number;
@@ -16,12 +22,15 @@ export interface BannerSplitProps {
   };
 }
 
+// Landing Page Banner
 export const bannerLPData: BannerSplitProps = {
   image: {
-    mobileWebp: "/images/banner-sp-mbl.webp",
-    mobileFallback: "/images/banner-sp-mbl.png",
-    desktopWebp: "/images/banner-sp-dsk.webp",
-    desktopFallback: "/images/banner-sp-dsk.png",
+    ...getCloudinaryFourSet(
+      "banner-sp-mbl_bvbbzg", // mobile webp
+      "banner-sp-mbl_mbblxj", // mobile png
+      "banner-sp-dsk_ej4dov", // desktop webp
+      "banner-sp-dsk_pllt9m", // desktop png
+    ),
     alt: "Professional window treatment installation",
     width: 1280,
     height: 854,
@@ -35,12 +44,15 @@ export const bannerLPData: BannerSplitProps = {
   },
 };
 
+// Services Page Banner
 export const bannerServicesData: BannerSplitProps = {
   image: {
-    mobileWebp: "/images/banner-sp-mbl.webp",
-    mobileFallback: "/images/banner-sp-mbl.png",
-    desktopWebp: "/images/banner-sp-dsk.webp",
-    desktopFallback: "/images/banner-sp-dsk.png",
+    ...getCloudinaryFourSet(
+      "banner-sp-mbl_bvbbzg",
+      "banner-sp-mbl_mbblxj",
+      "banner-sp-dsk_ej4dov",
+      "banner-sp-dsk_pllt9m",
+    ),
     alt: "Professional window treatment installation",
     width: 1280,
     height: 854,
