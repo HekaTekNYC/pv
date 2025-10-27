@@ -1,0 +1,25 @@
+---
+import ContactForm from "../../ui/ContactForm.astro";
+
+import { getCloudinarySrc } from "../../../config/cloudinary";
+
+const contactBasicImg = getCloudinarySrc(
+  "layered-1-crop_b1rlfh",
+  "png",
+  "v1761595357",
+);
+---
+
+<section class="contact-basic">
+  <div class="container">
+    <div class="contact-basic__img">
+      <img src={contactBasicImg} alt="" />
+    </div>
+
+    <div class="contact-basic__form">
+      <ContactForm />
+    </div>
+  </div>
+</section>
+
+<style></style>
