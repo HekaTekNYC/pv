@@ -1,5 +1,5 @@
 ---
-import { productCategories } from "../../../data/product-categories";
+import { productCards } from "../../../data/product-cards";
 ---
 
 <section class="products-showcase" aria-labelledby="products-showcase-title">
@@ -18,10 +18,10 @@ import { productCategories } from "../../../data/product-categories";
 
     <ul class="products-showcase__grid" role="list">
       {
-        productCategories.map((cat) => (
+        productCards.map((cat) => (
           <li class="products-showcase__card">
             <a href={`/products/${cat.slug}`} class="products-showcase__link">
-              <figure class="products-showcase__media">
+              <div class="products-showcase__media">
                 <picture>
                   <source srcset={cat.image} type="image/webp" />
                   <source
@@ -37,7 +37,7 @@ import { productCategories } from "../../../data/product-categories";
                     decoding="async"
                   />
                 </picture>
-              </figure>
+              </div>
               <div class="products-showcase__body">
                 <h3 class="products-showcase__card-title">{cat.title}</h3>
                 <p class="products-showcase__blurb">{cat.blurb}</p>

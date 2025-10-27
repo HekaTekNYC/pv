@@ -1,4 +1,4 @@
-export type Card = {
+export type ProductGuideCard = {
   id: number;
   header: string;
   text: string;
@@ -6,7 +6,7 @@ export type Card = {
   blob: { src: string; alt: string; width: number; height: number };
 };
 
-export const productGuide: Card[] = [
+export const productGuide: ProductGuideCard[] = [
   {
     id: 1,
     header: "Light Control",

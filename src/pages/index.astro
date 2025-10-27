@@ -2,7 +2,7 @@
 import Main from "../layouts/Main.astro";
 import LandingHero from "../components/sections/landing/LandingHero.astro";
 import AboutMission from "../components/sections/shared/AboutMission.astro";
-// import LandingProducts from "../components/sections/landing/LandingProducts.astro";
+import LandingProducts from "../components/sections/landing/LandingProducts.astro";
 import WhyUs from "../components/sections/landing/WhyUs.astro";
 import CTABannerSplit from "../components/sections/shared/CTABannerSplit.astro";
 import LandingServices from "../components/sections/landing/LandingServices.astro";
@@ -16,11 +16,9 @@ import { bannerLPData } from "../data/banner-data";
 <Main title="PerfectView">
   <LandingHero />
   <AboutMission />
-  <!-- <LandingProducts /> -->
+  <LandingProducts />
   <WhyUs />
-
   <CTABannerSplit image={bannerLPData.image} content={bannerLPData.content} />
-
   <LandingServices />
   <ContactFull />
   <Testimonials />
