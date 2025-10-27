@@ -1,15 +1,15 @@
-const CLOUDINARY_BASE =
-  "https://res.cloudinary.com/ds2oztufv/image/upload/f_auto,q_auto";
+// src/data/lp-products-data.ts
+import type { ProductSlug } from "./products";
 
-export interface CategoryCard {
+type LandingCard = {
   title: string;
   image: string;
   alt: string;
-  href: string;
+  slug: ProductSlug; 
   blurb?: string;
-}
+};
 
-export const landingProductsData: CategoryCard[] = [
+export const landingProductsData: LandingCard[] = [
   {
     title: "Blinds",
     image: `${CLOUDINARY_BASE}/v1761428610/lp-blinds_qh2bvx.png`,

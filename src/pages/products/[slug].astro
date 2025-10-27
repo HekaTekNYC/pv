@@ -1,0 +1,39 @@
+---
+import Inner from "../../layouts/Inner.astro";
+import ProductHero from "../../components/sections/product/ProductHero.astro";
+import ProductBenefits from "../../components/sections/product/ProductBenefits.astro";
+import ProductFeatures from "../../components/sections/product/ProductFeatures.astro";
+import ProductEnhance from "../../components/sections/product/ProductEnhance.astro";
+
+import { PRODUCT_SLUGS } from "../../data/products";
+import { getProductHero } from "../../data/product-hero";
+import { getProductBenefits } from "../../data/product-benefits";
+import { getProductFeatures } from "../../data/product-features";
+
+export async function getStaticPaths() {
+  return PRODUCT_SLUGS.map((slug) => ({ params: { slug } }));
+}
+
+const slug = Astro.params.slug as (typeof PRODUCT_SLUGS)[number];
+
+// grab something to name the page nicely
+const benefits = getProductBenefits(slug);
+const pageTitle = benefits
+  ? benefits.title.replace(/^Benefits of\s+/, "")
+  : slug.replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase());
+---
+
+<Inner
+  title={`PerfectView • ${pageTitle}`}
+  heading={pageTitle}
+  breadcrumbItems={[
+    { label: "Home", href: "/" },
+    { label: "Products", href: "/products" },
+    { label: pageTitle },
+  ]}
+>
+  <ProductHero slug={slug} />
+  <ProductBenefits slug={slug} />
+  <ProductFeatures slug={slug} />
+  <ProductEnhance slug={slug} />
+</Inner>

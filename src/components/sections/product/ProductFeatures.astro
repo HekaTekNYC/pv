@@ -1,110 +1,92 @@
 ---
 import Button from "../../ui/Button.astro";
+import { getProductFeatures } from "../../../data/product-features";
+
+export interface Props {
+  slug: string;
+}
+const { slug } = Astro.props as Props;
+
+const data = getProductFeatures(slug);
+if (!data) {
+  console.warn(
+    `ProductFeatures: unknown slug "${slug}". Add it to product-features-data.ts`,
+  );
+}
 ---
 
-<section>
-  <div class="product-features container">
-    <div class="product-features__media">
-      <picture>
-        <source
-          srcset="/images/product-features.webp"
-          type="image/webp"
-          media="(max-width: 1023px)"
-        />
-        <source
-          srcset="/images/product-features.png"
-          type="image/png"
-          media="(max-width: 1023px)"
-        />
-        <img
-          src="/images/product-features.png"
-          alt="Roman shade close-up by a window with plant"
-          width="630"
-          height="550"
-          loading="eager"
-          decoding="async"
-        />
-      </picture>
-    </div>
-    <div class="product-features__right">
-      <div class="product-features__content">
-        <div class="product-features__header">
-          <h2>Features of Roman Shades</h2>
-          <p>
-            Roman shades offer versatile styles, fabric choices, and operation
-            options, providing beauty, functionality, and a perfect fit for any
-            room.
-          </p>
+{
+  data ? (
+    <section>
+      <div class="product-features container">
+        <div class="product-features__media">
+          <picture>
+            {data.image.webp && (
+              <source
+                srcset={data.image.webp}
+                type="image/webp"
+                media="(max-width: 1023px)"
+              />
+            )}
+            <source
+              srcset={data.image.png}
+              type="image/png"
+              media="(max-width: 1023px)"
+            />
+            <img
+              src={data.image.png}
+              alt={data.image.alt}
+              width={data.image.width}
+              height={data.image.height}
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
         </div>
-        <div class="product-features__specs">
-          <ul>
-            <li>
-              <img
-                class="product-fetures__specs-icon"
-                src="../icons/bullet-point.svg"
-                alt=""
-                aria-hidden="true"
-                width="12"
-                height="12"
-              />
-              <p>Available in light-filtering and blackout fabrics</p>
-            </li>
-            <li>
-              <img
-                class="product-fetures__specs-icon"
-                src="../icons/bullet-point.svg"
-                alt=""
-                aria-hidden="true"
-                width="12"
-                height="12"
-              />
-              <p>Flat, hobbled, or relaxed fold styles</p>
-            </li>
-            <li>
-              <img
-                class="product-fetures__specs-icon"
-                src="../icons/bullet-point.svg"
-                alt=""
-                aria-hidden="true"
-                width="12"
-                height="12"
-              />
-              <p>Clean stack when raised</p>
-            </li>
-            <li>
-              <img
-                class="product-fetures__specs-icon"
-                src="../icons/bullet-point.svg"
-                alt=""
-                aria-hidden="true"
-                width="12"
-                height="12"
-              />
-              <p>Corded, cordless, or motorized operation</p>
-            </li>
-            <li>
-              <img
-                class="product-fetures__specs-icon"
-                src="../icons/bullet-point.svg"
-                alt=""
-                aria-hidden="true"
-                width="12"
-                height="12"
-              />
-              <p>Great for both modern and traditional interiors</p>
-            </li>
-          </ul>
-        </div>
-        <div class="product-features__cta">
-          <Button color="secondary" href="/contact">
-            Explore More Shade Styles
-          </Button>
+
+        <div class="product-features__right">
+          <div class="product-features__content">
+            <div class="product-features__header">
+              <h2>{data.title}</h2>
+              <p>{data.description}</p>
+            </div>
+
+            <div class="product-features__specs">
+              <ul>
+                {data.features.map((text) => (
+                  <li>
+                    <img
+                      class="product-features__specs-icon"
+                      src="/icons/bullet-point.svg"
+                      alt=""
+                      aria-hidden="true"
+                      width="12"
+                      height="12"
+                    />
+                    <p>{text}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="product-features__cta">
+              <Button color="secondary" href={data.cta.href}>
+                {data.cta.label}
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
+    </section>
+  ) : (
+    <section class="container" aria-live="polite">
+      <p style="opacity:.7">
+        Features content for “{slug}” isn’t defined yet. Add it in{" "}
+        <code>src/data/product-features-data.ts</code>.
+      </p>
+    </section>
+  )
+}
 <style>
   .product-features {
     display: flex;
@@ -127,8 +109,8 @@ import Button from "../../ui/Button.astro";
     flex-direction: column;
     justify-content: center;
     gap: 32px;
+    min-width: 0;
   }
-
   .product-features__content {
     display: flex;
     flex-direction: column;
@@ -139,8 +121,7 @@ import Button from "../../ui/Button.astro";
     flex-direction: column;
     gap: 16px;
   }
-
-  .product-fetures__specs {
+  .product-features__specs {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -149,13 +130,17 @@ import Button from "../../ui/Button.astro";
     list-style: none;
     display: grid;
     gap: 8px;
+    margin: 0;
+    padding: 0;
   }
   .product-features__specs li {
     display: flex;
     gap: 12px;
     align-items: center;
   }
-
+  .product-features__specs-icon {
+    flex-shrink: 0;
+  }
   @media (min-width: 768px) {
     .product-features__media img {
       height: 690px;
@@ -164,9 +149,6 @@ import Button from "../../ui/Button.astro";
   @media (min-width: 992px) {
     .product-features__media img {
       height: 690px;
-    }
-    .product-features__grid {
-      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
