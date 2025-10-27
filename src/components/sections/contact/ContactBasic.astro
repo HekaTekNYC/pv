@@ -15,7 +15,7 @@ const contactBasicImg = getCloudinarySrc(
     <div class="contact-basic__img">
       <img
         src={contactBasicImg}
-        alt="layered shades in tall living room windows"
+        alt="Layered window shades in a modern living room with tall windows, showcasing custom window treatment options"
         width="707"
         height="774"
         loading="eager"
@@ -31,8 +31,8 @@ const contactBasicImg = getCloudinarySrc(
 
 <style>
   .contact-basic__container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 48px;
   }
   .contact-basic__img {
@@ -55,21 +55,13 @@ const contactBasicImg = getCloudinarySrc(
   }
   @media (min-width: 1024px) {
     .contact-basic__container {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+      grid-template-columns: 9fr 11fr;
+      align-items: stretch;
       gap: 64px;
     }
 
     .contact-basic__img img {
-      height: 700px;
-      object-position: center;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .contact-basic__img img {
-      height: 680px;
+      height: 100%;
       object-position: center;
     }
   }
