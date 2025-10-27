@@ -1,7 +1,15 @@
 ---
 import PillTab from "../../ui/PillTab.astro";
 import Button from "../../ui/Button.astro";
-export const pillTabsData = [
+import { getCloudinarySrc } from "../../../config/cloudinary";
+
+const servicesHeroImg = getCloudinarySrc(
+  "natural-1-crop_unomoq",
+  "png",
+  "v1761587698",
+);
+
+const pillTabsData = [
   { text: "Pro Installation" },
 
   { text: "Motorized Systems" },
@@ -13,18 +21,15 @@ export const pillTabsData = [
 <section class="services-hero" aria-labelledby="services-hero-heading">
   <div class="services-hero__container container">
     <div class="services-hero__img-container">
-      <picture>
-        <!-- WebP first -->
-        <source srcset="/images/services-hero.webp" type="image/webp" />
-        <!-- PNG fallback -->
-        <img
-          src="/images/services-hero.png"
-          alt="Tall double bedroom window with sheer curtains and natural blinds"
-          class="services-hero__img"
-          width="1200"
-          height="800"
-        />
-      </picture>
+      <img
+        src={servicesHeroImg}
+        alt="Tall double bedroom window with sheer curtains and natural blinds"
+        class="services-hero__img"
+        width="773"
+        height="863"
+        loading="eager"
+        decoding="async"
+      />
     </div>
     <div class="services-hero__content">
       <h2 id="services-hero-heading">

@@ -1,6 +1,14 @@
 ---
-import { productGuide } from "../../../data/product-guide";
 import Button from "../../ui/Button.astro";
+
+import { getCloudinarySrc } from "../../../config/cloudinary";
+import { productGuide } from "../../../data/product-guide";
+
+const productsGuideImg = getCloudinarySrc(
+  "sheer-2_ggl7ca",
+  "png",
+  "v1761587105",
+);
 ---
 
 <section class="product-guide" aria-labelledby="product-choosing__title">
@@ -24,17 +32,17 @@ import Button from "../../ui/Button.astro";
         </div>
       </header>
 
-      <figure class="product-guide__media">
+      <div class="product-guide__media">
         <img
-          src="/images/product-how-to-choose.webp"
+          src={productsGuideImg}
           alt="Example window treatments installed in a modern living room with natural lighting"
-          width="522"
-          height="356"
-          loading="eager"
+          width="1280"
+          height="911"
+          loading="lazy"
           decoding="async"
           style="width:100%;height:auto"
         />
-      </figure>
+      </div>
     </div>
 
     <!-- RIGHT -->

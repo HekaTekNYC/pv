@@ -1,8 +1,12 @@
 ---
-import { whyUsFeatures } from "../../../data/why-us-data";
 import Button from "../../ui/Button.astro";
 
+import { getCloudinarySrc } from "../../../config/cloudinary";
+
+import { whyUsFeatures } from "../../../data/why-us-data";
 const { leftFeatures, rightFeatures } = whyUsFeatures;
+
+const whyUsImage = getCloudinarySrc("why-us_cr6tvu", "png", "v1761502424");
 ---
 
 <section class="why-us" aria-labelledby="why-us-title">
@@ -41,7 +45,7 @@ const { leftFeatures, rightFeatures } = whyUsFeatures;
       <!-- Center image -->
       <div class="why-us__media">
         <img
-          src="https://res.cloudinary.com/ds2oztufv/image/upload/f_auto,q_auto/v1761502424/why-us_cr6tvu.png"
+          src={whyUsImage}
           alt="Living room with custom window treatments"
           width="1025"
           height="933"
@@ -146,9 +150,6 @@ const { leftFeatures, rightFeatures } = whyUsFeatures;
     gap: 8px;
     width: 100%;
   }
-  /* .why-us__card p {
-    flex: 1;
-  } */
 
   .why-us__cta {
     text-align: center;
@@ -204,6 +205,7 @@ const { leftFeatures, rightFeatures } = whyUsFeatures;
       grid-template-columns: 1fr auto 1fr;
       align-items: start;
       justify-content: center;
+      height: 600px;
       gap: 28px;
     }
 

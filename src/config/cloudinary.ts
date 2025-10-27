@@ -36,7 +36,7 @@ export const CLOUDINARY_BASE_AUTO =
 export function getCloudinarySrc(
   file: string,
   ext: string = "png",
-  version: string = "v1761063722",
+  version: string = "",
 ): string {
   return `${CLOUDINARY_BASE_AUTO}/${version}/${file}.${ext}`;
 }
@@ -64,23 +64,19 @@ export function getCloudinarySrc(
  * ```
  */
 export function getCloudinaryFourSet(
-  mobileWebp: string,
-  mobilePng: string,
-  desktopWebp: string,
-  desktopPng: string,
-  version: string = "v1761063722",
-): {
-  mobile: { webp: string; png: string };
-  desktop: { webp: string; png: string };
-} {
+  mobileWebp: { id: string; version: string },
+  mobilePng: { id: string; version: string },
+  desktopWebp: { id: string; version: string },
+  desktopPng: { id: string; version: string },
+) {
   return {
     mobile: {
-      webp: `${CLOUDINARY_BASE}/${version}/${mobileWebp}.webp`,
-      png: `${CLOUDINARY_BASE}/${version}/${mobilePng}.png`,
+      webp: `${CLOUDINARY_BASE}/${mobileWebp.version}/${mobileWebp.id}.webp`,
+      png: `${CLOUDINARY_BASE}/${mobilePng.version}/${mobilePng.id}.png`,
     },
     desktop: {
-      webp: `${CLOUDINARY_BASE}/${version}/${desktopWebp}.webp`,
-      png: `${CLOUDINARY_BASE}/${version}/${desktopPng}.png`,
+      webp: `${CLOUDINARY_BASE}/${desktopWebp.version}/${desktopWebp.id}.webp`,
+      png: `${CLOUDINARY_BASE}/${desktopPng.version}/${desktopPng.id}.png`,
     },
   };
 }

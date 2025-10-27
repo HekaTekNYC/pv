@@ -2,6 +2,14 @@
 import Button from "../../ui/Button.astro";
 import Shield from "./src/assets/icons/shield.svg";
 import Arrow from "./src/assets/icons/arrow.svg";
+
+import { getCloudinarySrc } from "../../../config/cloudinary";
+
+const servicesInstall = getCloudinarySrc(
+  "services-install_l5ph1j",
+  "png",
+  "v1761587967",
+);
 ---
 
 <section class="services-install" aria-labelledby="services-install-title">
@@ -90,20 +98,14 @@ import Arrow from "./src/assets/icons/arrow.svg";
         </div>
       </div>
       <div class="services-install__img-container">
-        <picture>
-          <!-- WebP first -->
-          <source
-            srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761315860/services-install_ljpowy.webp"
-            type="image/webp"
-          />
-          <!-- PNG fallback -->
-          <img
-            src="https://res.cloudinary.com/ds2oztufv/image/upload/v1761315861/services-install_paohlr.png"
-            alt="Woman on ladder measuring a hanging curtain"
-            width="1200"
-            height="800"
-          />
-        </picture>
+        <img
+          src={servicesInstall}
+          alt="Woman on ladder measuring a hanging curtain"
+          width="1200"
+          height="800"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </div>
   </div>

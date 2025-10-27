@@ -1,24 +1,29 @@
 ---
 import Button from "../../ui/Button.astro";
+
+import { getCloudinarySrc } from "../../../config/cloudinary";
+
+const productsHeroImg = getCloudinarySrc(
+  "sheer-1_erel0k",
+  "png",
+  "v1761586797",
+);
 ---
 
 <section class="products-hero" aria-labelledby="products-hero-title">
   <div class="products-hero__container container">
     <!-- LEFT -->
+
     <div class="products-hero__image-container">
-      <picture>
-        <source srcset="/images/products-hero.webp" type="image/webp" />
-        <source srcset="/images/products-hero.jpg" type="image/jpeg" />
-        <img
-          src="/images/products-hero.webp"
-          alt="Cellular shades installed above a sofa with pillows"
-          class="products-hero__image"
-          width="630"
-          height="732"
-          loading="lazy"
-          decoding="async"
-        />
-      </picture>
+      <img
+        src={productsHeroImg}
+        alt="Cellular shades installed above a sofa with pillows"
+        class="products-hero__image"
+        width="1280"
+        height="975"
+        loading="eager"
+        decoding="async"
+      />
     </div>
 
     <!-- RIGHT -->
