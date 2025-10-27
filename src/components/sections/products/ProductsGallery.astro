@@ -2,26 +2,26 @@
 import { productCards } from "../../../data/product-cards";
 ---
 
-<section class="products-showcase" aria-labelledby="products-showcase-title">
-  <div class="products-showcase__container container">
+<section class="products-gallery" aria-labelledby="products-gallery-title">
+  <div class="products-gallery__container container">
     <!-- Header -->
-    <header class="products-showcase__header">
-      <h2 id="products-showcase-title" class="products-showcase__title">
+    <header class="products-gallery__header">
+      <h2 id="products-gallery-title" class="products-gallery__title">
         Stylish Window Coverings for Every Room
       </h2>
-      <p class="products-showcase__intro">
+      <p class="products-gallery__intro">
         Discover our curated selection of window treatments, from classic to
         contemporary styles. Each option is expertly installed to enhance your
         space with the perfect balance of beauty, comfort, and functionality.
       </p>
     </header>
 
-    <ul class="products-showcase__grid" role="list">
+    <ul class="products-gallery__grid" role="list">
       {
         productCards.map((cat) => (
-          <li class="products-showcase__card">
-            <a href={`/products/${cat.slug}`} class="products-showcase__link">
-              <div class="products-showcase__media">
+          <li class="products-gallery__card">
+            <a href={`/products/${cat.slug}`} class="products-gallery__link">
+              <div class="products-gallery__media">
                 <picture>
                   <source srcset={cat.image} type="image/webp" />
                   <source
@@ -38,10 +38,10 @@ import { productCards } from "../../../data/product-cards";
                   />
                 </picture>
               </div>
-              <div class="products-showcase__body">
-                <h3 class="products-showcase__card-title">{cat.title}</h3>
-                <p class="products-showcase__blurb">{cat.blurb}</p>
-                <span class="products-showcase__more">
+              <div class="products-gallery__body">
+                <h3 class="products-gallery__card-title">{cat.title}</h3>
+                <p class="products-gallery__blurb">{cat.blurb}</p>
+                <span class="products-gallery__more">
                   Learn More
                   <svg
                     class="chev"
@@ -70,22 +70,22 @@ import { productCards } from "../../../data/product-cards";
 </section>
 
 <style>
-  .products-showcase {
+  .products-gallery {
     background: var(--grey-10, #ededed);
   }
 
-  .products-showcase__container {
+  .products-gallery__container {
     display: flex;
     flex-direction: column;
     gap: 48px;
   }
 
-  .products-showcase__header {
+  .products-gallery__header {
     display: grid;
     gap: 16px;
   }
 
-  .products-showcase__title {
+  .products-gallery__title {
     margin: 0;
     font-family: var(--ff-heading);
     font-weight: var(--fw-bold);
@@ -96,7 +96,7 @@ import { productCards } from "../../../data/product-cards";
     min-width: 0;
   }
 
-  .products-showcase__intro {
+  .products-gallery__intro {
     margin: 0;
     font-family: var(--ff-body);
     font-size: var(--fs-body-r);
@@ -107,7 +107,7 @@ import { productCards } from "../../../data/product-cards";
   }
 
   /* ===== Cards grid ===== */
-  .products-showcase__grid {
+  .products-gallery__grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 32px;
@@ -116,14 +116,14 @@ import { productCards } from "../../../data/product-cards";
     width: 100%;
   }
 
-  .products-showcase__card {
+  .products-gallery__card {
     list-style: none;
     width: 100%;
     border-radius: 2px;
     overflow: hidden;
   }
 
-  .products-showcase__link {
+  .products-gallery__link {
     display: grid;
     grid-template-rows: auto 1fr;
     text-decoration: none;
@@ -132,29 +132,29 @@ import { productCards } from "../../../data/product-cards";
     height: 100%;
   }
 
-  .products-showcase__media {
+  .products-gallery__media {
     margin: 0;
     overflow: hidden;
     background: #e9ecef;
     width: 100%;
   }
 
-  .products-showcase__media {
+  .products-gallery__media {
     aspect-ratio: 343 / 360;
   }
 
-  .products-showcase__media picture,
-  .products-showcase__media img {
+  .products-gallery__media picture,
+  .products-gallery__media img {
     width: 100%;
     height: 100%;
     display: block;
   }
 
-  .products-showcase__media img {
+  .products-gallery__media img {
     object-fit: cover;
   }
 
-  .products-showcase__body {
+  .products-gallery__body {
     display: grid;
     gap: 8px;
     padding: 12px 16px 16px 16px;
@@ -162,7 +162,7 @@ import { productCards } from "../../../data/product-cards";
     box-sizing: border-box;
   }
 
-  .products-showcase__card-title {
+  .products-gallery__card-title {
     margin: 0;
     font-family: var(--ff-heading);
     font-weight: var(--fw-semibold, 600);
@@ -172,7 +172,7 @@ import { productCards } from "../../../data/product-cards";
     word-wrap: break-word;
   }
 
-  .products-showcase__blurb {
+  .products-gallery__blurb {
     margin: 0 0 6px 0;
     font-family: var(--ff-body);
     font-size: 16px;
@@ -181,7 +181,7 @@ import { productCards } from "../../../data/product-cards";
     word-wrap: break-word;
   }
 
-  .products-showcase__more {
+  .products-gallery__more {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -189,32 +189,32 @@ import { productCards } from "../../../data/product-cards";
     font-size: 16px;
     color: var(--secondary);
   }
-  .products-showcase__more .chev {
+  .products-gallery__more .chev {
     transform: translateY(1px);
   }
 
   /* ===== Media Queries ===== */
 
   @media (min-width: 690px) {
-    .products-showcase__header {
+    .products-gallery__header {
       grid-template-columns: 1fr;
       gap: 12px;
     }
   }
 
   @media (min-width: 768px) {
-    .products-showcase__grid {
+    .products-gallery__grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
     }
   }
 
   @media (min-width: 1024px) {
-    .products-showcase__container {
+    .products-gallery__container {
       gap: 64px;
     }
 
-    .products-showcase__header {
+    .products-gallery__header {
       display: grid;
       grid-template-columns:
         minmax(0, 680px)
@@ -223,26 +223,26 @@ import { productCards } from "../../../data/product-cards";
       align-items: start;
     }
 
-    .products-showcase__title {
+    .products-gallery__title {
       max-width: 680px;
       min-height: 118px;
       min-width: 0;
     }
 
-    .products-showcase__intro {
+    .products-gallery__intro {
       max-width: 560px;
       min-height: 96px;
       min-width: 0;
       justify-self: start;
     }
 
-    .products-showcase__grid {
+    .products-gallery__grid {
       grid-template-columns: repeat(3, 1fr);
       row-gap: 32px;
       column-gap: 20px;
     }
 
-    .products-showcase__media {
+    .products-gallery__media {
       aspect-ratio: 413 / 420;
     }
   }
