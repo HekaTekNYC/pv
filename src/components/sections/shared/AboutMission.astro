@@ -1,39 +1,47 @@
 ---
 import MissionCard from "../../ui/MissionCard.astro";
-import { missionCardsData } from "../../../data/about-mission";
 import Button from "../../ui/Button.astro";
+import { missionCardsData } from "../../../data/about-mission";
+import { getCloudinaryFourSet } from "../../../config/cloudinary";
+
+const aboutMissionImg = getCloudinaryFourSet(
+  { id: "about-lp-mbl_erzsiz", version: "v1761351705" }, // mobile webp
+  { id: "about-lp-mbl_iuub7o", version: "v1761351708" }, // mobile png
+  { id: "about-lp-dsk_ptemfd", version: "v1761351705" }, // desktop webp
+  { id: "about-lp-dsk_ptemfd", version: "v1761351705" }, // desktop png (same version/id)
+);
 ---
 
 <section class="about-mission">
   <div class="about-mission__container container">
     <div class="about-mission__image-container">
-      <picture>
-        <!-- Mobile WebP -->
+      <picture class="about-mission__picture">
+        <!-- Mobile -->
         <source
-          srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761351705/about-lp-mbl_erzsiz.webp"
+          srcset={aboutMissionImg.mobile.webp}
           type="image/webp"
           media="(max-width: 1023px)"
         />
-        <!-- Mobile PNG fallback -->
         <source
-          srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761351708/about-lp-mbl_iuub7o.png"
+          srcset={aboutMissionImg.mobile.png}
           type="image/png"
           media="(max-width: 1023px)"
         />
-        <!-- Desktop WebP -->
+
+        <!-- Desktop -->
         <source
-          srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761351705/about-lp-dsk_ptemfd.webp"
+          srcset={aboutMissionImg.desktop.webp}
           type="image/webp"
           media="(min-width: 1024px)"
         />
-        <!-- Desktop PNG fallback -->
         <source
-          srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761351708/about-lp-mbl_iuub7o.png"
+          srcset={aboutMissionImg.desktop.png}
           type="image/png"
           media="(min-width: 1024px)"
         />
+
         <img
-          src="https://res.cloudinary.com/ds2oztufv/image/upload/v1761351708/about-lp-mbl_iuub7o.png"
+          src={aboutMissionImg.desktop.png}
           alt="Layered shades on office windows"
           class="about-mission__image"
           width="797"

@@ -1,5 +1,7 @@
 ---
 import Button from "../../ui/Button.astro";
+import { getCloudinaryFourSet } from "../../../config/cloudinary";
+
 const aboutClientsData = [
   {
     num: "01",
@@ -22,6 +24,13 @@ const aboutClientsData = [
     info: "Add value to new builds with expertly installed, custom-fit window solutions ready for move-in day.",
   },
 ];
+
+const aboutClientsImg = getCloudinaryFourSet(
+  { id: "about-clients-mbl_zbysz8", version: "v1761589872" }, // mobile webp
+  { id: "about-clients-mbl_qaoogy", version: "v1761589874" }, // mobile png
+  { id: "about-clients-dsk_qce0a9", version: "v1761589877" }, // desktop webp
+  { id: "about-clients-dsk_zmfwcy", version: "v1761589880" }, // desktop png
+);
 ---
 
 <section class="about-clients" aria-labelledby="clients-heading">
@@ -50,36 +59,36 @@ const aboutClientsData = [
     </div>
     <div class="about-clients__img-container">
       <picture>
-        <!-- Mobile WebP -->
+        <!-- Mobile -->
         <source
-          srcset="/images/about-clients-mbl.webp"
+          srcset={aboutClientsImg.mobile.webp}
           type="image/webp"
           media="(max-width: 1023px)"
         />
-        <!-- Mobile PNG fallback -->
         <source
-          srcset="/images/about-clients-mbl.png"
+          srcset={aboutClientsImg.mobile.png}
           type="image/png"
           media="(max-width: 1023px)"
         />
-        <!-- Desktop WebP -->
+
+        <!-- Desktop -->
         <source
-          srcset="/images/about-clients-dsk.webp"
+          srcset={aboutClientsImg.desktop.webp}
           type="image/webp"
           media="(min-width: 1024px)"
         />
-        <!-- Desktop PNG fallback -->
         <source
-          srcset="/images/about-clients-dsk.png"
+          srcset={aboutClientsImg.desktop.png}
           type="image/png"
           media="(min-width: 1024px)"
         />
+
         <img
-          src="/images/about-clients-dsk.png"
+          src={aboutClientsImg.desktop.png}
           alt="Cellular shades in a full length bathroom window"
           class="about-clients__img"
-          width="854"
-          height="1280"
+          width="1290"
+          height="854"
           loading="lazy"
           decoding="async"
         />

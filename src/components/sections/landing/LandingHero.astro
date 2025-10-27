@@ -1,36 +1,47 @@
 ---
 import Button from "../../ui/Button.astro";
+import { getCloudinaryFourSet } from "../../../config/cloudinary";
+
+const lpHeroImg = getCloudinaryFourSet(
+  { id: "lp-hero-mbl_ghyiks", version: "v1761347110" }, // mobile webp
+  { id: "lp-hero-mbl_whze0j", version: "v1761347110" }, // mobile png
+  { id: "lp-hero-dsk_rcf1el", version: "v1761347109" }, // desktop webp
+  { id: "lp-hero-dsk_rcf1el", version: "v1761347109" }, // desktop png
+);
 ---
 
 <section class="lp-hero" aria-labelledby="hero-title">
   <picture class="lp-hero__bg">
-    <!-- Mobile first -->
+    <!-- Mobile -->
     <source
-      srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761347110/lp-hero-mbl_ghyiks.webp"
+      srcset={lpHeroImg.mobile.webp}
       type="image/webp"
       media="(max-width: 768px)"
     />
     <source
-      srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761347110/lp-hero-mbl_whze0j.png"
+      srcset={lpHeroImg.mobile.png}
       type="image/png"
       media="(max-width: 768px)"
     />
 
     <!-- Desktop -->
     <source
-      srcset="https://res.cloudinary.com/ds2oztufv/image/upload/v1761347109/lp-hero-dsk_rcf1el.webp"
+      srcset={lpHeroImg.desktop.webp}
       type="image/webp"
       media="(min-width: 769px)"
     />
     <source
-      srcset="/https://res.cloudinary.com/ds2oztufv/image/upload/v1761347109/lp-hero-dsk_rcf1el.webp"
+      srcset={lpHeroImg.desktop.png}
       type="image/png"
       media="(min-width: 769px)"
     />
 
     <img
-      src="https://res.cloudinary.com/ds2oztufv/image/upload/v1761347109/lp-hero-dsk_rcf1el.webp"
+      src={lpHeroImg.desktop.png}
       alt="Modern living room with custom window treatments"
+      class="lp-hero__bg"
+      width="1280"
+      height="975"
       loading="eager"
       decoding="async"
     />
