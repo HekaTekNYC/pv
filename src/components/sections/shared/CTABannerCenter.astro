@@ -3,11 +3,11 @@ import Button from "../../ui/Button.astro";
 
 import { getCloudinaryFourSet } from "../../../config/cloudinary";
 
-const bannerCenterImage = getCloudinaryFourSet(
-  "banner-center-mbl_u6y0zf", // mobile webp
-  "banner-center-mbl_wq21r3", // mobile png
-  "banner-center-dsk_fz4gz0", // desktop webp
-  "banner-center-dsk_ixutci", // desktop png
+const bannerCenterImg = getCloudinaryFourSet(
+  { id: "banner-center-mbl_u6y0zf", version: "v1761063721" }, // mobile webp
+  { id: "banner-center-mbl_wq21r3", version: "v1761063723" }, // mobile png
+  { id: "banner-center-dsk_fz4gz0", version: "v1761063720" }, // desktop webp
+  { id: "banner-center-dsk_ixutci", version: "v1761063720" }, // desktop png
 );
 ---
 
@@ -15,27 +15,27 @@ const bannerCenterImage = getCloudinaryFourSet(
   <div class="banner-center__image">
     <picture>
       <source
-        srcset={bannerCenterImage.mobile.webp}
+        srcset={bannerCenterImg.mobile.webp}
         media="(max-width: 1023px)"
         type="image/webp"
       />
       <source
-        srcset={bannerCenterImage.mobile.png}
+        srcset={bannerCenterImg.mobile.png}
         media="(max-width: 1023px)"
         type="image/png"
       />
       <source
-        srcset={bannerCenterImage.desktop.webp}
+        srcset={bannerCenterImg.desktop.webp}
         media="(min-width: 1024px)"
         type="image/webp"
       />
       <source
-        srcset={bannerCenterImage.desktop.png}
+        srcset={bannerCenterImg.desktop.png}
         media="(min-width: 1024px)"
         type="image/png"
       />
       <img
-        srcset={bannerCenterImage.desktop.png}
+        srcset={bannerCenterImg.desktop.png}
         alt="Close-up of cellular window shade showing light filtering through"
         class="banner-center__image"
         width="1280"
