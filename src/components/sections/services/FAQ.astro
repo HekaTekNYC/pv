@@ -1,5 +1,8 @@
 ---
+import { getCloudinarySrc } from "../../../config/cloudinary";
 import { installationFAQs } from "../../../data/faq-data";
+
+const FAQImg = getCloudinarySrc("natural-2-crop_ja7kqn", "png", "v1761588660");
 ---
 
 <section class="faq" aria-labelledby="faq-heading">
@@ -7,17 +10,14 @@ import { installationFAQs } from "../../../data/faq-data";
     <div class="faq__left">
       <h2 id="faq-heading">Frequently Asked Questions</h2>
       <div class="faq__media">
-        <picture>
-          <source srcset="/images/faq.webp" type="image/webp" />
-          <img
-            src="/images/faq.png"
-            alt="All white kitchen with a white pleated shade in the window"
-            width="1280"
-            height="869"
-            loading="lazy"
-            decoding="async"
-          />
-        </picture>
+        <img
+          src={FAQImg}
+          alt="All white kitchen with a white pleated shade in the window"
+          width="976"
+          height="869"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </div>
     <div class="faq__right">
