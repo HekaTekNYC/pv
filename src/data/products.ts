@@ -9,7 +9,7 @@ export const PRODUCT_SLUGS = [
   "exterior-shades",
   "sheer-layered",
   "natural-woven",
-  "motorization",
+  // "motorization",
 ] as const;
 
 export type ProductSlug = (typeof PRODUCT_SLUGS)[number];
