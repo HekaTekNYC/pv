@@ -45,15 +45,15 @@ export const productCards: ProductCards[] = [
     alt: "Plantation shutters in bathroom",
     featured: true,
   },
-  {
-    slug: "motorization",
-    title: "Motorization",
-    blurb:
-      "Add motorization for effortless control, modern convenience, and smart living.",
-    image: getCloudinarySrc("lp-motorized_g0ldur", "png", "v1761429945"),
-    alt: "Motorized cellular shade close-up",
-    featured: true,
-  },
+  // {
+  //   slug: "motorization",
+  //   title: "Motorization",
+  //   blurb:
+  //     "Add motorization for effortless control, modern convenience, and smart living.",
+  //   image: getCloudinarySrc("lp-motorized_g0ldur", "png", "v1761429945"),
+  //   alt: "Motorized cellular shade close-up",
+  //   featured: true,
+  // },
   {
     slug: "exterior-shades",
     title: "Exterior Shades",
@@ -68,6 +68,7 @@ export const productCards: ProductCards[] = [
     blurb: "Tailored fabric folds with classic, soft style.",
     image: getCloudinarySrc("card-roman-shades_qmgthb", "png", "v1761582080"),
     alt: "Tailored Roman shades in a bedroom",
+    featured: true,
   },
   {
     slug: "roller-shades",

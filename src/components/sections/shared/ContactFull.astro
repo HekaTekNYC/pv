@@ -3,7 +3,7 @@ import ContactForm from "../../ui/ContactForm.astro";
 
 import { getCloudinaryFourSet } from "../../../config/cloudinary";
 
-const contactFullImage = getCloudinaryFourSet(
+const contactFullImg = getCloudinaryFourSet(
   { id: "contact-full-mbl_fnlsr7", version: "v1761063769" }, // mobile webp
   { id: "contact-full-mbl_etwqlk", version: "v1761063769" }, // mobile png
   { id: "contact-full-dsk_vmy7vd", version: "v1761063769" }, // desktop webp
@@ -17,35 +17,35 @@ const contactFullImage = getCloudinaryFourSet(
       <picture>
         <!-- Mobile WebP -->
         <source
-          srcset={contactFullImage.mobile.webp}
+          srcset={contactFullImg.mobile.webp}
           type="image/webp"
           media="(max-width: 1023px)"
         />
 
         <!-- Mobile PNG fallback -->
         <source
-          srcset={contactFullImage.mobile.png}
+          srcset={contactFullImg.mobile.png}
           type="image/png"
           media="(max-width: 1023px)"
         />
 
         <!-- Desktop WebP -->
         <source
-          srcset={contactFullImage.desktop.webp}
+          srcset={contactFullImg.desktop.webp}
           type="image/webp"
           media="(min-width: 1024px)"
         />
 
         <!-- Desktop PNG fallback -->
         <source
-          srcset={contactFullImage.desktop.png}
+          srcset={contactFullImg.desktop.png}
           type="image/png"
           media="(min-width: 1024px)"
         />
 
         <!-- Fallback -->
         <img
-          src={contactFullImage.desktop.png}
+          src={contactFullImg.desktop.png}
           alt="Elegant kitchen with full length windows and sheer pleated shades"
           class="contact-bg-img"
           width="1028"
