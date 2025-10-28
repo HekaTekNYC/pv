@@ -63,7 +63,7 @@ if (!data) {
                       width="12"
                       height="12"
                     />
-                    <p>{text}</p>
+                    <p set:html={text} />
                   </li>
                 ))}
               </ul>
@@ -81,17 +81,19 @@ if (!data) {
   ) : (
     <section class="container" aria-live="polite">
       <p style="opacity:.7">
-        Features content for “{slug}” isn’t defined yet. Add it in{" "}
+        Features content for "{slug}" isn't defined yet. Add it in{" "}
         <code>src/data/product-features-data.ts</code>.
       </p>
     </section>
   )
 }
+
 <style>
   .product-features {
     display: flex;
     gap: 64px;
   }
+
   .product-features__media {
     display: block;
     max-width: 100%;
