@@ -1,0 +1,78 @@
+---
+import TrustCard from "../../ui/TrustCard.astro";
+import { trustBannerData, type TrustItem } from "../../../data/trust-data";
+---
+
+<section class="trust-banner">
+  <div class="trust-banner__bkrd" aria-hidden="true" role="presentation">
+    <img
+      src="/images/geometric-full.svg"
+      alt=""
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+
+  <div class="trust-banner__container container">
+    <div class="trust-banner__cards">
+      {trustBannerData.map((item) => <TrustCard {...item} />)}
+    </div>
+    <p>
+      For further information, please don’t hesitate to reach out using the
+      contact form on the top.
+    </p>
+  </div>
+</section>
+
+<style>
+  .trust-banner {
+    position: relative;
+    background-color: var(--secondary);
+  }
+
+  .trust-banner__bkrd {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .trust-banner__bkrd img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .trust-banner__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+    z-index: 2;
+  }
+
+  .trust-banner__cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .trust-banner__container p {
+    color: var(--white);
+    text-align: center;
+  }
+
+  @media (min-width: 1024px) {
+    .trust-banner__cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
