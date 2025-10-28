@@ -1,249 +1,247 @@
-// src/data/product-hero-data.ts
-export interface QuickSpec {
-  term: string;
-  value: string;
-}
-
-export interface HeroImage {
-  webp?: string;      // optional if you only have PNG
-  png: string;
-  alt: string;
-  width?: number;     // optional; used for <img> attrs only
-  height?: number;
-}
+// data/product-hero.ts
+import { getCloudinarySrc } from "../config/cloudinary";
 
 export interface ProductHeroData {
   slug: string;
   title: string;
   subtitle?: string;
-  image: HeroImage;
-  specs: QuickSpec[];
-  cta: { label: string; href: string };
+  specs: {
+    term: string;
+    value: string;
+  }[];
+  cta: {
+    label: string;
+    href: string;
+  };
+  image: {
+    webp: string;
+    png: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+}
+
+// Helper function for Cloudinary images
+function createCloudinaryHeroImage(
+  publicId: string,
+  alt: string,
+  width: number,
+  height: number,
+) {
+  return {
+    webp: getCloudinarySrc(publicId, "webp"),
+    png: getCloudinarySrc(publicId, "png"),
+    alt,
+    width,
+    height,
+  };
 }
 
 export const productHeroData: Record<string, ProductHeroData> = {
-  // ──────────────────────────────────────────────────────────────
   "roman-shades": {
     slug: "roman-shades",
-    title: "Elegant Roman Shades Installed to Perfection",
-    subtitle:
-      "Bring timeless elegance to your space with custom Roman shades. Our expert installation ensures flawless fit, smooth operation, and style that complements your home.",
-    image: {
-      webp: "/images/product-hero.webp",
-      png: "/images/product-hero.png",
-      alt: "Roman shade close-up by a window with plant",
-      width: 600,
-      height: 750,
-    },
+    title: "Roman Shades",
+    subtitle: "Elegant fabric folds with timeless appeal",
     specs: [
-      { term: "Motorization", value: "Available" },
-      { term: "Blackout Option", value: "Available" },
-      { term: "Cordless", value: "Available" },
-      { term: "Custom Sizes", value: "Yes" },
-      { term: "Mount Types", value: "Inside / Outside" },
-      { term: "Control Options", value: "Corded, Cordless, Motorized" },
+      { term: "Style", value: "Flat, hobbled, or relaxed folds" },
+      { term: "Light Control", value: "Sheer to blackout options" },
+      { term: "Operation", value: "Corded, cordless, or motorized" },
+      { term: "Best For", value: "Living rooms, bedrooms, dining rooms" },
     ],
-    cta: { label: "Schedule Free Consultation", href: "/contact" },
+    cta: {
+      label: "Get Roman Shades Pricing",
+      href: "/contact",
+    },
+    image: createCloudinaryHeroImage(
+      "roman_hero_x3ixo2",
+      "Beautiful Roman shades in an elegant living room",
+      600,
+      750,
+    ),
   },
 
-  // ──────────────────────────────────────────────────────────────
   "roller-shades": {
     slug: "roller-shades",
-    title: "Modern Roller Shades, Built for Daily Life",
-    subtitle:
-      "Minimal lines, strong light control, zero fuss. Tailored to your windows and your routine.",
-    image: {
-      webp: "/images/roller-hero.webp",
-      png: "/images/roller-hero.png",
-      alt: "Roller shades in a modern living room",
-      width: 600,
-      height: 750,
-    },
+    title: "Roller Shades",
+    subtitle: "Clean, minimalist profiles with precise light control",
     specs: [
-      { term: "Motorization", value: "Available" },
-      { term: "Fabric Options", value: "Sheer to Blackout" },
-      { term: "Valance", value: "Cassette / Fascia (Optional)" },
-      { term: "UV Protection", value: "High" },
-      { term: "Smart Home", value: "Compatible" },
-      { term: "Maintenance", value: "Easy" },
+      { term: "Style", value: "Sleek, modern roll-up design" },
+      { term: "Light Control", value: "Sheer, solar, dim-out, or blackout" },
+      { term: "Operation", value: "Chain, cordless, or motorized" },
+      { term: "Best For", value: "Kitchens, offices, modern spaces" },
     ],
-    cta: { label: "Schedule Free Consultation", href: "/contact" },
+    cta: {
+      label: "Get Roller Shades Pricing",
+      href: "/contact",
+    },
+    image: createCloudinaryHeroImage(
+      "roller_hero_nwvlw9",
+      "Modern roller shades in a contemporary setting",
+      600,
+      750,
+    ),
   },
 
-  // ──────────────────────────────────────────────────────────────
   "cellular-shades": {
     slug: "cellular-shades",
-    title: "Cellular Shades for Energy-Smart Comfort",
-    subtitle:
-      "Honeycomb construction traps air to help regulate temperature—quiet, efficient, and clean-lined.",
-    image: {
-      webp: "/images/cellular-hero.webp",
-      png: "/images/cellular-hero.png",
-      alt: "Cellular shades filtering light in a bedroom",
-      width: 600,
-      height: 750,
-    },
+    title: "Cellular Shades",
+    subtitle: "Energy-efficient honeycomb design for ultimate comfort",
     specs: [
-      { term: "Insulation", value: "Excellent" },
-      { term: "Cell Types", value: "Single / Double / Blackout" },
-      { term: "Operation", value: "Standard / Top-Down Bottom-Up" },
-      { term: "Cordless", value: "Available" },
-      { term: "Motorization", value: "Available" },
-      { term: "Privacy", value: "Sheer to Blackout Fabrics" },
+      { term: "Style", value: "Honeycomb cellular construction" },
+      { term: "Light Control", value: "Single, double, or blackout cells" },
+      { term: "Operation", value: "Top-down/bottom-up, cordless, motorized" },
+      { term: "Best For", value: "Bedrooms, energy-efficient homes" },
     ],
-    cta: { label: "Schedule Free Consultation", href: "/contact" },
+    cta: {
+      label: "Get Cellular Shades Pricing",
+      href: "/contact",
+    },
+    image: createCloudinaryHeroImage(
+      "cellular-hero_wllq9l",
+      "Energy-efficient cellular shades in a bedroom",
+      600,
+      750,
+    ),
   },
 
-  // ──────────────────────────────────────────────────────────────
   "wood-faux-blinds": {
     slug: "wood-faux-blinds",
-    title: "Wood & Faux Wood Blinds with Timeless Control",
-    subtitle:
-      "Warm wood grain or moisture-safe faux—precise light control with classic slatted style.",
-    image: {
-      webp: "/images/wood-blinds-hero.webp",
-      png: "/images/wood-blinds-hero.png",
-      alt: "Wood and faux wood blinds with wide slats",
-      width: 600,
-      height: 750,
-    },
+    title: "Wood & Faux Wood Blinds",
+    subtitle: "Classic slatted style with modern performance",
     specs: [
-      { term: "Slat Sizes", value: '2" / 2½"' },
-      { term: "Privacy", value: "Routeless Option" },
-      { term: "Cordless", value: "Available" },
-      { term: "Motorized Tilt", value: "Available" },
-      { term: "Decorative Tapes", value: "Optional" },
-      { term: "Humidity Resistance", value: "High (Faux Wood)" },
+      { term: "Style", value: '2" or 2.5" slats, real or faux wood' },
+      { term: "Light Control", value: "Adjustable slats, routeless option" },
+      { term: "Operation", value: "Cordless tilt, motorized options" },
+      { term: "Best For", value: "Living rooms, bathrooms, kitchens" },
     ],
-    cta: { label: "Schedule Free Consultation", href: "/contact" },
+    cta: {
+      label: "Get Wood Blinds Pricing",
+      href: "/contact",
+    },
+    image: createCloudinaryHeroImage(
+      "faux-hero_l3dnhj", 
+      "Wood blinds in a traditional home setting",
+      600,
+      750,
+    ),
   },
 
-  // ──────────────────────────────────────────────────────────────
   shutters: {
     slug: "shutters",
-    title: "Custom Shutters with Architectural Presence",
-    subtitle:
-      "Built-in elegance with adjustable louvers—crafted to fit and made to last in wood or composite.",
-    image: {
-      webp: "/images/shutters-hero.webp",
-      png: "/images/shutters-hero.png",
-      alt: "Plantation shutters with adjustable louvers in a sunlit room",
-      width: 600,
-      height: 750,
-    },
+    title: "Shutters",
+    subtitle: "Architectural elegance with lasting durability",
     specs: [
-      { term: "Materials", value: "Wood / Composite" },
-      { term: "Louver Sizes", value: '2½" / 3½" / 4½"' },
-      { term: "Split Tilt", value: "Available" },
-      { term: "Mount", value: "Inside / Outside (Custom Frames)" },
-      { term: "Durability", value: "Excellent" },
-      { term: "Insulation", value: "Very Good" },
+      { term: "Style", value: "Plantation style, various louver sizes" },
+      { term: "Light Control", value: "Adjustable louvers, full privacy" },
+      { term: "Operation", value: "Tilt rod, hidden tilt, or motorized" },
+      { term: "Best For", value: "Living rooms, sunrooms, historic homes" },
     ],
-    cta: { label: "Schedule Free Consultation", href: "/contact" },
+    cta: {
+      label: "Get Shutters Pricing",
+      href: "/contact",
+    },
+    image: createCloudinaryHeroImage(
+      "shutters_hero_sfnp6j",
+      "Plantation shutters in a bright room",
+      600,
+      750,
+    ),
   },
 
-  // ──────────────────────────────────────────────────────────────
   draperies: {
     slug: "draperies",
-    title: "Custom Draperies Designed for Your Space",
-    subtitle:
-      "From airy sheers to fully lined blackout—tailored panels elevate rooms with texture, color, and control.",
-    image: {
-      webp: "/images/draperies-hero.webp",
-      png: "/images/draperies-hero.png",
-      alt: "Ripplefold draperies framing a large window",
-      width: 600,
-      height: 750,
-    },
+    title: "Draperies",
+    subtitle: "Luxurious fabric treatments for elegant spaces",
     specs: [
-      { term: "Header Styles", value: "Ripplefold, Pinch, Grommet, More" },
-      { term: "Linings", value: "Privacy / Blackout / Interlining" },
-      { term: "Tracks & Rods", value: "Custom-Fit" },
-      { term: "Operation", value: "Wand, Cordless, Motorized" },
-      { term: "Stack Back", value: "Planned to Preserve Views" },
-      { term: "Insulation", value: "High (with Lining)" },
+      { term: "Style", value: "Pinch pleat, grommet, ripplefold" },
+      { term: "Light Control", value: "Sheer to blackout with linings" },
+      { term: "Operation", value: "Manual traverse or motorized" },
+      { term: "Best For", value: "Formal living rooms, dining rooms" },
     ],
-    cta: { label: "Schedule Free Consultation", href: "/contact" },
+    cta: {
+      label: "Get Draperies Pricing",
+      href: "/contact",
+    },
+    image: createCloudinaryHeroImage(
+      "draperies_hero_ijpnmt",
+      "Elegant draperies in a formal room",
+      600,
+      750,
+    ),
   },
 
-  // ──────────────────────────────────────────────────────────────
   "exterior-shades": {
     slug: "exterior-shades",
-    title: "Exterior Shades for Cooler, Calmer Spaces",
-    subtitle:
-      "Stop heat and glare before they hit the glass—patio-ready systems with outdoor-rated durability.",
-    image: {
-      webp: "/images/exterior-hero.webp",
-      png: "/images/exterior-hero.png",
-      alt: "Motorized exterior shades lowering over a patio opening",
-      width: 600,
-      height: 750,
-    },
+    title: "Exterior Shades",
+    subtitle: "Block heat before it enters your home",
     specs: [
-      { term: "Fabrics", value: "Solar Screens (1–10% Openess)" },
-      { term: "Guides", value: "Side Channels / Cable" },
-      { term: "Sensors", value: "Wind / Sun (Optional)" },
-      { term: "Smart Control", value: "Available" },
-      { term: "Weatherability", value: "Outdoor-Rated Hardware" },
-      { term: "UV Reduction", value: "Excellent" },
+      { term: "Style", value: "Outdoor-rated solar screens" },
+      { term: "Light Control", value: "1-10% openness for view preservation" },
+      { term: "Operation", value: "Manual crank or motorized" },
+      { term: "Best For", value: "Patios, sunrooms, west-facing windows" },
     ],
-    cta: { label: "Schedule Free Consultation", href: "/contact" },
+    cta: {
+      label: "Get Exterior Shades Pricing",
+      href: "/contact",
+    },
+    image: createCloudinaryHeroImage(
+      "exterior_hero_cgfar7", 
+      "Exterior shades on a patio or balcony",
+      600,
+      750,
+    ),
   },
 
-  // ──────────────────────────────────────────────────────────────
   "sheer-layered": {
     slug: "sheer-layered",
-    title: "Sheer & Layered Shades for Flexible Light",
-    subtitle:
-      "Shift from soft view-through to privacy in seconds—modern lines with day-to-night control.",
-    image: {
-      webp: "/images/sheer-layered-hero.webp",
-      png: "/images/sheer-layered-hero.png",
-      alt: "Layered shades showing alternating sheer and solid bands",
-      width: 600,
-      height: 750,
-    },
+    title: "Sheer & Layered Shades",
+    subtitle: "Modern elegance with versatile light control",
     specs: [
-      { term: "Styles", value: "Layered (Zebra) / Sheer Vanes" },
-      { term: "Light Control", value: "Filtered to Room Darkening" },
-      { term: "Cordless", value: "Available" },
-      { term: "Motorization", value: "Available" },
-      { term: "UV Protection", value: "Very Good" },
-      { term: "Profile", value: "Sleek, Minimal" },
+      { term: "Style", value: "Layered bands or sheer vanes" },
+      { term: "Light Control", value: "Sheer views to complete privacy" },
+      { term: "Operation", value: "Cordless or motorized" },
+      { term: "Best For", value: "Modern living spaces, offices" },
     ],
-    cta: { label: "Schedule Free Consultation", href: "/contact" },
+    cta: {
+      label: "Get Sheer Shades Pricing",
+      href: "/contact",
+    },
+    image: createCloudinaryHeroImage(
+      "sheer_hero_ug6gul", 
+      "Sheer layered shades in a contemporary room",
+      600,
+      750,
+    ),
   },
 
-  // ──────────────────────────────────────────────────────────────
   "natural-woven": {
     slug: "natural-woven",
-    title: "Natural Woven Shades with Organic Texture",
-    subtitle:
-      "Bamboo, reeds, and grasses bring warmth and character—each shade is uniquely patterned.",
-    image: {
-      webp: "/images/natural-woven-hero.webp",
-      png: "/images/natural-woven-hero.png",
-      alt: "Natural woven bamboo shades adding texture to a living room",
-      width: 600,
-      height: 750,
-    },
+    title: "Natural Woven Shades",
+    subtitle: "Organic textures with eco-friendly appeal",
     specs: [
-      { term: "Materials", value: "Bamboo, Grasses, Reeds" },
-      { term: "Liners", value: "Privacy / Blackout (Optional)" },
-      { term: "Edge Bindings", value: "Protective & Decorative" },
-      { term: "Fold Style", value: "Roman Folds, Clean Stack" },
-      { term: "Motorization", value: "Available" },
-      { term: "Variation", value: "Natural, Each Shade Unique" },
+      { term: "Style", value: "Bamboo, grasses, reeds, and woods" },
+      { term: "Light Control", value: "Soft filtered light, privacy liners" },
+      { term: "Operation", value: "Cordless, top-down/bottom-up" },
+      { term: "Best For", value: "Casual spaces, sunrooms, eco-homes" },
     ],
-    cta: { label: "Schedule Free Consultation", href: "/contact" },
+    cta: {
+      label: "Get Natural Shades Pricing",
+      href: "/contact",
+    },
+    image: createCloudinaryHeroImage(
+      "natural_benefits_xkcxnr",
+      "Natural woven shades adding texture to a room",
+      600,
+      750,
+    ),
   },
 };
 
-// Helpers
-export function getAllProductSlugs(): string[] {
-  return Object.keys(productHeroData);
-}
-
 export function getProductHero(slug: string): ProductHeroData | null {
   return productHeroData[slug] ?? null;
+}
+
+export function getAllProductHeroSlugs(): string[] {
+  return Object.keys(productHeroData);
 }

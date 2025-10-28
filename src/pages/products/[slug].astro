@@ -4,7 +4,7 @@ import ProductHero from "../../components/sections/product/ProductHero.astro";
 import ProductBenefits from "../../components/sections/product/ProductBenefits.astro";
 import ProductFeatures from "../../components/sections/product/ProductFeatures.astro";
 import ProductEnhance from "../../components/sections/product/ProductEnhance.astro";
-
+// import CTABannerSplit from "../../components/sections/shared/CTABannerSplit.astro";
 import { PRODUCT_SLUGS } from "../../data/products";
 import { getProductHero } from "../../data/product-hero";
 import { getProductBenefits } from "../../data/product-benefits";
@@ -33,7 +33,8 @@ const pageTitle = benefits
   ]}
 >
   <ProductHero slug={slug} />
-  <ProductBenefits slug={slug} />
-  <ProductFeatures slug={slug} />
   <ProductEnhance slug={slug} />
+  <ProductFeatures slug={slug} />
+  <ProductBenefits slug={slug} />
+  <!-- <CTABannerSplit /> -->
 </Inner>
