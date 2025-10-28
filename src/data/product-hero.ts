@@ -54,7 +54,7 @@ export const productHeroData: Record<string, ProductHeroData> = {
       href: "/contact",
     },
     image: createCloudinaryHeroImage(
-      "roman_hero_x3ixo2",
+      "roman1_torpl3",
       "Beautiful Roman shades in an elegant living room",
       600,
       750,
@@ -98,7 +98,7 @@ export const productHeroData: Record<string, ProductHeroData> = {
       href: "/contact",
     },
     image: createCloudinaryHeroImage(
-      "cellular-hero_wllq9l",
+      "cellular-1_m1tvtc",
       "Energy-efficient cellular shades in a bedroom",
       600,
       750,
@@ -120,7 +120,7 @@ export const productHeroData: Record<string, ProductHeroData> = {
       href: "/contact",
     },
     image: createCloudinaryHeroImage(
-      "faux-hero_l3dnhj", 
+      "faux-hero_l3dnhj",
       "Wood blinds in a traditional home setting",
       600,
       750,
@@ -142,7 +142,7 @@ export const productHeroData: Record<string, ProductHeroData> = {
       href: "/contact",
     },
     image: createCloudinaryHeroImage(
-      "shutters_hero_sfnp6j",
+      "shutters_hero1_ncxjtc",
       "Plantation shutters in a bright room",
       600,
       750,
@@ -186,7 +186,7 @@ export const productHeroData: Record<string, ProductHeroData> = {
       href: "/contact",
     },
     image: createCloudinaryHeroImage(
-      "exterior_hero_cgfar7", 
+      "exterior_4_doy4sh",
       "Exterior shades on a patio or balcony",
       600,
       750,
@@ -208,7 +208,7 @@ export const productHeroData: Record<string, ProductHeroData> = {
       href: "/contact",
     },
     image: createCloudinaryHeroImage(
-      "sheer_hero_ug6gul", 
+      "sheer_hero_ug6gul",
       "Sheer layered shades in a contemporary room",
       600,
       750,

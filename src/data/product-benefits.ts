@@ -77,7 +77,7 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
       href: "/contact",
     },
     image: createCloudinaryBenefitsImage(
-      "roller_benefits_bfc8uh",
+      "roller_benefits_b8eh9y",
       "Modern roller shades in a contemporary kitchen",
       630,
       550,
@@ -101,7 +101,7 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
       href: "/contact",
     },
     image: createCloudinaryBenefitsImage(
-      "cellular_benefits_ri3m7r",
+      "card-cellular_oss5u3",
       "Cellular shades providing insulation in a bedroom",
       630,
       550,
@@ -221,7 +221,7 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
       href: "/contact",
     },
     image: createCloudinaryBenefitsImage(
-      "sheer_benefits_jvmpvq",
+      "sheer_benefits3_puwtv4",
       "Sheer layered shades in a modern living room",
       630,
       550,

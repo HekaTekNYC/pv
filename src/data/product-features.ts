@@ -14,6 +14,7 @@ export interface ProductFeaturesData {
   title: string;
   description: string;
   features: string[];
+  motorized: boolean;
   cta: { label: string; href: string };
   image: FeaturesImage;
 }
@@ -46,7 +47,9 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Clean stack when raised",
       "Corded, cordless, or motorized operation",
       "Great for both modern and traditional interiors",
+      "<strong>Motorized:</strong> Yes",
     ],
+    motorized: true,
     cta: { label: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryImage(
       "roman_features_mmitvs",
@@ -67,10 +70,12 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Chain, cordless, or motorized control",
       "Wide widths available for large spans",
       "Excellent UV and glare reduction options",
+      "<strong>Motorized:</strong> Yes",
     ],
+    motorized: true,
     cta: { label: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryImage(
-      "roller_features_xt79ok",
+      "roller_features_yuvygf",
       "Modern roller shades filtering light",
       630,
       550,
@@ -88,10 +93,12 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Great insulation for energy savings",
       "Cordless and motorized options",
       "Sleek stack height when raised",
+      "<strong>Motorized:</strong> Yes",
     ],
+    motorized: true,
     cta: { label: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryImage(
-      "cellular_feature_o8gfbo",
+      "cellular_features1_uxj42r",
       "Cellular shades adding insulation",
       630,
       550,
@@ -109,7 +116,9 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Cordless and motorized tilt options for safety and convenience",
       "Decorative tapes and valances for a finished look",
       "Faux wood resists humidity and warping in damp areas",
+      "<strong>Motorized:</strong> Yes",
     ],
+    motorized: true,
     cta: { label: "Explore Wood & Faux Options", href: "/contact" },
     image: createCloudinaryImage(
       "faux-features_bm5isv",
@@ -130,10 +139,12 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Divider rails or split tilt for independent top/bottom control",
       "Inside or outside mount with custom frame profiles",
       "Excellent insulation and light management",
+      "<strong>Motorized:</strong> No",
     ],
+    motorized: false,
     cta: { label: "Explore Shutter Styles", href: "/contact" },
     image: createCloudinaryImage(
-      "shutters_features_tbox5d",
+      "shutters_hero_zqqgg6",
       "Plantation shutters with adjustable louvers",
       630,
       550,
@@ -151,7 +162,9 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Traversing rods and low-profile tracks for smooth operation",
       "Cordless wands and motorization (including smart controls)",
       "Precise stack-back planning to keep views clear",
+      "<strong>Motorized:</strong> Yes",
     ],
+    motorized: true,
     cta: { label: "Design Your Drapery", href: "/contact" },
     image: createCloudinaryImage(
       "draperies_features_ckfuux",
@@ -172,10 +185,12 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Heavy-duty, weather-resistant hardware and finishes",
       "Motorization with optional wind/sun sensors and smart control",
       "Significant UV reduction to protect interiors",
+      "<strong>Motorized:</strong> Yes",
     ],
+    motorized: true,
     cta: { label: "Plan Your Outdoor Shade", href: "/contact" },
     image: createCloudinaryImage(
-      "exterior_enhance_qvxpku",
+      "exterior_2_bq7lp6",
       "Motorized exterior shades lowering over a patio opening",
       630,
       550,
@@ -193,10 +208,12 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Room-darkening fabrics available while keeping a sleek profile",
       "Cordless and motorized options for smooth, precise control",
       "Great UV filtering while maintaining daylight",
+      "<strong>Motorized:</strong> Yes",
     ],
+    motorized: true,
     cta: { label: "See Sheer & Layered Options", href: "/contact" },
     image: createCloudinaryImage(
-      "sheer_features_hpqebf",
+      "sheer_benefits2_oekwmi",
       "Layered shades showing alternating sheer and solid bands",
       630,
       550,
@@ -214,10 +231,12 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Edge bindings to protect edges and add contrast",
       "Roman fold styles with clean stacks when raised",
       "Top-down/bottom-up and motorization available",
+      "<strong>Motorized:</strong> Yes",
     ],
+    motorized: true,
     cta: { label: "Explore Natural Wovens", href: "/contact" },
     image: createCloudinaryImage(
-      "natural_features_jopiuy",
+      "natural_features2_ezsr5a",
       "Natural woven bamboo shades adding texture to a room",
       630,
       550,
