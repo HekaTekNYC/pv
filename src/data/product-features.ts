@@ -1,6 +1,8 @@
 // src/data/product-features-data.ts
+import { getCloudinarySrc } from "../config/cloudinary";
+
 export interface FeaturesImage {
-  webp?: string; // optional if you only have PNG
+  webp: string;
   png: string;
   alt: string;
   width: number;
@@ -14,6 +16,22 @@ export interface ProductFeaturesData {
   features: string[];
   cta: { label: string; href: string };
   image: FeaturesImage;
+}
+
+// Helper function to create Cloudinary image objects
+function createCloudinaryImage(
+  publicId: string,
+  alt: string,
+  width: number,
+  height: number,
+): FeaturesImage {
+  return {
+    webp: getCloudinarySrc(publicId, "webp"),
+    png: getCloudinarySrc(publicId, "png"),
+    alt,
+    width,
+    height,
+  };
 }
 
 export const productFeaturesData: Record<string, ProductFeaturesData> = {
@@ -30,20 +48,19 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Great for both modern and traditional interiors",
     ],
     cta: { label: "Explore More Shade Styles", href: "/contact" },
-    image: {
-      webp: "/images/product-features.webp",
-      png: "/images/product-features.png",
-      alt: "Roman shade close-up by a window with plant",
-      width: 630,
-      height: 550,
-    },
+    image: createCloudinaryImage(
+      "roman_features_mmitvs",
+      "Roman shade close-up by a window with plant",
+      630,
+      550,
+    ),
   },
 
   "roller-shades": {
     slug: "roller-shades",
     title: "Features of Roller Shades",
     description:
-      "Clean profiles, wide fabric library, and simple operation—roller shades are the minimalist’s multitool.",
+      "Clean profiles, wide fabric library, and simple operation—roller shades are the minimalist's multitool.",
     features: [
       "Sheer, solar, dim-out, and blackout fabrics",
       "Optional fascia or cassette valances",
@@ -52,13 +69,12 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Excellent UV and glare reduction options",
     ],
     cta: { label: "Explore More Shade Styles", href: "/contact" },
-    image: {
-      webp: "/images/roller-features.webp",
-      png: "/images/roller-features.png",
-      alt: "Modern roller shades filtering light",
-      width: 630,
-      height: 550,
-    },
+    image: createCloudinaryImage(
+      "roller_features_xt79ok",
+      "Modern roller shades filtering light",
+      630,
+      550,
+    ),
   },
 
   "cellular-shades": {
@@ -74,14 +90,14 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Sleek stack height when raised",
     ],
     cta: { label: "Explore More Shade Styles", href: "/contact" },
-    image: {
-      webp: "/images/cellular-features.webp",
-      png: "/images/cellular-features.png",
-      alt: "Cellular shades adding insulation",
-      width: 630,
-      height: 550,
-    },
+    image: createCloudinaryImage(
+      "cellular_feature_o8gfbo",
+      "Cellular shades adding insulation",
+      630,
+      550,
+    ),
   },
+
   "wood-faux-blinds": {
     slug: "wood-faux-blinds",
     title: "Features of Wood & Faux Wood Blinds",
@@ -95,13 +111,12 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Faux wood resists humidity and warping in damp areas",
     ],
     cta: { label: "Explore Wood & Faux Options", href: "/contact" },
-    image: {
-      webp: "/images/wood-blinds-features.webp",
-      png: "/images/wood-blinds-features.png",
-      alt: "Wood and faux wood blinds with wide slats in a bright room",
-      width: 630,
-      height: 550,
-    },
+    image: createCloudinaryImage(
+      "faux-features_bm5isv",
+      "Wood and faux wood blinds with wide slats in a bright room",
+      630,
+      550,
+    ),
   },
 
   shutters: {
@@ -117,13 +132,12 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Excellent insulation and light management",
     ],
     cta: { label: "Explore Shutter Styles", href: "/contact" },
-    image: {
-      webp: "/images/shutters-features.webp",
-      png: "/images/shutters-features.png",
-      alt: "Plantation shutters with adjustable louvers",
-      width: 630,
-      height: 550,
-    },
+    image: createCloudinaryImage(
+      "shutters_features_tbox5d",
+      "Plantation shutters with adjustable louvers",
+      630,
+      550,
+    ),
   },
 
   draperies: {
@@ -139,13 +153,12 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Precise stack-back planning to keep views clear",
     ],
     cta: { label: "Design Your Drapery", href: "/contact" },
-    image: {
-      webp: "/images/draperies-features.webp",
-      png: "/images/draperies-features.png",
-      alt: "Custom draperies on a track with ripplefold header",
-      width: 630,
-      height: 550,
-    },
+    image: createCloudinaryImage(
+      "draperies_features_ckfuux",
+      "Custom draperies on a track with ripplefold header",
+      630,
+      550,
+    ),
   },
 
   "exterior-shades": {
@@ -161,13 +174,12 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Significant UV reduction to protect interiors",
     ],
     cta: { label: "Plan Your Outdoor Shade", href: "/contact" },
-    image: {
-      webp: "/images/exterior-features.webp",
-      png: "/images/exterior-features.png",
-      alt: "Motorized exterior shades lowering over a patio opening",
-      width: 630,
-      height: 550,
-    },
+    image: createCloudinaryImage(
+      "exterior_enhance_qvxpku",
+      "Motorized exterior shades lowering over a patio opening",
+      630,
+      550,
+    ),
   },
 
   "sheer-layered": {
@@ -183,13 +195,12 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Great UV filtering while maintaining daylight",
     ],
     cta: { label: "See Sheer & Layered Options", href: "/contact" },
-    image: {
-      webp: "/images/sheer-layered-features.webp",
-      png: "/images/sheer-layered-features.png",
-      alt: "Layered shades showing alternating sheer and solid bands",
-      width: 630,
-      height: 550,
-    },
+    image: createCloudinaryImage(
+      "sheer_features_hpqebf",
+      "Layered shades showing alternating sheer and solid bands",
+      630,
+      550,
+    ),
   },
 
   "natural-woven": {
@@ -205,13 +216,12 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Top-down/bottom-up and motorization available",
     ],
     cta: { label: "Explore Natural Wovens", href: "/contact" },
-    image: {
-      webp: "/images/natural-woven-features.webp",
-      png: "/images/natural-woven-features.png",
-      alt: "Natural woven bamboo shades adding texture to a room",
-      width: 630,
-      height: 550,
-    },
+    image: createCloudinaryImage(
+      "natural_features_jopiuy",
+      "Natural woven bamboo shades adding texture to a room",
+      630,
+      550,
+    ),
   },
 };
 
