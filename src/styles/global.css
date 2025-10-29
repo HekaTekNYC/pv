@@ -157,8 +157,17 @@ a {
   width: 100%;
 }
 
+#contact-form,
+#lp-contact-form {
+  scroll-margin-top: 48px;
+}
+
 /* --- Media Queries --- */
 @media (min-width: 768px) {
+  #contact-form,
+  #lp-contact-form {
+    scroll-margin-top: 100px;
+  }
 }
 
 @media (min-width: 1024px) {
