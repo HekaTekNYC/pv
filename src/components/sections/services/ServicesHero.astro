@@ -51,7 +51,9 @@ const pillTabsData = [
         {pillTabsData.map((tab) => <PillTab text={tab.text} />)}
       </div>
       <div class="services-hero__btn">
-        <Button href="/contact" color="secondary">Get Free Consultation</Button>
+        <Button href="/contact#contact-form" color="secondary"
+          >Get Free Consultation</Button
+        >
       </div>
     </div>
   </div>
@@ -118,11 +120,11 @@ const pillTabsData = [
 
   @media (min-width: 768px) {
     .services-hero__img-container {
-      height: 560px;
+      height: 550px;
     }
-
     .services-hero__img {
       object-position: 50% 30%;
+      height: 550px;
     }
 
     .services-hero__service-pills {
@@ -130,15 +132,6 @@ const pillTabsData = [
     }
   }
 
-  @media (min-width: 820px) {
-    .services-hero__img-container {
-      height: 650px;
-    }
-
-    .services-hero__img {
-      object-position: 50% 40%;
-    }
-  }
   @media (min-width: 1024px) {
     .services-hero__img-container {
       height: 750px;
@@ -146,6 +139,7 @@ const pillTabsData = [
 
     .services-hero__img {
       object-position: 50% 40%;
+      height: 750px;
     }
     .services-hero__service-pills {
       width: 50%;
