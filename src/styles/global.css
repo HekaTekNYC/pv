@@ -164,14 +164,13 @@ a {
 }
 
 #contact-form,
-#lp-contact-form {
+#home-contact-form {
   scroll-margin-top: 48px;
 }
 
 /* --- Media Queries --- */
 @media (min-width: 768px) {
-  #contact-form,
-  #lp-contact-form {
+  #contact-form {
     scroll-margin-top: 100px;
   }
 }

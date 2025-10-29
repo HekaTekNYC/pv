@@ -40,7 +40,7 @@ export const bannerLPData: BannerSplitProps = {
     description:
       "Bring your vision to life with custom-designed window coverings that combine beauty, function, and expert care. Let's create a PerfectView—together.",
     buttonText: "Request Your Free Consultation",
-    buttonHref: "/contact",
+    buttonHref: "#home-contact-form",
   },
 };
 
