@@ -8,7 +8,7 @@ import { productLinks } from "../../data/dropdown-data";
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <nav class="nav-bar" role="navigation" aria-label="Main">
-  <div class="nav-bar__container container">
+  <div class="nav-bar__container">
     <a href="/" class="nav-bar__logo" aria-label="Home">
       <img src="/images/Logo.svg" alt="Company logo" height="48" width="117" />
     </a>
@@ -27,7 +27,7 @@ import { productLinks } from "../../data/dropdown-data";
         />
         <li><a href="/services" class="nav-bar__link">Services</a></li>
         <li><a href="/about" class="nav-bar__link">About</a></li>
-        <li><a href="/projects" class="nav-bar__link">Gallery</a></li>
+        <!-- <li><a href="/projects" class="nav-bar__link">Gallery</a></li> -->
         <li><a href="/contact" class="nav-bar__link">Contact</a></li>
         <li class="nav-bar__book-now">
           <Button href="/contact" color="nav">Get a Free Quote</Button>
@@ -73,6 +73,7 @@ import { productLinks } from "../../data/dropdown-data";
     width: 100%;
     max-width: 1300px;
     height: 100%;
+    padding: clamp(12px, 2vw, 16px) clamp(16px, 5vw, 64px);
   }
 
   .nav-bar__logo {
@@ -96,7 +97,6 @@ import { productLinks } from "../../data/dropdown-data";
   }
 
   @media (max-width: 767px) {
-    /* Show backdrop when mobile menu is active */
     .nav-bar__links[aria-hidden="false"] ~ .nav-bar__backdrop {
       display: block;
     }
@@ -118,7 +118,6 @@ import { productLinks } from "../../data/dropdown-data";
       max-height 0.4s ease,
       opacity 0.4s ease,
       padding 0.3s ease;
-
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
 
@@ -163,7 +162,7 @@ import { productLinks } from "../../data/dropdown-data";
 
   /* --- Media Queries --- */
 
-  @media (min-width: 992px) {
+  @media (min-width: 950px) {
     nav {
       height: 104px;
     }

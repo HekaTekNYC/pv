@@ -91,6 +91,7 @@ if (!data) {
 <style>
   .product-features {
     display: flex;
+    flex-direction: column;
     gap: 64px;
   }
 
@@ -149,6 +150,9 @@ if (!data) {
     }
   }
   @media (min-width: 992px) {
+    .product-features {
+      flex-direction: row;
+    }
     .product-features__media img {
       height: 690px;
     }
