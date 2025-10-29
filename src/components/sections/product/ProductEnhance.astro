@@ -12,13 +12,13 @@ const data = getProductEnhance(slug);
 {
   data ? (
     <section class="product-enhance">
-      <div class="container">
+      <div class="product-enhance__container container">
         <div class="product-enhance__content">
           <h2>{data.title}</h2>
-          <h3 class="p-subheader">{data.subtitle}</h3>
+          <p class="bold">{data.subtitle}</p>
           <p>{data.description}</p>
         </div>
-        <div class="product-enhance__media container--wide">
+        <div class="product-enhance__media ">
           <picture>
             <source
               srcset={data.image.webp}
@@ -47,33 +47,36 @@ const data = getProductEnhance(slug);
 
 <style>
   .product-enhance {
-    display: flex;
-    flex-direction: column;
     background: var(--grey-10);
   }
-
+  .product-enhance__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
   .product-enhance__content {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 8px;
+
+    max-width: 1040px;
   }
 
   .product-enhance__content h2 {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    padding-bottom: 16px;
   }
 
   .product-enhance__content h3 {
     font-weight: var(--fw-regular);
   }
-
-  .product-enhance__content p {
-  }
-
-  .product-enhance__media {
+  .product-enhance__content p.bold {
+    padding-bottom: 8px;
+    max-width: 900px;
+    width: 100%;
   }
 
   .product-enhance__media img {
@@ -82,14 +85,5 @@ const data = getProductEnhance(slug);
     border-radius: 2px;
   }
 
-  /* Media Queries */
-  @media (min-width: 768px) {
-    .product-enhance__content {
-    }
-  }
 
-  @media (min-width: 1024px) {
-    .product-enhance__content {
-    }
-  }
 </style>

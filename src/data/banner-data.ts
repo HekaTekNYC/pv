@@ -26,10 +26,10 @@ export interface BannerSplitProps {
 export const bannerLPData: BannerSplitProps = {
   image: {
     ...getCloudinaryFourSet(
-      "banner-sp-mbl_bvbbzg", // mobile webp
-      "banner-sp-mbl_mbblxj", // mobile png
-      "banner-sp-dsk_ej4dov", // desktop webp
-      "banner-sp-dsk_pllt9m", // desktop png
+      { id: "banner-sp-mbl_bvbbzg", version: "v1761063721" }, // mobile webp
+      { id: "banner-sp-mbl_mbblxj", version: "v1761063721" }, // mobile png
+      { id: "banner-sp-dsk_ej4dov", version: "v1761063721" }, // desktop webp
+      { id: "banner-sp-dsk_pllt9m", version: "v1761063721" }, // desktop png
     ),
     alt: "Professional window treatment installation",
     width: 1280,
@@ -48,10 +48,10 @@ export const bannerLPData: BannerSplitProps = {
 export const bannerServicesData: BannerSplitProps = {
   image: {
     ...getCloudinaryFourSet(
-      "banner-sp-mbl_bvbbzg",
-      "banner-sp-mbl_mbblxj",
-      "banner-sp-dsk_ej4dov",
-      "banner-sp-dsk_pllt9m",
+      { id: "banner-sp-mbl_bvbbzg", version: "v1761063721" }, // mobile webp
+      { id: "banner-sp-mbl_mbblxj", version: "v1761063721" }, // mobile png
+      { id: "banner-sp-dsk_ej4dov", version: "v1761063721" }, // desktop webp
+      { id: "banner-sp-dsk_pllt9m", version: "v1761063721" }, // desktop png
     ),
     alt: "Professional window treatment installation",
     width: 1280,
