@@ -22,7 +22,7 @@ const img = product?.image;
 {
   product ? (
     <section class="product-benefits">
-      <div class="container product-benefits__wrap">
+      <div class=" product-benefits__wrap">
         {/* <!-- LEFT --> */}
         <div class="product-benefits__left">
           <div class="product-benefits__content">
@@ -50,14 +50,11 @@ const img = product?.image;
                 ))}
               </ul>
             </div>
-
-            {product.cta && (
-              <div class="product-benefits__cta">
-                <Button color="secondary" href={product.cta.href}>
-                  {product.cta.text}
-                </Button>
-              </div>
-            )}
+            <div class="product-benefits__cta">
+              <Button color="secondary" href="/products">
+                Explore More Styles
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -92,25 +89,21 @@ const img = product?.image;
 }
 
 <style>
-  /* ===== Layout ===== */
   .product-benefits__wrap {
     display: flex;
     flex-direction: column;
     gap: 32px;
     align-items: stretch;
   }
-  @media (min-width: 992px) {
-    .product-benefits__wrap {
-      flex-direction: row;
-      gap: 64px;
-      align-items: center;
-    }
+  .product-benefits__media {
+    /* max-width: 630px;
+      flex: 0 0 560px; */
+    display: flex;
+    order: 1;
   }
-
   .product-benefits__left {
     display: flex;
-    flex: 1 1 0%;
-    min-width: 0;
+    order: 2;
   }
 
   .product-benefits__content {
@@ -174,5 +167,29 @@ const img = product?.image;
     aspect-ratio: 63 / 56; /* 630 / 560 */
     object-fit: cover;
     border-radius: 2px;
+  }
+
+  @media (min-width: 768px) {
+    .product-benefits__media img {
+      width: 100%;
+      height: 560px;
+      aspect-ratio: auto;
+      object-fit: cover;
+    }
+  }
+  @media (min-width: 992px) {
+    .product-benefits__wrap {
+      flex-direction: row;
+      gap: 64px;
+      align-items: center;
+    }
+    .product-benefits__media {
+      /* max-width: 630px;
+      flex: 0 0 560px; */
+      order: 1;
+    }
+    .product-benefits__left {
+      order: 2;
+    }
   }
 </style>

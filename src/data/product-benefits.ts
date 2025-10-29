@@ -6,10 +6,7 @@ export interface ProductBenefitsData {
   title: string;
   description: string;
   benefits: string[];
-  cta: {
-    text: string;
-    href: string;
-  };
+
   image: {
     webp: string;
     png: string;
@@ -48,10 +45,6 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
       "Professional installation ensures perfect fit and smooth operation",
       "Good insulation properties with the right fabric choices",
     ],
-    cta: {
-      text: "Explore Roman Shades",
-      href: "/contact",
-    },
     image: createCloudinaryBenefitsImage(
       "roman_benefits_n6sdi6",
       "Elegant Roman shades in a formal living room setting",
@@ -72,10 +65,7 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
       "Space-efficient design that doesn't block views when open",
       "Professional installation ensures smooth rolling action",
     ],
-    cta: {
-      text: "Explore Roller Shades",
-      href: "/contact",
-    },
+
     image: createCloudinaryBenefitsImage(
       "roller_benefits_b8eh9y",
       "Modern roller shades in a contemporary kitchen",
@@ -96,10 +86,7 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
       "Professional installation ensures optimal energy performance",
       "Clean, modern appearance with functional benefits",
     ],
-    cta: {
-      text: "Explore Cellular Shades",
-      href: "/contact",
-    },
+
     image: createCloudinaryBenefitsImage(
       "card-cellular_oss5u3",
       "Cellular shades providing insulation in a bedroom",
@@ -120,10 +107,7 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
       "Faux wood options resist moisture in humid areas",
       "Professional installation ensures smooth operation and perfect alignment",
     ],
-    cta: {
-      text: "Explore Wood Blinds",
-      href: "/contact",
-    },
+
     image: createCloudinaryBenefitsImage(
       "faux-benefits_pcmjtf",
       "Wood blinds in a traditional home office",
@@ -144,10 +128,7 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
       "Works beautifully with unusual window shapes and sizes",
       "Lasting quality that stands the test of time",
     ],
-    cta: {
-      text: "Explore Shutters",
-      href: "/contact",
-    },
+
     image: createCloudinaryBenefitsImage(
       "shutters_benefits_q7ohpx",
       "Plantation shutters in a bright sunroom",
@@ -168,10 +149,7 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
       "Complete light blocking when fully lined",
       "Expert installation ensures beautiful drape and operation",
     ],
-    cta: {
-      text: "Explore Draperies",
-      href: "/contact",
-    },
+
     image: createCloudinaryBenefitsImage(
       "draperies_benefits_g4vqus",
       "Elegant draperies in a formal dining room",
@@ -192,10 +170,7 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
       "Extends usable outdoor living space",
       "Expert installation ensures weather resistance and durability",
     ],
-    cta: {
-      text: "Explore Exterior Shades",
-      href: "/contact",
-    },
+
     image: createCloudinaryBenefitsImage(
       "exterior_benefits_pezvya",
       "Exterior shades on a patio providing shade",
@@ -216,10 +191,7 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
       "Excellent protection for your furnishings from UV rays",
       "Professional installation ensures all layers operate perfectly together",
     ],
-    cta: {
-      text: "Explore Layered Shades",
-      href: "/contact",
-    },
+ 
     image: createCloudinaryBenefitsImage(
       "sheer_benefits3_puwtv4",
       "Sheer layered shades in a modern living room",
@@ -240,10 +212,7 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
       "Lightweight and easy to operate",
       "Professional installation showcases their natural beauty",
     ],
-    cta: {
-      text: "Explore Natural Shades",
-      href: "/contact",
-    },
+
     image: createCloudinaryBenefitsImage(
       "natural_jbvcba",
       "Natural woven bamboo shades in a casual space",

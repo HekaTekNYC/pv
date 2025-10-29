@@ -120,8 +120,8 @@ a {
 }
 
 .bold {
-  font-weight: var(--fw-semibold);
   color: var(--primary);
+  font-size: var(--fs-body-l);
 }
 
 .divider {
@@ -157,6 +157,12 @@ a {
   width: 100%;
 }
 
+.product-group {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
 #contact-form,
 #lp-contact-form {
   scroll-margin-top: 48px;
@@ -171,4 +177,7 @@ a {
 }
 
 @media (min-width: 1024px) {
+  .product-group {
+    gap: 100px;
+  }
 }
