@@ -13,16 +13,14 @@ import { testimonials } from "../../../data/testimonials-data";
         their experience with PerfectView Window Coverings.
       </p>
     </div>
-    <div
-      class="testimonials__cards"
-      aria-label="Customer testimonials"
-      aria-live="polite"
-    >
+    <div class="testimonials__cards" aria-label="Customer testimonials">
       {
         testimonials.length > 0 ? (
           testimonials.map((card) => <TestimonialCard {...card} />)
         ) : (
-          <p class="testimonials__empty">Loading Testimonials...</p>
+          <p class="testimonials__empty" role="status">
+            Loading Testimonials...
+          </p>
         )
       }
     </div>
