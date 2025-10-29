@@ -12,9 +12,7 @@ import { productLinks } from "../../data/dropdown-data";
     <a href="/" class="nav-bar__logo" aria-label="Home">
       <img src="/images/Logo.svg" alt="Company logo" height="48" width="117" />
     </a>
-
     <Hamburger targetId="primary-menu" />
-
     <div class="nav-bar__links" id="primary-menu" aria-hidden="true">
       <ul>
         <li>
@@ -80,7 +78,11 @@ import { productLinks } from "../../data/dropdown-data";
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: auto;
+  }
+  .nav-bar__logo img {
+    height: 48px;
+    width: auto;
   }
 
   /* --- Mobile nav (default) --- */
@@ -165,6 +167,15 @@ import { productLinks } from "../../data/dropdown-data";
   @media (min-width: 950px) {
     nav {
       height: 104px;
+    }
+
+    .nav-bar__logo {
+      height: 100%;
+    }
+
+    .nav-bar__logo img {
+      height: 100%;
+      width: auto;
     }
 
     .nav-bar__links {
