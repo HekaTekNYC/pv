@@ -18,7 +18,7 @@ if (!data) {
 {
   data ? (
     <section>
-      <div class="product-features container">
+      <div class="product-features ">
         <div class="product-features__media">
           <picture>
             {data.image.webp && (
@@ -91,7 +91,8 @@ if (!data) {
 <style>
   .product-features {
     display: flex;
-    gap: 64px;
+    flex-direction: column;
+    gap: 32px;
   }
 
   .product-features__media {
@@ -145,12 +146,19 @@ if (!data) {
   }
   @media (min-width: 768px) {
     .product-features__media img {
-      height: 690px;
+      height: 500px;
     }
   }
   @media (min-width: 992px) {
     .product-features__media img {
-      height: 690px;
+      height: 560px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .product-features {
+      display: flex;
+      flex-direction: row;
+      gap: 64px;
     }
   }
 </style>
