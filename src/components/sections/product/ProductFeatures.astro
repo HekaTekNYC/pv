@@ -1,4 +1,5 @@
 ---
+// src/components/sections/ProductFeatures.astro
 import Button from "../../ui/Button.astro";
 import { getProductFeatures } from "../../../data/product-features";
 
@@ -7,158 +8,174 @@ export interface Props {
 }
 const { slug } = Astro.props as Props;
 
-const data = getProductFeatures(slug);
-if (!data) {
-  console.warn(
-    `ProductFeatures: unknown slug "${slug}". Add it to product-features-data.ts`,
-  );
+const product = getProductFeatures(slug);
+
+if (!product) {
+  console.warn(`[ProductFeatures] No data found for slug: ${slug}`);
 }
+const lines = product?.features ?? [];
+const img = product?.image;
 ---
 
 {
-  data ? (
-    <section>
-      <div class="product-features ">
-        <div class="product-features__media">
-          <picture>
-            {data.image.webp && (
-              <source
-                srcset={data.image.webp}
-                type="image/webp"
-                media="(max-width: 1023px)"
-              />
-            )}
-            <source
-              srcset={data.image.png}
-              type="image/png"
-              media="(max-width: 1023px)"
-            />
-            <img
-              src={data.image.png}
-              alt={data.image.alt}
-              width={data.image.width}
-              height={data.image.height}
-              loading="eager"
-              decoding="async"
-            />
-          </picture>
-        </div>
+  product ? (
+    <section class="product-benefits">
+      {/* reuse exact layout */}
+      <div class="product-benefits__wrap">
+        {/* LEFT (content) */}
+        <div class="product-benefits__left">
+          <div class="product-benefits__content">
+            <header class="product-benefits__header">
+              <h2>{product.title}</h2>
+              {product.description && <p>{product.description}</p>}
+            </header>
 
-        <div class="product-features__right">
-          <div class="product-features__content">
-            <div class="product-features__header">
-              <h2>{data.title}</h2>
-              <p>{data.description}</p>
-            </div>
-
-            <div class="product-features__specs">
-              <ul>
-                {data.features.map((text) => (
-                  <li>
+            <div class="product-benefits__specs">
+              <ul class="product-benefits__list" role="list">
+                {lines.map((line) => (
+                  <li class="product-benefits__item">
                     <img
-                      class="product-features__specs-icon"
+                      class="product-benefits__icon"
                       src="/icons/bullet-point.svg"
                       alt=""
                       aria-hidden="true"
                       width="12"
                       height="12"
+                      loading="eager"
+                      decoding="async"
                     />
-                    <p set:html={text} />
+                    <p class="product-benefits__text">{line}</p>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div class="product-features__cta">
-              <Button color="secondary" href={data.cta.href}>
-                {data.cta.label}
+            <div class="product-benefits__cta">
+              <Button color="secondary" href={product.cta.href}>
+                {product.cta.label}
               </Button>
             </div>
           </div>
         </div>
+
+        {/* RIGHT (media) */}
+        {img && (
+          <figure class="product-benefits__media">
+            <picture>
+              {img.webp && <source srcset={img.webp} type="image/webp" />}
+              {img.png && <source srcset={img.png} type="image/png" />}
+              <img
+                src={img.png ?? img.webp}
+                alt={img.alt}
+                width="630"
+                height="560"
+                loading="eager"
+                decoding="async"
+              />
+            </picture>
+          </figure>
+        )}
       </div>
     </section>
   ) : (
-    <section class="container" aria-live="polite">
-      <p style="opacity:.7">
-        Features content for "{slug}" isn't defined yet. Add it in{" "}
-        <code>src/data/product-features-data.ts</code>.
-      </p>
+    <section class="product-benefits">
+      <div class="container">
+        <p class="product-benefits__fallback">
+          Sorry, we couldn’t load this product’s features.
+        </p>
+      </div>
     </section>
   )
 }
 
 <style>
-  .product-features {
+  /* This is the exact CSS from Product Benefits so the layout/responsiveness match 1:1 */
+  .product-benefits__wrap {
     display: flex;
     flex-direction: column;
     gap: 32px;
+    align-items: stretch;
   }
-
-  .product-features__media {
-    display: block;
-    max-width: 100%;
-    object-fit: cover;
-  }
-  .product-features__media img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 2px;
-  }
-  .product-features__right {
+  .product-benefits__media {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 32px;
-    min-width: 0;
+    order: 1;
   }
-  .product-features__content {
+  .product-benefits__left {
+    display: flex;
+    order: 2;
+  }
+  .product-benefits__content {
     display: flex;
     flex-direction: column;
     gap: 24px;
   }
-  .product-features__header {
+  .product-benefits__header {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
   }
-  .product-features__specs {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .product-features__specs ul {
+  .product-benefits__list {
     list-style: none;
     display: grid;
-    gap: 8px;
+    gap: 10px;
     margin: 0;
     padding: 0;
   }
-  .product-features__specs li {
+  .product-benefits__item {
     display: flex;
     gap: 12px;
-    align-items: center;
+    align-items: flex-start;
   }
-  .product-features__specs-icon {
+  .product-benefits__icon {
     flex-shrink: 0;
+    margin-top: 0.2rem;
+    width: 12px;
+    height: 12px;
+    display: block;
+  }
+  .product-benefits__text {
+    margin: 0;
+    line-height: 1.5;
+  }
+  .product-benefits__cta {
+    margin-top: 8px;
+  }
+  .product-benefits__fallback {
+    margin: 0;
+  }
+  .product-benefits__media {
+    margin: 0;
+    display: block;
+  }
+  .product-benefits__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 63 / 56; /* 630 / 560 */
+    object-fit: cover;
+    border-radius: 2px;
   }
   @media (min-width: 768px) {
-    .product-features__media img {
-      height: 500px;
+    .product-benefits__media img {
+      width: 100%;
+      height: 560px;
+      aspect-ratio: auto;
+      object-fit: cover;
     }
   }
   @media (min-width: 992px) {
-    .product-features__media img {
-      height: 560px;
-    }
-  }
-  @media (min-width: 1200px) {
-    .product-features {
-      display: flex;
+    .product-benefits__wrap {
       flex-direction: row;
       gap: 64px;
+      align-items: center;
+    }
+    .product-benefits__media {
+      max-width: 630px;
+      flex: 0 0 560px;
+      order: 2;
+    }
+    .product-benefits__left {
+      order: 2;
     }
   }
 </style>
