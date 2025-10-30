@@ -58,8 +58,8 @@ export const productHeroData: Record<string, ProductHeroData> = {
       },
     ],
     cta: {
-      label: "Schedule Your Free Consultation",
-      href: "/contact",
+      label: "Schedule a Free Consultation",
+      href: "/contact#contact-form",
     },
     image: createCloudinaryHeroImage(
       "roman1_torpl3",
@@ -86,8 +86,8 @@ export const productHeroData: Record<string, ProductHeroData> = {
       },
     ],
     cta: {
-      label: "Schedule Your Free Consultation",
-      href: "/contact",
+      label: "Schedule a Free Consultation",
+      href: "/contact#contact-form",
     },
     image: createCloudinaryHeroImage(
       "roller_hero_nwvlw9",
@@ -111,11 +111,11 @@ export const productHeroData: Record<string, ProductHeroData> = {
       { term: "Energy Efficiency", value: "High (insulating)" },
     ],
     cta: {
-      label: "Schedule Your Free Consultation",
-      href: "/contact",
+      label: "Schedule a Free Consultation",
+      href: "/contact#contact-form",
     },
     image: createCloudinaryHeroImage(
-      "cellular-1_m1tvtc",
+      "celllular_hero_dolxyb",
       "Energy-efficient cellular shades in a bedroom",
       600,
       750,
@@ -139,8 +139,8 @@ export const productHeroData: Record<string, ProductHeroData> = {
       { term: "Energy Efficiency", value: "Standard" },
     ],
     cta: {
-      label: "Schedule Your Free Consultation",
-      href: "/contact",
+      label: "Schedule a Free Consultation",
+      href: "/contact#contact-form",
     },
     image: createCloudinaryHeroImage(
       "faux-hero_l3dnhj",
@@ -170,8 +170,8 @@ export const productHeroData: Record<string, ProductHeroData> = {
       },
     ],
     cta: {
-      label: "Schedule Your Free Consultation",
-      href: "/contact",
+      label: "Schedule a Free Consultation",
+      href: "/contact#contact-form",
     },
 
     image: createCloudinaryHeroImage(
@@ -202,8 +202,8 @@ export const productHeroData: Record<string, ProductHeroData> = {
       },
     ],
     cta: {
-      label: "Schedule Your Free Consultation",
-      href: "/contact",
+      label: "Schedule a Free Consultation",
+      href: "/contact#contact-form",
     },
     image: createCloudinaryHeroImage(
       "draperies_hero_ijpnmt",
@@ -227,8 +227,8 @@ export const productHeroData: Record<string, ProductHeroData> = {
       { term: "Energy Efficiency", value: "Helps reduce heat gain and glare" },
     ],
     cta: {
-      label: "Schedule Your Free Consultation",
-      href: "/contact",
+      label: "Schedule a Free Consultation",
+      href: "/contact#contact-form",
     },
     image: createCloudinaryHeroImage(
       "exterior_4_doy4sh",
@@ -252,8 +252,8 @@ export const productHeroData: Record<string, ProductHeroData> = {
       { term: "Energy Efficiency", value: "Standard" },
     ],
     cta: {
-      label: "Schedule Your Free Consultation",
-      href: "/contact",
+      label: "Schedule a Free Consultation",
+      href: "/contact#contact-form",
     },
     image: createCloudinaryHeroImage(
       "sheer_hero_ug6gul",
@@ -283,8 +283,8 @@ export const productHeroData: Record<string, ProductHeroData> = {
       },
     ],
     cta: {
-      label: "Schedule Your Free Consultation",
-      href: "/contact",
+      label: "Schedule a Free Consultation",
+      href: "/contact#contact-form",
     },
     image: createCloudinaryHeroImage(
       "natural_benefits_xkcxnr",

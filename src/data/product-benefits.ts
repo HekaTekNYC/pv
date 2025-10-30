@@ -176,7 +176,7 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
     ],
     cta: { text: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryBenefitsImage(
-      "exterior_benefits_pezvya",
+      "exterior_benefits_vj28nq",
       "Exterior shades on a patio providing shade",
       630,
       560,
