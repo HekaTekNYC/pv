@@ -45,11 +45,17 @@ export const productHeroData: Record<string, ProductHeroData> = {
       "Fabric shades that stack into neat folds when raised. Choose liners and lift systems for style, privacy, and light control that fit traditional or modern spaces.",
     specs: [
       { term: "Motorization", value: "Available" },
-      { term: "Light Control", value: "Sheer to room darkening (blackout with liner)" },
+      {
+        term: "Light Control",
+        value: "Sheer to room darkening (blackout with liner)",
+      },
       { term: "Operation", value: "Corded, cordless, or motorized" },
       { term: "Mount", value: "Inside or outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
-      { term: "Energy Efficiency", value: "Standard; improved with interlining" },
+      {
+        term: "Energy Efficiency",
+        value: "Standard; improved with interlining",
+      },
     ],
     cta: {
       label: "Schedule Your Free Consultation",
@@ -74,7 +80,10 @@ export const productHeroData: Record<string, ProductHeroData> = {
       { term: "Operation", value: "Corded, cordless, or motorized" },
       { term: "Mount", value: "Inside or outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
-      { term: "Energy Efficiency", value: "Standard; solar fabrics help reduce heat and glare" },
+      {
+        term: "Energy Efficiency",
+        value: "Standard; solar fabrics help reduce heat and glare",
+      },
     ],
     cta: {
       label: "Schedule Your Free Consultation",
@@ -120,7 +129,10 @@ export const productHeroData: Record<string, ProductHeroData> = {
       "Classic slatted blinds in real wood for warmth or faux wood for moisture resistance. Tilt the slats to manage privacy and view-through.",
     specs: [
       { term: "Motorization", value: "Available (tilt)" },
-      { term: "Light Control", value: "Adjustable slats (privacy to room darkening)" },
+      {
+        term: "Light Control",
+        value: "Adjustable slats (privacy to room darkening)",
+      },
       { term: "Operation", value: "Corded or cordless lift; wand tilt" },
       { term: "Mount", value: "Inside or outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
@@ -138,43 +150,56 @@ export const productHeroData: Record<string, ProductHeroData> = {
     ),
   },
 
-  "shutters": {
+  shutters: {
     slug: "shutters",
     title: "Shutters",
     subtitle:
       "Hardwood or composite panels with adjustable louvers. Durable, architectural, and excellent for privacy and light control.",
     specs: [
       { term: "Motorization", value: "Limited / specialty only" },
-      { term: "Light Control", value: "Adjustable louvers (privacy to room darkening)" },
+      {
+        term: "Light Control",
+        value: "Adjustable louvers (privacy to room darkening)",
+      },
       { term: "Operation", value: "Tilt rod or hidden tilt (no cords)" },
       { term: "Mount", value: "Inside or outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
-      { term: "Energy Efficiency", value: "Standard; helps reduce drafts when closed" },
+      {
+        term: "Energy Efficiency",
+        value: "Standard; helps reduce drafts when closed",
+      },
     ],
     cta: {
       label: "Schedule Your Free Consultation",
       href: "/contact",
     },
+
     image: createCloudinaryHeroImage(
-      "shutters_hero1_ncxjtc",
+      "shutters-modern_gmrrki",
       "Plantation shutters in a bright room",
       600,
       750,
     ),
   },
 
-  "draperies": {
+  draperies: {
     slug: "draperies",
     title: "Draperies",
     subtitle:
       "Custom panels in your choice of fabrics and headers. Add liners for better insulation and true blackout in media and bedroom spaces.",
     specs: [
       { term: "Motorization", value: "Available" },
-      { term: "Light Control", value: "Light filtering to blackout (with lining)" },
+      {
+        term: "Light Control",
+        value: "Light filtering to blackout (with lining)",
+      },
       { term: "Operation", value: "Baton, corded, or motorized" },
       { term: "Mount", value: "Outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
-      { term: "Energy Efficiency", value: "Insulating (with lining/interlining)" },
+      {
+        term: "Energy Efficiency",
+        value: "Insulating (with lining/interlining)",
+      },
     ],
     cta: {
       label: "Schedule Your Free Consultation",
@@ -245,11 +270,17 @@ export const productHeroData: Record<string, ProductHeroData> = {
       "Handcrafted from bamboo, grasses, and reeds to add texture and warmth. Pair with liners to increase privacy and darkening.",
     specs: [
       { term: "Motorization", value: "Available" },
-      { term: "Light Control", value: "Light filtering (room darkening with liner)" },
+      {
+        term: "Light Control",
+        value: "Light filtering (room darkening with liner)",
+      },
       { term: "Operation", value: "Corded, cordless, or motorized" },
       { term: "Mount", value: "Inside or outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
-      { term: "Energy Efficiency", value: "Standard; improved with liner/interlining" },
+      {
+        term: "Energy Efficiency",
+        value: "Standard; improved with liner/interlining",
+      },
     ],
     cta: {
       label: "Schedule Your Free Consultation",
