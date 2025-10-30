@@ -65,3 +65,24 @@ export const bannerServicesData: BannerSplitProps = {
     buttonHref: "/contact#contact-form",
   },
 };
+// Products Page Banner
+export const bannerProductsData: BannerSplitProps = {
+  image: {
+    ...getCloudinaryFourSet(
+      { id: "contact-full-mbl_etwqlk", version: "v1761063769" }, // mobile png
+      { id: "contact-full-mbl_fnlsr7", version: "v1761063769" }, // mobile webp
+      { id: "contact-full-dsk_vmy7vd", version: "v1761063769" }, // desktop webp
+      { id: "contact-full-dsk_tcqnr0", version: "v1761063770" }, // desktop png
+    ),
+    alt: "Professional window treatment installation",
+    width: 1280,
+    height: 854,
+  },
+  content: {
+    title: "Not Sure Which Option is Best for Your Space?",
+    description:
+      "Schedule a complimentary consultation with our skilled installation experts today!",
+    buttonText: "Schedule a Free Consultation",
+    buttonHref: "/contact#contact-form",
+  },
+};
