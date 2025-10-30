@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "optimize:svgs": "svgo -f public/icons --config=svgo.config.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "prettier": "3.6.2",
-    "prettier-plugin-astro": "0.14.1"
+    "prettier-plugin-astro": "0.14.1",
+    "svgo": "^4.0.0"
   }
 }
