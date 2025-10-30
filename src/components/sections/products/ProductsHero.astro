@@ -28,27 +28,26 @@ const productsHeroImg = getCloudinarySrc(
 
     <!-- RIGHT -->
     <div class="products-hero__content">
-      <h2 id="products-hero-title" class="products-hero__title">
-        Explore Our Window Treatment Installation Options
+      <h2 id="products-hero-title">
+        Transform Your Spaces with Beautiful Window Treatments
       </h2>
 
       <div class="products-hero__paragraph">
-        <p class="products-hero__sub">
-          We install beautiful, functional window coverings from Roman to
-          cellular shades, offering styles that enhance your home's comfort and
-          design.
+        <p class="p-subheader">
+          See your home in a whole new light. From selection to installation, we
+          guide you to windows you'll love waking up to every day.
         </p>
-        <p class="products-hero__text">
-          Our professional team installs a wide variety of window coverings,
-          from elegant Roman shades to energy-efficient cellular styles. Each
-          option is tailored to match your home's aesthetic and lifestyle needs,
-          combining beauty, practicality, and lasting quality in every
-          installation.
+        <p>
+          Explore our wide selection of window coverings including Roman shades,
+          cellular shades, and custom blind solutions. Every product is crafted
+          to enhance your home's aesthetic while providing light control,
+          privacy, and energy efficiency. We offer professional measurement and
+          installation to ensure perfect fit and performance.
         </p>
       </div>
 
       <div class="products-hero__cta">
-        <Button href="/products" color="secondary"
+        <Button href="/products#product-gallery" color="secondary"
           >Get to Know Our Products</Button
         >
       </div>
@@ -72,42 +71,22 @@ const productsHeroImg = getCloudinarySrc(
   .products-hero__image {
     display: block;
     width: 100%;
-    height: auto;
+    height: 350px;
     object-fit: cover;
   }
 
-  .products-hero__title {
-    margin: 0 0 16px 0;
-    font-family: var(--ff-heading);
-    font-size: var(--fs-h2);
-    font-weight: var(--fw-bold);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    color: var(--primary);
-  }
-
-  .products-hero__sub {
-    font-family: var(--ff-body);
-    font-size: var(--fs-body-l);
-    line-height: 1.5;
-    color: var(--text);
-    margin: 0 0 12px 0;
+  .products-hero__content h2 {
+    padding-bottom: 16px;
   }
 
   .products-hero__paragraph {
-    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
   .products-hero__paragraph p:first-child {
     padding-bottom: 0;
-  }
-
-  .products-hero__text {
-    font-family: var(--ff-body);
-    font-size: var(--fs-body-r);
-    line-height: 1.5;
-    color: var(--text);
-    margin: 0; /* Remove default margins */
   }
 
   .products-hero__cta {
@@ -115,16 +94,11 @@ const productsHeroImg = getCloudinarySrc(
   }
 
   /* --- Media Queries  --- */
-  @media (min-width: 690px) {
-    .products-hero__title {
-      width: 100%;
-    }
-  }
 
   @media (min-width: 768px) {
     .products-hero__image-container picture,
     .products-hero__image {
-      height: 320px;
+      height: 500px;
       width: 100%;
       object-fit: cover;
       object-position: center 65%;
@@ -135,14 +109,13 @@ const productsHeroImg = getCloudinarySrc(
     .products-hero__container {
       flex-direction: row;
       align-items: center;
-      gap: 40px;
+      gap: 64px;
     }
     .products-hero__image-container {
       width: 50%;
     }
     .products-hero__image-container picture,
     .products-hero__image {
-      width: 100%;
       height: auto;
     }
     .products-hero__content {
