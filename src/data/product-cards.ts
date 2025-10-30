@@ -41,7 +41,7 @@ export const productCards: ProductCards[] = [
     slug: "shutters",
     title: "Shutters",
     blurb: "Architectural louvers with lasting durability.",
-    image: getCloudinarySrc("shutters_hero_sfnp6j", "png", "v1761429840"),
+    image: getCloudinarySrc("shutters_white_dgekto", "png", "v1761838888"),
     alt: "Plantation shutters in bathroom",
     featured: true,
   },

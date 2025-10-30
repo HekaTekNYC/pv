@@ -159,8 +159,9 @@ import { lpServicesData } from "../../../data/services-data";
       width: 50%;
     }
     .lp-services__cards {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: start;
+      gap: 28px;
     }
     .lp-services__card-img {
       height: auto;
@@ -172,12 +173,6 @@ import { lpServicesData } from "../../../data/services-data";
     .lp-services__header {
       display: flex;
       justify-content: space-between;
-    }
-
-    .lp-services__cards {
-      grid-template-columns: repeat(4, 1fr);
-      align-items: start;
-      gap: 28px;
     }
   }
 </style>

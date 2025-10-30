@@ -38,13 +38,15 @@ const aboutClientsImg = getCloudinaryFourSet(
     <div class="about-clients__header">
       <h2 id="clients-heading">Custom Window Solutions for Every Client</h2>
       <div class="about-clients__btn-dsk">
-        <Button href="/contact" color="secondary">Get a Free Estimate</Button>
+        <Button href="/contact#contact-form" color="secondary"
+          >Get a Free Estimate</Button
+        >
       </div>
     </div>
-    <div class="about-clients__grid">
+    <div class="about-clients__grid" role="list">
       {
         aboutClientsData.map(({ num, client, info }) => (
-          <div class="about-clients__item">
+          <div class="about-clients__item" role="listitem">
             <div class="about-clients__num">{num}</div>
             <div class="about-clients__content">
               <h3 class="big-heading">{client}</h3>
@@ -85,7 +87,7 @@ const aboutClientsImg = getCloudinaryFourSet(
 
         <img
           src={aboutClientsImg.desktop.png}
-          alt="Cellular shades in a full length bathroom window"
+          alt="Modern cellular shades installed in a bright bathroom window, showcasing clean lines and light filtration"
           class="about-clients__img"
           width="1290"
           height="854"
@@ -149,7 +151,12 @@ const aboutClientsImg = getCloudinaryFourSet(
     height: auto;
     object-fit: cover;
   }
-
+  @media (min-width: 768px) {
+    .about-clients__img {
+      height: 600px;
+      object-position: top;
+    }
+  }
   @media (min-width: 840px) {
     .about-clients__container {
       gap: 64px;
@@ -165,6 +172,7 @@ const aboutClientsImg = getCloudinaryFourSet(
       display: flex;
       align-items: end;
       justify-content: space-between;
+      gap: 40px;
     }
 
     .about-clients__header h2 {
@@ -182,6 +190,7 @@ const aboutClientsImg = getCloudinaryFourSet(
     }
     .about-clients__img {
       height: 630px;
+      object-position: center;
     }
   }
 </style>

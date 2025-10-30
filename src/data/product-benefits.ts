@@ -134,10 +134,10 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
     ],
     cta: { text: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryBenefitsImage(
-      "shutters_benefits_q7ohpx",
-      "Plantation shutters in a bright sunroom",
-      630,
-      560,
+      "shutters-neutral_bw8sxd",
+      "Neutral tone large panel shutters in a bright sunroom",
+      1280,
+      853,
     ),
   },
 

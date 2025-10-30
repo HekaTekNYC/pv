@@ -42,7 +42,7 @@ export const productEnhanceData: Record<string, ProductEnhanceData> = {
     description:
       "Crafted from a single fabric panel with hidden rods, Roman shades fold into neat pleats when raised. Choose flat, hobbled, or relaxed styles to match your décor. Available in light-filtering or blackout fabrics with corded, cordless, or motorized operation for precise light control and convenience.",
     image: createCloudinaryImage(
-      "roman_enhance_cyrwte",
+      "roman_enhance_m6amyd",
       "Elegant Roman shades enhancing a living room with soft folds",
       1024,
       576,
@@ -102,10 +102,10 @@ export const productEnhanceData: Record<string, ProductEnhanceData> = {
     description:
       "Crafted from premium wood or composite materials, shutters are tailored to each window for a flawless fit. Adjustable louvers offer precise light control and privacy, while divider rails allow independent upper and lower section movement. Their durable construction and timeless style make them a long-term investment in your home’s beauty.",
     image: createCloudinaryImage(
-      "shutters_1_ubl8dx",
+      "shutters-1_bphtpq",
       "Plantation shutters enhancing a bright sunroom",
-      1024,
-      576,
+      1280,
+      853,
     ),
   },
 
@@ -132,10 +132,10 @@ export const productEnhanceData: Record<string, ProductEnhanceData> = {
     description:
       "Outdoor-rated solar screens block up to 90% of solar heat gain while preserving exterior views. Heavy-duty hardware withstands wind and weather, with side channels for added stability. Motorized control with sun and wind sensors provides automatic protection. Ideal for patios, decks, and large sun-facing windows.",
     image: createCloudinaryImage(
-      "exterior_3_k6ni5s",
+      "eterior_enhance_jmpkai",
       "Exterior shades protecting a patio from sun glare",
-      1024,
-      576,
+      1280,
+      902,
     ),
   },
 

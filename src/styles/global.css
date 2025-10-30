@@ -112,6 +112,10 @@ a {
   color: var(--text);
 }
 
+img {
+  border-radius: 2px;
+}
+
 .roboto-text {
   font-family: var(--ff-roboto) !important;
   font-size: var(--fs-body-s);
