@@ -13,7 +13,7 @@ import { productCards } from "../../../data/product-cards";
       <h2 id="products-gallery-title" class="products-gallery__title">
         Stylish Window Coverings for Every Room
       </h2>
-      <p class="products-gallery__intro">
+      <p>
         Discover our curated selection of window treatments, from classic to
         contemporary styles. Each option is expertly installed to enhance your
         space with the perfect balance of beauty, comfort, and functionality.
@@ -24,28 +24,21 @@ import { productCards } from "../../../data/product-cards";
       {
         productCards.map((cat) => (
           <li class="products-gallery__card">
-            <a href={`/products/${cat.slug}`} class="products-gallery__link">
+            <a href={`/products/${cat.slug}`}>
               <div class="products-gallery__media">
-                <picture>
-                  <source srcset={cat.image} type="image/webp" />
-                  <source
-                    srcset={cat.image.replace(".webp", ".png")}
-                    type="image/png"
-                  />
-                  <img
-                    src={cat.image.replace(".webp", ".png")}
-                    alt={cat.title}
-                    width="413"
-                    height="420"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </picture>
+                <img
+                  src={cat.image}
+                  alt={cat.alt}
+                  width="413"
+                  height="420"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
-              <div class="products-gallery__body">
-                <h3 class="products-gallery__card-title">{cat.title}</h3>
-                <p class="products-gallery__blurb">{cat.blurb}</p>
-                <span class="products-gallery__more">
+              <div class="products-gallery__card-body">
+                <h3 class="big-heading">{cat.title}</h3>
+                <p>{cat.blurb}</p>
+                <p class="products-gallery__more">
                   Learn More
                   <svg
                     class="chev"
@@ -63,7 +56,7 @@ import { productCards } from "../../../data/product-cards";
                       stroke-linejoin="round"
                     />
                   </svg>
-                </span>
+                </p>
               </div>
             </a>
           </li>
@@ -89,27 +82,6 @@ import { productCards } from "../../../data/product-cards";
     gap: 16px;
   }
 
-  .products-gallery__title {
-    margin: 0;
-    font-family: var(--ff-heading);
-    font-weight: var(--fw-bold);
-    font-size: var(--fs-h2);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    color: var(--primary);
-    min-width: 0;
-  }
-
-  .products-gallery__intro {
-    margin: 0;
-    font-family: var(--ff-body);
-    font-size: var(--fs-body-r);
-    line-height: 1.6;
-    color: var(--text);
-    max-width: 66ch;
-    min-width: 0; /* allow wrapping in grid track */
-  }
-
   /* ===== Cards grid ===== */
   .products-gallery__grid {
     display: grid;
@@ -120,69 +92,33 @@ import { productCards } from "../../../data/product-cards";
     width: 100%;
   }
 
-  .products-gallery__card {
-    list-style: none;
-    width: 100%;
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .products-gallery__link {
+  .products-gallery__card a {
     display: grid;
-    grid-template-rows: auto 1fr;
-    text-decoration: none;
-    color: inherit;
+    grid-template-columns: 1fr;
     width: 100%;
-    height: 100%;
+    overflow: hidden;
+    gap: 15px;
   }
 
   .products-gallery__media {
     margin: 0;
     overflow: hidden;
     background: #e9ecef;
+    aspect-ratio: 343 / 360;
     width: 100%;
   }
 
-  .products-gallery__media {
-    aspect-ratio: 343 / 360;
-  }
-
-  .products-gallery__media picture,
   .products-gallery__media img {
     width: 100%;
     height: 100%;
     display: block;
-  }
-
-  .products-gallery__media img {
     object-fit: cover;
   }
 
-  .products-gallery__body {
+  .products-gallery__card-body {
     display: grid;
     gap: 8px;
-    padding: 12px 16px 16px 16px;
     width: 100%;
-    box-sizing: border-box;
-  }
-
-  .products-gallery__card-title {
-    margin: 0;
-    font-family: var(--ff-heading);
-    font-weight: var(--fw-semibold, 600);
-    font-size: var(--fs-h3-lg);
-    line-height: 1.35;
-    color: var(--primary);
-    word-wrap: break-word;
-  }
-
-  .products-gallery__blurb {
-    margin: 0 0 6px 0;
-    font-family: var(--ff-body);
-    font-size: 16px;
-    line-height: 1.5;
-    color: var(--text);
-    word-wrap: break-word;
   }
 
   .products-gallery__more {
@@ -190,8 +126,8 @@ import { productCards } from "../../../data/product-cards";
     align-items: center;
     gap: 6px;
     font-weight: var(--fw-semibold, 600);
-    font-size: 16px;
     color: var(--secondary);
+    padding-top: 5px;
   }
   .products-gallery__more .chev {
     transform: translateY(1px);
