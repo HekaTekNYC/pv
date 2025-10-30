@@ -4,9 +4,15 @@ interface Props {
   href?: string;
   type?: "button" | "submit" | "reset";
   variant?: "default" | "nav";
+  ariaLabel?: string;
 }
 
-const { color = "secondary", href = "", type = "button" } = Astro.props;
+const {
+  color = "secondary",
+  href = "",
+  type = "button",
+  ariaLabel = "",
+} = Astro.props;
 
 const colorClass = {
   secondary: "btn-secondary",
@@ -17,11 +23,11 @@ const colorClass = {
 
 {
   href ? (
-    <a href={href} class={`btn ${colorClass}`}>
+    <a href={href} class={`btn ${colorClass}`} aria-label={ariaLabel}>
       <slot />
     </a>
   ) : (
-    <button type={type} class={`btn ${colorClass}`}>
+    <button type={type} class={`btn ${colorClass}`} aria-label={ariaLabel}>
       <slot />
     </button>
   )

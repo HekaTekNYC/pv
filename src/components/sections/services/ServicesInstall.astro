@@ -24,19 +24,19 @@ const servicesInstall = getCloudinarySrc(
           <h3 class="big-heading">Professional Installation</h3>
           <div class="services-line"></div>
           <p>
-            Our trained installers ensure your blinds, shades, and drapery are
-            mounted with precision and care — guaranteeing smooth operation, a
-            perfect fit, and a flawless finish.
+            We personally handle every installation with precision and care —
+            ensuring smooth operation, perfect fit, and flawless results for
+            your home.
           </p>
         </div>
-        <ul>
+        <ul role="list">
           <li>
             <div class="services-install__shield">
               <Shield aria-hidden="true" />
             </div>
             <p>
-              <span class="bold">Precision & Fit:</span> installs done right the
-              first time
+              <span class="services-strong">Precision & Fit:</span> installs done
+              right the first time
             </p>
           </li>
           <li>
@@ -45,8 +45,8 @@ const servicesInstall = getCloudinarySrc(
             </div>
 
             <p>
-              <span class="bold">Expert Handling:</span> care for homes and businesses
-              alike
+              <span class="services-strong">Expert Handling:</span> care for homes
+              and businesses alike
             </p>
           </li>
           <li>
@@ -54,8 +54,8 @@ const servicesInstall = getCloudinarySrc(
               <Shield aria-hidden="true" />
             </div>
             <p>
-              <span class="bold">Lasting Quality:</span> durable, smooth and built
-              to perform
+              <span class="services-strong">Lasting Quality:</span> durable, smooth
+              and built to perform
             </p>
           </li>
         </ul>
@@ -66,19 +66,20 @@ const servicesInstall = getCloudinarySrc(
           <div class="services-line"></div>
 
           <p>
-            Enjoy modern convenience with motorized shades and blinds that move
-            at the touch of a button — or automatically throughout the day.
+            Upgrade your window treatments with motorized controls for
+            effortless operation — from remote controls to smart home
+            integration.
           </p>
         </div>
 
         <p class="services-install__cta">
-          Learn more about our
+          Discover products with
           <a
-            href="/motorized"
+            href="/products"
             class="services-install__cta-link"
             aria-label="Learn more about our motorized window treatment solutions"
           >
-            <span class="services-bold">Motorized Solutions</span>
+            <span class="services-bold">Motorized Features</span>
             <Arrow aria-hidden="true" class="services-install__arrow" />
           </a>
         </p>
@@ -96,7 +97,10 @@ const servicesInstall = getCloudinarySrc(
           </p>
         </div>
         <div class="services-install__btn">
-          <Button href="/contact" color="secondary"
+          <Button
+            href="/contact#contact-form"
+            color="secondary"
+            aria-label="Get a free estimate for installation services"
             >Get a Free Estimate Today</Button
           >
         </div>
@@ -146,6 +150,12 @@ const servicesInstall = getCloudinarySrc(
     gap: 12px;
   }
 
+  .services-strong {
+    color: var(--primary) !important;
+    font-size: var(--fs-body-r);
+    font-weight: var(--fw-semibold);
+  }
+
   .services-line {
     border: none;
     height: 0.094rem;
@@ -159,20 +169,18 @@ const servicesInstall = getCloudinarySrc(
   .services-install__card li {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 15px;
   }
 
   .services-install__shield {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 32px;
-    width: 32px;
     color: var(--secondary);
   }
   .services-install__shield svg {
-    width: 100%;
-    height: 100%;
+    height: 25px;
+    width: 25px;
     fill: currentColor;
   }
 
@@ -253,18 +261,15 @@ const servicesInstall = getCloudinarySrc(
       max-width: 70%;
     }
     .services-install__card ul {
-      display: grid;
-      gap: 24px;
+      gap: 22px;
     }
     .services-install__card li {
-      display: flex;
-      align-items: center;
-      gap: 18px;
+      gap: 10px;
     }
 
-    .services-install__shield {
-      height: 20px;
-      width: 20px;
+    .services-install__shield svg {
+      height: 23px;
+      width: 23px;
     }
   }
 
