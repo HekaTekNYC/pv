@@ -5,22 +5,22 @@ import ContentBlock from "../../ui/ContentBlock.astro";
 <section class="services-design" aria-labelledby="services-design-title">
   <div class="services-design__container container" id="design-estimate">
     <div class="services-design__left">
+      <div class="services-design__image-container">
+        <img src="/images/temp1.png" alt="temp image" />
+      </div>
+    </div>
+    <div class="services-design__right">
       <ContentBlock
         title="Start with a Free Estimate, End with a Beautiful Plan"
         introText="We make it easy to get started. Every project begins with a free estimate and expert guidance tailored to your home or business."
         description="Once you’re ready to move forward, our design consultation helps you plan every detail — from layout and function to the perfect window treatments for your space."
         cta={{
           text: "Schedule a Free Estimate",
-          href: "/",
+          href: "/contact#contact-form",
           color: "secondary",
         }}
         id="services-design-title"
       />
-    </div>
-    <div class="services-design__right">
-      <div class="services-design__image-container">
-        <img src="/images/temp1.png" alt="temp image" />
-      </div>
     </div>
   </div>
 </section>
@@ -30,13 +30,6 @@ import ContentBlock from "../../ui/ContentBlock.astro";
     display: flex;
     flex-direction: column;
     gap: 48px;
-  }
-  .services-design__left {
-    order: 2;
-  }
-
-  .services-design__right {
-    order: 1;
   }
 
   .services-design__image-container {
@@ -70,12 +63,10 @@ import ContentBlock from "../../ui/ContentBlock.astro";
     }
 
     .services-design__left {
-      order: 1;
       width: 50%;
     }
 
     .services-design__right {
-      order: 2;
       width: 50%;
     }
     .services-design__image-container {
