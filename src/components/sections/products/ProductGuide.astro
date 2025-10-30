@@ -19,7 +19,7 @@ const productsGuideImg = getCloudinarySrc(
         <h2 id="product-choosing__title" class="product-guide__title">
           How to Choose the Right Window Treatment
         </h2>
-        <p class="product-guide__intro">
+        <p>
           Choosing the right window treatment involves carefully considering
           your style, light control needs, and privacy preferences. Explore
           various options to beautifully enhance your space while reflecting
@@ -40,7 +40,6 @@ const productsGuideImg = getCloudinarySrc(
           height="911"
           loading="lazy"
           decoding="async"
-          style="width:100%;height:auto"
         />
       </div>
     </div>
@@ -50,7 +49,7 @@ const productsGuideImg = getCloudinarySrc(
       <ul class="product-guide__list" role="list">
         {
           productGuide.map((card) => (
-            <li class="product-guide__card">
+            <li class="product-guide__card" role="listitem">
               <div class="product-guide__card-icon">
                 <img
                   src={card.blob.src}
@@ -58,7 +57,7 @@ const productsGuideImg = getCloudinarySrc(
                   aria-hidden="true"
                   width="100"
                   height="103"
-                  loading="eager"
+                  loading="lazy"
                   class="product-guide__blob"
                 />
                 <img
@@ -66,13 +65,13 @@ const productsGuideImg = getCloudinarySrc(
                   alt={card.icon.alt}
                   width={card.icon.width}
                   height={card.icon.height}
-                  loading="eager"
+                  loading="lazy"
                   class="product-guide__icon"
                 />
               </div>
               <div class="product-guide__card-body">
                 <h3 class="big-heading">{card.header}</h3>
-                <p class="product-guide__card-text">{card.text}</p>
+                <p>{card.text}</p>
               </div>
             </li>
           ))
@@ -83,40 +82,29 @@ const productsGuideImg = getCloudinarySrc(
 </section>
 
 <style>
-  .product-guide {
-    padding-block: clamp(2.5rem, 6vw, 5rem);
-  }
-
   .product-guide__container {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(2rem, 4vw, 3rem);
+
+    gap: 48px;
   }
 
-  .product-guide__header {
-    margin-bottom: clamp(3rem, 6vw, 4rem);
+  .product-guide__left {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
   }
 
-  .product-guide__intro {
-    margin: 0 0 2rem;
-    font-family: var(--ff-body);
-    font-size: clamp(1rem, 2vw, var(--fs-body-r));
-    line-height: 1.6;
-    color: var(--text);
-    max-width: 65ch;
+  .product-guide__header h2 {
+    padding-bottom: 16px;
   }
 
   .product-guide__cta {
-    margin-top: 1rem;
+    margin-top: 32px;
   }
 
   .product-guide__media {
-    margin: 1.5rem 0 0 0;
-    border-radius: 2px;
     overflow: hidden;
-    background: #e9ecef;
     width: 100%;
-    aspect-ratio: 4/3;
   }
 
   .product-guide__media img {
@@ -129,171 +117,70 @@ const productsGuideImg = getCloudinarySrc(
   /* Cards list */
   .product-guide__list {
     display: grid;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .product-guide__card {
     list-style: none;
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
     align-items: start;
     background: var(--grey-10, #f4f5f6);
     border-radius: 2px;
-    padding: 1rem;
-    height: fit-content;
-    min-height: 120px;
-    position: relative;
-    transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
-  }
-
-  .product-guide__card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  .product-guide__card:focus-within {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-  }
-
-  .product-guide__card-link {
-    display: contents;
-    text-decoration: none;
-    color: inherit;
+    padding: 24px;
   }
 
   .product-guide__card-icon {
     position: relative;
-    width: 80px;
-    height: 82.58px;
-    display: grid;
-    place-items: center;
+    width: 100px;
+    height: 103.22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .product-guide__blob {
     position: absolute;
     top: 0;
     left: 0;
-    width: 80px;
-    height: 82.58px;
+    width: 100px;
+    height: 103.22px;
     z-index: 1;
   }
 
   .product-guide__icon {
     position: relative;
+    width: 48px;
+    height: 48px;
     z-index: 2;
-    width: 28px;
-    height: 28px;
-    object-fit: contain;
   }
 
   .product-guide__card-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 82.58px;
+    gap: 12px;
   }
 
   /* Media Queries */
   @media (min-width: 768px) {
-    .product-guide__container {
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
-      gap: clamp(2rem, 4vw, 3rem);
-    }
-
-    .product-guide__media {
-      aspect-ratio: 3/2;
-      margin-top: 2rem;
-    }
-
-    .product-guide__list {
-      gap: 1.25rem;
-      grid-auto-rows: 1fr;
-    }
-
     .product-guide__card {
-      grid-template-columns: 90px 1fr;
-      padding: 1.25rem;
-      min-height: 140px;
-      height: 100%;
+      display: flex;
+      flex-direction: row;
       align-items: center;
     }
 
     .product-guide__card-icon {
-      width: 90px;
-      height: 92.9px;
-    }
-
-    .product-guide__blob {
-      width: 90px;
-      height: 92.9px;
-    }
-
-    .product-guide__icon {
-      width: 30px;
-      height: 30px;
-    }
-
-    .product-guide__card-body {
-      min-height: 92.9px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .product-guide__container {
-      grid-template-columns: minmax(400px, 1fr) minmax(350px, 1fr);
-      gap: clamp(3rem, 5vw, 4rem);
-    }
-
-    .product-guide__media {
-      aspect-ratio: 522/356;
-      max-width: 522px;
-    }
-
-    .product-guide__list {
-      gap: 1.5rem;
-    }
-
-    .product-guide__card {
-      grid-template-columns: 100px 1fr;
-      padding: 1.5rem 1.25rem;
-      min-height: 160px;
-    }
-
-    .product-guide__card-icon {
-      width: 100px;
-      height: 103.22px;
-    }
-
-    .product-guide__blob {
-      width: 100px;
-      height: 103.22px;
-    }
-
-    .product-guide__icon {
-      width: 48px;
-      height: 48px;
-    }
-
-    .product-guide__card-body {
-      min-height: 103.22px;
+      flex-shrink: 0;
     }
   }
 
   @media (min-width: 1200px) {
     .product-guide__container {
-      grid-template-columns: minmax(500px, 1fr) minmax(400px, 1fr);
-      gap: 4rem;
-    }
-
-    .product-guide__intro {
-      max-width: 62ch;
+      grid-template-columns: 45% 55%;
+      gap: 64px;
     }
   }
 </style>

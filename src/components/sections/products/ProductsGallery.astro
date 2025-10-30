@@ -23,8 +23,11 @@ import { productCards } from "../../../data/product-cards";
     <ul class="products-gallery__grid" role="list">
       {
         productCards.map((cat) => (
-          <li class="products-gallery__card">
-            <a href={`/products/${cat.slug}`}>
+          <li class="products-gallery__card" role="listitem">
+            <a
+              href={`/products/${cat.slug}`}
+              aria-label={`Learn more about ${cat.title}`}
+            >
               <div class="products-gallery__media">
                 <img
                   src={cat.image}
@@ -135,20 +138,18 @@ import { productCards } from "../../../data/product-cards";
 
   /* ===== Media Queries ===== */
 
-  @media (min-width: 500px) {
+  @media (min-width: 700px) {
     .products-gallery__grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-    }
-  }
-  @media (min-width: 690px) {
-    .products-gallery__header {
-      grid-template-columns: 1fr;
-      gap: 12px;
     }
   }
 
   @media (min-width: 820px) {
+    .products-gallery__header {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
     .products-gallery__container {
       gap: 64px;
     }

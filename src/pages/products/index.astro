@@ -3,6 +3,8 @@ import Inner from "../../layouts/Inner.astro";
 import ProductsHero from "../../components/sections/products/ProductsHero.astro";
 import ProductsGallery from "../../components/sections/products/ProductsGallery.astro";
 import ProductGuide from "../../components/sections/products/ProductGuide.astro";
+import CTABannerSplit from "../../components/sections/shared/CTABannerSplit.astro";
+import { bannerProductsData } from "../../data/banner-data";
 ---
 
 <Inner
@@ -12,5 +14,9 @@ import ProductGuide from "../../components/sections/products/ProductGuide.astro"
 >
   <ProductsHero />
   <ProductsGallery />
+  <CTABannerSplit
+    image={bannerProductsData.image}
+    content={bannerProductsData.content}
+  />
   <ProductGuide />
 </Inner>
