@@ -34,7 +34,7 @@ if (!data) {
     <div class="product-hero__right">
       <div class="product-hero__content">
         <div class="product-hero__header">
-          <h2>{data.title}</h2>
+          <h2 class="product-hero__nowrap">{data.title}</h2>
           {data.subtitle && <p>{data.subtitle}</p>}
         </div>
 
@@ -77,8 +77,14 @@ if (!data) {
     .product-hero__media {
       display: block;
       max-width: 100%;
+    
       object-fit: cover;
     }
+    
+  .product-hero__nowrap {
+    text-wrap: initial;
+  }
+
 
     .product-hero__media img {
       display: block;
@@ -132,7 +138,7 @@ if (!data) {
       width: 12px;
       height: 12px;
       display: block;
-      margin-top: 4px; /* aligns dot with first text line */
+      margin-top: 4px; 
     }
 
     .product-hero__specs-term {
@@ -146,15 +152,13 @@ if (!data) {
 
     @media (min-width: 768px) {
       .product-hero__media img {
-        height: 690px;
+        height: 500px;
       }
     }
 
     @media (min-width: 992px) {
-      .product-hero__media img {
-        height: 690px;
-      }
       .product-hero__grid {
+        gap: 64px;
         grid-template-columns: repeat(2, 1fr);
       }
     }

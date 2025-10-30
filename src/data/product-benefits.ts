@@ -19,7 +19,7 @@ export interface ProductBenefitsData {
   };
 }
 
-// Helper function to create Cloudinary image objects
+// Helper: Cloudinary image object generator
 function createCloudinaryBenefitsImage(
   publicId: string,
   alt: string,
@@ -40,23 +40,20 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
     slug: "roman-shades",
     title: "Benefits of Roman Shades",
     description:
-      "Roman shades combine elegant fabric aesthetics with functional operation, offering tailored folds and versatile styling for any room.",
+      "Roman shades combine elegant fabric style with smooth functionality, offering tailored folds and versatile design for any room.",
     benefits: [
-      "Soft, elegant fabric appearance that enhances any decor",
+      "Soft, elegant fabric look that complements any decor",
       "Neat, space-saving folds when raised",
       "Excellent light control and privacy options",
-      "Professional installation ensures perfect fit and smooth operation",
-      "Good insulation properties with the right fabric choices",
+      "Professional installation ensures a perfect fit and smooth operation",
+      "Improved insulation when lined with blackout or thermal fabrics",
     ],
-    cta: {
-      text: "Explore Roman Shades",
-      href: "/contact",
-    },
+    cta: { text: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryBenefitsImage(
       "roman_benefits_n6sdi6",
       "Elegant Roman shades in a formal living room setting",
       630,
-      550,
+      560,
     ),
   },
 
@@ -64,23 +61,20 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
     slug: "roller-shades",
     title: "Benefits of Roller Shades",
     description:
-      "Roller shades provide clean, minimalist styling with straightforward operation and excellent light control for modern living.",
+      "Roller shades deliver a clean, modern look with effortless operation and precise light control for everyday comfort.",
     benefits: [
-      "Clean, minimalist look that works with any decor",
-      "Excellent light control from soft filtering to complete blackout",
-      "Easy to operate and maintain for daily use",
-      "Space-efficient design that doesn't block views when open",
-      "Professional installation ensures smooth rolling action",
+      "Minimalist design that complements any interior",
+      "Fabric choices from sheer to blackout for total versatility",
+      "Smooth operation and easy daily use",
+      "Compact roll keeps views open when raised",
+      "Professional installation ensures smooth performance",
     ],
-    cta: {
-      text: "Explore Roller Shades",
-      href: "/contact",
-    },
+    cta: { text: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryBenefitsImage(
-      "roller_benefits_bfc8uh",
+      "roller_benefits_b8eh9y",
       "Modern roller shades in a contemporary kitchen",
       630,
-      550,
+      560,
     ),
   },
 
@@ -88,23 +82,20 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
     slug: "cellular-shades",
     title: "Benefits of Cellular Shades",
     description:
-      "Cellular shades offer superior energy efficiency with unique honeycomb design that provides excellent insulation and comfort.",
+      "Cellular shades feature a unique honeycomb design that traps air for exceptional insulation and energy efficiency.",
     benefits: [
-      "Excellent insulation that helps reduce energy costs",
-      "Multiple light control options for any time of day",
-      "Top-down/bottom-up operation available for lighting flexibility",
-      "Professional installation ensures optimal energy performance",
-      "Clean, modern appearance with functional benefits",
+      "Helps regulate temperature and reduce energy costs",
+      "Multiple opacity levels for flexible light control",
+      "Top-down/bottom-up lift for adjustable privacy",
+      "Professional installation ensures a precise, custom fit",
+      "Clean, tailored appearance that suits any décor",
     ],
-    cta: {
-      text: "Explore Cellular Shades",
-      href: "/contact",
-    },
+    cta: { text: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryBenefitsImage(
-      "cellular_benefits_ri3m7r",
+      "card-cellular_oss5u3",
       "Cellular shades providing insulation in a bedroom",
       630,
-      550,
+      560,
     ),
   },
 
@@ -112,23 +103,20 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
     slug: "wood-faux-blinds",
     title: "Benefits of Wood & Faux Wood Blinds",
     description:
-      "Wood and faux wood blinds offer timeless style with precise light control and durable construction for lasting beauty.",
+      "Wood and faux wood blinds offer timeless style, precise light control, and long-lasting durability.",
     benefits: [
-      "Precise light control with adjustable slats",
-      "Timeless look that complements any decor style",
-      "Durable construction that stands up to daily use",
-      "Faux wood options resist moisture in humid areas",
-      "Professional installation ensures smooth operation and perfect alignment",
+      "Adjustable slats provide customizable light control",
+      "Classic look that enhances both modern and traditional spaces",
+      "Durable materials that stand up to daily use",
+      "Faux wood options resist moisture and humidity",
+      "Professional installation ensures smooth tilt and perfect alignment",
     ],
-    cta: {
-      text: "Explore Wood Blinds",
-      href: "/contact",
-    },
+    cta: { text: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryBenefitsImage(
       "faux-benefits_pcmjtf",
       "Wood blinds in a traditional home office",
       630,
-      550,
+      560,
     ),
   },
 
@@ -136,23 +124,20 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
     slug: "shutters",
     title: "Benefits of Shutters",
     description:
-      "Shutters provide permanent, built-in window treatments that add architectural character and lasting value to your home.",
+      "Shutters add architectural elegance and long-term value, providing permanent light and privacy control.",
     benefits: [
-      "Exceptional durability that adds value to your home",
-      "Perfect fit with our custom measuring and installation",
-      "Excellent control over light and privacy",
-      "Works beautifully with unusual window shapes and sizes",
-      "Lasting quality that stands the test of time",
+      "Exceptional durability and timeless appeal",
+      "Custom measured for a perfect, built-in fit",
+      "Adjustable louvers for precise light and airflow",
+      "Ideal for unique window shapes and designs",
+      "Professional installation ensures long-lasting performance",
     ],
-    cta: {
-      text: "Explore Shutters",
-      href: "/contact",
-    },
+    cta: { text: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryBenefitsImage(
-      "shutters_benefits_q7ohpx",
-      "Plantation shutters in a bright sunroom",
-      630,
-      550,
+      "shutters-neutral_bw8sxd",
+      "Neutral tone large panel shutters in a bright sunroom",
+      1280,
+      853,
     ),
   },
 
@@ -160,23 +145,20 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
     slug: "draperies",
     title: "Benefits of Draperies",
     description:
-      "Draperies offer the ultimate in customization and elegance, providing superior insulation and complete light control.",
+      "Draperies offer premium customization, insulation, and light control with a luxurious finish.",
     benefits: [
-      "Superior insulation that can reduce energy costs",
-      "Endless fabric and style choices for complete customization",
-      "Elegant, luxurious appearance that elevates any room",
-      "Complete light blocking when fully lined",
-      "Expert installation ensures beautiful drape and operation",
+      "Enhanced insulation that helps reduce energy costs",
+      "Endless fabric, lining, and hardware options",
+      "Elegant, high-end look that transforms any space",
+      "Complete blackout available with full lining",
+      "Expert installation ensures beautiful drape and smooth operation",
     ],
-    cta: {
-      text: "Explore Draperies",
-      href: "/contact",
-    },
+    cta: { text: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryBenefitsImage(
       "draperies_benefits_g4vqus",
       "Elegant draperies in a formal dining room",
       630,
-      550,
+      560,
     ),
   },
 
@@ -184,23 +166,20 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
     slug: "exterior-shades",
     title: "Benefits of Exterior Shades",
     description:
-      "Exterior shades block heat before it enters your home, providing superior sun protection and energy savings.",
+      "Exterior shades block sunlight before it reaches your windows, improving comfort and energy efficiency.",
     benefits: [
-      "Superior heat blocking compared to interior treatments",
-      "Significant reduction in cooling costs during warm months",
-      "Protects furniture and flooring from UV damage",
-      "Extends usable outdoor living space",
-      "Expert installation ensures weather resistance and durability",
+      "Blocks solar heat before it enters your home",
+      "Can lower indoor temperatures and cooling costs",
+      "Protects furniture and flooring from fading",
+      "Extends usable outdoor space for patios or decks",
+      "Expert installation ensures durability and weather resistance",
     ],
-    cta: {
-      text: "Explore Exterior Shades",
-      href: "/contact",
-    },
+    cta: { text: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryBenefitsImage(
       "exterior_benefits_pezvya",
       "Exterior shades on a patio providing shade",
       630,
-      550,
+      560,
     ),
   },
 
@@ -208,23 +187,20 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
     slug: "sheer-layered",
     title: "Benefits of Sheer & Layered Shades",
     description:
-      "Sheer layered shades offer ultimate lighting flexibility, allowing soft filtered light or complete privacy as needed.",
+      "Sheer and layered shades allow you to adjust light and privacy seamlessly while maintaining a soft, modern look.",
     benefits: [
-      "Perfect lighting control from soft diffusion to complete blackout",
-      "Maintains your view while providing daytime privacy",
-      "Modern, sophisticated look that works with contemporary decor",
-      "Excellent protection for your furnishings from UV rays",
-      "Professional installation ensures all layers operate perfectly together",
+      "Soft daylighting with optional room-darkening fabrics",
+      "Maintains views while offering daytime privacy",
+      "Modern, sleek style that suits contemporary interiors",
+      "blocks UV rays to protect furnishings",
+      "Professional installation ensures flawless alignment and movement",
     ],
-    cta: {
-      text: "Explore Layered Shades",
-      href: "/contact",
-    },
+    cta: { text: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryBenefitsImage(
-      "sheer_benefits_jvmpvq",
+      "sheer_benefits3_puwtv4",
       "Sheer layered shades in a modern living room",
       630,
-      550,
+      560,
     ),
   },
 
@@ -232,30 +208,27 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
     slug: "natural-woven",
     title: "Benefits of Natural Woven Shades",
     description:
-      "Natural woven shades bring organic texture and eco-friendly materials to your space with soft, diffused lighting.",
+      "Natural woven shades add organic warmth and texture with eco-friendly materials and gentle, diffused light.",
     benefits: [
-      "Sustainable, eco-friendly materials from renewable sources",
-      "Unique natural textures that add character to any room",
-      "Soft, diffused light that creates a warm atmosphere",
-      "Lightweight and easy to operate",
-      "Professional installation showcases their natural beauty",
+      "Crafted from renewable materials like bamboo and grasses",
+      "Distinctive woven patterns create natural variation",
+      "Soft, diffused light enhances a relaxing atmosphere",
+      "Lightweight design that’s easy to lift and lower",
+      "Professional installation highlights their natural beauty",
     ],
-    cta: {
-      text: "Explore Natural Shades",
-      href: "/contact",
-    },
+    cta: { text: "Explore More Shade Styles", href: "/contact" },
     image: createCloudinaryBenefitsImage(
       "natural_jbvcba",
       "Natural woven bamboo shades in a casual space",
       630,
-      550,
+      560,
     ),
   },
 };
 
-// Helper functions
+// Helpers
 export function getProductBenefits(slug: string): ProductBenefitsData | null {
-  return productBenefitsData[slug] || null;
+  return productBenefitsData[slug] ?? null;
 }
 
 export function getAllProductSlugs(): string[] {

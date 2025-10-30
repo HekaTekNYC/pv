@@ -20,7 +20,7 @@ const { title, introText, description, cta, id = "" } = Astro.props;
   <div class="content-block__info">
     <h2 id={id} class="content-block__title">{title}</h2>
     <div class="content-block__p">
-      <p class="content-block__intro-text">{introText}</p>
+      <p class="p-subheader">{introText}</p>
       <p>{description}</p>
     </div>
   </div>
@@ -49,9 +49,5 @@ const { title, introText, description, cta, id = "" } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 12px;
-  }
-
-  .content-block__intro-text {
-    font-size: var(--fs-body-l);
   }
 </style>

@@ -8,11 +8,11 @@ const aboutMissionImg = getCloudinaryFourSet(
   { id: "about-lp-mbl_erzsiz", version: "v1761351705" }, // mobile webp
   { id: "about-lp-mbl_iuub7o", version: "v1761351708" }, // mobile png
   { id: "about-lp-dsk_ptemfd", version: "v1761351705" }, // desktop webp
-  { id: "about-lp-dsk_ptemfd", version: "v1761351705" }, // desktop png (same version/id)
+  { id: "about-lp-dsk_ptemfd", version: "v1761351705" }, // desktop png
 );
 ---
 
-<section class="about-mission">
+<section class="about-mission" aria-labelledby="mission-heading" id="mission">
   <div class="about-mission__container container">
     <div class="about-mission__image-container">
       <picture class="about-mission__picture">
@@ -52,7 +52,9 @@ const aboutMissionImg = getCloudinaryFourSet(
       </picture>
     </div>
     <div class="about-mission__content">
-      <h2 class="about-mission__title">Family-Owned, Trusted for 15 Years</h2>
+      <h2 class="about-mission__title" id="mission-heading">
+        Family-Owned Window Treatment Experts
+      </h2>
       <div class="about-mission__paragraph">
         <p>
           We’re a local, family-run business delivering beautiful, custom window
@@ -71,14 +73,15 @@ const aboutMissionImg = getCloudinaryFourSet(
             <MissionCard
               icon={card.icon}
               title={card.title}
-              alt={card.alt}
               text={card.text}
               headerClass={card.headerClass}
             />
           ))
         }
       </div>
-      <Button href="/about" color="secondary">Get to Know Our Story</Button>
+      <Button href="/about#about-meet" color="secondary"
+        >Get to Know Our Story</Button
+      >
     </div>
   </div>
 </section>

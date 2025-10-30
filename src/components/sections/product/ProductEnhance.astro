@@ -1,86 +1,87 @@
 ---
+import { getProductEnhance } from "../../../data/product-enhance";
 
+export interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props as Props;
+const data = getProductEnhance(slug);
 ---
 
-<section class="product-enhance">
-  <div class="container">
-    <div class="product-enhance__content">
-      <h2>How Roman Shades Enhance Your Space</h2>
-      <h3 class="p-subheader">
-        Roman shades combine drapery softness with shade functionality, offering
-        tailored folds and fabric options for versatile style and comfort.
-      </h3>
-      <p>
-        Crafted from a single fabric panel with hidden rods, Roman shades fold
-        into neat pleats when raised. Choose from cord, cordless, or motorized
-        systems for beauty and convenience. Smart home integration provides
-        effortless control.
-      </p>
-    </div>
-    <div class="product-enhance__media container--wide">
-      <picture>
-        <source
-          srcset="/images/product-video.png"
-          type="image/png"
-          media="(max-width: 1023px)"
-        />
-        <img
-          src="/images/product-video.png"
-          alt="Roman shade video"
-          width="1024"
-          height="576"
-          loading="eager"
-          decoding="async"
-        />
-      </picture>
-    </div>
-  </div>
-</section>
+{
+  data ? (
+    <section class="product-enhance">
+      <div class="product-enhance__container container">
+        <div class="product-enhance__content">
+          <h2>{data.title}</h2>
+          <p class="bold">{data.subtitle}</p>
+          <p>{data.description}</p>
+        </div>
+        <div class="product-enhance__media ">
+          <picture>
+            <source
+              srcset={data.image.webp}
+              type="image/webp"
+              media="(max-width: 1023px)"
+            />
+            <source
+              srcset={data.image.png}
+              type="image/png"
+              media="(max-width: 1023px)"
+            />
+            <img
+              src={data.image.png}
+              alt={data.image.alt}
+              width={data.image.width}
+              height={data.image.height}
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
+        </div>
+      </div>
+    </section>
+  ) : null
+}
 
 <style>
   .product-enhance {
+    background: var(--grey-10);
+  }
+  .product-enhance__container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 48px;
   }
-
   .product-enhance__content {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 8px;
+
+    max-width: 1040px;
   }
 
   .product-enhance__content h2 {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    padding-bottom: 16px;
   }
 
   .product-enhance__content h3 {
     font-weight: var(--fw-regular);
   }
-
-  .product-enhance__content p {
-  }
-
-  .product-enhance__media {
+  .product-enhance__content p.bold {
+    padding-bottom: 8px;
+    max-width: 900px;
+    width: 100%;
   }
 
   .product-enhance__media img {
     width: 100%;
     height: auto;
     border-radius: 2px;
-  }
-
-  /* Media Queries */
-  @media (min-width: 768px) {
-    .product-enhance__content {
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .product-enhance__content {
-    }
   }
 </style>

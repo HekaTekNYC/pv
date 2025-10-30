@@ -2,7 +2,7 @@
 import Button from "./Button.astro";
 ---
 
-<section class="contact-form" aria-labelledby="contact-form-title">
+<div class="contact-form" aria-labelledby="contact-form-title">
   <header class="contact-form__header">
     <h2 id="contact-form-title">Get in Touch</h2>
     <p>
@@ -23,7 +23,6 @@ import Button from "./Button.astro";
           placeholder="Full name"
           class="contact-form__input"
           autocomplete="name"
-          required
           required
           aria-required="true"
         />
@@ -91,7 +90,7 @@ import Button from "./Button.astro";
       <Button color="secondary" type="submit">Submit</Button>
     </div>
   </form>
-</section>
+</div>
 
 <style>
   .contact-form {
