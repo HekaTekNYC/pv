@@ -210,7 +210,9 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const dropdownToggle = document.querySelector(".nav-bar__dropdown-toggle");
+    const dropdownToggle = document.querySelector(
+      ".nav-bar__dropdown-toggle",
+    ) as HTMLAnchorElement;
     const dropdown = document.querySelector(".nav-bar__dropdown");
 
     if (!dropdownToggle || !dropdown) return;
@@ -286,14 +288,61 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
       }
     }
 
-    // Only prevent default on mobile
-    if (window.innerWidth < 950) {
+    // Check if it's a touch device
+    function isTouchDevice() {
+      return "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    }
+
+    const isDesktop = window.innerWidth >= 950;
+    const isTouch = isTouchDevice();
+
+    if (isDesktop && isTouch) {
+      let tapCount = 0;
+      let tapTimer: ReturnType<typeof setTimeout> | null = null;
+
+      dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        tapCount++;
+
+        if (tapCount === 1) {
+          // First tap - set short timer for double tap detection
+          tapTimer = setTimeout(() => {
+            // Single tap - open dropdown
+            toggleDropdown();
+            tapCount = 0;
+            tapTimer = null;
+          }, 200);
+        } else if (tapCount === 2) {
+          if (tapTimer) {
+            clearTimeout(tapTimer);
+          }
+          window.location.href = dropdownToggle.href;
+          tapCount = 0;
+          tapTimer = null;
+        }
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener("click", handleDocumentClick);
+    } else if (window.innerWidth < 950) {
       dropdownToggle.addEventListener("click", (e) => {
         e.preventDefault();
         toggleDropdown();
       });
 
       document.addEventListener("click", handleDocumentClick);
+    } else {
+      dropdownToggle.addEventListener("click", (e) => {});
     }
+
+    // Handle window resize
+    window.addEventListener("resize", () => {
+      if (
+        (window.innerWidth >= 950 && !isDesktop) ||
+        (window.innerWidth < 950 && isDesktop)
+      ) {
+        window.location.reload();
+      }
+    });
   });
 </script>

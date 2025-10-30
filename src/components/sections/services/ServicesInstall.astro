@@ -1,7 +1,5 @@
 ---
 import Button from "../../ui/Button.astro";
-import Shield from "../../../assets/icons/shield.svg?raw";
-import Arrow from "../../../assets/icons/arrow.svg?raw";
 
 import { getCloudinarySrc } from "../../../config/cloudinary";
 
@@ -32,7 +30,13 @@ const servicesInstall = getCloudinarySrc(
         <ul role="list">
           <li>
             <div class="services-install__shield">
-              <Shield aria-hidden="true" />
+              <img
+                src="/icons/shield.svg"
+                alt="shiep"
+                aria-hidden="true"
+                width="25"
+                height="25"
+              />
             </div>
             <p>
               <span class="services-strong">Precision & Fit:</span> installs done
@@ -41,7 +45,13 @@ const servicesInstall = getCloudinarySrc(
           </li>
           <li>
             <div class="services-install__shield">
-              <Shield aria-hidden="true" />
+              <img
+                src="/icons/shield.svg"
+                alt=""
+                aria-hidden="true"
+                width="25"
+                height="25"
+              />
             </div>
 
             <p>
@@ -51,7 +61,13 @@ const servicesInstall = getCloudinarySrc(
           </li>
           <li>
             <div class="services-install__shield">
-              <Shield aria-hidden="true" />
+              <img
+                src="/icons/shield.svg"
+                alt=""
+                aria-hidden="true"
+                width="25"
+                height="25"
+              />
             </div>
             <p>
               <span class="services-strong">Lasting Quality:</span> durable, smooth
@@ -80,7 +96,11 @@ const servicesInstall = getCloudinarySrc(
             aria-label="Learn more about our motorized window treatment solutions"
           >
             <span class="services-bold">Motorized Features</span>
-            <Arrow aria-hidden="true" class="services-install__arrow" />
+            <img
+              src="/icons/arrow.svg"
+              aria-hidden="true"
+              class="services-install__arrow"
+            />
           </a>
         </p>
       </div>
