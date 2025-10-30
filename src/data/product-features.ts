@@ -52,7 +52,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "roman_features_mmitvs",
       "Roman shade close-up by a window with plant",
       630,
-      550,
+      560,
     ),
   },
 
@@ -73,7 +73,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "roller_features_yuvygf",
       "Modern roller shades filtering light",
       630,
-      550,
+      560,
     ),
   },
 
@@ -94,7 +94,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "cellular_features1_uxj42r",
       "Cellular shades adding insulation",
       630,
-      550,
+      560,
     ),
   },
 
@@ -115,7 +115,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "faux-features_bm5isv",
       "Wood and faux wood blinds with wide slats in a bright room",
       630,
-      550,
+      560,
     ),
   },
 
@@ -136,7 +136,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "shutters_hero_zqqgg6",
       "Plantation shutters with adjustable louvers",
       630,
-      550,
+      560,
     ),
   },
 
@@ -157,7 +157,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "draperies_features_ckfuux",
       "Custom draperies on a track with ripplefold header",
       630,
-      550,
+      560,
     ),
   },
 
@@ -178,7 +178,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "exterior_2_bq7lp6",
       "Exterior shades lowering over a patio opening",
       630,
-      550,
+      560,
     ),
   },
 
@@ -199,7 +199,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "sheer_benefits2_oekwmi",
       "Layered shades showing alternating sheer and solid bands",
       630,
-      550,
+      560,
     ),
   },
 
@@ -220,7 +220,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "natural_features2_ezsr5a",
       "Natural woven bamboo shades adding texture to a room",
       630,
-      550,
+      560,
     ),
   },
 };
