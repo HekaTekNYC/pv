@@ -19,7 +19,8 @@ const img = product?.image;
 
 {
   product ? (
-    <section class="product-benefits">{/* reuse exact layout */}
+    <section class="product-benefits">
+      {/* reuse exact layout */}
       <div class="product-benefits__wrap">
         {/* LEFT (content) */}
         <div class="product-benefits__left">
@@ -169,7 +170,9 @@ const img = product?.image;
       align-items: center;
     }
     .product-benefits__media {
-      order: 21;
+      max-width: 630px;
+      flex: 0 0 560px;
+      order: 2;
     }
     .product-benefits__left {
       order: 2;
