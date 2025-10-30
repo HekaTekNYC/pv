@@ -123,10 +123,7 @@ img {
   color: var(--text);
 }
 
-.bold {
-  color: var(--primary);
-  font-size: var(--fs-body-l);
-}
+
 
 .divider {
   border: none;

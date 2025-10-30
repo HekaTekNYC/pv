@@ -19,23 +19,23 @@ const img = product?.image;
 
 {
   product ? (
-    <section class="product-benefits">
+    <section class="product-features">
       {/* reuse exact layout */}
-      <div class="product-benefits__wrap">
+      <div class="product-features__wrap">
         {/* LEFT (content) */}
-        <div class="product-benefits__left">
-          <div class="product-benefits__content">
-            <header class="product-benefits__header">
+        <div class="product-features__left">
+          <div class="product-features__content">
+            <header class="product-features__header">
               <h2>{product.title}</h2>
               {product.description && <p>{product.description}</p>}
             </header>
 
-            <div class="product-benefits__specs">
-              <ul class="product-benefits__list" role="list">
+            <div class="product-features__specs">
+              <ul class="product-features__list" role="list">
                 {lines.map((line) => (
-                  <li class="product-benefits__item">
+                  <li class="product-features__item">
                     <img
-                      class="product-benefits__icon"
+                      class="product-features__icon"
                       src="/icons/bullet-point.svg"
                       alt=""
                       aria-hidden="true"
@@ -44,13 +44,13 @@ const img = product?.image;
                       loading="eager"
                       decoding="async"
                     />
-                    <p class="product-benefits__text">{line}</p>
+                    <p class="product-features__text">{line}</p>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div class="product-benefits__cta">
+            <div class="product-features__cta">
               <Button color="secondary" href={product.cta.href}>
                 {product.cta.label}
               </Button>
@@ -60,7 +60,7 @@ const img = product?.image;
 
         {/* RIGHT (media) */}
         {img && (
-          <figure class="product-benefits__media">
+          <figure class="product-features__media">
             <picture>
               {img.webp && <source srcset={img.webp} type="image/webp" />}
               {img.png && <source srcset={img.png} type="image/png" />}
@@ -78,9 +78,9 @@ const img = product?.image;
       </div>
     </section>
   ) : (
-    <section class="product-benefits">
+    <section class="product-features">
       <div class="container">
-        <p class="product-benefits__fallback">
+        <p class="product-features__fallback">
           Sorry, we couldn’t load this product’s features.
         </p>
       </div>
@@ -90,64 +90,64 @@ const img = product?.image;
 
 <style>
   /* This is the exact CSS from Product Benefits so the layout/responsiveness match 1:1 */
-  .product-benefits__wrap {
+  .product-features__wrap {
     display: flex;
     flex-direction: column;
     gap: 32px;
     align-items: stretch;
   }
-  .product-benefits__media {
+  .product-features__media {
     display: flex;
     order: 1;
   }
-  .product-benefits__left {
+  .product-features__left {
     display: flex;
     order: 2;
   }
-  .product-benefits__content {
+  .product-features__content {
     display: flex;
     flex-direction: column;
     gap: 24px;
   }
-  .product-benefits__header {
+  .product-features__header {
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
-  .product-benefits__list {
+  .product-features__list {
     list-style: none;
     display: grid;
     gap: 10px;
     margin: 0;
     padding: 0;
   }
-  .product-benefits__item {
+  .product-features__item {
     display: flex;
     gap: 12px;
     align-items: flex-start;
   }
-  .product-benefits__icon {
+  .product-features__icon {
     flex-shrink: 0;
     margin-top: 0.2rem;
     width: 12px;
     height: 12px;
     display: block;
   }
-  .product-benefits__text {
+  .product-features__text {
     margin: 0;
     line-height: 1.5;
   }
-  .product-benefits__cta {
+  .product-features__cta {
     margin-top: 8px;
   }
-  .product-benefits__fallback {
+  .product-features__fallback {
     margin: 0;
   }
-  .product-benefits__media {
+  .product-features__media {
     margin: 0;
     display: block;
   }
-  .product-benefits__media img {
+  .product-features__media img {
     display: block;
     width: 100%;
     height: auto;
@@ -156,7 +156,7 @@ const img = product?.image;
     border-radius: 2px;
   }
   @media (min-width: 768px) {
-    .product-benefits__media img {
+    .product-features__media img {
       width: 100%;
       height: 560px;
       aspect-ratio: auto;
@@ -164,18 +164,18 @@ const img = product?.image;
     }
   }
   @media (min-width: 992px) {
-    .product-benefits__wrap {
+    .product-features__wrap {
       flex-direction: row;
       gap: 64px;
       align-items: center;
     }
-    .product-benefits__media {
-      max-width: 630px;
-      flex: 0 0 560px;
+    .product-features__media {
+      /* max-width: 630px; */
+      /* flex: 0 0 560px; */
       order: 2;
     }
-    .product-benefits__left {
-      order: 2;
+    .product-features__left {
+      order: 1;
     }
   }
 </style>
