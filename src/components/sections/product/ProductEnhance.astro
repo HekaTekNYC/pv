@@ -11,10 +11,10 @@ const data = getProductEnhance(slug);
 
 {
   data ? (
-    <section class="product-enhance">
+    <section class="product-enhance" aria-labelledby="product-enhance-title">
       <div class="product-enhance__container container">
         <div class="product-enhance__content">
-          <h2>{data.title}</h2>
+          <h2 id="product-enhance-title">{data.title}</h2>
           <p class="p-subheader">{data.subtitle}</p>
           <p>{data.description}</p>
         </div>
@@ -35,7 +35,7 @@ const data = getProductEnhance(slug);
               alt={data.image.alt}
               width={data.image.width}
               height={data.image.height}
-              loading="eager"
+              loading="lazy"
               decoding="async"
             />
           </picture>
@@ -60,7 +60,6 @@ const data = getProductEnhance(slug);
     flex-direction: column;
     align-items: center;
     text-align: center;
-
     max-width: 1040px;
   }
 
@@ -68,20 +67,32 @@ const data = getProductEnhance(slug);
     display: flex;
     flex-direction: column;
     padding-bottom: 16px;
+    max-width: 800px;
   }
 
-  .product-enhance__content h3 {
-    font-weight: var(--fw-regular);
-  }
-  .product-enhance__content p.bold {
+  .product-enhance__content .p-subheader {
     padding-bottom: 8px;
     max-width: 900px;
     width: 100%;
   }
 
+  .product-enhance__media {
+    width: 100%;
+    display: block;
+  }
   .product-enhance__media img {
     width: 100%;
     height: auto;
-    border-radius: 2px;
+    object-fit: cover;
+  }
+
+  @media (min-width: 992px) {
+    .product-enhance__container {
+      gap: 64px;
+    }
+
+    .product-enhance__media img {
+      height: 600px;
+    }
   }
 </style>
