@@ -13,7 +13,7 @@ import Button from "../../ui/Button.astro";
           class="about-meet__image"
           width="630"
           height="731"
-          loading="lazy"
+          loading="eager"
           decoding="async"
         />
       </picture>
@@ -27,19 +27,23 @@ import Button from "../../ui/Button.astro";
 
       <div class="about-meet__paragraph">
         <p class="p-subheader">
-          Jerry and Sarah Fry bring expertise, warmth, and personal care to
-          every project, treating clients like friends and neighbors.
+          Jerry Fry brings expertise, warmth, and personal care to every
+          project, treating clients like friends and neighbors.
         </p>
         <p>
-          With over 15 years of experience, Jerry and Sarah combine professional
-          skill with genuine hospitality. As owners and operators, they handle
-          each step—from consultation to installation—ensuring every detail
-          meets their high standards and every client feels valued.
+          With over 15 years of experience, Jerry combines professional skill
+          with genuine hospitality. As owner and operator, he handles each
+          step—from consultation to installation—ensuring every detail meets his
+          high standards and every client feels valued.
         </p>
       </div>
 
       <div class="about-meet__cta">
-        <Button href="/about/mission" color="secondary">
+        <Button
+          href="/about#mission"
+          color="secondary"
+          aria-label="Learn more about our company mission and values"
+        >
           Get to Know Our Mission
         </Button>
       </div>
@@ -49,7 +53,7 @@ import Button from "../../ui/Button.astro";
           <div class="about-meet__stars-inner"></div>
         </div>
         <h3 class="small-heading">100% Client Satisfaction</h3>
-        <p class="about-meet__card-text">
+        <p>
           Our clients trust us for transparent, hassle-free solutions tailored
           to your needs.
         </p>
@@ -92,7 +96,7 @@ import Button from "../../ui/Button.astro";
   }
 
   .about-meet__card {
-    margin-top: 64px;
+    margin-top: 48px;
     background: var(--grey-10);
     border-radius: 2px;
     padding: 24px;
@@ -113,24 +117,22 @@ import Button from "../../ui/Button.astro";
     background-size: 24px 24px;
   }
 
+  .about-meet__card p {
+    padding-top: 4px;
+  }
+
   /* --- Media Queries --- */
   @media (min-width: 690px) {
     .about-meet__title {
       width: 100%;
     }
-    /* .about-meet__image {
-      height: 420px;
-      width: 100%;
-      object-fit: cover;
-      object-position: center 65%;
-    } */
   }
 
   @media (min-width: 1024px) {
     .about-meet__container {
       flex-direction: row;
       align-items: stretch;
-      gap: 40px;
+      gap: 64px;
       min-height: 600px;
     }
     .about-meet__image-container {
