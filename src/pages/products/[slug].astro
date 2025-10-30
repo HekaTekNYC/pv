@@ -6,11 +6,8 @@ import ProductFeatures from "../../components/sections/product/ProductFeatures.a
 import ProductEnhance from "../../components/sections/product/ProductEnhance.astro";
 import CTABannerSplit from "../../components/sections/shared/CTABannerSplit.astro";
 import { bannerLPData } from "../../data/banner-data";
-
 import { PRODUCT_SLUGS } from "../../data/products";
-// import { getProductHero } from "../../data/product-hero";
 import { getProductBenefits } from "../../data/product-benefits";
-// import { getProductFeatures } from "../../data/product-features";
 
 export async function getStaticPaths() {
   return PRODUCT_SLUGS.map((slug) => ({ params: { slug } }));
