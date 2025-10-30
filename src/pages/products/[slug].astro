@@ -8,9 +8,9 @@ import CTABannerSplit from "../../components/sections/shared/CTABannerSplit.astr
 import { bannerLPData } from "../../data/banner-data";
 
 import { PRODUCT_SLUGS } from "../../data/products";
-import { getProductHero } from "../../data/product-hero";
+// import { getProductHero } from "../../data/product-hero";
 import { getProductBenefits } from "../../data/product-benefits";
-import { getProductFeatures } from "../../data/product-features";
+// import { getProductFeatures } from "../../data/product-features";
 
 export async function getStaticPaths() {
   return PRODUCT_SLUGS.map((slug) => ({ params: { slug } }));
@@ -18,7 +18,6 @@ export async function getStaticPaths() {
 
 const slug = Astro.params.slug as (typeof PRODUCT_SLUGS)[number];
 
-// grab something to name the page nicely
 const benefits = getProductBenefits(slug);
 const pageTitle = benefits
   ? benefits.title.replace(/^Benefits of\s+/, "")
