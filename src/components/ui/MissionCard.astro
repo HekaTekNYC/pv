@@ -2,18 +2,17 @@
 interface MissionCardProps {
   headerClass?: string;
   icon?: string;
-  alt: string;
   title: string;
   text: string;
 }
 
-const { headerClass = "", icon = "", alt, title, text } = Astro.props;
+const { headerClass = "", icon = "", title, text } = Astro.props;
 ---
 
 <div class="mission-card">
   <div class="mission-card__header">
-    <div class="mission-card__icon">
-      <img src={icon} alt={alt} height="20px" width="20px" />
+    <div class="mission-card__icon" aria-hidden="true">
+      <img src={icon} alt="" height="20px" width="20px" />
     </div>
     <h3 class={`mission-card__title ${headerClass}`}>
       {title}

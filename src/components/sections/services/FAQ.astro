@@ -23,28 +23,41 @@ const FAQImg = getCloudinarySrc("natural-2-crop_ja7kqn", "png", "v1761588660");
     <div class="faq__right">
       <div class="faq__accordian" role="region" aria-label="FAQ Accordion">
         {
-          installationFAQs.map((faq) => (
+          installationFAQs.map((faq, index) => (
             <div class="faq__item">
-              <div class="faq__header" tabindex="0">
+              <div
+                class="faq__header"
+                role="button"
+                tabindex="0"
+                aria-expanded="false"
+                aria-controls={`faq-answer-${index}`}
+              >
                 <h3 class="big-heading faq__question">{faq.question}</h3>
                 <div class="faq__toggle-container">
                   <img
                     src="/icons/down-arrow.svg"
-                    alt="dark green down caret"
+                    alt=""
                     class="faq__toggle-down"
                     loading="lazy"
                     decoding="async"
                   />
                   <img
                     src="/icons/cancel-x.svg"
-                    alt="dark green x"
+                    alt=""
                     class="faq__toggle-x"
                     loading="lazy"
                     decoding="async"
                   />
                 </div>
               </div>
-              <p class="faq__answer">{faq.answer}</p>
+              <p
+                class="faq__answer"
+                id={`faq-answer-${index}`}
+                role="region"
+                aria-hidden="true"
+              >
+                {faq.answer}
+              </p>
             </div>
           ))
         }

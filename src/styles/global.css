@@ -120,7 +120,6 @@ a {
 }
 
 .bold {
-
   color: var(--primary);
   font-size: var(--fs-body-l);
 }
@@ -164,8 +163,16 @@ a {
   gap: 48px;
 }
 
+#contact-form,
+#home-contact-form {
+  scroll-margin-top: 48px;
+}
+
 /* --- Media Queries --- */
 @media (min-width: 768px) {
+  #contact-form {
+    scroll-margin-top: 100px;
+  }
 }
 
 @media (min-width: 1024px) {

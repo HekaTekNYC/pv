@@ -67,12 +67,27 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     width: 10.54px;
     height: 6.25px;
     transform: rotate(-90deg);
-    transition: transform 0.2s ease;
+    transition: transform 0.4s ease;
     margin-left: auto;
     color: var(--text);
+    margin-top: 2px;
   }
   .nav-bar__dropdown.open .nav-bar__caret {
     transform: rotate(0deg);
+  }
+
+  .nav-bar__dropdown-link.active {
+    color: var(--primary);
+    font-weight: 600;
+    background-color: var(--neutral-lighter);
+  }
+
+  .nav-bar__dropdown-toggle.active {
+    color: var(--neutral) !important;
+  }
+
+  .nav-bar__dropdown-toggle.active .nav-bar__caret {
+    color: var(--neutral) !important;
   }
 
   .nav-bar__dropdown.open .nav-bar__dropdown-menu {
@@ -109,7 +124,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     border-bottom: none;
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: 950px) {
     .nav-bar__dropdown {
       position: relative;
     }
@@ -182,8 +197,9 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     }
 
     .nav-bar__dropdown:hover .nav-bar__caret {
-      transform: none;
+      transform: rotate(180deg);
       color: var(--neutral-lighter);
+      margin-top: 0;
     }
     /* Also style the caret when open */
     .nav-bar__dropdown.open .nav-bar__caret {
@@ -199,8 +215,43 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
 
     if (!dropdownToggle || !dropdown) return;
 
+    // Active page highlighting for dropdown links
+    const dropdownLinks = document.querySelectorAll(".nav-bar__dropdown-link");
+    const currentPath = window.location.pathname;
+
+    dropdownLinks.forEach((link) => {
+      const href = link.getAttribute("href");
+
+      if (!href) return;
+
+      // Handle relative URLs
+      const fullUrl = href.startsWith("http")
+        ? href
+        : `${window.location.origin}${href.startsWith("/") ? href : `/${href}`}`;
+
+      try {
+        const linkUrl = new URL(fullUrl);
+
+        if (linkUrl.pathname === currentPath) {
+          link.classList.add("active");
+
+          const dropdown = link.closest(".nav-bar__dropdown");
+          const dropdownToggle = dropdown?.querySelector(
+            ".nav-bar__dropdown-toggle",
+          );
+          if (dropdownToggle) {
+            dropdownToggle.classList.add("active");
+          }
+        } else {
+          link.classList.remove("active");
+        }
+      } catch (error) {
+        console.warn("Invalid URL:", href);
+      }
+    });
+
+    // Dropdown Functionality
     function toggleDropdown() {
-      // Add null checks for both elements
       if (!dropdown || !dropdownToggle) return;
 
       const isOpen = dropdown.classList.contains("open");
@@ -223,7 +274,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
       }
     }
 
-    function handleDocumentClick(e: { target: Node | null }) {
+    function handleDocumentClick(e) {
       if (
         !dropdown ||
         !dropdownToggle ||
@@ -236,7 +287,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     }
 
     // Only prevent default on mobile
-    if (window.innerWidth < 992) {
+    if (window.innerWidth < 950) {
       dropdownToggle.addEventListener("click", (e) => {
         e.preventDefault();
         toggleDropdown();

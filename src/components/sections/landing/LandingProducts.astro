@@ -87,12 +87,12 @@ const featuredCards = productCards.filter((card) => card.featured);
     text-decoration: none;
     color: inherit;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .card:hover,
   .card:focus-within {
-    transform: translateY(-2px);
+    transform: translateY(-4px);
   }
 
   .lp-products-card__media {
@@ -107,12 +107,12 @@ const featuredCards = productCards.filter((card) => card.featured);
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.35s ease;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .card:hover .lp-products-card__media img,
   .card:focus-within .lp-products-card__media img {
-    transform: scale(1.03);
+    transform: scale(1.05);
   }
 
   .lp-products-card__overlay {
@@ -140,9 +140,8 @@ const featuredCards = productCards.filter((card) => card.featured);
       rgba(40, 43, 48, 0.45) 30%,
       rgba(26, 26, 26, 0) 50%
     );
-    transition:
-      background 0.5s ease,
-      transform 0.5s ease;
+
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     z-index: 0;
   }
 
@@ -172,10 +171,8 @@ const featuredCards = productCards.filter((card) => card.featured);
     opacity: 0;
     max-height: 0;
     transform: translateY(6px);
-    transition:
-      opacity 0.3s ease,
-      transform 0.3s ease,
-      max-height 0.3s ease;
+
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     color: var(--white);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
     overflow: hidden;
@@ -198,11 +195,6 @@ const featuredCards = productCards.filter((card) => card.featured);
   }
 
   @media (min-width: 768px) {
-    .lp-products__header {
-      grid-template-columns: 1fr 1fr;
-      align-items: end;
-      gap: 40px;
-    }
     .lp-products__grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -213,6 +205,11 @@ const featuredCards = productCards.filter((card) => card.featured);
   }
 
   @media (min-width: 1024px) {
+    .lp-products__header {
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 40px;
+    }
     .lp-products__grid {
       gap: 28px;
     }

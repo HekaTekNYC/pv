@@ -40,7 +40,7 @@ export const bannerLPData: BannerSplitProps = {
     description:
       "Bring your vision to life with custom-designed window coverings that combine beauty, function, and expert care. Let's create a PerfectView—together.",
     buttonText: "Request Your Free Consultation",
-    buttonHref: "/contact",
+    buttonHref: "#home-contact-form",
   },
 };
 
@@ -62,6 +62,6 @@ export const bannerServicesData: BannerSplitProps = {
     description:
       "From your first estimate to installation, we make the process simple and seamless. Our team helps you find the right treatments and ensures every detail fits perfectly.",
     buttonText: "Schedule Your Free Consultation",
-    buttonHref: "/contact",
+    buttonHref: "/contact#contact-form",
   },
 };

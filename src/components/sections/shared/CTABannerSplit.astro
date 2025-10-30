@@ -5,7 +5,7 @@ import Button from "../../ui/Button.astro";
 const { image, content } = Astro.props as BannerSplitProps;
 ---
 
-<section class="banner-split">
+<section class="banner-split" aria-labelledby="banner-split-title">
   <div class="banner-split__image">
     <picture>
       <!-- Mobile first -->
@@ -47,7 +47,7 @@ const { image, content } = Astro.props as BannerSplitProps;
   <div class="banner-split__overlay"></div>
   <div class="banner-split__container container">
     <div class="banner-split__info">
-      <h2>{content.title}</h2>
+      <h2 id="banner-split-title">{content.title}</h2>
       <p>{content.description}</p>
       <Button href={content.buttonHref} color="neutral" variant="default">
         {content.buttonText}
