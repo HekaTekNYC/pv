@@ -47,7 +47,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Corded or cordless lift options",
       "Works in both modern and traditional interiors",
     ],
-    cta: { label: "Explore More Shade Styles", href: "/contact" },
+    cta: { label: "Explore More Shade Styles", href: "/products" },
     image: createCloudinaryImage(
       "roman_features_mmitvs",
       "Roman shade close-up by a window with plant",
@@ -68,7 +68,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Wide widths available for large spans",
       "Excellent UV and glare reduction options",
     ],
-    cta: { label: "Explore More Shade Styles", href: "/contact" },
+    cta: { label: "Explore More Shade Styles", href: "/products" },
     image: createCloudinaryImage(
       "roller_features_yuvygf",
       "Modern roller shades filtering light",
@@ -89,7 +89,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Corded or cordless lift options",
       "Slim stack height when raised",
     ],
-    cta: { label: "Explore More Shade Styles", href: "/contact" },
+    cta: { label: "Explore More Shade Styles", href: "/products" },
     image: createCloudinaryImage(
       "cellular_features1_uxj42r",
       "Cellular shades adding insulation",
@@ -97,6 +97,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       560,
     ),
   },
+  
 
   "wood-faux-blinds": {
     slug: "wood-faux-blinds",
@@ -110,7 +111,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Decorative tapes and valances for a finished look",
       "Faux wood resists humidity and warping in damp areas",
     ],
-    cta: { label: "Explore More Shade Styles", href: "/contact" },
+    cta: { label: "Explore More Shade Styles", href: "/products" },
     image: createCloudinaryImage(
       "faux-features_bm5isv",
       "Wood and faux wood blinds with wide slats in a bright room",
@@ -131,7 +132,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Inside or outside mount with custom frame profiles",
       "Excellent privacy and light management; helps reduce drafts when closed",
     ],
-    cta: { label: "Explore More Shade Styles", href: "/contact" },
+    cta: { label: "Explore More Shade Styles", href: "/products" },
     image: createCloudinaryImage(
       "shutters_hero_zqqgg6",
       "Plantation shutters with adjustable louvers",
@@ -152,7 +153,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Cordless baton wands for clean, simple control",
       "Precise stack-back planning to keep views clear",
     ],
-    cta: { label: "Explore More Shade Styles", href: "/contact" },
+    cta: { label: "Explore More Shade Styles", href: "/products" },
     image: createCloudinaryImage(
       "draperies_features_ckfuux",
       "Custom draperies on a track with ripplefold header",
@@ -173,7 +174,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Manual crank or clutch operation (no power required)",
       "Significant UV reduction to help protect furnishings",
     ],
-    cta: { label: "Explore More Shade Styles", href: "/contact" },
+    cta: { label: "Explore More Shade Styles", href: "/products" },
     image: createCloudinaryImage(
       "exterior_2_bq7lp6",
       "Exterior shades lowering over a patio opening",
@@ -194,7 +195,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Chain or cordless control for smooth, precise adjustment",
       "Strong UV filtering while maintaining daylight",
     ],
-    cta: { label: "Explore More Shade Styles", href: "/contact" },
+    cta: { label: "Explore More Shade Styles", href: "/products" },
     image: createCloudinaryImage(
       "sheer_benefits2_oekwmi",
       "Layered shades showing alternating sheer and solid bands",
@@ -215,7 +216,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Roman fold styles with clean stacks when raised",
       "Top-down/bottom-up available on select configurations",
     ],
-    cta: { label: "Explore More Shade Styles", href: "/contact" },
+    cta: { label: "Explore More Shade Styles", href: "/products" },
     image: createCloudinaryImage(
       "natural_features2_ezsr5a",
       "Natural woven bamboo shades adding texture to a room",
