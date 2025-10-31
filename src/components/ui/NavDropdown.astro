@@ -1,0 +1,348 @@
+---
+interface Link {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  triggerText: string;
+  links: Link[];
+  triggerHref?: string;
+}
+
+const { triggerText, links, triggerHref = "#" } = Astro.props;
+---
+
+<li class="nav-bar__dropdown">
+  <a
+    href={triggerHref}
+    class="nav-bar__link nav-bar__dropdown-toggle"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    {triggerText}
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="nav-bar__caret"
+      width="24"
+      height="24"
+      fill="none"
+      aria-hidden="true"
+      viewBox="6.75 8.88 10.54 6.25"
+      ><path
+        d="M17.0002 9.17C16.8128 8.98375 16.5594 8.87921 16.2952 8.87921C16.031 8.87921 15.7776 8.98375 15.5902 9.17L12.0002 12.71L8.46019 9.17C8.27283 8.98375 8.01938 8.87921 7.75519 8.87921C7.49101 8.87921 7.23756 8.98375 7.05019 9.17C6.95646 9.26297 6.88207 9.37357 6.8313 9.49543C6.78053 9.61729 6.75439 9.74799 6.75439 9.88C6.75439 10.012 6.78053 10.1427 6.8313 10.2646C6.88207 10.3864 6.95646 10.497 7.05019 10.59L11.2902 14.83C11.3832 14.9237 11.4938 14.9981 11.6156 15.0489C11.7375 15.0997 11.8682 15.1258 12.0002 15.1258C12.1322 15.1258 12.2629 15.0997 12.3848 15.0489C12.5066 14.9981 12.6172 14.9237 12.7102 14.83L17.0002 10.59C17.0939 10.497 17.1683 10.3864 17.2191 10.2646C17.2699 10.1427 17.296 10.012 17.296 9.88C17.296 9.74799 17.2699 9.61729 17.2191 9.49543C17.1683 9.37357 17.0939 9.26297 17.0002 9.17Z"
+        fill="currentColor"></path></svg
+    >
+  </a>
+
+  <!-- Dropdown Menu -->
+  <ul class="nav-bar__dropdown-menu" role="menu">
+    {
+      links.map((link) => (
+        <li
+          role="none"
+          class:list={[
+            "nav-bar__dropdown-item",
+            link.label === "All Products" && "all-products-item",
+          ]}
+        >
+          <a href={link.href} class="nav-bar__dropdown-link" role="menuitem">
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</li>
+
+<style>
+  .nav-bar__dropdown > .nav-bar__dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .nav-bar__caret {
+    width: 10.54px;
+    height: 6.25px;
+    transform: rotate(-90deg);
+    transition: transform 0.4s ease;
+    margin-left: auto;
+    color: var(--text);
+    margin-top: 2px;
+  }
+  .nav-bar__dropdown.open .nav-bar__caret {
+    transform: rotate(0deg);
+  }
+
+  .nav-bar__dropdown-link.active {
+    color: var(--primary);
+    font-weight: 600;
+    background-color: var(--neutral-lighter);
+  }
+
+  .nav-bar__dropdown-toggle.active {
+    color: var(--neutral) !important;
+  }
+
+  .nav-bar__dropdown-toggle.active .nav-bar__caret {
+    color: var(--neutral) !important;
+  }
+
+  .nav-bar__dropdown.open .nav-bar__dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-bar__dropdown .nav-bar__dropdown-menu {
+    display: none;
+    margin-top: 10px;
+    background-color: var(--neutral-lightest);
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  .nav-bar__dropdown.open .nav-bar__dropdown-menu {
+    display: block;
+  }
+
+  .nav-bar__dropdown.open .nav-bar__dropdown-toggle {
+    color: var(--primary);
+  }
+
+  .nav-bar__dropdown-link {
+    display: block;
+    color: var(--text);
+    font-size: var(--fs-body-r);
+    padding: 14px 12px;
+    width: 100%;
+    border-bottom: 1px solid var(--grey-10);
+  }
+  .nav-bar__dropdown-menu li:last-child .nav-bar__dropdown-link {
+    border-bottom: none;
+  }
+
+  @media (min-width: 950px) {
+    .nav-bar__dropdown {
+      position: relative;
+    }
+    .nav-bar__dropdown::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: transparent;
+    }
+
+    .nav-bar__dropdown .nav-bar__dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 7px;
+      display: block;
+      min-width: 220px;
+      width: auto;
+      height: auto;
+      background: var(--white);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 9999;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition:
+        opacity 0.2s ease,
+        transform 0.3s ease;
+      pointer-events: none;
+    }
+
+    .all-products-item {
+      display: none;
+    }
+
+    .nav-bar__dropdown:hover .nav-bar__dropdown-menu,
+    .nav-bar__dropdown.open .nav-bar__dropdown-menu {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .nav-bar__dropdown:hover .nav-bar__dropdown-toggle {
+      transform: none;
+      color: var(--neutral-lighter);
+    }
+    .nav-bar__dropdown.open .nav-bar__dropdown-toggle {
+      color: var(--neutral-lighter) !important;
+    }
+
+    .nav-bar__dropdown-link {
+      padding: 14px 16px;
+      white-space: nowrap;
+    }
+
+    .nav-bar__dropdown-link:hover {
+      background-color: var(--neutral-lighter);
+    }
+
+    .nav-bar__caret {
+      width: 10.54px;
+      height: 6.25px;
+      transform: rotate(0deg);
+      margin-left: 6px;
+      color: var(--white);
+    }
+
+    .nav-bar__dropdown:hover .nav-bar__caret {
+      transform: rotate(180deg);
+      color: var(--neutral-lighter);
+      margin-top: 0;
+    }
+    /* Also style the caret when open */
+    .nav-bar__dropdown.open .nav-bar__caret {
+      color: var(--neutral-lighter) !important;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const dropdownToggle = document.querySelector(
+      ".nav-bar__dropdown-toggle",
+    ) as HTMLAnchorElement;
+    const dropdown = document.querySelector(".nav-bar__dropdown");
+
+    if (!dropdownToggle || !dropdown) return;
+
+    // Active page highlighting for dropdown links
+    const dropdownLinks = document.querySelectorAll(".nav-bar__dropdown-link");
+    const currentPath = window.location.pathname;
+
+    dropdownLinks.forEach((link) => {
+      const href = link.getAttribute("href");
+
+      if (!href) return;
+
+      // Handle relative URLs
+      const fullUrl = href.startsWith("http")
+        ? href
+        : `${window.location.origin}${href.startsWith("/") ? href : `/${href}`}`;
+
+      try {
+        const linkUrl = new URL(fullUrl);
+
+        if (linkUrl.pathname === currentPath) {
+          link.classList.add("active");
+
+          const dropdown = link.closest(".nav-bar__dropdown");
+          const dropdownToggle = dropdown?.querySelector(
+            ".nav-bar__dropdown-toggle",
+          );
+          if (dropdownToggle) {
+            dropdownToggle.classList.add("active");
+          }
+        } else {
+          link.classList.remove("active");
+        }
+      } catch (error) {
+        console.warn("Invalid URL:", href);
+      }
+    });
+
+    // Dropdown Functionality
+    function toggleDropdown() {
+      if (!dropdown || !dropdownToggle) return;
+
+      const isOpen = dropdown.classList.contains("open");
+
+      // Close all other dropdowns
+      document.querySelectorAll(".nav-bar__dropdown.open").forEach((d) => {
+        if (d !== dropdown) {
+          d.classList.remove("open");
+          const toggle = d.querySelector(".nav-bar__dropdown-toggle");
+          if (toggle) toggle.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      if (!isOpen) {
+        dropdown.classList.add("open");
+        dropdownToggle.setAttribute("aria-expanded", "true");
+      } else {
+        dropdown.classList.remove("open");
+        dropdownToggle.setAttribute("aria-expanded", "false");
+      }
+    }
+
+    function handleDocumentClick(e) {
+      if (
+        !dropdown ||
+        !dropdownToggle ||
+        !e.target ||
+        !dropdown.contains(e.target)
+      ) {
+        dropdown?.classList.remove("open");
+        dropdownToggle?.setAttribute("aria-expanded", "false");
+      }
+    }
+
+    // Check if it's a touch device
+    function isTouchDevice() {
+      return "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    }
+
+    const isDesktop = window.innerWidth >= 950;
+    const isTouch = isTouchDevice();
+
+    if (isDesktop && isTouch) {
+      let tapCount = 0;
+      let tapTimer: ReturnType<typeof setTimeout> | null = null;
+
+      dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        tapCount++;
+
+        if (tapCount === 1) {
+          // First tap - set short timer for double tap detection
+          tapTimer = setTimeout(() => {
+            // Single tap - open dropdown
+            toggleDropdown();
+            tapCount = 0;
+            tapTimer = null;
+          }, 200);
+        } else if (tapCount === 2) {
+          if (tapTimer) {
+            clearTimeout(tapTimer);
+          }
+          window.location.href = dropdownToggle.href;
+          tapCount = 0;
+          tapTimer = null;
+        }
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener("click", handleDocumentClick);
+    } else if (window.innerWidth < 950) {
+      dropdownToggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggleDropdown();
+      });
+
+      document.addEventListener("click", handleDocumentClick);
+    } else {
+      dropdownToggle.addEventListener("click", (e) => {});
+    }
+
+    // Handle window resize
+    window.addEventListener("resize", () => {
+      if (
+        (window.innerWidth >= 950 && !isDesktop) ||
+        (window.innerWidth < 950 && isDesktop)
+      ) {
+        window.location.reload();
+      }
+    });
+  });
+</script>

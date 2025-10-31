@@ -1,11 +1,26 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Main from "../layouts/Main.astro";
+import LandingHero from "../components/sections/landing/LandingHero.astro";
+import AboutMission from "../components/sections/shared/AboutMission.astro";
+import LandingProducts from "../components/sections/landing/LandingProducts.astro";
+import WhyUs from "../components/sections/landing/WhyUs.astro";
+import CTABannerSplit from "../components/sections/shared/CTABannerSplit.astro";
+import LandingServices from "../components/sections/landing/LandingServices.astro";
+import ContactFull from "../components/sections/shared/ContactFull.astro";
+import Testimonials from "../components/sections/shared/Testimonials.astro";
+import CTABannerCenter from "../components/sections/shared/CTABannerCenter.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { bannerLPData } from "../data/banner-data";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<Main title="PerfectView">
+  <LandingHero />
+  <AboutMission />
+  <LandingProducts />
+  <WhyUs />
+  <CTABannerSplit image={bannerLPData.image} content={bannerLPData.content} />
+  <LandingServices />
+  <ContactFull />
+  <Testimonials />
+  <CTABannerCenter />
+</Main>

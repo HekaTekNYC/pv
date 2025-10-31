@@ -1,0 +1,269 @@
+---
+import { getCloudinarySrc } from "../../../config/cloudinary";
+import { installationFAQs } from "../../../data/faq-data";
+
+const FAQImg = getCloudinarySrc("natural-2-crop_ja7kqn", "png", "v1761588660");
+---
+
+<section class="faq" aria-labelledby="faq-heading">
+  <div class="faq__container container">
+    <div class="faq__left">
+      <h2 id="faq-heading">Frequently Asked Questions</h2>
+      <div class="faq__media">
+        <img
+          src={FAQImg}
+          alt="All white kitchen with a white pleated shade in the window"
+          width="976"
+          height="869"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+    <div class="faq__right">
+      <div class="faq__accordian" role="region" aria-label="FAQ Accordion">
+        {
+          installationFAQs.map((faq, index) => (
+            <div class="faq__item">
+              <div
+                class="faq__header"
+                role="button"
+                tabindex="0"
+                aria-expanded="false"
+                aria-controls={`faq-answer-${index}`}
+              >
+                <h3 class="big-heading faq__question">{faq.question}</h3>
+                <div class="faq__toggle-container">
+                  <img
+                    src="/icons/down-arrow.svg"
+                    alt=""
+                    class="faq__toggle-down"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <img
+                    src="/icons/cancel-x.svg"
+                    alt=""
+                    class="faq__toggle-x"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+              <p
+                class="faq__answer"
+                id={`faq-answer-${index}`}
+                role="region"
+                aria-hidden="true"
+              >
+                {faq.answer}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background-color: var(--grey-10);
+  }
+  .faq__container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .faq__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+  .faq__media {
+    display: block;
+    max-width: 100%;
+  }
+
+  .faq__media img {
+    display: block;
+    height: 363px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Arrow toggle */
+
+  .faq__accordian {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 24px;
+  }
+
+  .faq__item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px solid var(--grey-20);
+    padding-bottom: 24px;
+    gap: 16px;
+  }
+  .faq__item:last-child {
+    border: none;
+  }
+
+  .faq__header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .faq__header h3 {
+    width: 100%;
+  }
+  .faq__toggle-container {
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    transition: all 1s ease;
+  }
+
+  .faq__toggle-down,
+  .faq__toggle-x {
+    width: 14px;
+    height: 14px;
+    margin: 10px;
+    transition: all 0.3s ease;
+  }
+
+  .faq__toggle-x {
+    display: none;
+  }
+
+  .faq__answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+  .faq__item.active h3 {
+    color: var(--secondary);
+  }
+
+  .faq__item.active .faq__answer {
+    max-height: 500px;
+  }
+
+  .faq__item.active .faq__toggle-down {
+    display: none;
+  }
+
+  .faq__item.active .faq__toggle-x {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .faq__media img {
+      display: block;
+      height: 400px;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+  @media (min-width: 1024px) {
+    .faq__container {
+      flex-direction: row;
+      align-items: start;
+      gap: 64px;
+    }
+
+    .faq__left,
+    .faq__right {
+      width: 50%;
+    }
+
+    .faq__left {
+      gap: 64px;
+    }
+    .faq__media img {
+      display: block;
+      height: 522px;
+      object-fit: cover;
+      object-position: top left;
+    }
+
+    .faq__accordian {
+      gap: 32px;
+    }
+
+    .faq__item {
+      padding-bottom: 32px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .faq__left {
+      width: 40%;
+    }
+
+    .faq__right {
+      width: 60%;
+    }
+
+    .faq__media {
+      max-width: 500px;
+    }
+
+    .faq__media img {
+      display: block;
+      height: 400px;
+
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const faqItems = document.querySelectorAll<HTMLDivElement>(".faq__item");
+
+    faqItems.forEach((item) => {
+      const header = item.querySelector<HTMLElement>(".faq__header");
+      const answer = item.querySelector<HTMLElement>(".faq__answer");
+
+      // Guard against null elements
+      if (!header || !answer) return;
+
+      header.addEventListener("click", () => {
+        const isOpen = item.classList.contains("active");
+
+        // Close all others
+        faqItems.forEach((i) => {
+          const a = i.querySelector<HTMLElement>(".faq__answer");
+          if (a) {
+            i.classList.remove("active");
+            a.style.maxHeight = "";
+          }
+        });
+
+        // Toggle this one
+        if (!isOpen) {
+          item.classList.add("active");
+          answer.style.maxHeight = `${answer.scrollHeight}px`;
+        }
+      });
+
+      // Accessibility: toggle with keyboard
+      header.addEventListener("keydown", (e: KeyboardEvent) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          header.click();
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,168 @@
+---
+import MissionCard from "../../ui/MissionCard.astro";
+import Button from "../../ui/Button.astro";
+import { missionCardsData } from "../../../data/about-mission";
+import { getCloudinaryFourSet } from "../../../config/cloudinary";
+
+const aboutMissionImg = getCloudinaryFourSet(
+  { id: "about-lp-mbl_erzsiz", version: "v1761351705" }, // mobile webp
+  { id: "about-lp-mbl_iuub7o", version: "v1761351708" }, // mobile png
+  { id: "about-lp-dsk_ptemfd", version: "v1761351705" }, // desktop webp
+  { id: "about-lp-dsk_ptemfd", version: "v1761351705" }, // desktop png
+);
+---
+
+<section class="about-mission" aria-labelledby="mission-heading" id="mission">
+  <div class="about-mission__container container">
+    <div class="about-mission__image-container">
+      <picture class="about-mission__picture">
+        <!-- Mobile -->
+        <source
+          srcset={aboutMissionImg.mobile.webp}
+          type="image/webp"
+          media="(max-width: 1023px)"
+        />
+        <source
+          srcset={aboutMissionImg.mobile.png}
+          type="image/png"
+          media="(max-width: 1023px)"
+        />
+
+        <!-- Desktop -->
+        <source
+          srcset={aboutMissionImg.desktop.webp}
+          type="image/webp"
+          media="(min-width: 1024px)"
+        />
+        <source
+          srcset={aboutMissionImg.desktop.png}
+          type="image/png"
+          media="(min-width: 1024px)"
+        />
+
+        <img
+          src={aboutMissionImg.desktop.png}
+          alt="Layered shades on office windows"
+          class="about-mission__image"
+          width="797"
+          height="1057"
+          loading="eager"
+          decoding="async"
+        />
+      </picture>
+    </div>
+    <div class="about-mission__content">
+      <h2 class="about-mission__title" id="mission-heading">
+        Family-Owned Window Treatment Experts
+      </h2>
+      <div class="about-mission__paragraph">
+        <p>
+          We’re a local, family-run business delivering beautiful, custom window
+          coverings with personalized service and professional precision.
+        </p>
+        <p>
+          At PerfectView, we take pride in enhancing interiors with expertly
+          installed window treatments. With precision and care, we ensure every
+          space looks and feels its best.
+        </p>
+      </div>
+
+      <div class="about-mission__cards">
+        {
+          missionCardsData.map((card) => (
+            <MissionCard
+              icon={card.icon}
+              title={card.title}
+              text={card.text}
+              headerClass={card.headerClass}
+            />
+          ))
+        }
+      </div>
+      <Button href="/about#about-meet" color="secondary"
+        >Get to Know Our Story</Button
+      >
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-mission__container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+
+  .about-mission__paragraph {
+    padding: 24px 0;
+  }
+
+  .about-mission__paragraph p:first-child {
+    padding-bottom: 12px;
+  }
+
+  .about-mission__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-bottom: 32px;
+  }
+
+  .about-mission__image-container {
+    display: block;
+    max-width: 100%;
+  }
+
+  .about-mission__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  /* --- Media Queries --- */
+  @media (min-width: 690px) {
+    .about-mission__title {
+      width: 100%;
+    }
+    .about-mission__cards {
+      justify-content: left;
+      align-items: stretch;
+      gap: 16px;
+      padding-bottom: 32px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .about-mission__image {
+      height: 420px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center 65%;
+    }
+
+    .about-mission__cards {
+      width: 90%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .about-mission__container {
+      flex-direction: row;
+      align-items: center;
+      gap: 40px;
+    }
+    .about-mission__image-container {
+      width: 50%;
+    }
+    .about-mission__image {
+      width: 100%;
+      height: auto;
+    }
+    .about-mission__content {
+      width: 630px;
+    }
+
+    .about-mission__cards {
+      width: 100%;
+    }
+  }
+</style>

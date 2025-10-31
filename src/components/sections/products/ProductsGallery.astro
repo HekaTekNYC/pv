@@ -1,0 +1,184 @@
+---
+import { productCards } from "../../../data/product-cards";
+---
+
+<section
+  class="products-gallery"
+  aria-labelledby="products-gallery-title"
+  id="product-gallery"
+>
+  <div class="products-gallery__container container">
+    <!-- Header -->
+    <header class="products-gallery__header">
+      <h2 id="products-gallery-title" class="products-gallery__title">
+        Stylish Window Coverings for Every Room
+      </h2>
+      <p>
+        Discover our curated selection of window treatments, from classic to
+        contemporary styles. Each option is expertly installed to enhance your
+        space with the perfect balance of beauty, comfort, and functionality.
+      </p>
+    </header>
+
+    <ul class="products-gallery__grid" role="list">
+      {
+        productCards.map((cat) => (
+          <li class="products-gallery__card" role="listitem">
+            <a
+              href={`/products/${cat.slug}`}
+              aria-label={`Learn more about ${cat.title}`}
+            >
+              <div class="products-gallery__media">
+                <img
+                  src={cat.image}
+                  alt={cat.alt}
+                  width="413"
+                  height="420"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="products-gallery__card-body">
+                <h3 class="big-heading">{cat.title}</h3>
+                <p>{cat.blurb}</p>
+                <p class="products-gallery__more">
+                  Learn More
+                  <svg
+                    class="chev"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M9 18l6-6-6-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </p>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .products-gallery {
+    background: var(--grey-10, #ededed);
+  }
+
+  .products-gallery__container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .products-gallery__header {
+    display: grid;
+    gap: 16px;
+  }
+
+  /* ===== Cards grid ===== */
+  .products-gallery__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .products-gallery__card a {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    overflow: hidden;
+    gap: 15px;
+  }
+
+  .products-gallery__media {
+    margin: 0;
+    overflow: hidden;
+    background: #e9ecef;
+    aspect-ratio: 343 / 360;
+    width: 100%;
+  }
+
+  .products-gallery__media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .products-gallery__card-body {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .products-gallery__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: var(--fw-semibold, 600);
+    color: var(--secondary);
+    padding-top: 5px;
+  }
+  .products-gallery__more .chev {
+    transform: translateY(1px);
+  }
+
+  /* ===== Media Queries ===== */
+
+  @media (min-width: 700px) {
+    .products-gallery__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+
+  @media (min-width: 820px) {
+    .products-gallery__header {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .products-gallery__container {
+      gap: 64px;
+    }
+
+    .products-gallery__header {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: end;
+      gap: 40px;
+    }
+
+    .products-gallery__grid {
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 32px;
+      column-gap: 20px;
+    }
+
+    .products-gallery__media {
+      aspect-ratio: 413 / 420;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .products-gallery__header {
+      gap: 60px;
+    }
+
+    .products-gallery__grid {
+      column-gap: 25px;
+    }
+  }
+</style>

@@ -1,0 +1,153 @@
+---
+import Button from "../../ui/Button.astro";
+import { getCloudinaryFourSet } from "../../../config/cloudinary";
+
+const lpHeroImg = getCloudinaryFourSet(
+  { id: "lp-hero-mbl_ghyiks", version: "v1761347110" }, // mobile webp
+  { id: "lp-hero-mbl_whze0j", version: "v1761347110" }, // mobile png
+  { id: "lp-hero-dsk_rcf1el", version: "v1761347109" }, // desktop webp
+  { id: "lp-hero-dsk_rcf1el", version: "v1761347109" }, // desktop png
+);
+---
+
+<section class="lp-hero" aria-labelledby="hero-title">
+  <picture class="lp-hero__bg">
+    <!-- Mobile -->
+    <source
+      srcset={lpHeroImg.mobile.webp}
+      type="image/webp"
+      media="(max-width: 768px)"
+    />
+    <source
+      srcset={lpHeroImg.mobile.png}
+      type="image/png"
+      media="(max-width: 768px)"
+    />
+
+    <!-- Desktop -->
+    <source
+      srcset={lpHeroImg.desktop.webp}
+      type="image/webp"
+      media="(min-width: 769px)"
+    />
+    <source
+      srcset={lpHeroImg.desktop.png}
+      type="image/png"
+      media="(min-width: 769px)"
+    />
+
+    <img
+      src={lpHeroImg.desktop.png}
+      alt="Modern living room with custom window treatments"
+      class="lp-hero__bg"
+      width="1280"
+      height="975"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
+  </picture>
+
+  <div class="lp-hero__overlay" aria-hidden="true"></div>
+  <div class="container">
+    <div class="lp-hero__content">
+      <h1 id="hero-title">Transform Your Windows, Transform Your Space</h1>
+      <p>
+        Experience the difference professional installation makes—where every
+        treatment fits perfectly, functions smoothly, and transforms your space
+        with lasting beauty.
+      </p>
+      <div class="lp-hero__actions">
+        <Button color="neutral" href="#home-contact-form">
+          Schedule Free Consultation
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .lp-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(520px, calc(100svh - 112px), 900px);
+    width: 100%;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .lp-hero__bg,
+  .lp-hero__bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .lp-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(40, 43, 48, 0.83);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .lp-hero__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+    z-index: 3;
+  }
+
+  .lp-hero__content p {
+    color: var(--white);
+  }
+
+  .lp-hero__actions {
+    margin-top: 0.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .lp-hero__content {
+      align-items: start;
+      width: 75%;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .lp-hero {
+      min-height: clamp(520px, calc(100svh - 144px), 900px);
+    }
+
+    .lp-hero__overlay {
+      background: linear-gradient(
+        90deg,
+        rgba(40, 43, 48, 0.95) 0%,
+        rgba(40, 43, 48, 0.8) 50%,
+        rgba(40, 43, 48, 0.5) 70%,
+        rgba(40, 43, 48, 0) 100%
+      );
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lp-hero__content {
+      width: 60%;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .lp-hero__content {
+      align-items: start;
+      width: 50%;
+    }
+  }
+</style>

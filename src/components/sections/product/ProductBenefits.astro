@@ -1,0 +1,195 @@
+---
+import Button from "../../ui/Button.astro";
+import { getProductBenefits } from "../../../data/product-benefits";
+
+export interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props as Props;
+
+// Pull the record for this product
+const product = getProductBenefits(slug);
+
+// Gentle guard so we don't crash on bad slugs
+if (!product) {
+  console.warn(`[ProductBenefits] No data found for slug: ${slug}`);
+}
+const benefits = product?.benefits ?? [];
+const img = product?.image;
+---
+
+{
+  product ? (
+    <section class="product-benefits">
+      <div class=" product-benefits__wrap">
+        {/* <!-- LEFT --> */}
+        <div class="product-benefits__left">
+          <div class="product-benefits__content">
+            <header class="product-benefits__header">
+              <h2>{product.title}</h2>
+              {product.description && <p>{product.description}</p>}
+            </header>
+
+            <div class="product-benefits__specs">
+              <ul class="product-benefits__list" role="list">
+                {benefits.map((line) => (
+                  <li class="product-benefits__item">
+                    <img
+                      class="product-benefits__icon"
+                      src="/icons/bullet-point.svg"
+                      alt=""
+                      aria-hidden="true"
+                      width="12"
+                      height="12"
+                      loading="eager"
+                      decoding="async"
+                    />
+                    <p class="product-benefits__text">{line}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="product-benefits__cta">
+              <Button color="secondary" href="/products">
+                Explore More Shade Styles
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* <!-- RIGHT --> */}
+        {img && (
+          <figure class="product-benefits__media">
+            <picture>
+              {img.webp && <source srcset={img.webp} type="image/webp" />}
+              {img.png && <source srcset={img.png} type="image/png" />}
+              <img
+                src={img.png ?? img.webp}
+                alt={img.alt}
+                width="630"
+                height="560"
+                loading="eager"
+                decoding="async"
+              />
+            </picture>
+          </figure>
+        )}
+      </div>
+    </section>
+  ) : (
+    <section class="product-benefits">
+      <div class="container">
+        <p class="product-benefits__fallback">
+          Sorry, we couldn’t load this product’s benefits.
+        </p>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .product-benefits__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .product-benefits__media {
+    /* max-width: 630px;
+      flex: 0 0 560px; */
+    display: flex;
+    order: 1;
+  }
+  .product-benefits__left {
+    display: flex;
+    order: 2;
+  }
+
+  .product-benefits__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .product-benefits__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* ===== List ===== */
+  .product-benefits__list {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .product-benefits__item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .product-benefits__icon {
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+    width: 12px;
+    height: 12px;
+    display: block;
+  }
+
+  .product-benefits__text {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .product-benefits__cta {
+    margin-top: 8px;
+  }
+
+  .product-benefits__fallback {
+    margin: 0;
+  }
+
+  /* ===== Media (shared 630×560 frame like Features) ===== */
+  .product-benefits__media {
+    margin: 0;
+    display: block;
+  }
+
+  .product-benefits__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 63 / 56; /* 630 / 560 */
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  @media (min-width: 768px) {
+    .product-benefits__media img {
+      width: 100%;
+      height: 560px;
+      aspect-ratio: auto;
+      object-fit: cover;
+    }
+  }
+  @media (min-width: 992px) {
+    .product-benefits__wrap {
+      flex-direction: row;
+      gap: 64px;
+      align-items: center;
+    }
+    .product-benefits__media {
+      /* max-width: 630px;
+      flex: 0 0 560px; */
+      order: 1;
+    }
+    .product-benefits__left {
+      order: 2;
+    }
+  }
+</style>

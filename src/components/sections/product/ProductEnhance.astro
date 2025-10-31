@@ -1,0 +1,98 @@
+---
+import { getProductEnhance } from "../../../data/product-enhance";
+
+export interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props as Props;
+const data = getProductEnhance(slug);
+---
+
+{
+  data ? (
+    <section class="product-enhance" aria-labelledby="product-enhance-title">
+      <div class="product-enhance__container container">
+        <div class="product-enhance__content">
+          <h2 id="product-enhance-title">{data.title}</h2>
+          <p class="p-subheader">{data.subtitle}</p>
+          <p>{data.description}</p>
+        </div>
+        <div class="product-enhance__media ">
+          <picture>
+            <source
+              srcset={data.image.webp}
+              type="image/webp"
+              media="(max-width: 1023px)"
+            />
+            <source
+              srcset={data.image.png}
+              type="image/png"
+              media="(max-width: 1023px)"
+            />
+            <img
+              src={data.image.png}
+              alt={data.image.alt}
+              width={data.image.width}
+              height={data.image.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        </div>
+      </div>
+    </section>
+  ) : null
+}
+
+<style>
+  .product-enhance {
+    background: var(--grey-10);
+  }
+  .product-enhance__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+  .product-enhance__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 1040px;
+  }
+
+  .product-enhance__content h2 {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+    max-width: 800px;
+  }
+
+  .product-enhance__content .p-subheader {
+    padding-bottom: 8px;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .product-enhance__media {
+    width: 100%;
+    display: block;
+  }
+  .product-enhance__media img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media (min-width: 992px) {
+    .product-enhance__container {
+      gap: 64px;
+    }
+
+    .product-enhance__media img {
+      height: 600px;
+    }
+  }
+</style>

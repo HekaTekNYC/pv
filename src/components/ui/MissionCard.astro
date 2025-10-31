@@ -1,0 +1,56 @@
+---
+interface MissionCardProps {
+  headerClass?: string;
+  icon?: string;
+  title: string;
+  text: string;
+}
+
+const { headerClass = "", icon = "", title, text } = Astro.props;
+---
+
+<div class="mission-card">
+  <div class="mission-card__header">
+    <div class="mission-card__icon" aria-hidden="true">
+      <img src={icon} alt="" height="20px" width="20px" />
+    </div>
+    <h3 class={`mission-card__title ${headerClass}`}>
+      {title}
+    </h3>
+  </div>
+  <p class="mission-card__text roboto-text">
+    {text}
+  </p>
+</div>
+
+<style>
+  .mission-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    flex: 1 1 230px;
+    padding: 24px;
+    border-radius: 2px;
+    gap: 12px;
+    background-color: var(--grey-10);
+    width: 100%;
+  }
+
+  .mission-card__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  @media (min-width: 1024px) {
+    .mission-card {
+      padding: 20px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .mission-card {
+      padding: 24px;
+    }
+  }
+</style>

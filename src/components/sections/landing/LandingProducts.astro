@@ -1,0 +1,227 @@
+---
+import Button from "../../ui/Button.astro";
+import { productCards } from "../../../data/product-cards";
+
+const featuredCards = productCards.filter((card) => card.featured);
+---
+
+<section class="lp-products" aria-labelledby="lp-products-title">
+  <div class="container lp-products__container">
+    <header class="lp-products__header">
+      <h2 id="lp-products-title">Custom Window Coverings for Every Space</h2>
+      <p>
+        Explore our full range of beautiful window treatments designed for
+        comfort, privacy, and style—expertly measured, designed, and installed
+        to fit your home or commercial space perfectly.
+      </p>
+    </header>
+
+    <ul class="lp-products__grid" aria-label="Product categories" role="list">
+      {
+        featuredCards.map((it, i) => (
+          <li class="lp-products__item">
+            <a
+              class={`card`}
+              href={`/products/${it.slug}`}
+              aria-label={`${it.title}${it.blurb ? ": " + it.blurb : ""}`}
+            >
+              <figure class="lp-products-card__media">
+                <img
+                  src={it.image}
+                  alt={it.alt}
+                  width="408"
+                  height="480"
+                  loading={i === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+                <div class="lp-products-card__overlay">
+                  <h3 class="big-heading">{it.title}</h3>
+                  {it.blurb && (
+                    <p class="lp-products-card__blurb">{it.blurb}</p>
+                  )}
+                </div>
+              </figure>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="lp-products__cta">
+      <Button color="secondary" href="/products">Explore All Products</Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .lp-products {
+    background: var(--grey-10);
+  }
+
+  .lp-products__container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .lp-products__header {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .lp-products__grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .card {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .card:hover,
+  .card:focus-within {
+    transform: translateY(-4px);
+  }
+
+  .lp-products-card__media {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+  }
+
+  .lp-products-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .card:hover .lp-products-card__media img,
+  .card:focus-within .lp-products-card__media img {
+    transform: scale(1.05);
+  }
+
+  .lp-products-card__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px;
+    color: var(--white) !important;
+  }
+
+  .lp-products-card__overlay h3 {
+    color: var(--white) !important;
+  }
+
+  .lp-products-card__overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(40, 43, 48, 1) 0%,
+      rgba(40, 43, 48, 0.7) 20%,
+      rgba(40, 43, 48, 0.45) 30%,
+      rgba(26, 26, 26, 0) 50%
+    );
+
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 0;
+  }
+
+  .card:hover .lp-products-card__overlay::after,
+  .card:focus-within .lp-products-card__overlay::after {
+    background: linear-gradient(
+      to top,
+      rgba(40, 43, 48, 1) 0%,
+      rgba(40, 43, 48, 0.9) 40%,
+      rgba(26, 26, 26, 0) 100%
+    );
+  }
+  .card:hover .lp-products-card__blurb,
+  .card:focus-within .lp-products-card__blurb {
+    opacity: 1;
+    max-height: 200px;
+    margin-top: 0.4rem;
+    transform: translateY(0);
+  }
+
+  .lp-products-card__overlay > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .lp-products-card__blurb {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(6px);
+
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    color: var(--white);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+  }
+
+  .lp-products__cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 520px) {
+    .lp-products__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .lp-products-card__media {
+      aspect-ratio: 17 / 20;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .lp-products__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .lp-products-card__overlay {
+      padding: 20px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lp-products__header {
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 40px;
+    }
+    .lp-products__grid {
+      gap: 28px;
+    }
+    .lp-products-card__overlay {
+      padding: 32px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lp-products-card__blurb,
+    .lp-products-card__overlay::after {
+      transition: none;
+    }
+  }
+</style>

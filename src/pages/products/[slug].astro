@@ -1,0 +1,40 @@
+---
+import Inner from "../../layouts/Inner.astro";
+import ProductHero from "../../components/sections/product/ProductHero.astro";
+import ProductBenefits from "../../components/sections/product/ProductBenefits.astro";
+import ProductFeatures from "../../components/sections/product/ProductFeatures.astro";
+import ProductEnhance from "../../components/sections/product/ProductEnhance.astro";
+import CTABannerSplit from "../../components/sections/shared/CTABannerSplit.astro";
+import { bannerLPData } from "../../data/banner-data";
+import { PRODUCT_SLUGS } from "../../data/products";
+import { getProductBenefits } from "../../data/product-benefits";
+
+export async function getStaticPaths() {
+  return PRODUCT_SLUGS.map((slug) => ({ params: { slug } }));
+}
+
+const slug = Astro.params.slug as (typeof PRODUCT_SLUGS)[number];
+
+const benefits = getProductBenefits(slug);
+const pageTitle = benefits
+  ? benefits.title.replace(/^Benefits of\s+/, "")
+  : slug.replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase());
+---
+
+<Inner
+  title={`PerfectView • ${pageTitle}`}
+  heading={pageTitle}
+  breadcrumbItems={[
+    { label: "Home", href: "/" },
+    { label: "Products", href: "/products" },
+    { label: pageTitle },
+  ]}
+>
+  <ProductHero slug={slug} />
+  <ProductEnhance slug={slug} />
+  <CTABannerSplit image={bannerLPData.image} content={bannerLPData.content} />
+  <div class="product-group container">
+    <ProductFeatures slug={slug} />
+    <ProductBenefits slug={slug} />
+  </div>
+</Inner>

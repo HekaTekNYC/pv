@@ -1,0 +1,179 @@
+---
+import Button from "../../ui/Button.astro";
+import { getProductHero } from "../../../data/product-hero";
+
+export interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props as Props;
+const data = getProductHero(slug);
+
+if (!data) {
+  console.error(`ProductHero: unknown slug "${slug}"`);
+}
+---
+
+{
+  data && (
+    <section class="product-hero" aria-labelledby="product-hero-title">
+      <div class="container product-hero__grid">
+        <div class="product-hero__media">
+          <picture>
+            {data.image.webp && (
+              <source srcset={data.image.webp} type="image/webp" />
+            )}
+            <img
+              src={data.image.png}
+              alt={data.image.alt}
+              width={data.image.width ?? 600}
+              height={data.image.height ?? 750}
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </picture>
+        </div>
+
+        <div class="product-hero__right">
+          <div class="product-hero__content">
+            <div class="product-hero__header">
+              <h2 class="product-hero__nowrap" id="product-hero-title">
+                {data.title}
+              </h2>
+              {data.subtitle && <p>{data.subtitle}</p>}
+            </div>
+
+            <div class="product-hero__specs">
+              <h3 class="big-heading">Quick Specs</h3>
+              <ul role="list">
+                {data.specs.map(({ term, value }) => (
+                  <li role="listitem">
+                    <img
+                      class="product-hero__specs-icon"
+                      src="/icons/bullet-point.svg"
+                      alt=""
+                      aria-hidden="true"
+                      loading="eager"
+                      decoding="async"
+                      width="12"
+                      height="12"
+                    />
+                    <p>
+                      <span class="product-hero__specs-term">{term}: </span>
+                      {value}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="product-hero__cta">
+              <Button
+                color="secondary"
+                href={data.cta.href}
+                aria-label={`Learn more about ${data.title}`}
+              >
+                {data.cta.label}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .product-hero__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .product-hero__media {
+    display: block;
+    max-width: 100%;
+  }
+
+  .product-hero__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .product-hero__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .product-hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .product-hero__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .product-hero__nowrap {
+    text-wrap: initial;
+  }
+
+  .product-hero__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .product-hero__specs ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+
+  .product-hero__specs li {
+    display: flex;
+    align-items: start;
+    column-gap: 12px;
+    margin-top: 4px;
+  }
+
+  .product-hero__specs-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .product-hero__specs-term {
+    font-weight: var(--fw-semibold);
+    color: var(--text);
+  }
+
+  .product-hero__specs-value {
+    color: var(--text-muted);
+  }
+
+  @media (min-width: 768px) {
+    .product-hero__media img {
+      height: 500px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .product-hero__grid {
+      gap: 64px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-hero__media img {
+      height: 650px;
+    }
+  }
+</style>

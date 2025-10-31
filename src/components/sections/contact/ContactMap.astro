@@ -1,0 +1,105 @@
+---
+import { getCloudinarySrc } from "../../../config/cloudinary";
+
+const mapImageUrl = getCloudinarySrc("canva_map1_xpkqyx", "png");
+---
+
+<div class="container">
+  <section aria-labelledby="coverage-title" aria-describedby="coverage-sub">
+    <div class="contact-map__container">
+      <div class="contact-map__left">
+        <h2 id="coverage-title">Statewide Service that Works for You</h2>
+        <p class="p-subheader" id="coverage-sub">
+          Trusted craftsmanship. Local expertise. Statewide coverage.
+        </p>
+        <p>
+          From the Wasatch Front to the southern red rocks, Perfect View
+          delivers custom window treatments designed, measured, and installed by
+          our local team. Every project receives our full attention—from your
+          first consultation to your final install.
+        </p>
+      </div>
+      <div class="contact-map__right">
+        <picture>
+          <source
+            srcset="https://res.cloudinary.com/ds2oztufv/image/upload/f_auto,q_auto/davisCounty_map_w8m5cb.png"
+            type="image/webp"
+          />
+          <img
+            src="https://res.cloudinary.com/ds2oztufv/image/upload/f_auto,q_auto/davisCounty_map_w8m5cb.png"
+            alt="Map of Davis County area"
+            width="600"
+            height="400"
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
+      </div>
+    </div>
+  </section>
+  <style>
+    .contact-map__container {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .contact-map__left {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 16px;
+    }
+
+    .contact-map__right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .contact-map__right img {
+      width: 100%;
+      height: auto;
+    }
+
+    @media (min-width: 768px) {
+      .contact-map__container {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .contact-map__left {
+        text-align: center;
+      }
+      .contact-map__left {
+        width: 50%;
+        flex: 1;
+        text-align: left;
+      }
+
+      .contact-map__right {
+        width: 50%;
+        flex: 1;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .contact-map__container {
+        width: 100%;
+      }
+
+      .contact-map__left {
+        width: 50%;
+        text-align: left;
+      }
+
+      .contact-map__right {
+        width: 50%;
+        flex: 1;
+      }
+    }
+  </style>
+</div>

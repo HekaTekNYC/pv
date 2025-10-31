@@ -1,0 +1,296 @@
+---
+import ContactForm from "../../ui/ContactForm.astro";
+
+import { getCloudinaryFourSet } from "../../../config/cloudinary";
+
+const contactFullImg = getCloudinaryFourSet(
+  { id: "contact-full-mbl_fnlsr7", version: "v1761063769" }, // mobile webp
+  { id: "contact-full-mbl_etwqlk", version: "v1761063769" }, // mobile png
+  { id: "contact-full-dsk_vmy7vd", version: "v1761063769" }, // desktop webp
+  { id: "contact-full-dsk_tcqnr0", version: "v1761063770" }, // desktop png
+);
+---
+
+<section class="contact-full" id="home-contact-form">
+  <div class="contact-full__left-container">
+    <div class="contact-full__bg-img">
+      <picture>
+        <!-- Mobile WebP -->
+        <source
+          srcset={contactFullImg.mobile.webp}
+          type="image/webp"
+          media="(max-width: 1023px)"
+        />
+
+        <!-- Mobile PNG fallback -->
+        <source
+          srcset={contactFullImg.mobile.png}
+          type="image/png"
+          media="(max-width: 1023px)"
+        />
+
+        <!-- Desktop WebP -->
+        <source
+          srcset={contactFullImg.desktop.webp}
+          type="image/webp"
+          media="(min-width: 1024px)"
+        />
+
+        <!-- Desktop PNG fallback -->
+        <source
+          srcset={contactFullImg.desktop.png}
+          type="image/png"
+          media="(min-width: 1024px)"
+        />
+
+        <!-- Fallback -->
+        <img
+          src={contactFullImg.desktop.png}
+          alt="Elegant kitchen with full length windows and sheer pleated shades"
+          class="contact-bg-img"
+          width="1028"
+          height="854"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+    </div>
+    <div class="contact-full__left">
+      <div class="contact-full__form" id="home-contact-form">
+        <ContactForm />
+      </div>
+    </div>
+  </div>
+  <!-- RIGHT: brand + quick facts -->
+  <div class="contact-full__right-container">
+    <div
+      class="contact-full__right-overlay"
+      aria-hidden="true"
+      role="presentation"
+    >
+    </div>
+
+    <div class="contact-full__right">
+      <img
+        class="contact-full__logo"
+        src="/images/Logo.svg"
+        alt="PerfectView Window Coverings"
+        width="420"
+        height="120"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="contact-full__info">
+        <ul class="contact-full__cards" role="list">
+          <li class="contact-full__card">
+            <img
+              src="/icons/contact-family.svg"
+              width="32"
+              height="32"
+              alt="white outlined family icon"
+              loading="lazy"
+              aria-hidden="true"
+            />
+            <p>Family Owned</p>
+          </li>
+          <li class="contact-full__card">
+            <img
+              src="/icons/contact-location.svg"
+              width="32"
+              height="32"
+              alt="white outlined pin on map icon"
+              loading="lazy"
+              aria-hidden="true"
+            />
+            <p>Serving Northern Utah &amp; Beyond</p>
+          </li>
+          <li class="contact-full__card">
+            <img
+              src="/icons/contact-phone.svg"
+              width="32"
+              height="32"
+              alt="white outlined phone icon"
+              loading="lazy"
+              aria-hidden="true"
+            />
+            <p>(801) 555-1234</p>
+          </li>
+        </ul>
+
+        <p class="contact-full__p">
+          For further information, please don’t hesitate to reach out using the
+          contact form on the left.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-full {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Left side */
+  .contact-full__left-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: clamp(60px, 8vw, 100px) clamp(16px, 5vw, 64px);
+  }
+
+  .contact-full__bg-img {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .contact-full__left {
+    width: 100%;
+  }
+
+  .contact-full__bg-img picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .contact-full__bg-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .contact-full__form {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+
+  /*  Right side */
+  .contact-full__right-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+    background: var(--secondary);
+    padding: clamp(60px, 8vw, 100px) clamp(16px, 5vw, 64px);
+  }
+
+  .contact-full__right-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/images/geometric-full.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
+
+  .contact-full__right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .contact-full__logo {
+    display: block;
+    height: 80px;
+    width: 194px;
+    z-index: 2;
+  }
+
+  .contact-full__info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 32px;
+    z-index: 2;
+  }
+  .contact-full__cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contact-full__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-light);
+    padding: 24px 12px;
+    gap: 12px;
+    border-radius: 2px;
+  }
+
+  .contact-full__card p,
+  .contact-full__info p {
+    color: var(--grey-10);
+  }
+
+  .contact-full__p {
+    font-size: var(--fs-body-l);
+  }
+
+  @media (min-width: 900px) {
+    .contact-full__logo {
+      height: 120px;
+      width: 290px;
+    }
+    .contact-full__cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .contact-full__card {
+      justify-content: start;
+    }
+    .contact-full__info {
+      gap: 48px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .contact-full {
+      flex-direction: row;
+      align-items: stretch;
+      width: 100%;
+    }
+    .contact-full__left-container {
+      flex: 1;
+      align-items: center;
+      justify-content: end;
+      height: auto;
+      width: 50%;
+      padding: clamp(80px, 10vw, 100px) clamp(40px, 6.25vw, 100px)
+        clamp(80px, 10vw, 100px) clamp(16px, 15vw, 64px);
+    }
+
+    .contact-full__right-container {
+      flex: 1;
+      align-items: center;
+      justify-content: start;
+      height: auto;
+      width: 50%;
+      padding: clamp(80px, 10vw, 100px) clamp(16px, 15vw, 64px)
+        clamp(80px, 10vw, 100px) clamp(40px, 6.25vw, 100px);
+    }
+
+    .contact-full__left,
+    .contact-full__right {
+      max-width: 550px;
+    }
+  }
+</style>

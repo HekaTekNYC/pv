@@ -1,0 +1,281 @@
+---
+interface ImageItem {
+  src: string;
+  alt?: string;
+}
+interface Props {
+  images: ImageItem[];
+  gap?: number;
+  circleBg?: string; // theming for the nav buttons
+}
+
+const {
+  images = [],
+  gap = 16,
+  circleBg = "rgba(255, 255, 255, 0.28)",
+} = Astro.props;
+
+const carouselId = `crs-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<section
+  class="carousel container"
+  data-carousel-id={carouselId}
+  style={`--gap:${gap}px; --circle-bg:${circleBg}; --card-w:413px; --card-h:407px;`}
+  aria-label="Image carousel"
+>
+  <div class="carousel__container">
+    <!-- Viewport + Track -->
+    <div class="carousel__viewport" role="region" tabindex="0">
+      <ul class="carousel__track" role="list">
+        {
+          images.map((img, index) => (
+            <li class="carousel__slide" role="group" data-slide-index={index}>
+              <img
+                class="carousel__img"
+                loading="lazy"
+                src={img.src}
+                alt={img.alt ?? ""}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Controls -->
+    <div class="carousel__controls" aria-hidden="false">
+      <button
+        class="carousel__nav carousel__nav--prev"
+        aria-label="Previous"
+        data-dir="-1"
+        type="button"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          aria-hidden="true"
+          class="carousel__icon"
+        >
+          <path
+            d="M14.5 18 9.5 12l5-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+
+      <button
+        class="carousel__nav carousel__nav--next"
+        aria-label="Next"
+        data-dir="1"
+        type="button"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          aria-hidden="true"
+          class="carousel__icon"
+        >
+          <path
+            d="m9.5 6 5 6-5 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ===== Block ===== */
+  .carousel {
+    /* Remove hardcoded padding and use global container class instead */
+    display: flex;
+    justify-content: center;
+  }
+
+  .carousel__container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  /* ===== Viewport / Track ===== */
+  .carousel__viewport {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  .carousel__viewport::-webkit-scrollbar {
+    display: none;
+  }
+  .carousel__viewport {
+    scrollbar-width: none;
+  }
+
+  .carousel__track {
+    display: flex;
+    align-items: stretch;
+    gap: var(--gap);
+    width: max-content; /* sum of slides + gaps */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-start;
+  }
+
+  /* ===== Slides (Figma spec) ===== */
+  .carousel__slide {
+    box-sizing: border-box;
+    width: var(--card-w);
+    height: var(--card-h);
+    flex: 0 0 var(--card-w);
+    display: grid;
+    place-items: center;
+  }
+
+  .carousel__img {
+    box-sizing: border-box;
+    inline-size: var(--card-w);
+    block-size: var(--card-h);
+    object-fit: cover;
+    display: block;
+    border-radius: 2px;
+    transform: rotate(0deg);
+    opacity: 1;
+    background: #1c1c1c;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.165);
+  }
+
+  /* ===== Controls =====
+     Mobile-first: below the images, centered */
+  .carousel__controls {
+    margin-top: 12px;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carousel__nav {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background: var(--circle-bg);
+    color: #222020b5;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition:
+      transform 0.15s ease,
+      background 0.15s ease,
+      border-color 0.15s ease;
+    backdrop-filter: saturate(120%) blur(0.5px);
+    /* Outline styles - always visible */
+    outline: 1px solid rgba(34, 32, 32, 0.202);
+    outline-offset: 1px;
+  }
+  .carousel__nav:hover {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.831);
+    border-color: rgba(255, 255, 255, 0.2);
+    outline-color: rgba(34, 32, 32, 0.5);
+  }
+  .carousel__nav:active {
+    transform: scale(0.98);
+  }
+  .carousel__nav:focus {
+    outline: 2px solid rgba(34, 32, 32, 0.7);
+    outline-offset: 2px;
+  }
+  .carousel__icon {
+    stroke: currentColor;
+  }
+
+  /* ===== Desktop (overlay arrows) ===== */
+  @media (min-width: 900px) {
+    .carousel__controls {
+      position: absolute;
+      inset: 0;
+      pointer-events: none; /* allow scroll/drag on viewport */
+    }
+    .carousel__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: auto; /* re-enable on the buttons themselves */
+    }
+    .carousel__nav--prev {
+      left: calc(var(--gap) * 0.5);
+    }
+    .carousel__nav--next {
+      right: calc(var(--gap) * 0.5);
+    }
+
+    /* Fixed desktop transforms */
+    .carousel__nav:hover {
+      transform: translateY(-50%) scale(1.05);
+    }
+    .carousel__nav:active {
+      transform: translateY(-50%) scale(0.98);
+    }
+  }
+</style>
+
+<script is:inline>
+  // Plain JS (no TS types)
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".carousel").forEach((root) => {
+      const viewport = root.querySelector(".carousel__viewport");
+      const track = root.querySelector(".carousel__track");
+      const slides = root.querySelectorAll(".carousel__slide");
+      const prev = root.querySelector(".carousel__nav--prev");
+      const next = root.querySelector(".carousel__nav--next");
+      if (!viewport || !track || !slides.length || !prev || !next) return;
+
+      const getGap = () => {
+        const cs = getComputedStyle(track);
+        return parseFloat(cs.columnGap || cs.gap || "0");
+      };
+
+      const stepSize = () => {
+        const first = slides[0];
+        if (!first) return 0;
+        return first.getBoundingClientRect().width + getGap();
+      };
+
+      const scrollBySlides = (dir) => {
+        const step = stepSize();
+        if (!step) return;
+        viewport.scrollBy({ left: dir * step, behavior: "smooth" });
+      };
+
+      prev.addEventListener("click", () => scrollBySlides(-1));
+      next.addEventListener("click", () => scrollBySlides(1));
+
+      // Keyboard support (viewport is focusable via tabindex=0)
+      viewport.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          scrollBySlides(-1);
+        }
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          scrollBySlides(1);
+        }
+      });
+    });
+  });
+</script>

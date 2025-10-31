@@ -1,0 +1,53 @@
+---
+import Button from "./Button.astro";
+
+export interface Props {
+  title: string;
+  introText: string;
+  description: string;
+  cta: {
+    text: string;
+    href: string;
+    color: "secondary" | "neutral" | "nav";
+  };
+  id: string;
+}
+
+const { title, introText, description, cta, id = "" } = Astro.props;
+---
+
+<div class="content-block">
+  <div class="content-block__info">
+    <h2 id={id} class="content-block__title">{title}</h2>
+    <div class="content-block__p">
+      <p class="p-subheader">{introText}</p>
+      <p>{description}</p>
+    </div>
+  </div>
+  <div class="content-block__btn">
+    <Button href={cta.href} color={cta.color || "secondary"}>
+      {cta.text}
+    </Button>
+  </div>
+</div>
+
+<style>
+  .content-block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .content-block__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .content-block__p {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+</style>

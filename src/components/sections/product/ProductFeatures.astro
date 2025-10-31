@@ -1,0 +1,172 @@
+---
+// src/components/sections/ProductFeatures.astro
+import Button from "../../ui/Button.astro";
+import { getProductFeatures } from "../../../data/product-features";
+
+export interface Props {
+  slug: string;
+}
+const { slug } = Astro.props as Props;
+
+const product = getProductFeatures(slug);
+
+if (!product) {
+  console.warn(`[ProductFeatures] No data found for slug: ${slug}`);
+}
+const lines = product?.features ?? [];
+const img = product?.image;
+---
+
+{
+  product ? (
+    <section class="product-features">
+      <div class="product-features__wrap">
+        {/* LEFT (content) */}
+        <div class="product-features__left">
+          <div class="product-features__content">
+            <header class="product-features__header">
+              <h2>{product.title}</h2>
+              {product.description && <p>{product.description}</p>}
+            </header>
+
+            <div class="product-features__specs">
+              <ul class="product-features__list" role="list">
+                {lines.map((line) => (
+                  <li class="product-features__item">
+                    <img
+                      class="product-features__icon"
+                      src="/icons/bullet-point.svg"
+                      alt=""
+                      aria-hidden="true"
+                      width="12"
+                      height="12"
+                      loading="eager"
+                      decoding="async"
+                    />
+                    <p class="product-features__text">{line}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="product-features__cta">
+              <Button color="secondary" href={product.cta.href}>
+                {product.cta.label}
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT (media) */}
+        {img && (
+          <figure class="product-features__media">
+            <picture>
+              {img.webp && <source srcset={img.webp} type="image/webp" />}
+              {img.png && <source srcset={img.png} type="image/png" />}
+              <img
+                src={img.png ?? img.webp}
+                alt={img.alt}
+                width="630"
+                height="560"
+                loading="eager"
+                decoding="async"
+              />
+            </picture>
+          </figure>
+        )}
+      </div>
+    </section>
+  ) : (
+    <section class="product-features">
+      <div class="container">
+        <p class="product-features__fallback">
+          Sorry, we couldn’t load this product’s features.
+        </p>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .product-features__wrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 32px;
+  }
+  .product-features__media {
+    display: flex;
+    order: 1;
+  }
+  .product-features__left {
+    display: flex;
+    order: 2;
+  }
+  .product-features__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .product-features__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .product-features__list {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+  .product-features__item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .product-features__icon {
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+    width: 12px;
+    height: 12px;
+    display: block;
+  }
+  .product-features__text {
+    margin: 0;
+    line-height: 1.5;
+  }
+  .product-features__cta {
+    margin-top: 8px;
+  }
+  .product-features__fallback {
+    margin: 0;
+  }
+  .product-features__media {
+    /* margin: 0; */
+    max-width: 100%;
+    display: block;
+  }
+  .product-features__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  @media (min-width: 768px) {
+    .product-features__media img {
+      height: 560px;
+    }
+  }
+  @media (min-width: 992px) {
+    .product-features__wrap {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 64px;
+    }
+    .product-features__media {
+      order: 2;
+    }
+    .product-features__left {
+      order: 1;
+    }
+  }
+</style>

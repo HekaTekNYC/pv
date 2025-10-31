@@ -1,0 +1,68 @@
+---
+import ContactForm from "../../ui/ContactForm.astro";
+
+import { getCloudinarySrc } from "../../../config/cloudinary";
+
+const contactBasicImg = getCloudinarySrc(
+  "layered-1-crop_b1rlfh",
+  "png",
+  "v1761595357",
+);
+---
+
+<section class="contact-basic">
+  <div class="contact-basic__container container">
+    <div class="contact-basic__img">
+      <img
+        src={contactBasicImg}
+        alt="Layered window shades in a modern living room with tall windows, showcasing custom window treatment options"
+        width="707"
+        height="774"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
+
+    <div class="contact-basic__form" id="contact-form">
+      <ContactForm />
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-basic__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .contact-basic__img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .contact-basic__img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media (min-width: 768px) {
+    .contact-basic__img img {
+      height: 500px;
+      object-position: center 30%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .contact-basic__container {
+      grid-template-columns: 9fr 11fr;
+      align-items: stretch;
+      gap: 64px;
+    }
+
+    .contact-basic__img img {
+      height: 100%;
+      object-position: center;
+    }
+  }
+</style>

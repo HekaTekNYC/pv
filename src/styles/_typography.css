@@ -1,0 +1,96 @@
+:root {
+  /* Font Families */
+  --ff-heading: "Baskervville", serif;
+  --ff-body: "Sora", sans-serif;
+  --ff-roboto: "Roboto", sans-serif;
+
+  /* Font Sizes */
+  --fs-h1: 3.0625rem; /* 49px */
+  --fs-h2: 2.4375rem; /* 39px */
+  --fs-h3-lg: 1.5625rem; /* 25px */
+  --fs-h3-sm: 1.25rem; /* 20px */
+
+  --fs-body-l: 1.25rem; /* 20px */
+  --fs-body-r: 1rem; /* 16px */
+  --fs-body-s: 0.875rem; /* 14px */
+
+  /* Font Weights */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+}
+
+/* Baskervvile */
+
+@font-face {
+  font-family: "Baskervville";
+  src: url("/fonts/Baskervville/Baskervville-SemiBold.woff2") format("woff2");
+  /* url("/fonts/Baskervville/Baskervville-SemiBold.woff") format("woff"); */
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Baskervville";
+  src: url("/fonts/Baskervville/Baskervville-Bold.woff2") format("woff2");
+  /* url("/fonts/Baskervville/Baskervville-Bold.woff") format("woff"); */
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Roboto */
+@font-face {
+  font-family: "Roboto";
+  src:
+    url("/fonts/Roboto/Roboto-Regular.woff2") format("woff2"),
+    url("/fonts/Roboto/Roboto-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Sora */
+@font-face {
+  font-family: "Sora";
+  src:
+    url("/fonts/Sora/Sora-Regular.woff2") format("woff2"),
+    url("/fonts/Sora/Sora-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sora";
+  src:
+    url("/fonts/Sora/Sora-SemiBold.woff2") format("woff2"),
+    url("/fonts/Sora/Sora-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sora";
+  src:
+    url("/fonts/Sora/Sora-Bold.woff2") format("woff2"),
+    url("/fonts/Sora/Sora-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Media Queries */
+
+@media (min-width: 768px) {
+  :root {
+    --fs-h2: 2.75rem; /* 44px */
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --fs-h1: 3.8125rem; /* 61px */
+    --fs-h2: 3.0625rem; /* 49px */
+  }
+}

@@ -1,0 +1,16 @@
+---
+import Inner from "../layouts/Inner.astro";
+import ContactBasic from "../components/sections/contact/ContactBasic.astro";
+import TrustBanner from "../components/sections/contact/TrustBanner.astro";
+import ContactMap from "../components/sections/contact/ContactMap.astro";
+---
+
+<Inner
+  title="PerfectView Contact"
+  heading="Contact"
+  breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Contact" }]}
+>
+  <ContactBasic />
+  <TrustBanner />
+  <ContactMap />
+</Inner>
