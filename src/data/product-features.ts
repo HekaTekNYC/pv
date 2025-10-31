@@ -97,6 +97,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       560,
     ),
   },
+  
 
   "wood-faux-blinds": {
     slug: "wood-faux-blinds",
