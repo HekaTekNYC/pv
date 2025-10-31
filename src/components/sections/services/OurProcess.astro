@@ -1,19 +1,7 @@
 ---
-import { processSteps, type IconKey } from "../../../data/services-data";
-import Window from "../../../assets/icons/Window.svg";
-import DesignConsult from "../../../assets/icons/design-consult.svg";
-import StepBkrnd from "../../../assets/icons/step-bkrnd.svg";
-import Estimate from "../../../assets/icons/estimate.svg";
-import Quality from "../../../assets/icons/quality.svg";
 
-const icons: Record<IconKey, typeof Window> = {
-  estimate: Estimate,
-  design: DesignConsult,
-  install: Window,
-  quality: Quality,
-};
+import { processSteps } from "../../../data/services-data";
 
-const getIcon = (key: IconKey) => icons[key];
 ---
 
 <section class="our-process" aria-labelledby="process-heading" role="region">
@@ -36,7 +24,7 @@ const getIcon = (key: IconKey) => icons[key];
     >
       {
         processSteps.map((card) => {
-          const Icon = getIcon(card.icon);
+  
           return (
             <div
               class="our-process__card"
@@ -46,8 +34,8 @@ const getIcon = (key: IconKey) => icons[key];
               <div class="our-process__card-header">
                 <p class="our-process__card-num">{card.num}</p>
                 <div class="our-process__card-icon-bkrd" aria-hidden="true">
-                  <StepBkrnd class="our-process__card-shape" />
-                  {Icon && <Icon class="our-process__card-icon" />}
+                  <div set:html={card.blob} class="our-process__card-shape" />
+                  <div set:html={card.icon} class="our-process__card-icon" />
                 </div>
               </div>
               <div class="our-process__card-info">
