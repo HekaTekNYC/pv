@@ -1,0 +1,154 @@
+---
+export interface Props {
+  images: Array<{ src: string; alt: string }>;
+}
+
+const { images } = Astro.props;
+---
+
+<div
+  id="lightbox"
+  class="lightbox"
+  aria-hidden="true"
+  role="dialog"
+  aria-label="Image viewer"
+>
+  <button class="lightbox-close" aria-label="Close lightbox">×</button>
+  <div class="lightbox-counter">
+    <span id="lightbox-counter">1</span> / {images.length}
+  </div>
+  <button class="lightbox-prev" aria-label="Previous image">‹</button>
+  <img id="lightbox-img" alt="" />
+  <button class="lightbox-next" aria-label="Next image">›</button>
+</div>
+<script
+  define:vars={{ images: JSON.stringify(images), totalImages: images.length }}
+>
+  // Remove the declare global and use a simpler approach
+  let currentIndex = 0;
+  let lightbox, lightboxImg, lightboxCounter;
+
+  // Initialize when DOM is ready
+  document.addEventListener("DOMContentLoaded", () => {
+    lightbox = document.getElementById("lightbox");
+    lightboxImg = document.getElementById("lightbox-img");
+    lightboxCounter = document.getElementById("lightbox-counter");
+
+    const imagesData = JSON.parse(images);
+    const totalImagesCount = totalImages;
+
+    // Make functions globally available
+    window.openLightbox = (index) => {
+      if (!lightbox || !lightboxImg || !lightboxCounter) return;
+
+      currentIndex = index;
+      updateLightboxImage();
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    };
+
+    function updateLightboxImage() {
+      if (!lightboxImg || !lightboxCounter) return;
+
+      const image = imagesData[currentIndex];
+      lightboxImg.src = image.src;
+      lightboxImg.alt = image.alt;
+      lightboxCounter.textContent = String(currentIndex + 1);
+    }
+
+    function closeLightbox() {
+      if (!lightbox) return;
+
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % totalImagesCount;
+      updateLightboxImage();
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + totalImagesCount) % totalImagesCount;
+      updateLightboxImage();
+    }
+
+    // Event listeners
+    document
+      .querySelector(".lightbox-close")
+      ?.addEventListener("click", closeLightbox);
+    document
+      .querySelector(".lightbox-prev")
+      ?.addEventListener("click", prevImage);
+    document
+      .querySelector(".lightbox-next")
+      ?.addEventListener("click", nextImage);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "ArrowRight") nextImage();
+    });
+  });
+</script>
+
+<style>
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .lightbox[aria-hidden="false"] {
+    display: flex;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .lightbox-counter {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 1rem;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+  }
+
+  .lightbox-prev {
+    left: 20px;
+  }
+
+  .lightbox-next {
+    right: 20px;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+  }
+</style>

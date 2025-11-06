@@ -1,0 +1,65 @@
+---
+import Inner from "../layouts/Inner.astro";
+import Lightbox from "../components/sections/shared/Lightbox.astro";
+import { galleryImages } from "../data/gallery";
+---
+
+<Inner
+  title="PerfectView Gallery"
+  heading="Gallery"
+  breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Gallery" }]}
+>
+  <div class="container">
+    <div class="gallery__grid">
+      {
+        galleryImages.map((image, index) => (
+          <div class="gallery__media" onclick={`window.openLightbox(${index})`}>
+            <img src={image.src} alt={image.alt} loading="lazy" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <Lightbox images={galleryImages} />
+</Inner>
+
+<style>
+  .gallery__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .gallery__media {
+    display: block;
+    max-width: 100%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  .gallery__media:hover {
+    transform: scale(1.02);
+  }
+
+  .gallery__media img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .gallery__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .gallery__grid {
+      gap: 48px;
+    }
+    .gallery__media img {
+      height: 500px;
+    }
+  }
+</style>
