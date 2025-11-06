@@ -3,10 +3,10 @@ import Button from "../../ui/Button.astro";
 import { getFeaturedImages } from "../../../data/gallery";
 ---
 
-<section class="our-work">
+<section class="our-work" aria-labelledby="our-work-heading">
   <div class="our-work__container container">
-    <h2>Our Work in Real Spaces</h2>
-    <div class="our-work__grid">
+    <h2 id="our-work-heading">Our Work in Real Spaces</h2>
+    <div class="our-work__grid" aria-label="Gallery preview images">
       {
         getFeaturedImages().map((image) => (
           <div class="our-work__media">
@@ -74,6 +74,12 @@ import { getFeaturedImages } from "../../../data/gallery";
 
     .our-work__container {
       gap: 48px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .our-work__media img {
+      transition: none;
     }
   }
 </style>
