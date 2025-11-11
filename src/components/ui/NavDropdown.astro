@@ -124,7 +124,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     border-bottom: none;
   }
 
-  @media (min-width: 950px) {
+  @media (min-width: 992px) {
     .nav-bar__dropdown {
       position: relative;
     }
@@ -293,7 +293,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
       return "ontouchstart" in window || navigator.maxTouchPoints > 0;
     }
 
-    const isDesktop = window.innerWidth >= 950;
+    const isDesktop = window.innerWidth >= 992;
     const isTouch = isTouchDevice();
 
     if (isDesktop && isTouch) {
@@ -324,7 +324,7 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
 
       // Close dropdown when clicking outside
       document.addEventListener("click", handleDocumentClick);
-    } else if (window.innerWidth < 950) {
+    } else if (window.innerWidth < 992) {
       dropdownToggle.addEventListener("click", (e) => {
         e.preventDefault();
         toggleDropdown();
@@ -338,8 +338,8 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
     // Handle window resize
     window.addEventListener("resize", () => {
       if (
-        (window.innerWidth >= 950 && !isDesktop) ||
-        (window.innerWidth < 950 && isDesktop)
+        (window.innerWidth >= 992 && !isDesktop) ||
+        (window.innerWidth < 992 && isDesktop)
       ) {
         window.location.reload();
       }
