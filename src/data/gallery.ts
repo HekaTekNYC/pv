@@ -49,24 +49,24 @@ export const galleryImages: GalleryImage[] = [
   },
   {
     id: 6,
-    src: getCloudinarySrc("draperies_feature_ojvznk", "webp", "v1761673828"),
-    alt: "Roman shades in living area",
+    src: getCloudinarySrc("PV_Gallery_6_rian2b", "png", "v1762868181"),
+    alt: "Roller shades in waiting room",
     featured: true,
-    category: "roman",
+    category: "roller",
   },
   {
     id: 7,
-    src: getCloudinarySrc("project7_abc123", "webp", "v1761673828"),
-    alt: "Window treatment in bathroom",
+    src: getCloudinarySrc("PV_Gallery_7_iww0or", "png", "v1762868661"),
+    alt: "Neutral colored draperies in large living room window behind couch",
     featured: false,
-    category: "bathroom",
+    category: "draperies",
   },
   {
     id: 8,
-    src: getCloudinarySrc("project8_xyz789", "webp", "v1761673828"),
-    alt: "Custom coverings in entryway",
+    src: getCloudinarySrc("PV_Gallery_8_ffxke9", "png", "v1762869110"),
+    alt: "Roller shades in four windows inside country club",
     featured: false,
-    category: "entryway",
+    category: "roller",
   },
 ];
 
