@@ -11,36 +11,38 @@ export interface GalleryImage {
 export const galleryImages: GalleryImage[] = [
   {
     id: 1,
-    src: getCloudinarySrc("draperies_enhance_mkfgo1", "webp", "v1761673644"),
+    src: getCloudinarySrc("Gallery_Mallie_yvrrsn", "png", "v1762801493"),
     alt: "Living room with custom draperies",
     featured: true,
     category: "draperies",
   },
+
   {
     id: 2,
-    src: getCloudinarySrc("draperies_feature_ojvznk", "webp", "v1761673828"),
+    src: getCloudinarySrc("PV_Gallery_2_zrbfoa", "png", "v1762801824"),
 
-    alt: "Modern roller shades in office",
+    alt: "Modern roller shades in three windows",
     featured: true,
     category: "shades",
   },
   {
     id: 3,
-    src: getCloudinarySrc("draperies_enhance_mkfgo1", "webp", "v1761673644"),
-    alt: "Wood blinds in dining room",
+    src: getCloudinarySrc("PV_Gallery_3_fwsnmd", "png", "v1762802448"),
+    alt: "Pleated shades in kitchen window",
     featured: true,
-    category: "blinds",
+    category: "shades",
   },
   {
     id: 4,
-    src: getCloudinarySrc("draperies_feature_ojvznk", "webp", "v1761673828"),
-    alt: "Plantation shutters in bedroom",
+    src: getCloudinarySrc("PV_Gallery_4_olbsmd", "png", "v1762802757"),
+    alt: "Draperies and pleated shades on tall window",
     featured: true,
-    category: "shutters",
+    category: "draperies",
   },
   {
     id: 5,
-    src: getCloudinarySrc("draperies_enhance_mkfgo1", "webp", "v1761673644"),
+    src: getCloudinarySrc("PV_Gallery_5_ejrco0", "png", "v1762822518"),
+
     alt: "Cellular shades in kitchen",
     featured: true,
     category: "cellular",

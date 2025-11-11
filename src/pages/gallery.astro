@@ -13,7 +13,13 @@ import { galleryImages } from "../data/gallery";
     <div class="gallery__grid">
       {
         galleryImages.map((image, index) => (
-          <div class="gallery__media" onclick={`window.openLightbox(${index})`}>
+          <div class="gallery__media" 
+  tabindex="0"
+  onclick={`window.openLightbox(${index})`}
+  onkeydown=`if (event.key === 'Enter' || event.key === ' ') { 
+    event.preventDefault(); 
+    window.openLightbox(${index}); 
+  }` >
             <img src={image.src} alt={image.alt} loading="lazy" />
           </div>
         ))
