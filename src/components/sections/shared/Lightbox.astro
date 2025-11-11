@@ -13,26 +13,68 @@ const { images } = Astro.props;
   role="dialog"
   aria-label="Image viewer"
 >
-  <button class="lightbox-close" aria-label="Close lightbox">×</button>
-  <div class="lightbox-counter">
-    <span id="lightbox-counter">1</span> / {images.length}
+  <div class="lightbox__container">
+    <div class="lightbox__content">
+      <button class="lightbox__close" aria-label="Close lightbox"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="5.99 6 12.01 12.01"
+          aria-hidden="true"
+          ><path
+            d="M13.4099 11.9999L17.7099 7.70994C17.8982 7.52164 18.004 7.26624 18.004 6.99994C18.004 6.73364 17.8982 6.47825 17.7099 6.28994C17.5216 6.10164 17.2662 5.99585 16.9999 5.99585C16.7336 5.99585 16.4782 6.10164 16.2899 6.28994L11.9999 10.5899L7.70994 6.28994C7.52164 6.10164 7.26624 5.99585 6.99994 5.99585C6.73364 5.99585 6.47824 6.10164 6.28994 6.28994C6.10164 6.47825 5.99585 6.73364 5.99585 6.99994C5.99585 7.26624 6.10164 7.52164 6.28994 7.70994L10.5899 11.9999L6.28994 16.2899C6.19621 16.3829 6.12182 16.4935 6.07105 16.6154C6.02028 16.7372 5.99414 16.8679 5.99414 16.9999C5.99414 17.132 6.02028 17.2627 6.07105 17.3845C6.12182 17.5064 6.19621 17.617 6.28994 17.7099C6.3829 17.8037 6.4935 17.8781 6.61536 17.9288C6.73722 17.9796 6.86793 18.0057 6.99994 18.0057C7.13195 18.0057 7.26266 17.9796 7.38452 17.9288C7.50638 17.8781 7.61698 17.8037 7.70994 17.7099L11.9999 13.4099L16.2899 17.7099C16.3829 17.8037 16.4935 17.8781 16.6154 17.9288C16.7372 17.9796 16.8679 18.0057 16.9999 18.0057C17.132 18.0057 17.2627 17.9796 17.3845 17.9288C17.5064 17.8781 17.617 17.8037 17.7099 17.7099C17.8037 17.617 17.8781 17.5064 17.9288 17.3845C17.9796 17.2627 18.0057 17.132 18.0057 16.9999C18.0057 16.8679 17.9796 16.7372 17.9288 16.6154C17.8781 16.4935 17.8037 16.3829 17.7099 16.2899L13.4099 11.9999Z"
+            fill="currentColor"></path></svg
+        ></button
+      >
+      <div class="lightbox__counter">
+        <span id="lightbox__counter">1</span> / {images.length}
+      </div>
+      <button class="lightbox__prev" aria-label="Previous image"
+        ><svg
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="9.25 6.25 6.5 11.5"
+          ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+            <path
+              d="M15 7L10 12L15 17"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </g></svg
+        ></button
+      >
+      <img id="lightbox__img" alt="" />
+      <button class="lightbox__next" aria-label="Next image"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="9.25 6.25 6.5 11.5"
+          ><path
+            d="M10 7L15 12L10 17"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path></svg
+        ></button
+      >
+    </div>
   </div>
-  <button class="lightbox-prev" aria-label="Previous image">‹</button>
-  <img id="lightbox-img" alt="" />
-  <button class="lightbox-next" aria-label="Next image">›</button>
 </div>
+
 <script
   define:vars={{ images: JSON.stringify(images), totalImages: images.length }}
 >
-  // Remove the declare global and use a simpler approach
   let currentIndex = 0;
   let lightbox, lightboxImg, lightboxCounter;
 
-  // Initialize when DOM is ready
   document.addEventListener("DOMContentLoaded", () => {
     lightbox = document.getElementById("lightbox");
-    lightboxImg = document.getElementById("lightbox-img");
-    lightboxCounter = document.getElementById("lightbox-counter");
+    lightboxImg = document.getElementById("lightbox__img");
+    lightboxCounter = document.getElementById("lightbox__counter");
 
     const imagesData = JSON.parse(images);
     const totalImagesCount = totalImages;
@@ -75,13 +117,13 @@ const { images } = Astro.props;
 
     // Event listeners
     document
-      .querySelector(".lightbox-close")
+      .querySelector(".lightbox__close")
       ?.addEventListener("click", closeLightbox);
     document
-      .querySelector(".lightbox-prev")
+      .querySelector(".lightbox__prev")
       ?.addEventListener("click", prevImage);
     document
-      .querySelector(".lightbox-next")
+      .querySelector(".lightbox__next")
       ?.addEventListener("click", nextImage);
 
     document.addEventListener("keydown", (e) => {
@@ -96,7 +138,7 @@ const { images } = Astro.props;
   .lightbox {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     display: none;
     align-items: center;
     justify-content: center;
@@ -105,50 +147,129 @@ const { images } = Astro.props;
 
   .lightbox[aria-hidden="false"] {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .lightbox-close {
+  .lightbox__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: clamp(30px, 3vw, 35px) clamp(16px, 5vw, 64px);
+    height: 100vh;
+    width: 100%;
+    max-width: 1300px;
+  }
+  .lightbox__content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .lightbox__counter {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 0;
+    left: 0;
+    color: var(--white);
+    font-size: var(--fs-body-r);
+    z-index: 1002;
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: 0;
+    right: 0;
     background: none;
     border: none;
-    color: white;
-    font-size: 2rem;
+    color: var(--white);
+    width: 13px;
+    height: 13px;
     cursor: pointer;
+    z-index: 1002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .lightbox-counter {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    color: white;
-    font-size: 1rem;
-  }
-
-  .lightbox-prev,
-  .lightbox-next {
+  .lightbox__prev,
+  .lightbox__next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background: none;
     border: none;
-    color: white;
-    font-size: 3rem;
+    color: var(--white);
+    width: 18px;
+    height: 18px;
     cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .lightbox-prev {
-    left: 20px;
+  .lightbox__prev {
+    left: 0;
   }
 
-  .lightbox-next {
-    right: 20px;
+  .lightbox__next {
+    right: 0;
   }
 
   .lightbox img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 85%;
+    max-height: 85%;
     object-fit: contain;
+    z-index: 1000;
+  }
+
+  .lightbox__close svg,
+  .lightbox__prev svg,
+  .lightbox__next svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .lightbox__counter {
+      font-size: var(--fs-body-l);
+    }
+
+    .lightbox__close {
+      width: 15px;
+      height: 15px;
+    }
+
+    .lightbox__prev,
+    .lightbox__next {
+      width: 25px;
+      height: 25px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lightbox__counter {
+      top: 25px;
+      left: 25px;
+    }
+
+    .lightbox__close {
+      top: 25px;
+      right: 25px;
+      width: 15px;
+      height: 15px;
+    }
+
+    .lightbox__prev,
+    .lightbox__next {
+      width: 25px;
+      height: 25px;
+    }
   }
 </style>
