@@ -32,7 +32,7 @@ export const lpServicesData: ServiceData[] = [
     title: "Design Advice",
     desc: "Benefit from expert guidance on materials, finishes, and functionality options to perfectly suit your needs.",
     href: "/services#design-estimate",
-    imgSrc: getCloudinarySrc("design_advice_gmn149", "webp"),
+    imgSrc: getCloudinarySrc("PV_Design_a1sqcr", "png", "v1762888838"),
     imgAlt: "Interior design consultation for window coverings selection",
   },
   {
@@ -40,7 +40,8 @@ export const lpServicesData: ServiceData[] = [
     title: "Motorized Systems",
     desc: "Add ease and modern control to your window treatments with smart home automation technology.",
     href: "/services#installation",
-    imgSrc: getCloudinarySrc("lp-services-motor_f7nmpm", "png", "v1761765209"),
+    imgSrc: getCloudinarySrc("PV_Motorized_okv9e5", "png", "v1762889464"),
+
     imgAlt: "Smart motorized window shades controlled by smartphone app",
   },
 ];
