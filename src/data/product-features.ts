@@ -44,7 +44,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Available in light-filtering and blackout fabrics (with liner)",
       "Flat, hobbled, or relaxed fold styles",
       "Clean, compact stack when raised",
-      "Corded or cordless lift options",
+      "Continuous loop or cordless lift options",
       "Works in both modern and traditional interiors",
     ],
     cta: { label: "Explore More Shade Styles", href: "/products" },
@@ -64,7 +64,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
     features: [
       "Sheer, solar, dim-out, and blackout fabrics",
       "Optional fascia or cassette valances",
-      "Chain or cordless control",
+      "Continuous loop or cordless lift options",
       "Wide widths available for large spans",
       "Excellent UV and glare reduction options",
     ],
@@ -84,9 +84,9 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Honeycomb cells help insulate windows for comfort and efficiency, with flexible privacy and light control.",
     features: [
       "Single, double, and blackout cells",
-      "Top-down/bottom-up operation",
+      "Top down/bottom up operation",
       "Strong insulation for energy savings",
-      "Corded or cordless lift options",
+      "Continuous loop or cordless lift options",
       "Slim stack height when raised",
     ],
     cta: { label: "Explore More Shade Styles", href: "/products" },
@@ -97,7 +97,6 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       560,
     ),
   },
-  
 
   "wood-faux-blinds": {
     slug: "wood-faux-blinds",
@@ -108,7 +107,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       '2" and 2½" slat sizes for different looks and views',
       "Routeless (no-holes) option to reduce light leaks",
       "Cordless lift and wand tilt for safety and simplicity",
-      "Decorative tapes and valances for a finished look",
+      "Wood cornices and valances",
       "Faux wood resists humidity and warping in damp areas",
     ],
     cta: { label: "Explore More Shade Styles", href: "/products" },
@@ -171,7 +170,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Solar screen fabrics with 1%–10% openness for view and glare control",
       "Side channels or cable guides to reduce sway in wind",
       "Heavy-duty, weather-resistant hardware and finishes",
-      "Manual crank or clutch operation (no power required)",
+      "Clutch operation (no power required)",
       "Significant UV reduction to help protect furnishings",
     ],
     cta: { label: "Explore More Shade Styles", href: "/products" },
@@ -214,7 +213,7 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
       "Optional privacy or blackout liners (attached or independent)",
       "Edge bindings to protect edges and add contrast",
       "Roman fold styles with clean stacks when raised",
-      "Top-down/bottom-up available on select configurations",
+      "Minimal processing makes them an environmentally conscious choice.",
     ],
     cta: { label: "Explore More Shade Styles", href: "/products" },
     image: createCloudinaryImage(
