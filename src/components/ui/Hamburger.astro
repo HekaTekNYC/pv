@@ -34,7 +34,7 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
     user-select: none;
     background: none;
     border: none;
-    color: #dbd3c8;
+    color: var(--neutral-lighter);
   }
 
   .ham-rotate.active {
@@ -69,7 +69,7 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
     stroke-dashoffset: -138px;
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: 1056px) {
     .ham {
       display: none;
     }
@@ -94,18 +94,13 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
 
     if (!hamburger || !targetMenu) return;
 
-    if (!targetMenu) {
-      console.warn(`Hamburger menu: Target element #${targetId} not found`);
-      return;
-    }
-
-    // Function to reset menu state on desktop
     const resetMenuForDesktop = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1056) {
         hamburger.classList.remove("active");
         hamburger.setAttribute("aria-expanded", "false");
         targetMenu.classList.remove("active");
         targetMenu.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
       }
     };
 
@@ -118,7 +113,32 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
       hamburger.setAttribute("aria-expanded", isExpanded.toString());
       targetMenu.classList.toggle("active");
       targetMenu.setAttribute("aria-hidden", (!isExpanded).toString());
+
+      if (isExpanded) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
     });
+
+    // Close menu when clicking links (mobile) - excluding dropdown elements
+    if (window.innerWidth < 1056) {
+      targetMenu.addEventListener("click", (e) => {
+        if (!(e.target instanceof Element)) return;
+
+        if (
+          e.target.tagName === "A" &&
+          !e.target.classList.contains("nav-bar__dropdown-toggle") &&
+          !e.target.closest(".nav-bar__dropdown-menu")
+        ) {
+          hamburger.classList.remove("active");
+          hamburger.setAttribute("aria-expanded", "false");
+          targetMenu.classList.remove("active");
+          targetMenu.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        }
+      });
+    }
 
     // Reset on window resize
     window.addEventListener("resize", resetMenuForDesktop);
