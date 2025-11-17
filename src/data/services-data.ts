@@ -15,7 +15,8 @@ export const lpServicesData: ServiceData[] = [
     title: "Free Consultation",
     desc: "We'll meet with you to understand your unique space and style preferences—at no cost, absolutely free.",
     href: "/services#design-estimate",
-    imgSrc: getCloudinarySrc("free_consult_oecr0n", "webp"),
+    imgSrc: getCloudinarySrc("PV_Consult_xqejjc", "png", "v1763141194"),
+
     imgAlt:
       "Homeowner discussing window treatment options with PerfectView consultant",
   },
@@ -24,7 +25,8 @@ export const lpServicesData: ServiceData[] = [
     title: "Pro Installation",
     desc: "Our experienced installers ensure a precise, clean, and lasting finish for every treatment project.",
     href: "/services#installation",
-    imgSrc: getCloudinarySrc("jerry-install_rsth2h", "png", "v1761764167"),
+    imgSrc: getCloudinarySrc("PV_Pro_Install_papism", "png", "v1763142074"),
+
     imgAlt: "PerfectView professional installing custom window treatments",
   },
   {

@@ -276,12 +276,12 @@ const { triggerText, links, triggerHref = "#" } = Astro.props;
       }
     }
 
-    function handleDocumentClick(e) {
+    function handleDocumentClick(e: Event) {
       if (
         !dropdown ||
         !dropdownToggle ||
         !e.target ||
-        !dropdown.contains(e.target)
+        !dropdown.contains(e.target as Node)
       ) {
         dropdown?.classList.remove("open");
         dropdownToggle?.setAttribute("aria-expanded", "false");
