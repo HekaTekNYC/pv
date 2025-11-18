@@ -49,7 +49,7 @@ export const productHeroData: Record<string, ProductHeroData> = {
         term: "Light Control",
         value: "Sheer to room darkening (blackout with liner)",
       },
-      { term: "Operation", value: "Corded, cordless, or motorized" },
+      { term: "Operation", value: "Continuous loop, cordless, or motorized" },
       { term: "Mount", value: "Inside or outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
       {
@@ -77,7 +77,7 @@ export const productHeroData: Record<string, ProductHeroData> = {
     specs: [
       { term: "Motorization", value: "Available" },
       { term: "Light Control", value: "Sheer to blackout (by fabric)" },
-      { term: "Operation", value: "Corded, cordless, or motorized" },
+      { term: "Operation", value: "Continuous loop, cordless, or motorized" },
       { term: "Mount", value: "Inside or outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
       {
@@ -101,11 +101,11 @@ export const productHeroData: Record<string, ProductHeroData> = {
     slug: "cellular-shades",
     title: "Cellular Shades",
     subtitle:
-      "Honeycomb cells trap air to help insulate windows. Options include top-down/bottom-up and fabrics from light filtering to blackout.",
+      "Honeycomb cells trap air to help insulate windows. Options include top down/bottom up and fabrics from light filtering to blackout.",
     specs: [
       { term: "Motorization", value: "Available" },
       { term: "Light Control", value: "Light filtering to blackout" },
-      { term: "Operation", value: "Corded, cordless, or motorized" },
+      { term: "Operation", value: "Cordless or motorized" },
       { term: "Mount", value: "Inside or outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
       { term: "Energy Efficiency", value: "High (insulating)" },
@@ -128,12 +128,12 @@ export const productHeroData: Record<string, ProductHeroData> = {
     subtitle:
       "Classic slatted blinds in real wood for warmth or faux wood for moisture resistance. Tilt the slats to manage privacy and view-through.",
     specs: [
-      { term: "Motorization", value: "Available (tilt)" },
+      { term: "Motorization", value: "Not Available" },
       {
         term: "Light Control",
         value: "Adjustable slats (privacy to room darkening)",
       },
-      { term: "Operation", value: "Corded or cordless lift; wand tilt" },
+      { term: "Operation", value: "Cordless lift; wand tilt" },
       { term: "Mount", value: "Inside or outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
       { term: "Energy Efficiency", value: "Standard" },
@@ -156,7 +156,7 @@ export const productHeroData: Record<string, ProductHeroData> = {
     subtitle:
       "Hardwood or composite panels with adjustable louvers. Durable, architectural, and excellent for privacy and light control.",
     specs: [
-      { term: "Motorization", value: "Limited / specialty only" },
+      { term: "Motorization", value: "Not Available" },
       {
         term: "Light Control",
         value: "Adjustable louvers (privacy to room darkening)",
@@ -193,7 +193,7 @@ export const productHeroData: Record<string, ProductHeroData> = {
         term: "Light Control",
         value: "Light filtering to blackout (with lining)",
       },
-      { term: "Operation", value: "Baton, corded, or motorized" },
+      { term: "Operation", value: "Baton, continuous loop, or motorized" },
       { term: "Mount", value: "Outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
       {
@@ -221,7 +221,7 @@ export const productHeroData: Record<string, ProductHeroData> = {
     specs: [
       { term: "Motorization", value: "Available" },
       { term: "Light Control", value: "Solar screen (1–10% openness)" },
-      { term: "Operation", value: "Motorized or crank" },
+      { term: "Operation", value: "Motorized or continuous loop" },
       { term: "Mount", value: "Outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
       { term: "Energy Efficiency", value: "Helps reduce heat gain and glare" },
@@ -246,7 +246,7 @@ export const productHeroData: Record<string, ProductHeroData> = {
     specs: [
       { term: "Motorization", value: "Available" },
       { term: "Light Control", value: "Sheer to room darkening (by fabric)" },
-      { term: "Operation", value: "Corded, cordless, or motorized" },
+      { term: "Operation", value: "Continuous loop, cordless, or motorized" },
       { term: "Mount", value: "Inside or outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
       { term: "Energy Efficiency", value: "Standard" },
@@ -274,7 +274,7 @@ export const productHeroData: Record<string, ProductHeroData> = {
         term: "Light Control",
         value: "Light filtering (room darkening with liner)",
       },
-      { term: "Operation", value: "Corded, cordless, or motorized" },
+      { term: "Operation", value: "Continuous loop, cordless, or motorized" },
       { term: "Mount", value: "Inside or outside mount" },
       { term: "Custom Sizes", value: "Made to measure" },
       {

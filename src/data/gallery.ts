@@ -20,30 +20,29 @@ export const galleryImages: GalleryImage[] = [
   {
     id: 2,
     src: getCloudinarySrc("PV_Gallery_2_zrbfoa", "png", "v1762801824"),
-
     alt: "Modern roller shades in three windows",
     featured: true,
-    category: "shades",
+    category: "roller",
   },
   {
     id: 3,
     src: getCloudinarySrc("PV_Gallery_3_fwsnmd", "png", "v1762802448"),
-    alt: "Pleated shades in kitchen window",
+    alt: "Top down/bottom up cellular shades in kitchen window surrounded by artistic tiles",
     featured: true,
-    category: "shades",
+    category: "cellular",
   },
   {
     id: 4,
     src: getCloudinarySrc("PV_Gallery_4_olbsmd", "png", "v1762802757"),
-    alt: "Draperies and pleated shades on tall window",
+    alt: "Top down/bottom up cellular shades with decorative panels on either side in tall window",
     featured: true,
-    category: "draperies",
+    category: "cellular",
   },
   {
     id: 5,
     src: getCloudinarySrc("PV_Gallery_5_ejrco0", "png", "v1762822518"),
 
-    alt: "Cellular shades in kitchen",
+    alt: "Cellular shades with floral printed fabric cornices in kitchen",
     featured: true,
     category: "cellular",
   },

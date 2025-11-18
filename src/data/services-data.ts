@@ -15,7 +15,8 @@ export const lpServicesData: ServiceData[] = [
     title: "Free Consultation",
     desc: "We'll meet with you to understand your unique space and style preferences—at no cost, absolutely free.",
     href: "/services#design-estimate",
-    imgSrc: getCloudinarySrc("free_consult_oecr0n", "webp"),
+    imgSrc: getCloudinarySrc("PV_Consult_xqejjc", "png", "v1763141194"),
+
     imgAlt:
       "Homeowner discussing window treatment options with PerfectView consultant",
   },
@@ -24,7 +25,8 @@ export const lpServicesData: ServiceData[] = [
     title: "Pro Installation",
     desc: "Our experienced installers ensure a precise, clean, and lasting finish for every treatment project.",
     href: "/services#installation",
-    imgSrc: getCloudinarySrc("jerry-install_rsth2h", "png", "v1761764167"),
+    imgSrc: getCloudinarySrc("PV_Pro_Install_papism", "png", "v1763142074"),
+
     imgAlt: "PerfectView professional installing custom window treatments",
   },
   {
@@ -32,7 +34,7 @@ export const lpServicesData: ServiceData[] = [
     title: "Design Advice",
     desc: "Benefit from expert guidance on materials, finishes, and functionality options to perfectly suit your needs.",
     href: "/services#design-estimate",
-    imgSrc: getCloudinarySrc("design_advice_gmn149", "webp"),
+    imgSrc: getCloudinarySrc("PV_Design_a1sqcr", "png", "v1762888838"),
     imgAlt: "Interior design consultation for window coverings selection",
   },
   {
@@ -40,7 +42,8 @@ export const lpServicesData: ServiceData[] = [
     title: "Motorized Systems",
     desc: "Add ease and modern control to your window treatments with smart home automation technology.",
     href: "/services#installation",
-    imgSrc: getCloudinarySrc("lp-services-motor_f7nmpm", "png", "v1761765209"),
+    imgSrc: getCloudinarySrc("PV_Motorized_okv9e5", "png", "v1762889464"),
+
     imgAlt: "Smart motorized window shades controlled by smartphone app",
   },
 ];

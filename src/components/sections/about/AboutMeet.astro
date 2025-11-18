@@ -1,5 +1,8 @@
 ---
 import Button from "../../ui/Button.astro";
+
+import { getCloudinarySrc } from "../../../config/cloudinary";
+const AboutImg = getCloudinarySrc("PV_About_myhbfm", "png", "v1763142234");
 ---
 
 <section class="about-meet" aria-labelledby="about-meet-title" id="about-meet">
@@ -8,8 +11,8 @@ import Button from "../../ui/Button.astro";
     <div class="about-meet__image-container">
       <picture>
         <img
-          src="/images/about-jerry-sarah.png"
-          alt="Jerry and Sarah Fry smiling on a hike near a waterfall"
+          src={AboutImg}
+          alt="Fry family smiling gathered outdoors"
           class="about-meet__image"
           width="630"
           height="731"
@@ -66,6 +69,7 @@ import Button from "../../ui/Button.astro";
   .about-meet__container {
     display: flex;
     flex-direction: column;
+
     gap: 35px;
   }
 
@@ -131,7 +135,7 @@ import Button from "../../ui/Button.astro";
   @media (min-width: 1024px) {
     .about-meet__container {
       flex-direction: row;
-      align-items: stretch;
+      align-items: center;
       gap: 64px;
       min-height: 600px;
     }

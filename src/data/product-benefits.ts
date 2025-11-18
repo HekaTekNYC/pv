@@ -86,7 +86,7 @@ export const productBenefitsData: Record<string, ProductBenefitsData> = {
     benefits: [
       "Helps regulate temperature and reduce energy costs",
       "Multiple opacity levels for flexible light control",
-      "Top-down/bottom-up lift for adjustable privacy",
+      "Top down/bottom up lift for adjustable privacy",
       "Professional installation ensures a precise, custom fit",
       "Clean, tailored appearance that suits any décor",
     ],

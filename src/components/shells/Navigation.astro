@@ -2,6 +2,7 @@
 import Dropdown from "../ui/NavDropdown.astro";
 import Button from "../ui/Button.astro";
 import Hamburger from "../ui/Hamburger.astro";
+import { getCloudinarySrc } from "../../config/cloudinary";
 
 import { productLinks } from "../../data/dropdown-data";
 ---
@@ -10,7 +11,12 @@ import { productLinks } from "../../data/dropdown-data";
 <nav class="nav-bar" role="navigation" aria-label="Main">
   <div class="nav-bar__container">
     <a href="/" class="nav-bar__logo" aria-label="Home">
-      <img src="/images/Logo.svg" alt="Company logo" height="48" width="117" />
+      <img
+        src={getCloudinarySrc("PV_Logo_qhfozx", "png", "v1763135913")}
+        alt="Company logo"
+        height="191"
+        width="473"
+      />
     </a>
     <Hamburger targetId="primary-menu" />
     <div class="nav-bar__links" id="primary-menu" aria-hidden="true">
@@ -29,7 +35,7 @@ import { productLinks } from "../../data/dropdown-data";
         <li><a href="/contact" class="nav-bar__link">Contact</a></li>
         <li class="nav-bar__book-now">
           <Button href="/contact#contact-form" color="nav"
-            >Get a Free Quote</Button
+            >Free Consultation</Button
           >
         </li>
       </ul>
@@ -166,7 +172,7 @@ import { productLinks } from "../../data/dropdown-data";
 
   /* --- Media Queries --- */
 
-  @media (min-width: 992px) {
+  @media (min-width: 1056px) {
     nav {
       height: 104px;
     }
