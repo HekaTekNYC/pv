@@ -10,25 +10,25 @@ export const testimonials: Testimonial[] = [
   {
     id: 1,
     quote:
-      "Working with PerfectView was fantastic! They streamlined our processes, and the outcomes are truly remarkable. I couldn't be happier with the results!",
-    initial: "L",
-    author: "Laura M.",
+      '"Working with the Fry family has been a true privilege. Their positivity, professionalism, and impeccable followthrough shine through every interaction. With kindness, expertise, and genuine care, they make collaboration a joy."',
+    initial: "K",
+    author: "Katy A.",
     role: "Homeowner",
   },
   {
     id: 2,
     quote:
-      "They were efficient and professional. Our new shades have completely transformed our space, giving it a fresh and vibrant look that we absolutely love!",
-    initial: "J",
-    author: "James R.",
+      '"The natural shades I purchased are beautiful. There was a wide variety of materials to choose from, and the selection process was truly enjoyable. Installation was excellent—I’m very satisfied."',
+    initial: "D",
+    author: "Dorothy P.",
     role: "General Contractor",
   },
   {
     id: 3,
     quote:
-      "As a family-owned business, they deliver outstanding results. Their meticulous attention to detail reflects genuine care. I highly recommend their services!",
-    initial: "S",
-    author: "Samantha T.",
+      '"After meeting Allison, the choice was clear. Her trustbuilding, attention to detail, and proactive approach made the team an easy decision—and we feel fortunate to have worked with them."',
+    initial: "T",
+    author: "Trevor S.",
     role: "Interior Designer",
   },
 ];
