@@ -147,14 +147,15 @@ const FAQImg = getCloudinarySrc("natural-2-crop_ja7kqn", "png", "v1761588660");
   .faq__answer {
     max-height: 0;
     overflow: hidden;
-    transition: all 0.4s ease;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.3s ease;
   }
   .faq__item.active h3 {
     color: var(--secondary);
   }
 
   .faq__item.active .faq__answer {
-    max-height: 500px;
+    opacity: 1;
   }
 
   .faq__item.active .faq__toggle-down {
@@ -235,29 +236,36 @@ const FAQImg = getCloudinarySrc("natural-2-crop_ja7kqn", "png", "v1761588660");
       const header = item.querySelector<HTMLElement>(".faq__header");
       const answer = item.querySelector<HTMLElement>(".faq__answer");
 
-      // Guard against null elements
       if (!header || !answer) return;
+
+      const closeAll = () => {
+        faqItems.forEach((i) => {
+          const a = i.querySelector<HTMLElement>(".faq__answer");
+          const h = i.querySelector<HTMLElement>(".faq__header");
+          if (a && h) {
+            i.classList.remove("active");
+            h.setAttribute("aria-expanded", "false");
+            a.setAttribute("aria-hidden", "true");
+            a.style.maxHeight = "0px";
+          }
+        });
+      };
+
+      const open = () => {
+        item.classList.add("active");
+        header.setAttribute("aria-expanded", "true");
+        answer.setAttribute("aria-hidden", "false");
+        answer.style.maxHeight = `${answer.scrollHeight}px`;
+      };
 
       header.addEventListener("click", () => {
         const isOpen = item.classList.contains("active");
-
-        // Close all others
-        faqItems.forEach((i) => {
-          const a = i.querySelector<HTMLElement>(".faq__answer");
-          if (a) {
-            i.classList.remove("active");
-            a.style.maxHeight = "";
-          }
-        });
-
-        // Toggle this one
+        closeAll();
         if (!isOpen) {
-          item.classList.add("active");
-          answer.style.maxHeight = `${answer.scrollHeight}px`;
+          open();
         }
       });
 
-      // Accessibility: toggle with keyboard
       header.addEventListener("keydown", (e: KeyboardEvent) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
