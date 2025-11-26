@@ -78,7 +78,7 @@ export const productBannerData: Record<string, BannerSplitProps> = {
     content: {
       title: "Find the Perfect Wood or Faux Wood Blinds Today",
       description:
-        "Not sure if wood or faux wood blinds are right for your windows? Our free consultations help you choose the perfect material, style, and finish for your space—no obligation required.",
+        "Not sure if wood or faux wood blinds are right for your windows? Our free consultation help you choose the perfect material, style, and finish for your space—no obligation required.",
       buttonText: "Schedule a Free Consultation",
       buttonHref: "/contact#contact-form",
     },
@@ -99,7 +99,7 @@ export const productBannerData: Record<string, BannerSplitProps> = {
     content: {
       title: "Find the Perfect Shutters Today",
       description:
-        "Not sure if shutters are right for your windows? Our free consultations help you choose the perfect style, material, and louver size for your space—no obligation required.",
+        "Not sure if shutters are right for your windows? Our free consultation help you choose the perfect style, material, and louver size for your space—no obligation required.",
       buttonText: "Schedule a Free Consultation",
       buttonHref: "/contact#contact-form",
     },
@@ -114,12 +114,72 @@ export const productBannerData: Record<string, BannerSplitProps> = {
       ),
       alt: "Elegant white draperies framing a large beautiful bedroom window",
       width: 1280,
-      height: 854,
+      height: 898,
     },
     content: {
       title: "Find the Perfect Draperies Today",
       description:
-        "Not sure if draperies are right for your windows? Our free consultations help you choose the perfect fabric, style, and hanging system for your space—no obligation required.",
+        "Not sure if draperies are right for your windows? Our free consultation help you choose the perfect fabric, style, and hanging system for your space—no obligation required.",
+      buttonText: "Schedule a Free Consultation",
+      buttonHref: "/contact#contact-form",
+    },
+  },
+  "exterior-shades": {
+    image: {
+      ...getCloudinaryFourSet(
+        { id: "exterior-v7-crop_i7kssr", version: "v1764181608" }, // mobile webp
+        { id: "exterior-v7-crop_i7kssr", version: "v1764181608" }, // mobile png
+        { id: "exterior-v7_p1mxel", version: "v1764181556" }, // desktop webp
+        { id: "exterior-v7_p1mxel", version: "v1764181556" }, // desktop png
+      ),
+      alt: "Exterior roller shades on a patio frame in a desert setting",
+      width: 1280,
+      height: 853,
+    },
+    content: {
+      title: "Find the Perfect Exterior Shades Today",
+      description:
+        "Not sure if exterior shades are right for your outdoor space? Our free consultation help you choose the perfect weather-resistant materials and operation system for your patio or deck—no obligation required.",
+      buttonText: "Schedule a Free Consultation",
+      buttonHref: "/contact#contact-form",
+    },
+  },
+  "sheer-layered": {
+    image: {
+      ...getCloudinaryFourSet(
+        { id: "layered-v2-crop_cnomtq", version: "v1764182338" }, // mobile webp
+        { id: "layered-v2-crop_cnomtq", version: "v1764182338" }, // mobile png
+        { id: "layered-v2_wra0wh", version: "v1764182393" }, // desktop webp
+        { id: "layered-v2_wra0wh", version: "v1764182393" }, // desktop png
+      ),
+      alt: "Layered sheer shades in a bedroom with woven wall decor and neutral tones",
+      width: 1280,
+      height: 853,
+    },
+    content: {
+      title: "Find the Perfect Layered Shades Today",
+      description:
+        "Not sure if layered shades are right for your windows? Our free consultation help you choose the perfect combination of light filtering and privacy for your space—no obligation required.",
+      buttonText: "Schedule a Free Consultation",
+      buttonHref: "/contact#contact-form",
+    },
+  },
+  "natural-woven": {
+    image: {
+      ...getCloudinaryFourSet(
+        { id: "natural-shades-v7-crop_jirpj4", version: "v1764184032" }, // mobile webp
+        { id: "natural-shades-v7-crop_jirpj4", version: "v1764184032" }, // mobile png
+        { id: "natural-shades-v7_ftmlta", version: "v1764184038" }, // desktop webp
+        { id: "natural-shades-v7_ftmlta", version: "v1764184038" }, // desktop png
+      ),
+      alt: "Natural woven shades in light neutral living room with mutliple windows",
+      width: 1279,
+      height: 854,
+    },
+    content: {
+      title: "Find the Perfect Natural Shades Today",
+      description:
+        "Not sure if natural shades are right for your windows? Our free consultations help you choose the perfect woven materials and textures to complement your organic design style—no obligation required.",
       buttonText: "Schedule a Free Consultation",
       buttonHref: "/contact#contact-form",
     },
