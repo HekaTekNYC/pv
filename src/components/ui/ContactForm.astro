@@ -11,7 +11,18 @@ import Button from "./Button.astro";
     </p>
   </header>
 
-  <form class="contact-form__form" action="#" method="post" novalidate>
+  <form
+    class="contact-form__form"
+    name="contact"
+    method="post"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+  >
+    <input type="hidden" name="form-name" value="contact" />
+    <p class="contact-form__field contact-form__field--hidden">
+      <label for="contact-bot" class="contact-form__label">Do not fill this out</label>
+      <input id="contact-bot" name="bot-field" type="text" class="contact-form__input" />
+    </p>
     <div class="contact-form__grid">
       <!-- Full name -->
       <div class="contact-form__field">
@@ -162,6 +173,11 @@ import Button from "./Button.astro";
   .contact-form__actions {
     display: flex;
     justify-content: center;
+  }
+
+  .contact-form__field--hidden {
+    display: none;
+    visibility: hidden;
   }
 
   @media (min-width: 700px) {
