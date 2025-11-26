@@ -24,10 +24,11 @@ function createCloudinaryImage(
   alt: string,
   width: number,
   height: number,
+  version?: string, // Add optional version
 ): FeaturesImage {
   return {
-    webp: getCloudinarySrc(publicId, "webp"),
-    png: getCloudinarySrc(publicId, "png"),
+    webp: getCloudinarySrc(publicId, "webp", version), // Pass version
+    png: getCloudinarySrc(publicId, "png", version), // Pass version
     alt,
     width,
     height,
@@ -133,10 +134,11 @@ export const productFeaturesData: Record<string, ProductFeaturesData> = {
     ],
     cta: { label: "Explore More Shade Styles", href: "/products" },
     image: createCloudinaryImage(
-      "shutters_hero_zqqgg6",
+      "shutters-v2-crop_vnnz2f",
       "Plantation shutters with adjustable louvers",
       630,
       560,
+      "v1764179475",
     ),
   },
 
