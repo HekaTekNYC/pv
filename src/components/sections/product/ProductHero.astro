@@ -16,7 +16,10 @@ if (!data) {
 
 {
   data && (
-    <section class="product-hero" aria-labelledby="product-hero-title">
+    <section
+      class={`product-hero product-hero--${slug}`}
+      aria-labelledby="product-hero-title"
+    >
       <div class="container product-hero__grid">
         <div class="product-hero__media">
           <picture>
@@ -158,6 +161,16 @@ if (!data) {
 
   .product-hero__specs-value {
     color: var(--text-muted);
+  }
+
+  /* Mobile: keep consistent hero aspect ratio across products */
+  @media (max-width: 767px) {
+    .product-hero__media img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 351 / 227.32;
+      object-fit: cover;
+    }
   }
 
   @media (min-width: 768px) {
