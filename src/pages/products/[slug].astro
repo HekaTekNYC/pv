@@ -6,6 +6,10 @@ import ProductFeatures from "../../components/sections/product/ProductFeatures.a
 import ProductEnhance from "../../components/sections/product/ProductEnhance.astro";
 import CTABannerSplit from "../../components/sections/shared/CTABannerSplit.astro";
 import { bannerLPData } from "../../data/banner-data";
+import {
+  productBannerData,
+  defaultProductBanner,
+} from "../../data/product-banner";
 import { PRODUCT_SLUGS } from "../../data/products";
 import { getProductBenefits } from "../../data/product-benefits";
 
@@ -14,6 +18,7 @@ export async function getStaticPaths() {
 }
 
 const slug = Astro.params.slug as (typeof PRODUCT_SLUGS)[number];
+const productBanner = productBannerData[slug] || defaultProductBanner;
 
 const benefits = getProductBenefits(slug);
 const pageTitle = benefits
@@ -32,7 +37,7 @@ const pageTitle = benefits
 >
   <ProductHero slug={slug} />
   <ProductEnhance slug={slug} />
-  <CTABannerSplit image={bannerLPData.image} content={bannerLPData.content} />
+  <CTABannerSplit {...productBanner} />
   <div class="product-group container">
     <ProductFeatures slug={slug} />
     <ProductBenefits slug={slug} />
