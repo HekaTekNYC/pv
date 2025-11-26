@@ -23,7 +23,26 @@ export const productBannerData: Record<string, BannerSplitProps> = {
       buttonHref: "/contact#contact-form",
     },
   },
-  // Add other products following the same structure:
+  "roman-shades": {
+    image: {
+      ...getCloudinaryFourSet(
+        { id: "roman-shades-v3-crop_vs25f2", version: "v1764171291" }, // mobile webp
+        { id: "roman-shades-v3-crop_vs25f2", version: "v1764171291" }, // mobile png
+        { id: "roman-shades-v3_eziszm", version: "v1764171300" }, // desktop webp
+        { id: "roman-shades-v3_eziszm", version: "v1764171300" }, // desktop png
+      ),
+      alt: "Elegant Roman shades in a formal living room",
+      width: 1280,
+      height: 913,
+    },
+    content: {
+      title: "Find the Perfect Roman Shades Today",
+      description:
+        "Not sure if Roman shades are right for your windows? Our free consultations help you choose the perfect style, fabric, and folding options for your space—no obligation required.",
+      buttonText: "Schedule a Free Consultation",
+      buttonHref: "/contact#contact-form",
+    },
+  },
   "cellular-shades": {
     image: {
       ...getCloudinaryFourSet(
