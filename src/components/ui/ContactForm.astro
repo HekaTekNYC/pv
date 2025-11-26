@@ -101,7 +101,94 @@ import Button from "./Button.astro";
       <Button color="secondary" type="submit">Submit</Button>
     </div>
   </form>
+
+  <div class="contact-form__modal" data-contact-modal hidden>
+    <div class="contact-form__modal-backdrop" data-close-modal></div>
+    <div class="contact-form__modal-card">
+      <button
+        class="contact-form__modal-close"
+        type="button"
+        aria-label="Close"
+        data-close-modal
+      >
+        ✕
+      </button>
+      <p class="contact-form__modal-text">
+        Your email has been successfully sent. Our team will respond within 24 -
+        48 hours.
+      </p>
+    </div>
+  </div>
 </div>
+
+<script>
+  if (typeof window !== "undefined") {
+    const form = document.querySelector<HTMLFormElement>(".contact-form__form");
+    const modal = document.querySelector<HTMLElement>("[data-contact-modal]");
+
+    const encode = (data: Record<string, FormDataEntryValue>) =>
+      Object.entries(data)
+        .map(
+          ([key, value]) =>
+            `${encodeURIComponent(key)}=${encodeURIComponent(
+              typeof value === "string" ? value : String(value),
+            )}`,
+        )
+        .join("&");
+
+    const showModal = () => {
+      if (!modal) return;
+      modal.hidden = false;
+      modal.removeAttribute("inert");
+      modal
+        .querySelector<HTMLButtonElement>(".contact-form__modal-close")
+        ?.focus();
+    };
+
+    const hideModal = () => {
+      if (!modal) return;
+      const active = document.activeElement as HTMLElement | null;
+      if (active && modal.contains(active)) {
+        active.blur();
+      }
+      modal.hidden = true;
+      modal.setAttribute("inert", "");
+    };
+
+    if (modal) {
+      modal.hidden = true;
+      modal.setAttribute("inert", "");
+      modal
+        .querySelectorAll<HTMLElement>("[data-close-modal]")
+        .forEach((el) => el.addEventListener("click", hideModal));
+    }
+
+    if (form) {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        // Netlify requires form-name in the payload for AJAX submissions
+        if (!data["form-name"]) {
+          data["form-name"] = form.getAttribute("name") ?? "contact";
+        }
+
+        try {
+          await fetch(form.action || "/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: encode(data),
+          });
+          form.reset();
+          showModal();
+        } catch (error) {
+          console.error("Form submission failed", error);
+          alert("Something went wrong. Please try again.");
+        }
+      });
+    }
+  }
+</script>
 
 <style>
   .contact-form {
@@ -176,6 +263,64 @@ import Button from "./Button.astro";
     justify-content: center;
   }
 
+  .contact-form__modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+  }
+  .contact-form__modal[hidden] {
+    display: none !important;
+  }
+
+  .contact-form__modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.35);
+    backdrop-filter: blur(6px);
+  }
+
+  .contact-form__modal-card {
+    position: relative;
+    max-width: 520px;
+    width: calc(100% - 48px);
+    padding: 32px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(14px);
+    color: #0f172a;
+  }
+
+  .contact-form__modal-text {
+    font-size: var(--fs-body);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .contact-form__modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.4);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: #0f172a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+
+  .contact-form__modal-close:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
 
   @media (min-width: 700px) {
     .contact-form {
