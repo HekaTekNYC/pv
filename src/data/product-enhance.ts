@@ -40,7 +40,7 @@ export const productEnhanceData: Record<string, ProductEnhanceData> = {
     subtitle:
       "Roman shades combine drapery softness with shade functionality, offering tailored folds and fabric options for versatile style and comfort.",
     description:
-      "Crafted from a single fabric panel with hidden rods, Roman shades fold into neat pleats when raised. Choose flat, hobbled, or relaxed styles to match your décor. Available in light-filtering or blackout fabrics with corded, cordless, or motorized operation for precise light control and convenience.",
+      "Crafted from a single fabric panel with hidden rods, Roman shades fold into neat pleats when raised. Choose flat, hobbled, or relaxed styles to match your décor. Available in light-filtering or blackout fabrics with continuous loop, cordless, or motorized operation for precise light control and convenience.",
     image: createCloudinaryImage(
       "roman_enhance_m6amyd",
       "Elegant Roman shades enhancing a living room with soft folds",
@@ -70,7 +70,7 @@ export const productEnhanceData: Record<string, ProductEnhanceData> = {
     subtitle:
       "Cellular shades combine energy efficiency with smooth operation, featuring a honeycomb design that traps air for superior insulation.",
     description:
-      "The unique cellular structure creates insulating air pockets that reduce heat transfer through windows. Top-down/bottom-up functionality offers flexible light control while maintaining privacy. Available in single, double, or triple cells for enhanced energy performance in any climate.",
+      "The unique cellular structure creates insulating air pockets that reduce heat transfer through windows. Top down/bottom up functionality offers flexible light control while maintaining privacy. Available in single, double, or triple cells for enhanced energy performance in any climate.",
     image: createCloudinaryImage(
       "cellular_enhance1_b6fsgc",
       "Cellular shades providing insulation in a bedroom setting",
@@ -85,7 +85,7 @@ export const productEnhanceData: Record<string, ProductEnhanceData> = {
     subtitle:
       "Wood and faux wood blinds offer timeless appeal with precise slat control, bringing natural warmth and durability to any room.",
     description:
-      "Real basswood blinds showcase rich grain and lightweight handling, perfect for living areas and bedrooms. Faux wood alternatives resist moisture and warping, ideal for kitchens and baths. Routeless designs reduce light gaps, while motorized tilt adds modern convenience to a classic look.",
+      "Real basswood blinds offer warm wood grains and lightweight operation for living areas and bedrooms. Faux wood options provide moisture resistance perfect for kitchens and baths. Routeless construction minimizes light gaps for improved privacy and a streamlined appearance.",
     image: createCloudinaryImage(
       "faux-enhance_w50df0",
       "Wood blinds enhancing a traditional home office",
@@ -160,7 +160,7 @@ export const productEnhanceData: Record<string, ProductEnhanceData> = {
     subtitle:
       "Natural woven shades introduce organic texture and sustainable craftsmanship, creating warm, diffused light with eco-friendly appeal.",
     description:
-      "Handcrafted from renewable materials such as bamboo, grasses, and reeds, each shade showcases distinctive natural variation. Optional liners add privacy without concealing texture, and edge bindings increase durability and contrast. Available in Roman or roller styles with top-down/bottom-up functionality for flexible control.",
+      "Handcrafted from renewable materials such as bamboo, grasses, and reeds, each shade showcases distinctive natural variation. Optional liners add privacy without concealing texture, and edge bindings increase durability and contrast. Available in Roman or roller styles.",
     image: createCloudinaryImage(
       "natural_enhance_eohwr6",
       "Natural woven shades adding texture to a cozy room",

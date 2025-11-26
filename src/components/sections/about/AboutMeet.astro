@@ -1,5 +1,8 @@
 ---
 import Button from "../../ui/Button.astro";
+
+import { getCloudinarySrc } from "../../../config/cloudinary";
+const AboutImg = getCloudinarySrc("PV_About_myhbfm", "png", "v1763142234");
 ---
 
 <section class="about-meet" aria-labelledby="about-meet-title" id="about-meet">
@@ -8,8 +11,8 @@ import Button from "../../ui/Button.astro";
     <div class="about-meet__image-container">
       <picture>
         <img
-          src="/images/about-jerry-sarah.png"
-          alt="Jerry and Sarah Fry smiling on a hike near a waterfall"
+          src={AboutImg}
+          alt="Fry family smiling gathered outdoors"
           class="about-meet__image"
           width="630"
           height="731"
@@ -27,14 +30,14 @@ import Button from "../../ui/Button.astro";
 
       <div class="about-meet__paragraph">
         <p class="p-subheader">
-          Jerry Fry brings expertise, warmth, and personal care to every
+          The Fry family brings expertise, warmth, and personal care to every
           project, treating clients like friends and neighbors.
         </p>
         <p>
-          With over 15 years of experience, Jerry combines professional skill
-          with genuine hospitality. As owner and operator, he handles each
-          step—from consultation to installation—ensuring every detail meets his
-          high standards and every client feels valued.
+          With over 15 years of experience, they combine professional skill with
+          genuine hospitality. As a team, they handle each step—from
+          consultation to installation—ensuring every detail meets their high
+          standards and that every client feels valued.
         </p>
       </div>
 
@@ -66,6 +69,7 @@ import Button from "../../ui/Button.astro";
   .about-meet__container {
     display: flex;
     flex-direction: column;
+
     gap: 35px;
   }
 
@@ -131,7 +135,7 @@ import Button from "../../ui/Button.astro";
   @media (min-width: 1024px) {
     .about-meet__container {
       flex-direction: row;
-      align-items: stretch;
+      align-items: center;
       gap: 64px;
       min-height: 600px;
     }

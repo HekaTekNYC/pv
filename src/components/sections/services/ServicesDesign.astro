@@ -1,12 +1,16 @@
 ---
 import ContentBlock from "../../ui/ContentBlock.astro";
+import { getCloudinarySrc } from "../../../config/cloudinary";
 ---
 
 <section class="services-design" aria-labelledby="services-design-title">
   <div class="services-design__container container" id="design-estimate">
     <div class="services-design__left">
       <div class="services-design__image-container">
-        <img src="/images/temp1.png" alt="temp image" />
+        <img
+          src={getCloudinarySrc("PV_Consult_xqejjc", "png", "v1763141194")}
+          alt="a client and window treatment expert sitting at table discussing window treatments"
+        />
       </div>
     </div>
     <div class="services-design__right">
@@ -15,7 +19,7 @@ import ContentBlock from "../../ui/ContentBlock.astro";
         introText="We make it easy to get started. Every project begins with a free estimate and expert guidance tailored to your home or business."
         description="Once you’re ready to move forward, our design consultation helps you plan every detail — from layout and function to the perfect window treatments for your space."
         cta={{
-          text: "Schedule a Free Estimate",
+          text: "Book Your Consultation",
           href: "/contact#contact-form",
           color: "secondary",
         }}

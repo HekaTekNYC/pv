@@ -1,7 +1,10 @@
 ---
 import ContactForm from "../../ui/ContactForm.astro";
 
-import { getCloudinaryFourSet } from "../../../config/cloudinary";
+import {
+  getCloudinaryFourSet,
+  getCloudinarySrc,
+} from "../../../config/cloudinary";
 
 const contactFullImg = getCloudinaryFourSet(
   { id: "contact-full-mbl_fnlsr7", version: "v1761063769" }, // mobile webp
@@ -71,15 +74,16 @@ const contactFullImg = getCloudinaryFourSet(
     </div>
 
     <div class="contact-full__right">
-      <img
-        class="contact-full__logo"
-        src="/images/Logo.svg"
-        alt="PerfectView Window Coverings"
-        width="420"
-        height="120"
-        loading="lazy"
-        decoding="async"
-      />
+      <div class="contact-full__img">
+        <img
+          src={getCloudinarySrc("PV_Logo_qhfozx", "png", "v1763135913")}
+          alt="Company logo"
+          class="contact-full__logo"
+          height="191"
+          width="473"
+          loading="lazy"
+        />
+      </div>
       <div class="contact-full__info">
         <ul class="contact-full__cards" role="list">
           <li class="contact-full__card">
@@ -204,11 +208,17 @@ const contactFullImg = getCloudinaryFourSet(
     align-items: center;
     gap: 48px;
   }
+  .contact-full__img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 
   .contact-full__logo {
     display: block;
-    height: 80px;
-    width: 194px;
+    height: auto;
+    width: 70%;
     z-index: 2;
   }
 
@@ -245,11 +255,15 @@ const contactFullImg = getCloudinaryFourSet(
     font-size: var(--fs-body-l);
   }
 
-  @media (min-width: 900px) {
-    .contact-full__logo {
-      height: 120px;
-      width: 290px;
+  @media (min-width: 768px) {
+    .contact-full__img {
+      padding: 30px 0;
     }
+    .contact-full__logo {
+      width: 50%;
+    }
+  }
+  @media (min-width: 900px) {
     .contact-full__cards {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -259,6 +273,16 @@ const contactFullImg = getCloudinaryFourSet(
     }
     .contact-full__info {
       gap: 48px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .contact-full__img {
+      padding: 0;
+    }
+
+    .contact-full__logo {
+      width: 40%;
     }
   }
 
@@ -291,6 +315,10 @@ const contactFullImg = getCloudinaryFourSet(
     .contact-full__left,
     .contact-full__right {
       max-width: 550px;
+    }
+
+    .contact-full__logo {
+      width: 50%;
     }
   }
 </style>
