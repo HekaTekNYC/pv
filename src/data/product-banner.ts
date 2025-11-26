@@ -18,7 +18,7 @@ export const productBannerData: Record<string, BannerSplitProps> = {
     content: {
       title: "Find the Perfect Roller Shades Today",
       description:
-        "Not sure if roller shades are right for your windows? Our free consultations help you choose the perfect style, light control, and operation for your space—no obligation required.",
+        "Not sure if roller shades are right for your windows? Our free consultation help you choose the perfect style, light control, and operation for your space—no obligation required.",
       buttonText: "Schedule a Free Consultation",
       buttonHref: "/contact#contact-form",
     },
@@ -38,7 +38,7 @@ export const productBannerData: Record<string, BannerSplitProps> = {
     content: {
       title: "Find the Perfect Roman Shades Today",
       description:
-        "Not sure if Roman shades are right for your windows? Our free consultations help you choose the perfect style, fabric, and folding options for your space—no obligation required.",
+        "Not sure if Roman shades are right for your windows? Our free consultation help you choose the perfect style, fabric, and folding options for your space—no obligation required.",
       buttonText: "Schedule a Free Consultation",
       buttonHref: "/contact#contact-form",
     },
@@ -46,31 +46,43 @@ export const productBannerData: Record<string, BannerSplitProps> = {
   "cellular-shades": {
     image: {
       ...getCloudinaryFourSet(
-        { id: "cellular-banner-mobile", version: "v1763135913" },
-        { id: "cellular-banner-mobile", version: "v1763135913" },
-        { id: "cellular-banner-desktop", version: "v1763135913" },
-        { id: "cellular-banner-desktop", version: "v1763135913" },
+        { id: "cellular-v2-crop_qp6msw", version: "v1764176751" }, // mobile webp
+        { id: "cellular-v2-crop_qp6msw", version: "v1764176751" }, // mobile png
+        { id: "cellular-v2_a6yov3", version: "v1764176743" }, // desktop webp
+        { id: "cellular-v2_a6yov3", version: "v1764176743" }, // desktop png
       ),
-      alt: "Energy-efficient cellular shades in a bedroom",
+      alt: "Modern cellular shades providing excellent light control and insulation",
       width: 1280,
       height: 854,
     },
     content: {
       title: "Find the Perfect Cellular Shades Today",
       description:
-        "Not sure if cellular shades are right for your windows? Our free consultations help you choose the perfect features, insulation, and light control for your space—no obligation required.",
+        "Not sure if cellular shades are right for your windows? Our free consultation help you choose the perfect style, insulation level, and light control for your space—no obligation required.",
       buttonText: "Schedule a Free Consultation",
       buttonHref: "/contact#contact-form",
     },
   },
-  // Continue with:
-  // "sheer-layered": { ... },
-  // "wood-faux-blinds": { ... },
-  // "shutters": { ... },
-  // "natural-woven": { ... },
-  // "roman-shades": { ... },
-  // "draperies": { ... },
-  // "exterior-shades": { ... }
+  "wood-faux-blinds": {
+    image: {
+      ...getCloudinaryFourSet(
+        { id: "wood-blinds-v4_giud1j", version: "v1764177400" }, // mobile webp
+        { id: "wood-blinds-v4_giud1j", version: "v1764177400" }, // mobile png
+        { id: "wood-blinds-v4_giud1j", version: "v1764177400" }, // desktop webp
+        { id: "wood-blinds-v4_giud1j", version: "v1764177400" }, // desktop png
+      ),
+      alt: "Beautiful wood and faux wood blinds in a modern living space",
+      width: 1280,
+      height: 854,
+    },
+    content: {
+      title: "Find the Perfect Wood or Faux Wood Blinds Today",
+      description:
+        "Not sure if wood or faux wood blinds are right for your windows? Our free consultations help you choose the perfect material, style, and finish for your space—no obligation required.",
+      buttonText: "Schedule a Free Consultation",
+      buttonHref: "/contact#contact-form",
+    },
+  },
 };
 
 // Optional: Default banner for any product not found
