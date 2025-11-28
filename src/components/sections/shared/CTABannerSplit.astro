@@ -112,6 +112,12 @@ const { image, content } = Astro.props as BannerSplitProps;
   }
 
   @media (min-width: 1024px) {
+    .banner-split__image {
+      width: 80%;
+      left: auto;
+      right: 0;
+    }
+
     .banner-split__overlay {
       background: linear-gradient(
         to right,

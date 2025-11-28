@@ -25,8 +25,12 @@ export const productCards: ProductCards[] = [
     title: "Natural & Woven Shades",
     blurb:
       "Soft, versatile, and energy-efficient—woven woods bring warmth and texture to any room.",
-    image: getCloudinarySrc("lp-natural-shades_xt5djz", "png", "v1761429058"),
-    alt: "Woven wood shades in a hallway",
+    image: getCloudinarySrc(
+      "natural-shades-v5-crop_jfuveu",
+      "png",
+      "v1764183663",
+    ),
+    alt: "Natural woven wood shades in a neutral luxury study with chair and bookshelf",
     featured: true,
   },
   {
