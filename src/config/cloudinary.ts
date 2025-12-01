@@ -33,13 +33,6 @@ export const CLOUDINARY_BASE_AUTO =
  * getCloudinarySrc("about-hero", "webp"); // f_auto,q_auto optimized URL
  * ```
  */
-// export function getCloudinarySrc(
-//   file: string,
-//   ext: string = "png",
-//   version: string = "",
-// ): string {
-//   return `${CLOUDINARY_BASE_AUTO}/${version}/${file}.${ext}`;
-// }
 
 // config/cloudinary.ts - MINIMAL FIX TO REMOVE EXTRA SLASH
 export function getCloudinarySrc(
