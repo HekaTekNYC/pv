@@ -84,7 +84,6 @@ const productsGuideImg = getCloudinarySrc(
 <style>
   .product-guide__container {
     display: grid;
-
     gap: 48px;
   }
 
@@ -92,6 +91,7 @@ const productsGuideImg = getCloudinarySrc(
     display: flex;
     flex-direction: column;
     gap: 48px;
+    flex: 1;
   }
 
   .product-guide__header h2 {
@@ -105,6 +105,7 @@ const productsGuideImg = getCloudinarySrc(
   .product-guide__media {
     overflow: hidden;
     width: 100%;
+    aspect-ratio: auto;
   }
 
   .product-guide__media img {
@@ -177,10 +178,29 @@ const productsGuideImg = getCloudinarySrc(
     }
   }
 
+  @media (min-width: 1024px) {
+    .product-guide__container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 44px;
+    }
+
+    .product-guide__media {
+      max-height: 500px;
+      aspect-ratio: 4 / 5;
+    }
+    .product-guide__media img {
+      object-position: 15% 50%;
+    }
+  }
   @media (min-width: 1200px) {
     .product-guide__container {
       grid-template-columns: 45% 55%;
       gap: 64px;
+    }
+
+    .product-guide__media {
+      max-height: 100%;
+      aspect-ratio: auto;
     }
   }
 </style>
