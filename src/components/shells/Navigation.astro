@@ -19,7 +19,12 @@ import { productLinks } from "../../data/dropdown-data";
       />
     </a>
     <Hamburger targetId="primary-menu" />
-    <div class="nav-bar__links" id="primary-menu" aria-hidden="true">
+    <div
+      class="nav-bar__links"
+      id="primary-menu"
+      hidden
+      aria-label="Main navigation"
+    >
       <ul>
         <li>
           <a href="/" class="nav-bar__link" aria-current="page">Home</a>
@@ -29,14 +34,20 @@ import { productLinks } from "../../data/dropdown-data";
           triggerHref="/products"
           links={productLinks}
         />
-        <li><a href="/services" class="nav-bar__link">Services</a></li>
+        <li>
+          <a href="/services" class="nav-bar__link">Services</a>
+        </li>
         <li><a href="/about" class="nav-bar__link">About</a></li>
-        <li><a href="/gallery" class="nav-bar__link">Gallery</a></li>
-        <li><a href="/contact" class="nav-bar__link">Contact</a></li>
+        <li>
+          <a href="/gallery" class="nav-bar__link">Gallery</a>
+        </li>
+        <li>
+          <a href="/contact" class="nav-bar__link">Contact</a>
+        </li>
         <li class="nav-bar__book-now">
-          <Button href="/contact#contact-form" color="nav"
-            >Free Consultation</Button
-          >
+          <Button href="/contact#contact-form" color="nav">
+            Free Consultation
+          </Button>
         </li>
       </ul>
     </div>
@@ -106,12 +117,6 @@ import { productLinks } from "../../data/dropdown-data";
     z-index: 998;
   }
 
-  @media (max-width: 767px) {
-    .nav-bar__links[aria-hidden="false"] ~ .nav-bar__backdrop {
-      display: block;
-    }
-  }
-
   .nav-bar__links {
     display: flex;
     flex-direction: column;
@@ -170,6 +175,12 @@ import { productLinks } from "../../data/dropdown-data";
     padding: 30px 16px;
   }
 
+  @media (max-width: 767px) {
+    .nav-bar__links[aria-hidden="false"] ~ .nav-bar__backdrop {
+      display: block;
+    }
+  }
+
   /* --- Media Queries --- */
 
   @media (min-width: 1056px) {
@@ -184,6 +195,11 @@ import { productLinks } from "../../data/dropdown-data";
     .nav-bar__logo img {
       height: 100%;
       width: auto;
+    }
+
+    .nav-bar__links[hidden] {
+      display: flex !important;
+      hidden: initial !important;
     }
 
     .nav-bar__links {

@@ -18,17 +18,17 @@ export const testimonials: Testimonial[] = [
   {
     id: 2,
     quote:
-      '"The natural shades I purchased are beautiful. There was a wide variety of materials to choose from, and the selection process was truly enjoyable. Installation was excellent—I’m very satisfied."',
-    initial: "D",
-    author: "Dorothy P.",
-    role: "General Contractor",
+      '"After meeting Allison, the choice was clear. Her trustbuilding, attention to detail, and proactive approach made the team an easy decision—and we feel fortunate to have worked with them."',
+    initial: "T",
+    author: "Trevor L.",
+    role: "Commercial Contractor",
   },
   {
     id: 3,
     quote:
-      '"After meeting Allison, the choice was clear. Her trustbuilding, attention to detail, and proactive approach made the team an easy decision—and we feel fortunate to have worked with them."',
-    initial: "T",
-    author: "Trevor S.",
-    role: "Interior Designer",
+      '"The natural shades I purchased are beautiful. There was a wide variety of materials to choose from, and the selection process was truly enjoyable. Installation was excellent—I’m very satisfied."',
+    initial: "D",
+    author: "Dorothy H.",
+    role: "Homeowner",
   },
 ];
