@@ -1,23 +1,75 @@
 ---
 import Button from "../../ui/Button.astro";
 import { getCloudinarySrc } from "../../../config/cloudinary";
+const mobile400 = getCloudinarySrc(
+  "lp-hero-mbl_pvrtlh",
+  "jpg",
+  "v1764613833",
+  400,
+);
+const mobile600 = getCloudinarySrc(
+  "lp-hero-mbl_pvrtlh",
+  "jpg",
+  "v1764613833",
+  600,
+);
+const mobile800 = getCloudinarySrc(
+  "lp-hero-mbl_pvrtlh",
+  "jpg",
+  "v1764613833",
+  800,
+);
+const mobileSrcset = `${mobile400} 400w, ${mobile600} 600w, ${mobile800} 800w`;
 
-const mobileImg = getCloudinarySrc("lp-hero-mbl_pvrtlh", "jpg", "v1764613833");
-const desktopImg = getCloudinarySrc("lp-hero-dsk_xhu0u5", "jpg", "v1764613868");
+const desktop1024 = getCloudinarySrc(
+  "lp-hero-dsk_xhu0u5",
+  "jpg",
+  "v1764613868",
+  1024,
+);
+const desktop1536 = getCloudinarySrc(
+  "lp-hero-dsk_xhu0u5",
+  "jpg",
+  "v1764613868",
+  1536,
+);
+const desktop2048 = getCloudinarySrc(
+  "lp-hero-dsk_xhu0u5",
+  "jpg",
+  "v1764613868",
+  2048,
+);
+const desktopSrcset = `${desktop1024} 1024w, ${desktop1536} 1536w, ${desktop2048} 2048w`;
+
+// Add missing variables for data attributes
+const mobileImg = mobile400;
+const desktopImg = desktop1024;
 ---
 
 <section class="lp-hero" aria-labelledby="hero-title">
   <picture class="lp-hero__bg">
     <!-- Mobile (≤ 1024px) -->
-    <source srcset={mobileImg} type="image/jpeg" media="(max-width: 1024px)" />
+    <source
+      srcset={mobileSrcset}
+      type="image/jpeg"
+      media="(max-width: 1024px)"
+      sizes="100vw"
+    />
+
     <!-- Desktop (> 1024px) -->
-    <source srcset={desktopImg} type="image/jpeg" media="(min-width: 1025px)" />
+    <source
+      srcset={desktopSrcset}
+      type="image/jpeg"
+      media="(min-width: 1025px)"
+      sizes="100vw"
+    />
+
     <!-- Fallback -->
     <img
-      src={mobileImg}
+      src={mobile400}
       alt="Modern living room with custom window treatments"
-      width="1024"
-      height="1024"
+      width="400"
+      height="400"
       loading="eager"
       decoding="sync"
       fetchpriority="high"

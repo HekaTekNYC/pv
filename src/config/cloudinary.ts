@@ -35,16 +35,20 @@ export const CLOUDINARY_BASE_AUTO =
  */
 
 // config/cloudinary.ts - MINIMAL FIX TO REMOVE EXTRA SLASH
+
 export function getCloudinarySrc(
   file: string,
   ext: string = "png",
   version: string = "",
+  width?: number,
 ): string {
-  // FIX: Only add version if it's not empty
+  const base = CLOUDINARY_BASE_AUTO;
+  const size = width ? `,w_${width}` : "";
+
   if (version) {
-    return `${CLOUDINARY_BASE_AUTO}/${version}/${file}.${ext}`;
+    return `${base}${size}/${version}/${file}.${ext}`;
   } else {
-    return `${CLOUDINARY_BASE_AUTO}/${file}.${ext}`;
+    return `${base}${size}/${file}.${ext}`;
   }
 }
 
