@@ -12,10 +12,10 @@ import { lpServicesData } from "../../../data/services-data";
         seamless results tailored to your residential or commercial space.
       </p>
     </div>
-    <div class="lp-services__cards" role="list" aria-label="Service offerings">
+    <div class="lp-services__cards" aria-label="Service offerings">
       {
         lpServicesData.map((card) => (
-          <a href={card.href} class="lp-services__card" role="listitem">
+          <a href={card.href} class="lp-services__card">
             <img
               class="lp-services__card-img"
               src={card.imgSrc}

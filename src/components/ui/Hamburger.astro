@@ -99,7 +99,7 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
         hamburger.classList.remove("active");
         hamburger.setAttribute("aria-expanded", "false");
         targetMenu.classList.remove("active");
-        targetMenu.setAttribute("aria-hidden", "true");
+        targetMenu.removeAttribute("hidden"); // CHANGED
         document.body.style.overflow = "";
       }
     };
@@ -112,7 +112,13 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
       const isExpanded = hamburger.classList.toggle("active");
       hamburger.setAttribute("aria-expanded", isExpanded.toString());
       targetMenu.classList.toggle("active");
-      targetMenu.setAttribute("aria-hidden", (!isExpanded).toString());
+
+      // CHANGED: Use hidden attribute instead of aria-hidden
+      if (isExpanded) {
+        targetMenu.removeAttribute("hidden");
+      } else {
+        targetMenu.setAttribute("hidden", "");
+      }
 
       if (isExpanded) {
         document.body.style.overflow = "hidden";
@@ -134,7 +140,7 @@ const { targetId = "primary-menu", isOpen = false } = Astro.props;
           hamburger.classList.remove("active");
           hamburger.setAttribute("aria-expanded", "false");
           targetMenu.classList.remove("active");
-          targetMenu.setAttribute("aria-hidden", "true");
+          targetMenu.setAttribute("hidden", ""); // CHANGED
           document.body.style.overflow = "";
         }
       });
