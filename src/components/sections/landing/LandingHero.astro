@@ -1,49 +1,25 @@
 ---
 import Button from "../../ui/Button.astro";
-import { getCloudinaryFourSet } from "../../../config/cloudinary";
+import { getCloudinarySrc } from "../../../config/cloudinary";
 
-const lpHeroImg = getCloudinaryFourSet(
-  { id: "lp-hero-mbl_ghyiks", version: "v1761347110" }, // mobile webp
-  { id: "lp-hero-mbl_whze0j", version: "v1761347110" }, // mobile png
-  { id: "lp-hero-dsk_rcf1el", version: "v1761347109" }, // desktop webp
-  { id: "lp-hero-dsk_rcf1el", version: "v1761347109" }, // desktop png
-);
+const mobileImg = getCloudinarySrc("lp-hero-mbl_pvrtlh", "jpg", "v1764613833");
+const desktopImg = getCloudinarySrc("lp-hero-dsk_xhu0u5", "jpg", "v1764613868");
 ---
 
 <section class="lp-hero" aria-labelledby="hero-title">
   <picture class="lp-hero__bg">
-    <!-- Mobile -->
-    <source
-      srcset={lpHeroImg.mobile.webp}
-      type="image/webp"
-      media="(max-width: 768px)"
-    />
-    <source
-      srcset={lpHeroImg.mobile.png}
-      type="image/png"
-      media="(max-width: 768px)"
-    />
-
-    <!-- Desktop -->
-    <source
-      srcset={lpHeroImg.desktop.webp}
-      type="image/webp"
-      media="(min-width: 769px)"
-    />
-    <source
-      srcset={lpHeroImg.desktop.png}
-      type="image/png"
-      media="(min-width: 769px)"
-    />
-
+    <!-- Mobile (≤ 1024px) -->
+    <source srcset={mobileImg} type="image/jpeg" media="(max-width: 1024px)" />
+    <!-- Desktop (> 1024px) -->
+    <source srcset={desktopImg} type="image/jpeg" media="(min-width: 1025px)" />
+    <!-- Fallback -->
     <img
-      src={lpHeroImg.desktop.png}
+      src={mobileImg}
       alt="Modern living room with custom window treatments"
-      class="lp-hero__bg"
-      width="1280"
-      height="975"
+      width="1024"
+      height="1024"
       loading="eager"
-      decoding="async"
+      decoding="sync"
       fetchpriority="high"
     />
   </picture>
@@ -85,6 +61,7 @@ const lpHeroImg = getCloudinaryFourSet(
     width: 100%;
     height: 100%;
     object-fit: cover;
+    aspect-ratio: 1;
     z-index: 1;
   }
 
@@ -138,9 +115,13 @@ const lpHeroImg = getCloudinaryFourSet(
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     .lp-hero__content {
       width: 60%;
+    }
+    .lp-hero__bg,
+    .lp-hero__bg img {
+      aspect-ratio: 3840 / 2460;
     }
   }
 
