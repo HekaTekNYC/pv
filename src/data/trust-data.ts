@@ -18,6 +18,6 @@ export const trustBannerData: TrustItem[] = [
   {
     icon: "/icons/contact-phone.svg",
     alt: "white outlined phone icon",
-    text: "(801) 555-1234",
+    text: "(801) 600-1973",
   },
 ];
