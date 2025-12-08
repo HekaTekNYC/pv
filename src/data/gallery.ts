@@ -67,6 +67,55 @@ export const galleryImages: GalleryImage[] = [
     featured: false,
     category: "roller",
   },
+  {
+    id: 9,
+    src: getCloudinarySrc("pv_gallery_9_kmpcah", "png", "v1765227351"),
+    alt: "Roller shades in four windows inside country club",
+    featured: false,
+    category: "roller",
+  },
+  {
+    id: 10,
+    src: getCloudinarySrc("pv_gallery_10_xnupkh", "png", "v1765227449"),
+    alt: "Roller shades in four windows inside country club",
+    featured: false,
+    category: "roller",
+  },
+  {
+    id: 11,
+    src: getCloudinarySrc("pv_gallery_11_sgemao", "png", "v1765227590"),
+    alt: "Roller shades in four windows inside country club",
+    featured: false,
+    category: "roller",
+  },
+  {
+    id: 12,
+    src: getCloudinarySrc("pv_gallery_12_ndj3wq", "png", "v1765227705"),
+    alt: "Roller shades in four windows inside country club",
+    featured: false,
+    category: "roller",
+  },
+  {
+    id: 13,
+    src: getCloudinarySrc("pv_gallery_13_pdy6lr", "png", "v1765227975"),
+    alt: "Roller shades in four windows inside country club",
+    featured: false,
+    category: "roller",
+  },
+  {
+    id: 14,
+    src: getCloudinarySrc("pv_gallery_14_suduhc", "png", "v1765228091"),
+    alt: "Roller shades in four windows inside country club",
+    featured: false,
+    category: "roller",
+  },
+  {
+    id: 15,
+    src: getCloudinarySrc("pv_gallery_15_wiemnl", "png", "v1765228880"),
+    alt: "Roller shades in four windows inside country club",
+    featured: false,
+    category: "roller",
+  },
 ];
 
 // Helper functions
