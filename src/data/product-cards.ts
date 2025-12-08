@@ -31,7 +31,7 @@ export const productCards: ProductCards[] = [
       "v1764183663",
     ),
     alt: "Natural woven wood shades in a neutral luxury study with chair and bookshelf",
-    featured: true,
+    featured: false,
   },
   {
     slug: "draperies",
@@ -80,6 +80,7 @@ export const productCards: ProductCards[] = [
     blurb: "Clean profiles, powerful light control, zero fuss.",
     image: getCloudinarySrc("card-roller_awg70w", "png", "v1761582214"),
     alt: "Modern roller shades filtering light",
+    featured: true,
   },
   {
     slug: "cellular-shades",
@@ -87,6 +88,7 @@ export const productCards: ProductCards[] = [
     blurb: "Honeycomb insulation for comfort and efficiency.",
     image: getCloudinarySrc("card-cellular_oss5u3", "png", "v1761582367"),
     alt: "Energy-efficient cellular shades",
+    featured: false,
   },
 
   {
@@ -95,5 +97,6 @@ export const productCards: ProductCards[] = [
     blurb: "Sheer views with on-demand privacy.",
     image: getCloudinarySrc("card-sheer_hgxd9b", "png", "v1761582598"),
     alt: "Layered shades showing alternating sheer bands",
+    featured: false,
   },
 ];
