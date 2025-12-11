@@ -1,6 +1,6 @@
 # PerfectView Window Treatment Website
 
-This repository contains the source code for a custom website built for PerfectView LLC. The website provides service information, showcases capabilities, and allows customers to request an estimate. The project emphasizes clean UI, fast performance, responsive design, and SEO best practices.
+This repository contains the source code for a custom website built for PerfectView LLC. The website provides service information, showcases capabilities, and allows customers to request an estimate. The website emphasizes clean UI, fast performance, responsive design, and SEO best practices.
 
 ---
 
