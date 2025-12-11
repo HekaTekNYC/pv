@@ -312,7 +312,8 @@ import { getCloudinarySrc } from "../../config/cloudinary";
 
     .footer__link:hover,
     .footer__legal a:hover {
-      color: var(--neutral);
+      text-decoration: underline;
+      text-decoration-color: var(--white);
     }
 
     .footer__contact-link {
@@ -371,7 +372,7 @@ import { getCloudinarySrc } from "../../config/cloudinary";
     }
 
     .footer__copy a {
-      color: var(--neutral-light);
+      color: var(--neutral-lightest);
     }
 
     .footer__legal {
@@ -383,11 +384,15 @@ import { getCloudinarySrc } from "../../config/cloudinary";
     }
 
     .development {
-      color: var(--neutral-light);
+      color: var(--neutral-lightest);
+      font-style: italic;
+    }
+    .development a {
+      font-style: normal;
     }
 
     .development a:hover {
-      color: var(--neutral);
+      font-weight: var(--fw-semibold);
     }
 
     /* --- Media Queries --- */
