@@ -16,18 +16,14 @@ import { bannerLPData } from "../data/banner-data";
 
 <Main title="PerfectView">
   <LandingHero />
-  <AboutMission client:load />
+  <AboutMission />
 
-  <LandingProducts client:visible />
-  <WhyUs client:visible />
-  <LandingServices client:visible />
-  <CTABannerSplit
-    image={bannerLPData.image}
-    content={bannerLPData.content}
-    client:visible
-  />
-  <OurWork client:visible />
-  <ContactFull client:visible />
-  <Testimonials client:visible />
-  <CTABannerCenter client:visible />
+  <LandingProducts />
+  <WhyUs />
+  <LandingServices />
+  <CTABannerSplit image={bannerLPData.image} content={bannerLPData.content} />
+  <OurWork />
+  <ContactFull />
+  <Testimonials />
+  <CTABannerCenter />
 </Main>
