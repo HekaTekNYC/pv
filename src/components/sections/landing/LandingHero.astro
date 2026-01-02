@@ -159,17 +159,21 @@ const desktopImg = desktop1024;
     .lp-hero__overlay {
       background: linear-gradient(
         90deg,
-        rgba(40, 43, 48, 0.95) 0%,
-        rgba(40, 43, 48, 0.8) 50%,
-        rgba(40, 43, 48, 0.5) 70%,
-        rgba(40, 43, 48, 0) 100%
+        rgba(40, 43, 48, 0.8) 0%,
+        rgba(40, 43, 48, 0.8) 45%,
+        rgba(40, 43, 48, 0.4) 60%,
+        rgba(40, 43, 48, 0) 70%
       );
     }
   }
 
   @media (min-width: 1025px) {
     .lp-hero__content {
-      width: 60%;
+      width: 50%;
+    }
+
+    .lp-hero__content p {
+      padding-right: 40px;
     }
     .lp-hero__bg,
     .lp-hero__bg img {
@@ -180,7 +184,6 @@ const desktopImg = desktop1024;
   @media (min-width: 1200px) {
     .lp-hero__content {
       align-items: start;
-      width: 50%;
     }
   }
 </style>

@@ -2,6 +2,7 @@ export interface TrustItem {
   icon: string;
   alt: string;
   text: string;
+  href?: string;
 }
 
 export const trustBannerData: TrustItem[] = [
@@ -19,5 +20,6 @@ export const trustBannerData: TrustItem[] = [
     icon: "/icons/contact-phone.svg",
     alt: "white outlined phone icon",
     text: "(801) 600-1973",
+    href: "tel:8016001973",
   },
 ];
