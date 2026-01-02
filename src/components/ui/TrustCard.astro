@@ -1,10 +1,20 @@
 ---
-const { icon, alt, text } = Astro.props;
+const { icon, alt, text, href } = Astro.props;
 ---
 
 <div class="trust-card">
   <img src={icon} width="32" height="32" alt={alt} loading="lazy" />
-  <p>{text}</p>
+  {
+    href ? (
+      <p>
+        <a href={href} class="trust-card__phone">
+          {text}
+        </a>
+      </p>
+    ) : (
+      <p>{text} </p>
+    )
+  }
 </div>
 
 <style>
@@ -22,6 +32,19 @@ const { icon, alt, text } = Astro.props;
   .trust-card p {
     color: var(--grey-10);
     text-align: center;
+  }
+
+  .trust-card__phone,
+  .trust-card__phone:link,
+  .trust-card__phone:visited,
+  .trust-card__phone:active {
+    color: var(--grey-10);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .trust-card__phone:hover {
+    color: var(--grey-5);
   }
 
   @media (min-width: 1024px) {

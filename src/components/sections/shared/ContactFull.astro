@@ -117,7 +117,11 @@ const contactFullImg = getCloudinaryFourSet(
               loading="lazy"
               aria-hidden="true"
             />
-            <p>(801) 600-1973</p>
+            <p>
+              <a href="tel:8016001973" class="contact-full__phone"
+                >(801) 600-1973</a
+              >
+            </p>
           </li>
         </ul>
 
@@ -249,6 +253,19 @@ const contactFullImg = getCloudinaryFourSet(
   .contact-full__card p,
   .contact-full__info p {
     color: var(--grey-10);
+  }
+
+  .contact-full__phone,
+  .contact-full__phone:link,
+  .contact-full__phone:visited,
+  .contact-full__phone:active {
+    color: var(--grey-10);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .contact-full__phone:hover {
+    color: var(--grey-5);
   }
 
   .contact-full__p {
