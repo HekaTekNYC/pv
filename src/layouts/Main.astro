@@ -5,12 +5,6 @@ import Footer from "../components/shells/Footer.astro";
 
 import "../styles/global.css";
 
-interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
-
 const defaultDescription =
   "Professional window treatment installation service with free consultations. Blinds, shades, and drapery for residential and commercial properties.";
 ---
@@ -21,8 +15,24 @@ const defaultDescription =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="description" name="description" content={defaultDescription} />
-    <title>{title}</title>
+    <meta name="description" content={defaultDescription} />
+    <title>PerfectView Window Coverings | Utah</title>
+
+    <!-- Preload fonts -->
+    <link
+      rel="preload"
+      href="/fonts/Baskervville/Baskervville-SemiBold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Sora/Sora-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
   </head>
   <body>
     <TopBanner />

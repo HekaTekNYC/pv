@@ -5,7 +5,6 @@ import ProductBenefits from "../../components/sections/product/ProductBenefits.a
 import ProductFeatures from "../../components/sections/product/ProductFeatures.astro";
 import ProductEnhance from "../../components/sections/product/ProductEnhance.astro";
 import CTABannerSplit from "../../components/sections/shared/CTABannerSplit.astro";
-import { bannerLPData } from "../../data/banner-data";
 import {
   productBannerData,
   defaultProductBanner,
@@ -27,7 +26,6 @@ const pageTitle = benefits
 ---
 
 <Inner
-  title={`PerfectView • ${pageTitle}`}
   heading={pageTitle}
   breadcrumbItems={[
     { label: "Home", href: "/" },
