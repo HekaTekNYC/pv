@@ -68,6 +68,7 @@ All images are served via Cloudinary for optimal performance.
 ## Contact
 
 Created by Hekatek
+
 Email: hekatek@hekateknyc.com
 
 Website: https://hekateknyc.com
