@@ -132,7 +132,7 @@ export const galleryImages: GalleryImage[] = [
   },
   {
     id: 18,
-    src: getCloudinarySrc("pv_gallery_18_wauh2s", "png", "v1781631124"),
+    src: getCloudinarySrc("pv_gallery_18_j2b08h", "png", "v1781642600"),
     alt: "Roller shades in four windows inside country club",
     featured: false,
     category: "roller",
