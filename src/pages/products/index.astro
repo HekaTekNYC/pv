@@ -5,11 +5,17 @@ import ProductsGallery from "../../components/sections/products/ProductsGallery.
 import ProductGuide from "../../components/sections/products/ProductGuide.astro";
 import CTABannerSplit from "../../components/sections/shared/CTABannerSplit.astro";
 import { bannerProductsData } from "../../data/banner-data";
+
+const title = "Custom Window Coverings & Treatments | PerfectView";
+const description =
+  "Explore PerfectView's full line of custom window treatments, including roller shades, cellular shades, wood blinds, shutters, draperies, and more.";
 ---
 
 <Inner
   heading="Products"
   breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Products" }]}
+  title={title}
+  description={description}
 >
   <ProductsHero />
   <ProductsGallery />
