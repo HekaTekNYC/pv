@@ -8,11 +8,17 @@ import ServicesInstall from "../components/sections/services/ServicesInstall.ast
 import FAQ from "../components/sections/services/FAQ.astro";
 
 import { bannerServicesData } from "../data/banner-data";
+
+const title = "Window Treatment Installation & Design Services | PerfectView";
+const description =
+  "Professional window treatment installation, motorized shade setup, and free design consultations from PerfectView Window Coverings in Northern Utah.";
 ---
 
 <Inner
   heading="Services"
   breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Services" }]}
+  title={title}
+  description={description}
 >
   <ServicesHero />
   <OurProcess />
