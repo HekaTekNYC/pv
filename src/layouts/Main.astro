@@ -2,11 +2,44 @@
 import TopBanner from "../components/shells/TopBanner.astro";
 import Navigation from "../components/shells/Navigation.astro";
 import Footer from "../components/shells/Footer.astro";
+import { getCloudinarySrc } from "../config/cloudinary";
 
 import "../styles/global.css";
 
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const defaultTitle = "PerfectView Window Coverings | Utah";
 const defaultDescription =
   "Professional window treatment installation service with free consultations. Blinds, shades, and drapery for residential and commercial properties.";
+
+const { title = defaultTitle, description = defaultDescription } =
+  Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const logoURL = getCloudinarySrc("PV_Logo_qhfozx", "png", "v1763135913");
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.perfectviewutah.com/#business",
+  name: "PerfectView Window Coverings",
+  url: "https://www.perfectviewutah.com",
+  image: logoURL,
+  logo: logoURL,
+  telephone: "+18016039035",
+  email: "perfectviewutah@outlook.com",
+  areaServed: {
+    "@type": "AdministrativeArea",
+    name: "Northern Utah",
+  },
+  sameAs: [
+    "https://www.facebook.com/profile.php?id=61577185517312",
+    "https://www.instagram.com/perfectviewutah/",
+  ],
+};
 ---
 
 <!doctype html>
@@ -15,8 +48,23 @@ const defaultDescription =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="description" content={defaultDescription} />
-    <title>PerfectView Window Coverings | Utah</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <title>{title}</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={logoURL} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(localBusinessSchema)}
+    />
 
     <!-- Preload fonts -->
     <link

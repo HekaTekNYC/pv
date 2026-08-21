@@ -2,11 +2,17 @@
 import Inner from "../layouts/Inner.astro";
 import Lightbox from "../components/sections/shared/Lightbox.astro";
 import { galleryImages } from "../data/gallery";
+
+const title = "Project Gallery | PerfectView Window Coverings";
+const description =
+  "Browse real window treatment installations by PerfectView Window Coverings, including custom blinds, shades, shutters, and draperies.";
 ---
 
 <Inner
   heading="Gallery"
   breadcrumbItems={[{ label: "Home", href: "/" }, { label: "Gallery" }]}
+  title={title}
+  description={description}
 >
   <div class="container">
     <div class="gallery__grid">

@@ -5,11 +5,17 @@ import AboutMission from "../components/sections/shared/AboutMission.astro";
 import ContactFull from "../components/sections/shared/ContactFull.astro";
 import Testimonials from "../components/sections/shared/Testimonials.astro";
 import AboutMeet from "../components/sections/about/AboutMeet.astro";
+
+const title = "About PerfectView Window Coverings | Family-Owned in Utah";
+const description =
+  "Learn about PerfectView Window Coverings, a family-owned Utah business providing custom window treatments with personal service and expert craftsmanship.";
 ---
 
 <Inner
   heading="About"
   breadcrumbItems={[{ label: "Home", href: "/" }, { label: "About" }]}
+  title={title}
+  description={description}
 >
   <AboutMeet />
   <AboutClients />
