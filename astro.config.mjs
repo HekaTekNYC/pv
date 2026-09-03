@@ -5,5 +5,5 @@ import react from "@astrojs/react";
 
 export default defineConfig({
   integrations: [react(), sitemap()],
-  site: "https://www.perfectviewutah.com",
+  site: "https://perfectviewutah.com",
 });
