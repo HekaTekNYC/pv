@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://perfectviewutah.com/sitemap.xml
+Sitemap: https://perfectviewutah.com/sitemap-index.xml
