@@ -26,27 +26,42 @@ const pageTitle = benefits
 
 const productMetaDescriptions: Record<(typeof PRODUCT_SLUGS)[number], string> = {
   "roman-shades":
-    "Custom Roman shades from PerfectView Window Coverings — fabric shades that stack into neat folds, with cordless and motorized options for any space.",
+    "Custom Roman shades from PerfectView — fabric shades that stack into neat folds, with cordless and motorized options. Professional installation in Utah.",
   "roller-shades":
-    "Custom roller shades from PerfectView Window Coverings — clean, minimal shades in sheer-to-blackout fabrics with cordless and motorized options.",
+    "Custom roller shades from PerfectView — clean, minimal shades in sheer-to-blackout fabrics with cordless and motorized options. Installed throughout Utah.",
   "cellular-shades":
-    "Custom cellular shades from PerfectView Window Coverings — energy-efficient honeycomb shades with light filtering to blackout options.",
+    "Custom cellular shades from PerfectView — energy-efficient honeycomb shades with light filtering to blackout options. Professional installation throughout Utah.",
   "wood-faux-blinds":
-    "Custom wood and faux wood blinds from PerfectView Window Coverings — classic slatted blinds in real or moisture-resistant faux wood, made to measure.",
+    "Custom wood and faux wood blinds from PerfectView — classic slatted blinds in real or moisture-resistant faux wood, made to measure in Utah.",
   shutters:
-    "Custom shutters from PerfectView Window Coverings — durable hardwood and composite plantation shutters with adjustable louvers for privacy and light control.",
+    "Custom plantation shutters from PerfectView — hardwood and composite shutters with adjustable louvers for privacy and light control. Serving Utah.",
   draperies:
-    "Custom draperies from PerfectView Window Coverings — tailored fabric panels and headers with liner options for insulation and blackout.",
+    "Custom draperies from PerfectView — tailored fabric panels and headers with liner options for insulation and blackout. Installed throughout Utah.",
   "exterior-shades":
-    "Custom exterior shades from PerfectView Window Coverings — outdoor-rated solar screens that block heat and glare on patios, decks, and large exposures.",
+    "Custom exterior shades from PerfectView — outdoor-rated solar screens that block heat and glare on patios, decks, and large exposures throughout Utah.",
   "sheer-layered":
-    "Custom sheer and layered shades from PerfectView Window Coverings — soft light diffusion and on-demand privacy with a modern, streamlined look.",
+    "Custom sheer and layered shades from PerfectView — soft light diffusion and on-demand privacy with a modern, streamlined look. Installed throughout Utah.",
   "natural-woven":
-    "Custom natural woven shades from PerfectView Window Coverings — handcrafted bamboo, grass, and reed shades that add texture and warmth to any room.",
+    "Custom natural woven shades from PerfectView — handcrafted bamboo, grass, and reed shades that add texture and warmth to Utah homes.",
+};
+
+const productSeoTitles: Record<(typeof PRODUCT_SLUGS)[number], string> = {
+  "roman-shades": "Custom Roman Shades in Utah | PerfectView Window Coverings",
+  "roller-shades":
+    "Custom Roller Shades in Utah | PerfectView Window Coverings",
+  "cellular-shades": "Cellular Shades in Utah | PerfectView Window Coverings",
+  "wood-faux-blinds": "Wood & Faux Wood Blinds in Utah | PerfectView",
+  shutters: "Plantation Shutters in Utah | PerfectView Window Coverings",
+  draperies: "Custom Draperies in Utah | PerfectView Window Coverings",
+  "exterior-shades": "Exterior Shades in Utah | PerfectView Window Coverings",
+  "sheer-layered":
+    "Sheer & Layered Shades in Utah | PerfectView Window Coverings",
+  "natural-woven":
+    "Natural Woven Shades in Utah | PerfectView Window Coverings",
 };
 
 const pageDescription = productMetaDescriptions[slug];
-const seoTitle = `${pageTitle} | Custom Window Treatments | PerfectView`;
+const seoTitle = productSeoTitles[slug];
 ---
 
 <Inner
