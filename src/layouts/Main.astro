@@ -23,20 +23,128 @@ const logoURL = getCloudinarySrc("PV_Logo_qhfozx", "png", "v1763135913");
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
   "@id": "https://perfectviewutah.com/#business",
   name: "PerfectView Window Coverings",
+  description:
+    "Family-owned Utah window treatment company providing custom blinds, shades, shutters, draperies, and window coverings for homes and businesses throughout Northern Utah. Professional installation with personalized design guidance and free in-home consultations.",
   url: "https://perfectviewutah.com",
   image: logoURL,
   logo: logoURL,
   telephone: "+18016039035",
   email: "perfectviewutah@outlook.com",
-  areaServed: {
-    "@type": "AdministrativeArea",
-    name: "Northern Utah",
+  priceRange: "$$",
+  foundingDate: "2025-03",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "17:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday"],
+      opens: "08:00",
+      closes: "15:00",
+    },
+  ],
+  areaServed: [
+    { "@type": "City", name: "Ogden" },
+    { "@type": "City", name: "Roy" },
+    { "@type": "City", name: "West Haven" },
+    { "@type": "City", name: "North Ogden" },
+    { "@type": "City", name: "South Ogden" },
+    { "@type": "City", name: "Riverdale" },
+    { "@type": "City", name: "Farr West" },
+    { "@type": "City", name: "Layton" },
+    { "@type": "City", name: "Clearfield" },
+    { "@type": "City", name: "Kaysville" },
+    { "@type": "City", name: "Syracuse" },
+    { "@type": "City", name: "Clinton" },
+    { "@type": "City", name: "Bountiful" },
+    { "@type": "City", name: "Farmington" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Window Treatment Products & Installation",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Roller Shade Installation",
+          url: "https://perfectviewutah.com/products/roller-shades/",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Cellular Shade Installation",
+          url: "https://perfectviewutah.com/products/cellular-shades/",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Sheer and Layered Shade Installation",
+          url: "https://perfectviewutah.com/products/sheer-layered/",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Wood and Faux Wood Blind Installation",
+          url: "https://perfectviewutah.com/products/wood-faux-blinds/",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Plantation Shutter Installation",
+          url: "https://perfectviewutah.com/products/shutters/",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Natural Woven Shade Installation",
+          url: "https://perfectviewutah.com/products/natural-woven/",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Roman Shade Installation",
+          url: "https://perfectviewutah.com/products/roman-shades/",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Custom Drapery Installation",
+          url: "https://perfectviewutah.com/products/draperies/",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Exterior Shade Installation",
+          url: "https://perfectviewutah.com/products/exterior-shades/",
+        },
+      },
+    ],
   },
   sameAs: [
-    "https://www.facebook.com/profile.php?id=61577185517312",
+    "https://www.facebook.com/perfectviewutah1",
     "https://www.instagram.com/perfectviewutah/",
   ],
 };
